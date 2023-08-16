@@ -22,13 +22,11 @@ function CategoryList() {
 
   return (
     items.length > 0 ? (
-    <div>
       <ul className={styles.root}>
           {items.map(item => (
             <CategoryItem key={item.id} item={item} />
           ))}
       </ul>
-    </div>
     ) : (<div>Нет данных</div>)
   );
 }
