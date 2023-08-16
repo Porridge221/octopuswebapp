@@ -1,0 +1,23 @@
+.root {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    margin-top: 3%;
+}
+
+.OctopusLabel {
+    color: #000;
+    font-size: 14px;
+    font-weight: bold;
+    font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+        'Liberation Sans', sans-serif;
+    width: 115px;
+    height: 16px;
+    padding-left: 5%;
+}
+
+.CloseButton {
+    margin-left: 53%;
+    width: 24px;
+    height: 24px;
+}

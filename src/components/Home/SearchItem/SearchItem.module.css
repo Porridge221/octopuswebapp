@@ -1,0 +1,27 @@
+.root {
+    display: flex;
+    align-items: center;
+    width: 90%;
+    height: 28px;
+    outline: solid 1px #000;
+    outline-offset: -1px;
+    border-radius: 8px;
+    background-color: #fff;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 5%;
+}
+
+.SearchIcon {
+    width: 20px;
+    height: 18px;
+    margin-left: 3%;
+}
+
+.SearchText {
+    color: #898989;
+    font-weight: 300;
+    font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+        'Liberation Sans', sans-serif;
+    padding-left: 2%;
+}

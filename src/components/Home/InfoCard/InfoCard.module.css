@@ -1,0 +1,78 @@
+.root {
+    position: absolute;
+    /*
+    left: 32px;
+    top: 165px;
+    */
+    width: 84px;
+    height: 84px;
+    align-items: flex-start;
+  }
+  
+main {
+    position: relative;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    border-radius: 10px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: auto;
+}
+/*
+.rectangleHowToUse {
+    background-image: radial-gradient(
+      ellipse 61.35144503349347px 314.20994204289303px at 32.99998640887112px 36.500004272146874px,
+      #6d3a96ff 0%,
+      #dc287fff 100%
+    );
+}
+
+.rectangleLoyalty {
+    background-image: radial-gradient(
+      ellipse 61.35144503349347px 314.20994204289303px at 32.99998640887112px 36.500004272146874px,
+      #6D3A96ff 0%,
+      #80BAE4ff 100%
+    );
+}
+
+.rectangleFAQ {
+    background-image: radial-gradient(
+      ellipse 61.35144503349347px 314.20994204289303px at 32.99998640887112px 36.500004272146874px,
+      #DC287Fff 0%,
+      #F5D098ff 100%
+    );
+}
+
+.text {
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+      'Liberation Sans', sans-serif;
+    position: absolute;
+    left: 9.5238%;
+    right: 1.1905%;
+    top: 0;
+    bottom: 0;
+    justify-content: center;
+    flex-direction: column;
+    padding-top: 15px;
+}
+
+.textFAQ {
+    color: #fff;
+    font-size: 24px;
+    font-weight: 600;
+    font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+      'Liberation Sans', sans-serif;
+    position: absolute;
+    left: 9.5238%;
+    right: 1.1905%;
+    top: 0;
+    bottom: 0;
+    justify-content: center;
+    flex-direction: column;
+}
+*/

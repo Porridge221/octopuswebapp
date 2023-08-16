@@ -1,0 +1,59 @@
+.root {
+    position: relative;
+    width: fit-content;
+    height: fit-content;
+    
+    align-items: center;
+    width: 90%;
+    /* height: 120px; */
+    /* outline: solid 1px #000; */
+    outline-offset: -1px;
+    border-radius: 8px;
+    background-color: #fff;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 5%;
+}
+
+.Image {
+    width: 80%;
+    height: 86px;
+    background-size: cover;
+    background-image: url('../../../../../public/assets/Rectangle5.png');
+    margin-left: 10%;
+}
+
+.Price {
+    color: #898989;
+    font-weight: bold;
+    font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+        'Liberation Sans', sans-serif;
+    padding-left: 10%;
+}
+
+.Name {
+    color: #898989;
+    font-weight: 300;
+    font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+        'Liberation Sans', sans-serif;
+    padding-left: 10%;
+}
+
+.BuyButton {
+    background-color:#f1f1f1;
+    text-align: center;
+    border-radius: 30%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 150px;
+    -webkit-border-radius: 150px;
+    -moz-border-radius: 150px;
+
+    cursor: pointer;
+    transition: color 500ms ease;
+}
+
+.BuyButton:hover {
+    color: #93e411b7;
+}

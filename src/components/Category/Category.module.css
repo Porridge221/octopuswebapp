@@ -1,0 +1,46 @@
+.Category {
+    position: absolute;
+    width: 360px;
+    height: 640px;
+    display: flex;
+    flex-direction: column;
+}
+
+.CategoriesLabel {
+    color: #000;
+    font-size: 24px;
+    font-weight: 600;
+    font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+        'Liberation Sans', sans-serif;
+    width: 108px;
+    height: 20px;
+    padding-top: 2%;
+    padding-left: 8%;
+}
+
+.SearchIcon {
+    width: 24px;
+    height: 24px;
+    float: right;
+    margin-right: 3%;
+    cursor: pointer;
+    transition: color 500ms ease;
+}
+
+.SearchIcon:hover {
+    color: #dc3d3d;
+}
+
+.MixerButton {
+    width: 24px;
+    height: 24px;
+    float: right;
+    cursor: pointer;
+    transition: color 500ms ease;
+    /* margin-right: 5%; */
+}
+
+.MixerButton:hover {
+    color: #dc3d3d;
+}
+

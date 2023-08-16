@@ -1,0 +1,22 @@
+.infocardlist {
+    list-style: none;
+    margin: 0;
+    overflow: hidden;
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: space-around;
+    position: relative;
+    top: 0;
+    padding-inline-start: 0;
+}
+
+.infocardlist li {
+    float: left;
+    width: 100px;
+    height: 100px;
+}
+
+li InfoCard {
+    display: block;
+}

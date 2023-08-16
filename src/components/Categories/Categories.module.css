@@ -1,0 +1,17 @@
+.Categories {
+    position: absolute;
+    width: 360px;
+    height: 640px;
+}
+
+.CategoriesLabel {
+    color: #000;
+    font-size: 24px;
+    font-weight: 600;
+    font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+        'Liberation Sans', sans-serif;
+    width: 108px;
+    height: 20px;
+    padding-top: 2%;
+    padding-left: 8%;
+}

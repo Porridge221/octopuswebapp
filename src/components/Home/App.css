@@ -1,0 +1,118 @@
+
+.App {
+  position: absolute;
+  width: 360;
+  height: 640;
+}
+
+.rectangleHowToUse {
+  width: 100px;
+  height: 100px;
+  background-image: radial-gradient(
+    ellipse 61.35144503349347px 314.20994204289303px at 32.99998640887112px 36.500004272146874px,
+    #6d3a96ff 0%,
+    #dc287fff 100%
+  );
+}
+
+.rectangleLoyalty {
+  width: 100px;
+  height: 100px;
+  background-image: radial-gradient(
+    ellipse 61.35144503349347px 314.20994204289303px at 32.99998640887112px 36.500004272146874px,
+    #6D3A96ff 0%,
+    #80BAE4ff 100%
+  );
+}
+
+.rectangleFAQ {
+  width: 100px;
+  height: 100px;
+  background-image: radial-gradient(
+    ellipse 61.35144503349347px 314.20994204289303px at 32.99998640887112px 36.500004272146874px,
+    #DC287Fff 0%,
+    #F5D098ff 100%
+  );
+}
+
+.textHowToUse {
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  justify-content: center;
+  flex-direction: column;
+  padding-top: 25%;
+  padding-left: 12%;
+
+}
+
+.textLoyalty {
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  justify-content: center;
+  flex-direction: column;
+  padding-top: 33%;
+  padding-left: 12%;
+}
+
+.textFAQ {
+  color: #fff;
+  font-size: 24px;
+  font-weight: 600;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  justify-content: center;
+  flex-direction: column;
+  padding-top: 33%;
+  padding-left: 25%;
+}
+
+.ChooseAndOrder {
+    width: 171.4426px;
+    height: 83px;
+    background: url('../../../public/assets/Rectangle5.png'), radial-gradient(
+      ellipse 181.77050857800228px 88.00000606674787px at 85.9999718084818px 41.99999446241374px,
+      #000f 0%,
+      #80bae4ff 100%
+    );
+    filter: blur(1px);
+}
+
+.TelegramRef {
+  width: 126px;
+  height: 185px;
+  background: url('../../../public/assets/Rectangle6.png'), radial-gradient(
+      ellipse 93.64864668744254px 215.28101028001618px at 63.00000435461103px 92.50000049119993px,
+      #000f 0%,
+      #6d3a96ff 100%
+  );
+  filter: blur(1px);
+  background-size: cover;
+}
+
+.HelpConsultant {
+  width: 171.4426px;
+  height: 83px;
+  background: url('../../../public/assets/Rectangle5.png'), radial-gradient(
+    ellipse 213.78707179601716px 103.50160078883826px at 85.72131034766247px 41.499997984180716px,
+    #000f 0%,
+    #dc287fff 99%,
+    #dc287fff 99%
+  );
+  filter: blur(1px);
+  background-size: auto;
+}
