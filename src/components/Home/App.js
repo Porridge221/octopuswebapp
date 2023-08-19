@@ -4,8 +4,13 @@ import CategoryList from './CategoryList/CategoryList';
 import Header from './Header/Header';
 import InfoCardList from './InfoCardList/InfoCardList';
 import SearchItem from './SearchItem/SearchItem';
+import useTelegram from '../../hooks/useTelegram';
 
 function App() {
+  const {tg} = useTelegram();
+
+  tg.BackButton.hide();
+
   return (
     <div className='App'>
       <Header />

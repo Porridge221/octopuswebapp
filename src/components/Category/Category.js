@@ -3,8 +3,14 @@ import Header from '../Home/Header/Header';
 import CategoryList from './CategoryList/CategoryList';
 import { RxMixerVertical } from "react-icons/rx";
 import { AiOutlineSearch } from "react-icons/ai";
+import useTelegram from '../../hooks/useTelegram';
+import { useNavigate } from 'react-router-dom';
 
 function Category() {
+  const {tg} = useTelegram();
+  const navigate = useNavigate();
+
+  tg.onEvent('backButtonClicked', () => navigate(-1));
 
   return (
     <div className={styles.Category}>
