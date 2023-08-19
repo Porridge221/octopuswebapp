@@ -3,7 +3,7 @@ import styles from './CategoryItem.module.css';
 function CategoryItem({item}) {
   
   const fetchData = () => {
-    fetch("https://octopusbot-1-k6943301.deta.app/createorder", { method:'POST',headers: {
+    fetch("http://localhost:8000", { method:'POST',headers: {
       'Content-Type': 'application/json'
     }, body: JSON.stringify( item )
       })

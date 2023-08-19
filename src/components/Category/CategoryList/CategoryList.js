@@ -7,7 +7,7 @@ function CategoryList() {
   const [items, setItems] = useState([])
 
   const fetchData = () => {
-    fetch("https://octopusbot-1-k6943301.deta.app/variants")
+    fetch("http://localhost:8000", {body: JSON.stringify({"id": 1})})
       .then(response => {
         return response.json()
       })
