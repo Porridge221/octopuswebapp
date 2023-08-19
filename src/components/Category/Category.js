@@ -10,7 +10,8 @@ function Category() {
   const {tg} = useTelegram();
   const navigate = useNavigate();
 
-  tg.onEvent('backButtonClicked', () => navigate('/home/categories/')).show();
+  tg.onEvent('backButtonClicked', () => navigate('/home/categories/'));
+  tg.BackButton.show();
 
   return (
     <div className={styles.Category}>
