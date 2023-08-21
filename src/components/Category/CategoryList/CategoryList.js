@@ -7,7 +7,7 @@ function CategoryList() {
   const [items, setItems] = useState([])
 
   const fetchData = () => {
-    fetch("http://localhost:8000", {body: JSON.stringify({"id": 1})})
+    fetch("https://3e8d-185-57-31-40.ngrok-free.app/variants")
       .then(response => {
         return response.json()
       })

@@ -5,10 +5,15 @@ import Header from './Header/Header';
 import InfoCardList from './InfoCardList/InfoCardList';
 import SearchItem from './SearchItem/SearchItem';
 import useTelegram from '../../hooks/useTelegram';
+import { useEffect } from 'react';
 
 function App() {
   const {tg} = useTelegram();
   tg.BackButton.hide();
+
+  useEffect(() => {
+    tg.expand();
+  })
 
   return (
     <div className='App'>
