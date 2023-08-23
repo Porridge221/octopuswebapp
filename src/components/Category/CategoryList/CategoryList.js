@@ -10,7 +10,7 @@ function CategoryList() {
   const {initData} = useTelegram();
 
   const fetchData = () => {
-    fetch("https://octopusbot-1-k6943301.deta.app/variants", {method: 'GET', headers: {'Content-Type': initData}})
+    fetch("https://octopusbot-1-k6943301.deta.app/variants", {method: 'GET', headers: {'Content-Type': 'application/json', 'Telegram-Data': initData}})
       .then(response => {
         return response.json()
       })
