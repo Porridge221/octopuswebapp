@@ -10,7 +10,7 @@ function CategoryList() {
   const {initData} = useTelegram();
 
   const fetchData = () => {
-    fetch("https://2a292a84c42d37.lhr.life/variants", {method: 'GET', headers: {'Content-Type': 'application/json', 'Telegram-Data': initData}})
+    fetch("https://5dc3-185-57-31-40.ngrok-free.app/variants", {method: 'GET', headers: {'Content-Type': 'application/json', 'Telegram-Data': initData}})
       .then(response => {
         return response.json()
       })
