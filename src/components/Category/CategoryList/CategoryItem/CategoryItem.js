@@ -3,7 +3,7 @@ import styles from './CategoryItem.module.css';
 function CategoryItem({item}) {
   
   const fetchData = () => {
-    fetch("https://5dc3-185-57-31-40.ngrok-free.app/createorder", { method:'POST',headers: {
+    fetch("https://octopusbot-1-k6943301.deta.app/createorder", { method:'POST',headers: {
       'Content-Type': 'application/json',
       'Telegram-Data': 'true'
     }, body: JSON.stringify( item )
