@@ -10,7 +10,7 @@ function AccountItem() {
             <div className={styles.AccountImage}/>
             <div>
                 <div className={styles.AccountBlock}>
-                    <span className={styles.AccountName}>{user?.username}</span>
+                    <span className={styles.AccountName}>Debora222211SdSD{user?.username}</span>
                     <span className={styles.AccountStatus}>Бронзовый</span>
                 </div>
                 <div className={styles.PointsCount}>354 балла</div>

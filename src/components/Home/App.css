@@ -1,8 +1,12 @@
 
 .App {
-  position: absolute;
+  /* position: absolute; */
   width: 360;
   height: 640;
+  /* position: relative; */
+  /* display: flex;
+  flex-direction: row; */
+  justify-content: center;
 }
 
 .rectangleHowToUse {
@@ -115,4 +119,13 @@
   );
   filter: blur(1px);
   background-size: auto;
+}
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #6b6b6b;
+  margin: 15px 32px;
+  padding: 0;
 }

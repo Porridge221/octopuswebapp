@@ -19,7 +19,8 @@
     width: 80%;
     height: 86px;
     background-size: cover;
-    background-image: url('../../../../../public/assets/Rectangle5.png');
+    /* background-image: url('../../../../../public/assets/Rectangle5.png'); */
+    background-image: url("https://miniature-prod.moysklad.ru/miniature/3a69a92f-3453-11ee-0a80-092500013563/documentminiature/83d9bfaa-6238-4567-8b41-e4f0b49d1e8c");
     margin-left: 10%;
 }
 

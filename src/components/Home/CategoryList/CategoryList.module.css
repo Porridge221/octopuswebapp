@@ -3,9 +3,10 @@
     padding-top: 20px;
     top: 200px;
     display: grid;
-    grid-template-columns: 180px 180px;
+    grid-template-columns: 50% 50%;
     grid-template-rows: 93px 93px;
-    gap: 10px
+    gap: 10px;
+    justify-content: center;
 }
 
 .cat1 {

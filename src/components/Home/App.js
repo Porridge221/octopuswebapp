@@ -17,12 +17,12 @@ function App() {
 
   return (
     <div className='App'>
-      <Header />
       <AccountItem />
-      <SearchItem />
-      <div>
+      <hr/>
         <InfoCardList />
-      </div>
+      
+      <hr/>
+      <SearchItem />
       <CategoryList />
     </div>
   );
