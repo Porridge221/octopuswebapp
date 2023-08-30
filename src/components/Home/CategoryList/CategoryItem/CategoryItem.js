@@ -8,8 +8,7 @@ function CategoryItem({category}) {
             <main className={category.style}></main>
             <div className={styles.unnamed6}>
                 <div className={category.style !== 'TelegramRef' ? styles.textBlock : styles.textBlock2}>{category.text}</div>
-            </div>
-            
+            </div> 
         </Link>
     );
 }

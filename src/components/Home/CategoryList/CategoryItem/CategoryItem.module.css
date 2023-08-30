@@ -9,6 +9,8 @@ main {
     background-position: center;
     background-repeat: no-repeat;
     background-size: auto;
+    justify-content: center;
+    align-self: center;
 }
 
 .unnamed6 {
@@ -20,7 +22,6 @@ main {
     text-align: center;
     align-items: center;
     z-index: 10;
-
 }
   
 .textBlock {
@@ -32,6 +33,7 @@ main {
     align-items: center;
     color: #fff;
     font-size: 16px;
+    font-weight: 700;
     font-weight: bold;
     font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
       'Liberation Sans', sans-serif;
@@ -45,7 +47,8 @@ main {
     align-items: center;
     margin: 40% 11%;
     color: #fff;
-    font-size: 14px;
+    font-size: 12px;
+    font-weight: 600;
     white-space: pre-wrap;
     font-weight: bold;
     font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',

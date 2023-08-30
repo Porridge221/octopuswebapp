@@ -85,7 +85,7 @@
   padding-left: 25%;
 }
 
-.ChooseAndOrder {
+.TelegramRef {
     width: 171.4426px;
     height: 83px;
     background: url('../../../public/assets/Rectangle5.png'), radial-gradient(
@@ -95,8 +95,7 @@
     );
     filter: blur(1px);
 }
-
-.TelegramRef {
+.ChooseAndOrder {
   width: 126px;
   height: 185px;
   background: url('../../../public/assets/Rectangle6.png'), radial-gradient(
