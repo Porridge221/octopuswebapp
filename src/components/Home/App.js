@@ -5,6 +5,7 @@ import InfoCardList from './InfoCardList/InfoCardList';
 import SearchItem from './SearchItem/SearchItem';
 import useTelegram from '../../hooks/useTelegram';
 import { useEffect } from 'react';
+import OrderList from './OrderList/OrderList';
 
 function App() {
   const {tg} = useTelegram();
@@ -24,6 +25,7 @@ function App() {
       <SearchItem />
       <CategoryList />
       <hr/>
+      <OrderList/>
     </div>
   );
 }

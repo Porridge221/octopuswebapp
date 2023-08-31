@@ -1,0 +1,43 @@
+.root {
+    display: flex;
+    flex-direction: column;
+    margin: 0 33px;
+}
+
+.header {
+    color: #000000;
+    font-family: "Inter-SemiBold", Helvetica;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 7px;
+}
+
+.orderList {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.orderHistoryRef {
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.orderHistoryHeaderText {
+    font-family: "Inter-SemiBold", Helvetica;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.orderHistoryHeaderLink {
+    color: #80bae4;
+}
+
+.orderHistoryButton {
+    width: 22px;
+    height: 28px;
+    margin: 0;
+    margin-top: 11px;
+}

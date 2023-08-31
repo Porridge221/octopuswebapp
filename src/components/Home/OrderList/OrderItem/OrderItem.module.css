@@ -1,0 +1,38 @@
+.root {
+    background-color: #ffffff;
+    border: 1px solid;
+    border-color: #898989;
+    border-radius: 10px;
+    left: 0;
+    top: 0;
+    width: 130px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.header {
+    color: #000000;
+    font-family: "Inter-SemiBold", Helvetica;
+    font-size: 12px;
+    font-weight: 600;
+    margin: 10% 0%;
+    margin-bottom: 5%;
+}
+
+.icon {
+    width: 46;
+    height: 41;
+    margin: 5% 0;
+}
+
+.price {
+    color: #000000;
+    font-family: "Inter-SemiBold", Helvetica;
+    font-size: 10px;
+    font-weight: 600;
+    height: 12px;
+    white-space: nowrap;
+    margin: 10% 0;
+}
