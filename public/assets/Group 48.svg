@@ -1,0 +1,22 @@
+<svg width="48" height="41" viewBox="0 0 48 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Group 48">
+<mask id="mask0_169_247" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="48" height="41">
+<g id="Group 49">
+<g id="Vector 16">
+<path d="M2 13.96L6.32787 37H32.5C31 31 34 23.5 44.1967 25.48L46 13.96H35.9016H12.0984H2Z" fill="#D9D9D9"/>
+<path d="M12.0984 13.96H2L6.32787 37H32.5C31 31 34 23.5 44.1967 25.48L46 13.96H35.9016M12.0984 13.96H35.9016M12.0984 13.96C12.0984 13.96 10.7416 0.999986 24 1C37.2584 1.00001 35.9016 13.96 35.9016 13.96" stroke="#424242" stroke-width="2"/>
+</g>
+<circle id="Ellipse 9" cx="41.5" cy="34.5" r="5.5" fill="#D9D9D9" stroke="#898989" stroke-width="2"/>
+</g>
+</mask>
+<g mask="url(#mask0_169_247)">
+<rect id="Rectangle 31" x="-3" y="-11" width="68" height="60" fill="url(#paint0_radial_169_247)"/>
+</g>
+</g>
+<defs>
+<radialGradient id="paint0_radial_169_247" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(17.5 19) rotate(39.6608) scale(75.9901 86.1222)">
+<stop stop-color="#80BAE4"/>
+<stop offset="1" stop-color="#6D3A96"/>
+</radialGradient>
+</defs>
+</svg>

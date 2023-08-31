@@ -3,13 +3,13 @@
     padding-top: 20px;
     top: 200px; */
     display: grid;
+    margin: 0 32px;
+    width: 94%;
     grid-template-columns: 50% 50%;
     grid-template-rows: 93px 93px;
     gap: 10px;
     /* justify-content: right;
     align-items: flex-end; */
-    width: 100%;
-    margin: 0 32px;
 }
 
 .cat1 {

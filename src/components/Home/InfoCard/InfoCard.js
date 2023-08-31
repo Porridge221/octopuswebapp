@@ -4,8 +4,8 @@ function InfoCard({card}) {
     
     return (
         <div className={styles.root}>
-            <main className={'rectangle' + card.style}>
-                <div className={'text' + card.style}>{card.text}</div>
+            <main className={styles.main + ' rectangle' + card.style}>
+                <div className={card.style !== 'FAQ' ? styles.textSmall : styles.textLarge}>{card.text}</div>
             </main>
         </div>
     );

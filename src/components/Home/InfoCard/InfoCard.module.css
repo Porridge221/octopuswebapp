@@ -1,25 +1,43 @@
 .root {
-    position: absolute;
+    /* position: absolute; */
     /*
     left: 32px;
     top: 165px;
     */
     width: 84px;
     height: 84px;
+    display: flex;
     align-items: flex-start;
 }
   
-main {
-    position: relative;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
+.main {
+    /* position: relative; */
     border-radius: 10px;
     background-position: center;
     background-repeat: no-repeat;
     background-size: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
+.textSmall {
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 0 10%;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+}
+
+.textLarge {
+  color: #fff;
+  font-size: 24px;
+  font-weight: 600;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+}
+
 /*
 .rectangleHowToUse {
     background-image: radial-gradient(
