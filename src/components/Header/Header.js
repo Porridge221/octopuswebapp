@@ -1,12 +1,19 @@
 import styles from './Header.module.css'
 
-function Header() {
+function Header({path, current}) {
+
+    const results = [];
+
+    path.forEach(el => {
+        results.push(<span key={el} className={styles.textPrev}>{el + ' > '}</span>);
+    });
     
     return (
         <div className={styles.root}>
             <div>
-            <span className={styles.textPrev}>Главная {'> '}</span>
-            <span className={styles.textCurrent}>Каталог</span>
+                {results}
+                {/* <span className={styles.textPrev}>Главная {'> '}</span> */}
+                <span className={styles.textCurrent}>{current}</span>
             </div>
             <img className={styles.icon} src={process.env.PUBLIC_URL + '/assets/Group 25.svg'}/>
         </div>

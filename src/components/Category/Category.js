@@ -1,8 +1,7 @@
 import styles from './Category.module.css';
-import Header from '../Home/Header/Header';
+import Header from '../Header/Header'
 import CategoryList from './CategoryList/CategoryList';
-import { RxMixerVertical } from "react-icons/rx";
-import { AiOutlineSearch } from "react-icons/ai";
+import { RxMixerHorizontal } from "react-icons/rx";
 import useTelegram from '../../hooks/useTelegram';
 import { useNavigate } from 'react-router-dom';
 
@@ -13,13 +12,15 @@ function Category() {
   tg.onEvent('backButtonClicked', () => navigate('/home/categories/'));
   tg.BackButton.show();
 
+  const path = ['Главная', 'Каталог']
+  const current = 'Жидкость'
+
   return (
     <div className={styles.Category}>
-      <Header />
-      <div style={{margin:'3%'}}>
-      <span className={styles.CategoriesLabel}>Каталог</span>
-        <RxMixerVertical className={styles.MixerButton} />
-        <AiOutlineSearch className={styles.SearchIcon}/>        
+      <Header path={path} current={current}/>
+      <div className={styles.filter}>
+        <span className={styles.CategoriesLabel}>Все фильтры</span>
+        <RxMixerHorizontal className={styles.MixerButton} />      
       </div>
       <CategoryList className={styles.ItemList} />
     </div>

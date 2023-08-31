@@ -3,8 +3,102 @@ import styles from './CategoryList.module.css';
 import { useEffect, useState } from "react"
 import useTelegram from '../../../hooks/useTelegram';
 import axios from 'axios'
+import React from 'react'
 
 const initData = 'query_id=AAH4j_ZmAgAAAPiP9mbhemjf&user=%7B%22id%22%3A6022402040%2C%22first_name%22%3A%22Debora%22%2C%22last_name%22%3A%22Landau%22%2C%22username%22%3A%22porridge221%22%2C%22language_code%22%3A%22ru%22%2C%22allows_write_to_pm%22%3Atrue%7D&auth_date=1692771816&hash=9515f6c19bbf76fc35b29df2eb0bcd97d93ade207b37238ae145abc5d7fc28ce'
+
+const result = [
+  {
+      'id': 1,
+      'product_name': 'Alaska',
+      'items': [
+        {
+          'id': 8,
+          'name': 'Berry Mint Lemonade',
+          'image': 'https://miniature-prod.moysklad.ru/miniature/3a69a92f-3453-11ee-0a80-092500013563/documentminiature/83d9bfaa-6238-4567-8b41-e4f0b49d1e8c',
+          'price_vvo': 500,
+          'price_shk': 500,
+          'item_characteristics': [
+              {
+                  'name': 'Крепость',
+                  'value': '20'
+              }
+          ]
+        },
+        {
+          'id': 2,
+          'name': 'Cherry Candy',
+          'image': 'https://miniature-prod.moysklad.ru/miniature/3a69a92f-3453-11ee-0a80-092500013563/documentminiature/83d9bfaa-6238-4567-8b41-e4f0b49d1e8c',
+          'price_vvo': 500,
+          'price_shk': 500,
+          'item_characteristics': [
+              {
+                  'name': 'Крепость',
+                  'value': '20'
+              }
+          ]
+        },
+        {
+          'id': 3,
+          'name': 'Double Mango',
+          'image': 'https://miniature-prod.moysklad.ru/miniature/3a69a92f-3453-11ee-0a80-092500013563/documentminiature/83d9bfaa-6238-4567-8b41-e4f0b49d1e8c',
+          'price_vvo': 500,
+          'price_shk': 500,
+          'item_characteristics': [
+              {
+                  'name': 'Крепость',
+                  'value': '20'
+              }
+          ]
+        }
+      ]
+  },
+  {
+    'id': 4,
+    'product_name': '3 Bubbles',
+    'items': [
+      {
+        'id': 7,
+        'name': 'Vapobasa',
+        'image': 'https://miniature-prod.moysklad.ru/miniature/3a69a92f-3453-11ee-0a80-092500013563/documentminiature/83d9bfaa-6238-4567-8b41-e4f0b49d1e8c',
+        'price_vvo': 500,
+        'price_shk': 500,
+        'item_characteristics': [
+            {
+                'name': 'Крепость',
+                'value': '20'
+            }
+        ]
+      },
+      {
+        'id': 5,
+        'name': 'Vapolicious',
+        'image': 'https://miniature-prod.moysklad.ru/miniature/3a69a92f-3453-11ee-0a80-092500013563/documentminiature/83d9bfaa-6238-4567-8b41-e4f0b49d1e8c',
+        'price_vvo': 500,
+        'price_shk': 500,
+        'item_characteristics': [
+            {
+                'name': 'Крепость',
+                'value': '20'
+            }
+        ]
+      },
+      {
+        'id': 6,
+        'name': 'Vazooka',
+        'image': 'https://miniature-prod.moysklad.ru/miniature/3a69a92f-3453-11ee-0a80-092500013563/documentminiature/83d9bfaa-6238-4567-8b41-e4f0b49d1e8c',
+        'price_vvo': 1300,
+        'price_shk': 500,
+        'item_characteristics': [
+            {
+                'name': 'Крепость',
+                'value': '20'
+            }
+        ]
+      }
+    ]
+}
+]
 
 function CategoryList() {
 
@@ -35,13 +129,27 @@ function CategoryList() {
   }, [])
 
   return (
-    items.length > 0 ? (
-      <ul className={styles.root}>
-          {items.map(item => (
-            <CategoryItem key={item.id} item={item} />
+    result.length > 0 ? (
+      <div className={styles.root}>
+          {result.map(producer => ( 
+            <div key={producer.id} className={styles.ProducerGroup}>
+              <div className={styles.ProducerName}>{producer.product_name + ' >'}</div>
+              <ul key={producer.id} className={styles.ProducerItems}>
+                {producer['items'].map(item => (
+                  <CategoryItem key={item.id} item={item} producerName={producer['product_name']} />
+                ))}
+              </ul>
+            </div>
           ))}
-      </ul>
+      </div>
     ) : (<div>Нет данных</div>)
+    // items.length > 0 ? (
+    //   <ul className={styles.root}>
+    //       {items.map(item => (
+    //         <CategoryItem key={item.id} item={item} />
+    //       ))}
+    //   </ul>
+    // ) : (<div>Нет данных</div>)
   );
 }
 

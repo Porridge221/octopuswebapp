@@ -12,9 +12,12 @@ function Categories() {
   tg.onEvent('backButtonClicked', () => navigate('/home'));
   tg.BackButton.show();
 
+  const path = ['Главная']
+  const current = 'Каталог'
+
   return (
     <div className={styles.Categories}>
-      <Header/>
+      <Header path={path} current={current}/>
       <SearchItem/>
       <CategoriesList />
     </div>

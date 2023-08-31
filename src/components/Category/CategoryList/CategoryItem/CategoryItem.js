@@ -1,7 +1,7 @@
 import styles from './CategoryItem.module.css';
 import useTelegram from '../../../../hooks/useTelegram';
 
-function CategoryItem({item}) {
+function CategoryItem({item, producerName}) {
 
   const {initData} = useTelegram();
   
@@ -19,11 +19,13 @@ function CategoryItem({item}) {
       })
   }
 
+  console.log(item.id)
+
   return (
-    <li className={styles.root}>
+    <li key={item.id} className={styles.root}>
         <div className={styles.Image} ></div>
         <div className={styles.Price}>{item.price}</div>
-        <div className={styles.Name}>{item.name}</div>
+        <div className={styles.Name}>{producerName + ' ' + item.name}</div>
         <div className={styles.BuyButton} onClick={fetchData}>Купить</div>
     </li>
   );

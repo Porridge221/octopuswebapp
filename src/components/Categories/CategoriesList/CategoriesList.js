@@ -1,6 +1,8 @@
 import CategoriesItem from "../CategoriesItem/CategoriesItem"
 import styles from "./CategoriesList.module.css"
 
+import { v4 } from 'uuid'
+
 function CategoriesList() {
     const category = [
         {id: 1, text: 'Жидкости'},
@@ -12,15 +14,6 @@ function CategoriesList() {
         <ul className={styles.categorylist}>
             <CategoriesItem category={category[0]}/>
             <CategoriesItem category={category[1]}/>
-            <CategoriesItem category={category[2]}/>
-            <CategoriesItem category={category[2]}/>
-            <CategoriesItem category={category[2]}/>
-            <CategoriesItem category={category[2]}/>
-            <CategoriesItem category={category[2]}/>
-            <CategoriesItem category={category[2]}/>
-            <CategoriesItem category={category[2]}/>
-            <CategoriesItem category={category[2]}/>
-            <CategoriesItem category={category[2]}/>
             <CategoriesItem category={category[2]}/>
         </ul>
     )
