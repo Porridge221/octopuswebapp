@@ -1,34 +1,11 @@
 .categorylist {
-    margin-left: 7%;
-    padding-top: 20px;
-    top: 200px;
-    display: grid;
-    grid-template-columns: 180px 180px;
-    grid-template-rows: 93px 93px;
-    gap: 10px
+    padding: 0;
+    margin: 15px 32px;
+    /* display: flex; */
+    column-count: 2;
+    list-style-type: none;
+    /* height: 100%; */
+    /* grid-template-columns: 1fr 1fr; */
+    /* grid-template-rows: 138px 138px; */
+    /* gap: 10px */
 }
-
-.cat1 {
-    grid-column: 1;
-    grid-row: 1;
-}
-
-.cat2 {
-    grid-column: 1;
-    grid-row: 2;
-}
-
-.cat3 {
-    grid-column: 2;
-    grid-row: 1/2;
-}
-
-.ChooseAndOrder {
-    width: 171.4426px;
-    height: 83px;
-    background: url('../../../../public/assets/Rectangle5.png'), radial-gradient(
-        ellipse 181.77050857800228px 88.00000606674787px at 85.9999718084818px 41.99999446241374px,
-        #000f 0%,
-        #80bae4ff 100%
-      );
-  }

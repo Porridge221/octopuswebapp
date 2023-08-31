@@ -1,8 +1,9 @@
 import CategoriesList from './CategoriesList/CategoriesList'
-import Header from '../Home/Header/Header';
 import styles from './Categories.module.css'
 import useTelegram from '../../hooks/useTelegram';
 import { useNavigate } from 'react-router-dom';
+import Header from '../Header/Header';
+import SearchItem from '../Home/SearchItem/SearchItem';
 
 function Categories() {
   const {tg} = useTelegram();
@@ -13,8 +14,8 @@ function Categories() {
 
   return (
     <div className={styles.Categories}>
-      <Header />
-      <div className={styles.CategoriesLabel}>Категории</div>
+      <Header/>
+      <SearchItem/>
       <CategoriesList />
     </div>
   );
