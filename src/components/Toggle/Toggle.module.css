@@ -1,0 +1,46 @@
+.root {
+    display: inline-flex;
+    margin: 5px 16px;
+}
+
+.toggle {
+    appearance: none;
+    background-color: #fff;
+    margin: 0;
+    font: inherit;
+    color: currentColor;
+    width: 20px;
+    height: 20px;
+    border: 1px solid currentColor;
+    border-radius: 5px;
+    transform: translateY(-0.075em);
+
+    display: grid;
+    place-content: center;
+}
+
+.toggle::before {
+    content: "";
+    width: 0.65em;
+    height: 0.65em;
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    box-shadow: inset 1em 1em var(--form-control-color);
+
+    transform-origin: bottom left;
+    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+  }
+
+.toggle:checked::before {
+    transform: scale(1);
+    background-color: #80BAE4;
+}
+
+.text {
+    color: #000000;
+    font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+        'Liberation Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    margin-left: 5px;
+}

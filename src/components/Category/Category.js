@@ -4,6 +4,7 @@ import CategoryList from './CategoryList/CategoryList';
 import { RxMixerHorizontal } from "react-icons/rx";
 import useTelegram from '../../hooks/useTelegram';
 import { useNavigate } from 'react-router-dom';
+import Toggle from '../Toggle/Toggle'
 
 function Category() {
   const {tg} = useTelegram();
@@ -21,6 +22,11 @@ function Category() {
       <div className={styles.filter}>
         <span className={styles.CategoriesLabel}>Все фильтры</span>
         <RxMixerHorizontal className={styles.MixerButton} />      
+      </div>
+      <div className={styles.storeFilter}>
+        <Toggle label="ул. Светланская, 9в" toggled={true} /*onClick={logState}*//>
+        <Toggle label="ул. Русская, 46" toggled={true} /*onClick={logState}*//>
+        <Toggle label="ул. Адмирала Фокина, 23в" toggled={true} /*onClick={logState}*//>
       </div>
       <CategoryList className={styles.ItemList} />
     </div>

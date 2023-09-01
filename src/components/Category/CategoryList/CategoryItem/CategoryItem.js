@@ -24,9 +24,9 @@ function CategoryItem({item, producerName}) {
   return (
     <li key={item.id} className={styles.root}>
         <div className={styles.Image} ></div>
-        <div className={styles.Price}>{item.price}</div>
         <div className={styles.Name}>{producerName + ' ' + item.name}</div>
-        <div className={styles.BuyButton} onClick={fetchData}>Купить</div>
+        <div className={styles.Price}>{new Intl.NumberFormat('ru-RU', {style: 'currency', currency: 'RUB', minimumFractionDigits: 0}).format(item.price_vvo)}</div>
+        <div className={styles.BuyButton} onClick={fetchData}>Добавить</div>
     </li>
   );
 }

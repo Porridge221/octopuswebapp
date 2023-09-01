@@ -31,3 +31,8 @@
     color: #dc3d3d;
 }
 
+.storeFilter {
+    display: flexbox;
+    margin: 10px 16px;
+    margin-bottom: 0;
+}
