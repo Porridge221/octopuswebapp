@@ -1,0 +1,54 @@
+.root {
+    margin: 0 32px;
+    width: 90%;
+}
+
+.Label {
+    margin-bottom: 25px;
+    color: #000000;
+    font-family: "Inter-SemiBold", Helvetica;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+}
+
+.Header {
+    color: #898989;
+    font-family: "Inter-SemiBold", Helvetica, Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+        'Liberation Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+}
+
+.StatusText {
+    color: #6d3a95;
+    font-family: "Inter-SemiBold", Helvetica, Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+        'Liberation Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+}
+
+.OrderText {
+    color: #000000;
+    font-family: "Inter-Regular", Helvetica, Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+        'Liberation Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    text-align: center;
+}
+
+.PointsText {
+    font-family: "Inter-Bold", Helvetica, Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.Table {
+    display: grid;
+    grid-template-columns: 4fr 1fr 1fr;
+    gap: 10px;
+}

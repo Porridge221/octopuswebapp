@@ -15,7 +15,7 @@ const result = [
       'items': [
         {
           'id': 8,
-          'name': 'Berry Mint Lemonade Extra Quality',
+          'name': 'Berry Mint Lemonade Extra',
           'image': 'https://miniature-prod.moysklad.ru/miniature/3a69a92f-3453-11ee-0a80-092500013563/documentminiature/83d9bfaa-6238-4567-8b41-e4f0b49d1e8c',
           'price_vvo': 500,
           'price_shk': 500,

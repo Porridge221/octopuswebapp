@@ -5,7 +5,7 @@
     flex-direction: column;
     align-items: center;
     width: 90%;
-    height: 187px;
+    height: 171px;
     border: 1px solid;
     border-color: #898989;
     border-radius: 10px;
@@ -13,16 +13,16 @@
     margin-left: 5%;
     margin-right: 5%;
     margin-bottom: 8%;
+    text-decoration: none;
 }
 
 .Image {
-    width: 80%;
-    height: 86px;
-    background-size: cover;
-    /* background-image: url('../../../../../public/assets/Rectangle5.png'); */
-    background-image: url("https://miniature-prod.moysklad.ru/miniature/3a69a92f-3453-11ee-0a80-092500013563/documentminiature/83d9bfaa-6238-4567-8b41-e4f0b49d1e8c");
-    margin-left: 10%;
-    flex-grow: 1;
+    width: 70%;
+    height: 71px;
+    display: flex;
+    justify-content: center;
+    object-fit: cover;
+    
 }
 
 .Price {
@@ -41,6 +41,7 @@
     font-size: 12px;
     font-weight: 500;
     margin: 7px 9px;
+    flex-grow: 1;
 }
 
 .BuyButton {
