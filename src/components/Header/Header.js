@@ -6,7 +6,7 @@ function Header({path, current}) {
     const {tg} = useTelegram();
     const navigate = useNavigate();
 
-    tg.onEvent('backButtonClicked', () => navigate(-1));
+    tg.onEvent('backButtonClicked', () => navigate('/home'));
     tg.BackButton.show();
 
     const results = [];
