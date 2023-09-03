@@ -1,0 +1,65 @@
+.root {
+    display: flex;
+    flex-direction: row;
+    background-color: #ffffff;
+    border: 1px solid;
+    border-color: #80bae4;
+    border-radius: 10px;
+    height: 103px;
+    align-items: center;
+    /* width: 306px; */
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.Image {
+    display: flex;
+    height: 84px;
+    object-fit: cover;
+    width: 84px;
+    border-radius: 10px;
+}
+
+.Info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    /* flex-grow: 1; */
+}
+
+.Price {
+    color: #000000;
+    font-family: "Inter-SemiBold", Helvetica;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0;
+    line-height: normal;
+}
+
+.Name {
+    color: #000000;
+    font-family: "Inter-Regular", Helvetica;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: normal;
+}
+
+.RemoveButton {
+    color: #80bae4;
+    font-family: "Inter-Medium", Helvetica;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: normal;
+}
+
+.CountInput {
+    display: flex;
+    flex-direction: column;
+    width: 10%;
+    height: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
