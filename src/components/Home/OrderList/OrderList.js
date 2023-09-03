@@ -1,6 +1,7 @@
 import OrderItem from "./OrderItem/OrderItem"
 import styles from "./OrderList.module.css"
 import { BsArrowDown } from "react-icons/bs";
+import {Link} from 'react-router-dom'
 
 function OrderList() {
     const orders = [
@@ -15,11 +16,11 @@ function OrderList() {
                 <OrderItem order={orders[0]}/>
                 <OrderItem order={orders[1]}/>
             </div>
-            <div className={styles.orderHistoryRef}>
+            <Link className={styles.orderHistoryRef} to='/history'>
                 <span className={styles.orderHistoryHeaderText}>Перейти к </span>
                 <span className={styles.orderHistoryHeaderText + ' ' + styles.orderHistoryHeaderLink}>истории заказов</span>
                 <div><BsArrowDown className={styles.orderHistoryButton}/></div>
-            </div>
+            </Link>
         </div>
     )
 
