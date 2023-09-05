@@ -11,11 +11,26 @@ import modalStyles from './Modal.module.css'
 import Input from 'react-phone-number-input/input'
 
 function Cart() {
-    const [modalActive, setModalActive] = useState(true);
+    const [modalActive, setModalActive] = useState(false);
 
-    const [phoneNumber, setPhoneNumber] = useState()
+    const [userName, setUserName] = useState();
+
+    const [phoneNumber, setPhoneNumber] = useState();
 
     const [selectedStore, setSelectedStore] = useState('ул. Адмирала Фокина, 23в');
+
+    const fetchData = () => {
+        fetch("http://localhost:8000/orders/", { method:'POST',headers: {
+          'Content-Type': 'application/json'
+        }, body: JSON.stringify( {'user_id': 1, 'name': userName, 'phone': '7' + phoneNumber, 'store_id': 1} )
+          })
+          .then(response => {
+            return JSON.stringify( {'user_id': 1, 'name': userName, 'phone': '7' + phoneNumber, 'store_id': 1} )
+          })
+          .then(data => {
+            console.log(JSON.stringify( {'user_id': 1, 'name': userName, 'phone': '7' + phoneNumber, 'store_id': 1} ));
+          })
+    }
 
     return (
         <div className={styles.root}>
@@ -37,7 +52,7 @@ function Cart() {
                 <div className={styles.SumBox}>
                     <span>Итого</span><span>3000 Р</span>
                 </div>
-                <div className={styles.ConfirmButton}>Подтвердить</div>
+                <div className={styles.ConfirmButton} onClick={() => setModalActive(true)}>Подтвердить</div>
             </div>
             <FilterModal active={modalActive} setActive={setModalActive} >
             <div style={{'width': '60vw', 'overflow-x': 'hidden','overflow-y': 'auto'}}>
@@ -54,7 +69,7 @@ function Cart() {
                         <option value="ул. Адмирала Фокина, 23в">ул. Адмирала Фокина, 23в</option>
                     </select>
                     <span>Имя получателя</span>
-                    <input name="myInput" className={modalStyles.Input}/>
+                    <input name="myInput" className={modalStyles.Input} value={userName} onChange={e => setUserName(e.target.value)}/>
                     <span>Телефон получателя</span>
                     <div className={modalStyles.NumberBox}>
                         +7 | <Input className={modalStyles.NumberInput}
@@ -66,7 +81,7 @@ function Cart() {
                     <div>{'Информация о заказе будет доступна на главной странице, а также в истории заказов.\n Оплата происходит в офлайн-магазине'}</div>
                 </div>
             </div>
-            <div className={modalStyles.ConfirmButton} >Подтвердить</div>
+            <div className={modalStyles.ConfirmButton} onClick={fetchData}>Подтвердить</div>
             </FilterModal>
         </div>
     );

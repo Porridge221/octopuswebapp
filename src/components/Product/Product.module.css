@@ -19,6 +19,7 @@
     margin: 0 32px;
     display: flex;
     justify-content: center;
+    flex-grow: 1;
 }
 
 .Price {

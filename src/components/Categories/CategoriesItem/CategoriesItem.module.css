@@ -4,21 +4,28 @@
     border: 1px solid;
     border-color: #898989;
     border-radius: 10px;
-    justify-content: center;
+    /* justify-content: space-between; */
     align-items: center;
     margin-bottom: 13px;
     text-decoration: none;
+    /* height: 158px; */
 }
   
 .textBlock {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     color: #000000;
     font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
         'Liberation Sans', sans-serif;
     font-size: 16px;
     font-weight: 700;
     margin: 7px 0;
-    /* height: 19px;
-    white-space: nowrap; */
+    height: 32px;
+    text-align: center;
+    justify-self: center;
+    vertical-align: middle;
+    /* white-space: nowrap; */
 }
 
 .icon {

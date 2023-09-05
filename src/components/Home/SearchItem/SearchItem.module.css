@@ -14,14 +14,16 @@
 
 .SearchIcon {
     width: 20px;
-    height: 18px;
+    height: 28px;
     margin-left: 3%;
 }
 
 .SearchText {
     color: #898989;
+    font-family: "Inter-Light", Helvetica;
+    font-size: 10px;
     font-weight: 300;
-    font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
-        'Liberation Sans', sans-serif;
-    padding-left: 2%;
+    letter-spacing: 0;
+    line-height: normal;
+    padding-left: 6%;
 }

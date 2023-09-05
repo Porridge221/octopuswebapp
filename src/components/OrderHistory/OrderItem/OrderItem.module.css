@@ -17,22 +17,19 @@
     font-family: "Inter-SemiBold", Helvetica;
     font-size: 12px;
     font-weight: 600;
-    margin: 10% 0%;
-    margin-bottom: 5%;
+    margin: 10px 0%;
 }
 
 .icon {
     width: 46;
     height: 41;
-    margin: 5% 0;
 }
 
 .price {
     color: #000000;
     font-family: "Inter-SemiBold", Helvetica;
     font-size: 10px;
-    font-weight: 600;
-    height: 12px;
+    font-weight: 600;   
     white-space: nowrap;
-    margin: 10% 0;
+    margin: 10px 0;
 }

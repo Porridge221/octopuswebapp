@@ -1,0 +1,15 @@
+/* AB Range Slider */
+.range-slider {
+    height: 8px;
+    /* background: #4b4d61; */
+}
+  
+.range-slider__range {
+    /* background: #ff4141; */
+}
+  
+.range-slider .range-slider__thumb {
+    width: 16px;
+    height: 16px;
+    border-radius: 6px;
+}

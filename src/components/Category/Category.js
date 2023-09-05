@@ -11,8 +11,20 @@ import { useState } from 'react';
 import {AiOutlineClose} from "react-icons/ai";
 import modalStyles from './Modal.module.css';
 
+import RangeSlider from 'react-range-slider-input';
+import 'react-range-slider-input/dist/style.css';
+import './slider.css';
+
 function Category() {
   const [modalActive, setModalActive] = useState(false);
+
+  const [priceRange, setPriceRange] = useState([0, 10000]);
+
+  const [data, setData] = useState(0);
+
+  const handleCallback = data => {
+    setData(data);
+  };
 
   const {tg} = useTelegram();
   const navigate = useNavigate();
@@ -35,7 +47,7 @@ function Category() {
         <Toggle label="ул. Русская, 46" toggled={true} /*onClick={logState}*//>
         <Toggle label="ул. Адмирала Фокина, 23в" toggled={true} /*onClick={logState}*//>
       </div>
-      <CategoryList className={styles.ItemList} />
+      <CategoryList className={styles.ItemList} handleCallback={handleCallback} />
       <FilterModal active={modalActive} setActive={setModalActive} >
         <div style={{'height': '80vh', 'overflow-x': 'hidden','overflow-y': 'auto'}}>
 
@@ -76,19 +88,24 @@ function Category() {
           </div>
           <div className={modalStyles.VerticalBox}>
             <span>Цена:</span>
-            <span>от 234     до 120 000</span>
+            <div className={modalStyles.HorizontalBox}>
+              <span>от {priceRange[0]} </span>
+              <RangeSlider className={modalStyles.Slider} min={0} max={10000} value={priceRange} onInput={setPriceRange}/>
+              <span> до {priceRange[1]}</span>
+            </div>
           </div>
           <div className={modalStyles.VerticalBox}>
             <span>Производитель:</span>
             <Toggle label="Все" toggled={true} /*onClick={logState}*//>
-            <Toggle label="Alaska" toggled={false} /*onClick={logState}*//>
-            <Toggle label="Hummble" toggled={false} /*onClick={logState}*//>
-            <Toggle label="Husky" toggled={false} /*onClick={logState}*//>
+            {data!==0 && data.map(producer => ( <>
+              <Toggle key={producer.id} label={producer.name} toggled={true} />
+              </>
+          ))}
             <span className={modalStyles.ShowButton}>Показать ещё</span>
           </div>
 
         </div>
-        <div className={modalStyles.ConfirmButton} >Подтвердить</div>
+        <div className={modalStyles.ConfirmButton} onClick={() => setModalActive(false)} >Подтвердить</div>
       </FilterModal>
     </div>
   );

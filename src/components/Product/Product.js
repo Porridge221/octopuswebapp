@@ -2,7 +2,6 @@ import styles from './Product.module.css'
 import Header from '../Header/Header'
 import useTelegram from '../../hooks/useTelegram';
 import { useNavigate, useLocation } from 'react-router-dom';
-import LoyaltyInfo from '../LoyaltyInfo/LoyaltyInfo';
 
 // const item = {
 //     'id': 8,
@@ -67,8 +66,8 @@ function Product() {
                 <div key={characteristic.name} className={styles.CharacteristicItem}>{characteristic.name + ': ' + characteristic.value}</div>
             ))}
         </div>
+        {/* <div style={{'flex-grow': '1'}}/> */}
         <div className={styles.BuyButton} onClick={fetchData}><span className={styles.ButtonLabel}>В корзину</span></div>
-        <LoyaltyInfo/>
     </div>
     );
 }
