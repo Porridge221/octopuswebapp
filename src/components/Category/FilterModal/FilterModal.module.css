@@ -27,6 +27,8 @@
     border-radius: 10px;
     transform: scale(0.5);
     transition: 0.4s all;
+
+    max-height: 80vh;
 }
 
 .ModalContent.ContentActive {
