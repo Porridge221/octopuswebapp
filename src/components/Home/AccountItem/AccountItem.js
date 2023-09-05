@@ -8,14 +8,14 @@ function AccountItem() {
     return (
         <div className={styles.root}>
             <div className={styles.AccountImage}/>
-            <div>
+            <div className={styles.UserBox} >
                 <div className={styles.AccountBlock}>
-                    <span className={styles.AccountName}>Debora222211SdSD{user?.username}</span>
+                    <span className={styles.AccountName}>Debora222211SdSDsdfsdgsgsfsddsfsdddddddddddddddddddddddddddddddd{user?.username}</span>
                     <span className={styles.AccountStatus}>Бронзовый</span>
+                    <img className={styles.CartButton} src={process.env.PUBLIC_URL + '/assets/Group 25.svg'} alt=''/>
                 </div>
                 <div className={styles.PointsCount}>354 балла</div>
             </div>
-            <BsCart3 className={styles.CartButton}/>
         </div>
     );
 }

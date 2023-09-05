@@ -11,16 +11,16 @@ function OrderList() {
 
     return (
         <div className={styles.root}>
-            <div className={styles.header}>Мои заказы</div>
+            <div className={styles.Header} >
+                <span >Мои заказы</span>
+                <Link className={styles.orderHistoryRef} to='/history'>
+                    <span className={styles.orderHistoryButton}>История заказов</span>
+                </Link>
+            </div>
             <div className={styles.orderList}>
                 <OrderItem order={orders[0]}/>
                 <OrderItem order={orders[1]}/>
             </div>
-            <Link className={styles.orderHistoryRef} to='/history'>
-                <span className={styles.orderHistoryHeaderText}>Перейти к </span>
-                <span className={styles.orderHistoryHeaderText + ' ' + styles.orderHistoryHeaderLink}>истории заказов</span>
-                <div><BsArrowDown className={styles.orderHistoryButton}/></div>
-            </Link>
         </div>
     )
 

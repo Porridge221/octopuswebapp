@@ -4,8 +4,8 @@
     top: 200px; */
     display: grid;
     margin: 0 32px;
-    width: 94%;
-    grid-template-columns: 50% 50%;
+    /* width: 94%; */
+    grid-template-columns: 1fr 1fr;
     grid-template-rows: 93px 93px;
     gap: 10px;
     /* justify-content: right;
@@ -30,7 +30,7 @@
 .ChooseAndOrder {
     width: 171.4426px;
     height: 83px;
-    background: url('../../../../public/assets/Rectangle5.png'), radial-gradient(
+    background: url('../../../../public/assets/home_order.png'), radial-gradient(
         ellipse 181.77050857800228px 88.00000606674787px at 85.9999718084818px 41.99999446241374px,
         #000f 0%,
         #80bae4ff 100%

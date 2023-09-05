@@ -1,5 +1,7 @@
 
 .App {
+  display: flex;
+  flex-direction: column;
   /* position: absolute; */
   width: 360;
   height: 640;
@@ -86,19 +88,23 @@
 }
 
 .TelegramRef {
-    width: 171.4426px;
+    /* width: 171.4426px; */
+    width: 46vw;
     height: 83px;
     background-color: #ffffff;
-    background: url('../../../public/assets/Rectangle5.png');
+    background: url('../../../public/assets/home_tg.png');
     background-size: 100% 100%;
     border-radius: 10px;
     /* filter: blur(1px); */
+    background-size: cover;
 }
 .ChooseAndOrder {
-  width: 126px;
+  /* width: 126px;
+  height: 185px; */
+  width: 34vw;
   height: 185px;
   background-color: #ffffff;
-  background: url('../../../public/assets/Rectangle6.png');
+  background: url('../../../public/assets/home_order.png');
   background-size: 100% 100%;
   border-radius: 10px;
   /* filter: blur(1px); */
@@ -106,14 +112,15 @@
 }
 
 .HelpConsultant {
-  width: 171.4426px;
+  /* width: 171.4426px; */
+  width: 46vw;
   height: 83px;
   background-color: #ffffff;
-  background: url('../../../public/assets/Rectangle5.png');
+  background: url('../../../public/assets/home_consultant.png');
   background-size: 100% 100%;
   border-radius: 10px;
   /* filter: blur(1px); */
-  background-size: auto;
+  background-size: cover;
 }
 
 hr {

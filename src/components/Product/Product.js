@@ -40,16 +40,16 @@ function Product() {
     tg.BackButton.show();
   
     const fetchData = () => {
-        fetch("https://octopusbot-1-k6943301.deta.app/createorder", { method:'POST',headers: {
+        fetch("http://localhost:8000/carts/add", { method:'POST',headers: {
         'Content-Type': 'application/json',
         'Telegram-Data': initData
-        }, body: JSON.stringify( item )
+        }, body: JSON.stringify( {'user_id': 1, 'variant_id': item.variant_id, 'count': 1} )
         })
         .then(response => {
-            return JSON.stringify( item )
+            return JSON.stringify( {'user_id': 1, 'variant_id': item.variant_id, 'count': 1} )
         })
         .then(data => {
-            console.log(JSON.stringify( item ));
+            console.log(JSON.stringify( {'user_id': 1, 'variant_id': item.variant_id, 'count': 1} ));
         })
     }
 
@@ -63,7 +63,7 @@ function Product() {
         <div className={styles.Name}>{item.name}</div>
         <div className={styles.Price}>{new Intl.NumberFormat('ru-RU', {style: 'currency', currency: 'RUB', minimumFractionDigits: 0}).format(item.price_vvo)}</div>
         <div className={styles.Characteristics}>
-            {item.item_characteristics.map(characteristic => ( 
+            {0 > 1 && item.item_characteristics.map(characteristic => ( 
                 <div key={characteristic.name} className={styles.CharacteristicItem}>{characteristic.name + ': ' + characteristic.value}</div>
             ))}
         </div>
