@@ -1,16 +1,18 @@
 import useTelegram from '../../../hooks/useTelegram';
 import styles from './AccountItem.module.css'
-import { BsCart3 } from "react-icons/bs";
+import {Link} from 'react-router-dom'
 
 function AccountItem() {
     const {user} = useTelegram();
     
     return (
         <div className={styles.root}>
-            <div className={styles.AccountImage}/>
+            <Link className={styles.CartLink} to='/account'>
+                <div className={styles.AccountImage}/>
+            </Link>
             <div className={styles.UserBox} >
                 <div className={styles.AccountBlock}>
-                    <span className={styles.AccountName}>Debora222211SdSDsdfsdgsgsfsddsfsdddddddddddddddddddddddddddddddd{user?.username}</span>
+                    <span className={styles.AccountName}>{user?.username}</span>
                     <span className={styles.AccountStatus}>Бронзовый</span>
                     <img className={styles.CartButton} src={process.env.PUBLIC_URL + '/assets/Group 25.svg'} alt=''/>
                 </div>

@@ -1,0 +1,141 @@
+.root {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    /* align-items: center; */
+
+    width: 100vw;
+    height: 100vh;
+}
+
+.Header {
+    display: flex;
+    background-blend-mode: lighten;
+    background-image: radial-gradient(
+        ellipse at center top,
+        rgb(245.44, 208.21, 152.38) 0%,
+        rgb(245.44, 208.21, 152.38) 0.01%,
+        rgb(219.94, 40.32, 126.54) 62.25%,
+        rgb(109.44, 58.05, 149.81) 100%
+      ), url('../../../public/assets/account_background.png');
+    height: 22%;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+    background-size: cover;
+}
+
+.icon {
+    border-radius: 44px;
+    /* width: 88px; */
+    /* height: 88px; */
+    height: 14vh;
+}
+
+.UserName {
+    color: #000000;
+    font-family: "Inter-SemiBold", Helvetica;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0;
+    line-height: normal;
+    text-align: center;
+    white-space: nowrap;
+
+    margin-top: 2px;
+}
+
+.UserDiscountBox {
+    display: flex;
+    justify-content: center;
+
+    margin-top: 6px;
+}
+
+.UserDiscount {
+    background-color: #80bae4;
+    border-radius: 40px;
+
+    color: #ffffff;
+    font-family: "Inter-Bold", Helvetica;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0;
+    line-height: normal;
+    text-align: center;
+    /* width: 150px; */
+    flex-wrap: wrap;
+    padding: 5px 5px;
+    justify-self: center;
+}
+
+.UserInfoBox {
+    display: flex;
+    flex-direction: column;
+    margin: 0 32px;
+    margin-top: 14px;
+}
+
+.AddInfoBox {
+    display: flex;
+    flex-direction: row;
+    margin: 25px 46px;
+
+    background-color: #80bae4;
+    border-radius: 10px;
+
+    text-align: center;
+}
+
+.AddInfoBoxMain {
+    display: flex;
+    flex-direction: column;
+    padding-right: 11px;
+}
+
+.AddInfoText {
+    color: #ffffff;
+    font-family: "Inter-Medium", Helvetica;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: normal;
+
+    margin: 13px 0;
+}
+
+.AddInfoButton {
+    background-color: #ffffff;
+    border-radius: 5px;
+
+    color: #000000;
+    font-family: "Inter-Regular", Helvetica;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: normal;
+    text-align: center;
+    padding: 1vh 9.5vw;
+    margin-bottom: 7px;
+}
+
+.InfoIconBox {
+    border: 1px solid;
+    border-color: #ffffff;
+    border-radius: 7px/6.5px;
+    height: 13px;
+    width: 14px;
+    margin: 1.9vh 4.7vw;
+}
+
+.InfoIcon {
+    color: #ffffff;
+    font-family: "Inter-Bold", Helvetica;
+    font-size: 10px;
+    font-weight: 700;
+    height: 14px;
+    letter-spacing: 0;
+    line-height: normal;
+    text-align: center;
+    width: 14px;
+}

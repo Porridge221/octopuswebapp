@@ -7,17 +7,23 @@ function LoyaltyInfo() {
         <div className={styles.Label}>Программа лояльности:</div>
         <div className={styles.Table}>
             <span className={styles.Header}>Статус</span>
-            <span className={styles.Header} style={{'text-align': 'center'}}>Заказы</span>
-            <span className={styles.Header} style={{'text-align': 'center'}}>Баллы</span>
-            <span className={styles.StatusText}>Бронзовый</span>
+            <span className={styles.Header} style={{'textAlign': 'center'}}>Сумма покупок</span>
+            <span className={styles.Header} style={{'textAlign': 'center'}}>% начисления</span>
+            <span className={styles.StatusText} style={{'color': '#6d3a95'}}>Bronze Card</span>
             <span className={styles.OrderText}>0</span>
-            <span className={styles.PointsText}>+10</span>
-            <span className={styles.StatusText}>Серебрянный</span>
-            <span className={styles.OrderText}>6</span>
-            <span className={styles.PointsText}>+25</span>
-            <span className={styles.StatusText}>Золотой</span>
-            <span className={styles.OrderText}>14</span>
-            <span className={styles.PointsText}>+50</span>
+            <span className={styles.PointsText}>3%</span>
+            <span className={styles.StatusText} style={{'color': '#80bae4'}}>Silver Card</span>
+            <span className={styles.OrderText}>от 100 Р</span>
+            <span className={styles.PointsText}>5%</span>
+            <span className={styles.StatusText} style={{'color': '#f5d098'}}>Gold Card</span>
+            <span className={styles.OrderText}>от 100000 Р</span>
+            <span className={styles.PointsText}>7%</span>
+            <span className={styles.StatusText} style={{'color': '#db287e'}}>Platinum Card</span>
+            <span className={styles.OrderText}>от 200000 Р</span>
+            <span className={styles.PointsText}>9%</span>
+            <span className={styles.StatusText} style={{'color': '#db287e'}}>Diamond Card</span>
+            <span className={styles.OrderText}>от 500000 Р</span>
+            <span className={styles.PointsText}>11%</span>
         </div>
     </div>
   );
