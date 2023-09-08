@@ -133,5 +133,5 @@
     overflow-x: hidden;
     overflow-y: auto;
 
-    flex-grow: 1;
+    /* flex-grow: 1; */
 }

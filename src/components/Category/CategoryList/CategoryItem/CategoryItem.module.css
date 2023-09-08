@@ -53,6 +53,9 @@
     font-weight: 500;
     margin: 7px 9px;
     flex-grow: 1;
+    max-height: 3em;
+    overflow: hidden;
+    /* line-height: 1.8em; */
 }
 
 .BuyButton {
@@ -72,7 +75,7 @@
     padding: 5px 10px;
     text-align: center;
     justify-self: end;
-    align-self: flex-end;
+    /* align-self: flex-end; */
 }
 
 .BuyButton:hover {

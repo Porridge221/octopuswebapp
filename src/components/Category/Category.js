@@ -49,12 +49,11 @@ function Category() {
       </div>
       <CategoryList className={styles.ItemList} handleCallback={handleCallback} />
       <FilterModal active={modalActive} setActive={setModalActive} >
-        <div style={{'height': '80vh', 'overflow-x': 'hidden','overflow-y': 'auto'}}>
-
-          <div className={modalStyles.Header}>
-            <span className={modalStyles.HeaderLabel}>Фильтры</span>
-            <AiOutlineClose className={modalStyles.CloseButton} onClick={() => setModalActive(false)} />
-          </div>
+        <div className={modalStyles.Header}>
+          <span className={modalStyles.HeaderLabel}>Фильтры</span>
+          <AiOutlineClose className={modalStyles.CloseButton} onClick={() => setModalActive(false)} />
+        </div>
+        <div style={{'height': '70vh', 'overflow-x': 'hidden','overflow-y': 'auto'}}>          
           <div className={modalStyles.VerticalBox}>
             <span>Наличие в магазинах:</span>
             <Toggle label="В любом" toggled={true} /*onClick={logState}*//>

@@ -4,7 +4,7 @@ function Header() {
 
     return (
         <div className={styles.root}>
-            <div style={{'display':'flex','align-items': 'center'}}>
+            <div style={{'display':'flex','alignItems': 'center'}}>
                 <span className={styles.Cart}>Корзина</span>
                 <img className={styles.icon} src={process.env.PUBLIC_URL + '/assets/Group 25.svg'} alt=''/>
             </div>
