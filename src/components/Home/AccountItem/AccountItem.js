@@ -13,7 +13,7 @@ function AccountItem() {
             <div className={styles.UserBox} >
                 <div className={styles.AccountBlock}>
                     <div style={{width: '100%', display: 'flex', flexDirection: 'row'}}>
-                        <div className={styles.AccountName}>dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd{user?.username}</div>
+                        <div className={styles.AccountName}>{user?.username}</div>
                         <span className={styles.AccountStatus}>Бронзовый</span>
                     </div>
                     <Link className={styles.CartLink} to='/cart'>
