@@ -7,7 +7,7 @@ function AccountItem() {
     
     return (
         <div className={styles.root}>
-            <Link to='/account'>
+            <Link className={styles.AccountImageBox} to='/account'>
                 <div className={styles.AccountImage}/>
             </Link>
             <div className={styles.UserBox} >

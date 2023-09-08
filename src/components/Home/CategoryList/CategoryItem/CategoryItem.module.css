@@ -17,7 +17,11 @@
 }
   
 .textBlock {
-    -webkit-text-stroke: 0.8px #6d3a95;
+    /* -webkit-text-stroke: 0.8px #6d3a95; */
+    text-shadow: -0.8px 0.8px 0 #6d3a95,
+                          0.8px 0.8px 0 #6d3a95,
+                         0.8px -0.8px 0 #6d3a95,
+                        -0.8px -0.8px 0 #6d3a95;
     align-self: stretch;
     color: #f5d098;
     font-family: "Inter-Bold", Helvetica;
@@ -29,12 +33,16 @@
 }
 
 .textBlock2 {
-    -webkit-text-stroke: 0.6px #6d3a95;
+    /* -webkit-text-stroke: 0.6px #6d3a95; */
+    text-shadow: -0.6px 0.6px 0 #6d3a95,
+                          0.6px 0.6px 0 #6d3a95,
+                         0.6px -0.6px 0 #6d3a95,
+                        -0.6px -0.6px 0 #6d3a95;
     align-self: stretch;
     color: #cea870;
     font-family: "Inter-SemiBold", Helvetica;
     font-size: 13px;
-    font-weight: 800;
+    font-weight: 700;
     letter-spacing: 0;
     line-height: normal;
     text-align: center;
