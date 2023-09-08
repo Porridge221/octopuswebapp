@@ -17,11 +17,11 @@
 }
   
 .textBlock {
-    -webkit-text-stroke: 1px #6d3a95;
+    -webkit-text-stroke: 0.8px #6d3a95;
     align-self: stretch;
     color: #f5d098;
     font-family: "Inter-Bold", Helvetica;
-    font-size: 16px;
+    font-size: 17px;
     font-weight: 800;
     letter-spacing: 0;
     line-height: normal;
@@ -29,11 +29,11 @@
 }
 
 .textBlock2 {
-    -webkit-text-stroke: 1px #6d3a95;
+    -webkit-text-stroke: 0.6px #6d3a95;
     align-self: stretch;
     color: #cea870;
     font-family: "Inter-SemiBold", Helvetica;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 800;
     letter-spacing: 0;
     line-height: normal;

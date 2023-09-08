@@ -19,8 +19,7 @@ function App() {
     <div className='App'>
       <AccountItem />
       <hr/>
-        <InfoCardList />
-      
+      <InfoCardList />
       <hr/>
       <SearchItem />
       <CategoryList />

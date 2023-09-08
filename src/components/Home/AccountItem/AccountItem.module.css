@@ -2,21 +2,23 @@
     display: flex;
     margin: 10px 32px;
     /* justify-content: space-between; */
+    /* height: 10vh; */
+    height: 72px;
 }
 
 .AccountImage {
-    width: 52px;
-    height: 52px;
     margin: 10px;
     margin-bottom: 0%;
     background-image:url('../../../../public/assets/AccountImage.png');
+    height: 52px;
+    width: 52px;
     border: 5px solid transparent;
     border-image: linear-gradient(to right, red, orange);
-    border-radius: 30%;
+    border-radius: 10px;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    border-radius: 150px;
+    /* border-radius: 150px; */
     
     border-image-slice: 1;
     /* background: linear-gradient(to right, red, orange); */
@@ -52,13 +54,15 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    width: 100%;
 }
 
 .AccountBlock {
     display: flex;
-    width: max-content;
+    /* width: max-content; */
     align-items: center;
-    max-width: 62vw;
+    justify-content: space-between;
+    /* max-width: 62vw; */
 }
 
 .AccountName {
@@ -69,9 +73,10 @@
         'Liberation Sans', sans-serif;
     /* width: 35vw; */
     /* flex-grow: 1; */
-    /* max-width: 35vw; */
+    max-width: 35vw;
     overflow: hidden;
-    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-overflow: clip;
     /* width: auto; */
     /* height: 14px; */
     margin-right: 5%;
@@ -113,7 +118,7 @@
     /* float: right; */
     cursor: pointer;
     transition: color 500ms ease;
-    padding-left: 5%;
+    
     /* justify-self: center;
     align-self: center; */
     /* flex-grow: 1; */
@@ -121,4 +126,8 @@
 
 .CartButton:hover {
     color: #dc3d3d;
+}
+
+.CartLink {
+    margin-left: 5%;
 }
