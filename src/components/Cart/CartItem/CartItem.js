@@ -15,7 +15,7 @@ function CartItem({order, cart_id}) {
     };
 
     const fetchData = () => {
-        fetch("http://localhost:8000/carts/delete_one", { method:'DELETE',headers: {
+        fetch("http://45.153.69.113:8000/carts/delete_one", { method:'DELETE',headers: {
         'Content-Type': 'application/json'
         }, body: JSON.stringify( {'cart_id': cart_id, 'variant_id': order.variant_id} )
         })

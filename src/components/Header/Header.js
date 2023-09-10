@@ -6,13 +6,19 @@ function Header({path, current}) {
     const {tg} = useTelegram();
     const navigate = useNavigate();
 
-    tg.onEvent('backButtonClicked', () => navigate('/home'));
-    tg.BackButton.show();
+    // tg.onEvent('backButtonClicked', () => navigate('/home'));
+    // tg.BackButton.show();
 
     const results = [];
 
+    const routs = {
+        'Главная': '/home',
+        'Каталог': '/home/categories',
+        'Жидкость': '/home/categories/1'
+    }
+
     path.forEach(el => {
-        results.push(<span key={el} className={styles.textPrev}>{el + ' > '}</span>);
+        results.push(<span key={el} className={styles.textPrev} onClick={() => navigate(routs[el])}>{el + ' > '}</span>);
     });
     
     return (

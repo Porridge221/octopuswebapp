@@ -7,7 +7,7 @@ function CategoryItem({item, producerName}) {
   const {initData} = useTelegram();
   
   const fetchData = () => {
-    fetch("http://localhost:8000/carts/add", { method:'POST',headers: {
+    fetch("http://45.153.69.113:8000/carts/add", { method:'POST',headers: {
       'Content-Type': 'application/json',
       'Telegram-Data': initData
     }, body: JSON.stringify( {'user_id': 1, 'variant_id': item.variant_id, 'count': 1} )
