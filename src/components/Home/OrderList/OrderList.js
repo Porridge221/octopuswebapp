@@ -8,12 +8,13 @@ import {AiOutlineClose} from "react-icons/ai";
 import modalStyles from './Modal.module.css'
 import CheckItem from "../../OrderHistory/CheckItem/CheckItem";
 
-function OrderList() {
+function OrderList({user_data}) {
+
     const [modalActive, setModalActive] = useState(false);
     const [modalOrder, setModalOrder] = useState(new Map());
     const [modalItemsCount, setModalItemsCount] = useState(-1);
 
-    const [orders, setItems] = useState([]);
+    // const [orders, setItems] = useState([]);  // TODO: Bad solution
 
     // const orders = [
     //     {id: 1, price: '655'},
@@ -31,18 +32,20 @@ function OrderList() {
         console.log(data);
     };
 
-    const fetchData = () => {
-        fetch("http://localhost:8000/orders/1", {method: 'GET', headers: {'Content-Type': 'application/json'}})
-          .then(response => {
-            return response.json()
-          })
-          .then(data => {
-            setItems(data);
-          })
-    }
+    // const fetchData = () => {
+    //     fetch("http://localhost:8000/orders/1", {method: 'GET', headers: {'Content-Type': 'application/json'}})
+    //       .then(response => {
+    //         return response.json()
+    //       })
+    //       .then(data => {
+    //         setItems(data);
+    //       })
+    // }
 
     useEffect(() => {
-        fetchData();
+        // setItems(user_data !== undefined && user_data.orders);
+        // console.log(user_data);
+        // fetchData();
     }, [])
 
     return (
@@ -54,8 +57,8 @@ function OrderList() {
                 </Link>
             </div>
             {/* <div className={styles.orderList}> */}
-                {orders.length > 0 && (<div className={styles.OrderList} >
-                    {orders.map(order => (
+                {user_data !== undefined && user_data.orders.length > 0 && (<div className={styles.OrderList} >
+                    {user_data.orders.map(order => (
                         <OrderItem key={order.order_id} order={order} handleSetModal={handleSetModal}/>
                     ))}
                 </div>) }
@@ -63,7 +66,7 @@ function OrderList() {
                 <OrderItem order={orders[1]} handleSetModal={handleSetModal}/> */}
             {/* </div> */}
             <FilterModal active={modalActive} setActive={setModalActive} >
-            <div style={{'width': '60vw', 'overflow-x': 'hidden','overflow-y': 'auto'}}>
+            <div style={{'width': '60vw', 'overflowX': 'hidden','overflowY': 'auto'}}>
                 <div className={modalStyles.Header}>
                     <span className={modalStyles.HeaderLabel}>Чек</span>
                     <AiOutlineClose className={modalStyles.CloseButton} onClick={() => setModalActive(false)} />
@@ -79,7 +82,7 @@ function OrderList() {
                     <span>Товары: {modalItemsCount > 0 &&  (modalItemsCount)}</span>
                     <div className={modalStyles.HorizontalBox}>
                         <span>Итог</span>
-                        <span>{modalOrder.price}</span>
+                        <span>{modalOrder.price/100}</span>
                     </div>
                 </div>
             </div>
