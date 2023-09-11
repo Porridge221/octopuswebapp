@@ -21,7 +21,7 @@ function LoyaltyInfo() {
             <span className={styles.StatusText} style={{'color': '#db287e'}}>Platinum Card</span>
             <span className={styles.OrderText}>от 200000 Р</span>
             <span className={styles.PointsText}>9%</span>
-            <span className={styles.StatusText} style={{'color': '#db287e'}}>Diamond Card</span>
+            <span className={styles.StatusText} style={{'color': '#e321ab'}}>Diamond Card</span>
             <span className={styles.OrderText}>от 500000 Р</span>
             <span className={styles.PointsText}>11%</span>
         </div>

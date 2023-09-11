@@ -26,7 +26,7 @@ function Account() {
     tg.onEvent('backButtonClicked', () => navigate('/home'));
     tg.BackButton.show();
 
-    const discountLevel = {"Новый клиент": 3}
+    const discountLevel = {"Новый клиент": [3, '#f5d098']}
     
     return (
         <div className={styles.root}>
@@ -35,30 +35,29 @@ function Account() {
             </div>
             <span className={styles.UserName}>{user?.username}</span>
             <div className={styles.UserDiscountBox}>
-                <span className={styles.UserDiscount}>{discountLevel[user_data !== undefined && user_data.user.discount_group]}% от заказа на ваш счет</span>
+                <span className={styles.UserDiscount}>{user_data !== undefined && discountLevel[user_data.user.discount_group][0]}% от заказа на ваш счет</span>
             </div>
             <div className={styles.UserInfoBox}>
-                <p style={{margin: '2px 0'}}>
-                    <span>Статус: </span><span>{user_data !== undefined && user_data.user.discount_group}</span>
+                <p style={{margin: '2px 0', marginBottom: '5px', fontWeight: '800'}}>
+                    <span style={{fontWeight: '800'}}>Статус: </span><span style={{color: user_data !== undefined && discountLevel[user_data.user.discount_group][1]}}>{user_data !== undefined && user_data.user.discount_group}</span>
                 </p>
-                <p style={{margin: '2px 0'}}>
-                    <span>Телефон: </span><span>{user_data !== undefined && user_data.user.phone}</span>
+                <p style={{margin: '2px 0', marginBottom: '5px'}}>
+                    <span style={{fontWeight: '800'}}>Телефон: </span><span>{user_data !== undefined && user_data.user.phone}</span>
                 </p>
-                <p style={{margin: '2px 0'}}>
-                    <span>Город: </span><span>{user_data !== undefined && (user_data.user.city_id=== 1 ? "Владивосток" : user_data.user.city_id=== 2 ? "Артем" : "Южно-Сахалинск")}</span>
+                <p style={{margin: '2px 0', marginBottom: '5px'}}>
+                    <span style={{fontWeight: '800'}}>Город: </span><span>{user_data !== undefined && (user_data.user.city_id=== 1 ? "Владивосток" : user_data.user.city_id=== 2 ? "Артем" : "Южно-Сахалинск")}</span>
                 </p>
             </div>
             <div className={styles.AddInfoBox}>
-                <div className={styles.InfoIconBox} ><div className={styles.InfoIcon} >i</div></div>
                 <div className={styles.AddInfoBoxMain}>
+                    <div className={styles.InfoIconBox} ><div className={styles.InfoIcon} >i</div></div>
                     <span className={styles.AddInfoText}>Для подтверждения заказов необходимо указать свой номер телефона и город.</span>
-                    <div style={{'display':'flex', 'justifyContent': 'center'}}><div className={styles.AddInfoButton} onClick={() => setModalActive(true)}>Добавить Инфо</div></div>
-                    
                 </div>
+                <div style={{'display':'flex', 'justifyContent': 'center'}}><div className={styles.AddInfoButton} onClick={() => setModalActive(true)}>Добавить инфо</div></div>
             </div>
             <LoyaltyInfo />
             <FilterModal active={modalActive} setActive={setModalActive}>
-            <div style={{'width': '60vw', 'overflowX': 'hidden','overflowY': 'auto'}}>
+            <div style={{'width': '70vw', 'overflowX': 'hidden','overflowY': 'auto'}}>
                 <div className={modalStyles.Header}>
                     <span className={modalStyles.HeaderLabel}>Регистрация</span>
                     <AiOutlineClose className={modalStyles.CloseButton} onClick={() => setModalActive(false)} />
