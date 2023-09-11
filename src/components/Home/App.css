@@ -13,8 +13,8 @@
 }
 
 .rectangleHowToUse {
-  width: 84px;
-  height: 84px;
+  width: 95px;
+  height: 95px;
   background-image: radial-gradient(
     ellipse 61.35144503349347px 314.20994204289303px at 32.99998640887112px 36.500004272146874px,
     #6d3a96ff 0%,
@@ -23,8 +23,8 @@
 }
 
 .rectangleLoyalty {
-  width: 84px;
-  height: 84px;
+  width: 95px;
+  height: 95px;
   background-image: radial-gradient(
     ellipse 61.35144503349347px 314.20994204289303px at 32.99998640887112px 36.500004272146874px,
     #6D3A96ff 0%,
@@ -33,8 +33,8 @@
 }
 
 .rectangleFAQ {
-  width: 84px;
-  height: 84px;
+  width: 95px;
+  height: 95px;
   background-image: radial-gradient(
     ellipse 61.35144503349347px 314.20994204289303px at 32.99998640887112px 36.500004272146874px,
     #DC287Fff 0%,
@@ -103,7 +103,7 @@
   /* width: 126px;
   height: 185px; */
   /* width: var(50vw-16px); */
-  height: 196px;
+  height: 216px;
   background-color: #ffffff;
   background: url('../../../public/assets/home_order.png');
   background-size: 100% 100%;

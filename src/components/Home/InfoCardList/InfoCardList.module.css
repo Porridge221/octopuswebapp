@@ -7,15 +7,15 @@
     overflow-x: auto;
     overflow-y: hidden;
     /* width: 100%; */
-    height: 84px;
+    height: 95px;
     padding-inline-start: 16px;
     padding-inline-end: 16px;
 }
 
 .infocardlist li {
     float: left;
-    width: 84px;
-    height: 84px;
+    width: 95px;
+    height: 95px;
 }
 
 li InfoCard {
