@@ -3,9 +3,9 @@ import styles from "./CategoryList.module.css"
 
 function CategoryList() {
     const category = [
-        {id: 1, style: 'TelegramRef', text: 'Наш Telegram-канал:\n@octopusvl'},
-        {id: 2, style: 'HelpConsultant', text: 'Помощь консультанта'},
-        {id: 3, style: 'ChooseAndOrder', text: 'Выбрать и заказать'}
+        {id: 1, style: 'TelegramRef', text: 'Наш Telegram-канал:\n@octopusvl', link: 'https://t.me/octopusvl'},
+        {id: 2, style: 'HelpConsultant', text: 'Помощь консультанта', link: '/home/categories'},
+        {id: 3, style: 'ChooseAndOrder', text: 'Выбрать и заказать', link: '/home/categories'}
     ]
 
     return (

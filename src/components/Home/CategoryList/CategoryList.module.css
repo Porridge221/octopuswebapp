@@ -3,7 +3,7 @@
     padding-top: 20px;
     top: 200px; */
     display: grid;
-    margin: 0 9.5vw;
+    margin: 0 16px;
     /* width: 94%; */
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 93px 93px;

@@ -9,35 +9,44 @@
     /* justify-content: space-between; */
     align-items: center;
     margin-bottom: 12px;
+    width: 48%;
+    padding: 10px;
+    height: 60px;
+    justify-content: space-between;
 }
 
 .icon {
     width: 46px;
     height: 40px;
-    margin: 8px 25px;
+    /* margin: 8px 25px; */
+    /* margin-right: 20px; */
 }
 
 .Info {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    flex-grow: 1;
-    height: 40px
+    /* flex-grow: 1; */
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    /* margin: 15px 0; */
 }
 
 .header {
     color: #000000;
     font-family: "Inter-SemiBold", Helvetica;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 600;
     /* margin: 10% 0%;
     margin-bottom: 5%; */
+    /* text-overflow: ellipsis; */
 }
 
 .price {
     color: #000000;
     font-family: "Inter-SemiBold", Helvetica;
-    font-size: 10px;
+    font-size: 12px;
     font-weight: 600;
     white-space: nowrap;
     /* margin: 10% 0; */

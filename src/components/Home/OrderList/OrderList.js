@@ -57,7 +57,7 @@ function OrderList({user_data}) {
                 </Link>
             </div>
             {/* <div className={styles.orderList}> */}
-                {user_data !== undefined && user_data.orders.length > 0 && (<div className={styles.OrderList} >
+                {user_data !== undefined && user_data.orders.length > 0 && (<div className={styles.orderList} >
                     {user_data.orders.map(order => (
                         <OrderItem key={order.order_id} order={order} handleSetModal={handleSetModal}/>
                     ))}
@@ -66,7 +66,7 @@ function OrderList({user_data}) {
                 <OrderItem order={orders[1]} handleSetModal={handleSetModal}/> */}
             {/* </div> */}
             <FilterModal active={modalActive} setActive={setModalActive} >
-            <div style={{'width': '60vw', 'overflowX': 'hidden','overflowY': 'auto'}}>
+            <div style={{'width': '70vw', 'overflowX': 'hidden','overflowY': 'auto'}}>
                 <div className={modalStyles.Header}>
                     <span className={modalStyles.HeaderLabel}>Чек</span>
                     <AiOutlineClose className={modalStyles.CloseButton} onClick={() => setModalActive(false)} />
@@ -77,12 +77,12 @@ function OrderList({user_data}) {
                     ))}
                 </div>
                 <div className={modalStyles.VerticalBox}>
-                    <span>Пункт выдачи:</span>
-                    <span>г. Владивосток, ул. Русская, 25. Ежедневно с 10:00 до 21:00</span>
-                    <span>Товары: {modalItemsCount > 0 &&  (modalItemsCount)}</span>
+                    <span style={{fontWeight: '600'}}>Пункт выдачи:</span>
+                    <span style={{color:'#424242'}}>г. Владивосток, ул. Русская, 25. Ежедневно с 10:00 до 21:00</span>
+                    <span>Товары: {modalItemsCount > 0 &&  (modalItemsCount + ' шт.')}</span>
                     <div className={modalStyles.HorizontalBox}>
                         <span>Итог</span>
-                        <span>{modalOrder.price/100}</span>
+                        <span>{new Intl.NumberFormat('ru-RU', {style: 'currency', currency: 'RUB', minimumFractionDigits: 0}).format(modalOrder.price/100)}</span>
                     </div>
                 </div>
             </div>
