@@ -98,6 +98,7 @@
     border-radius: 10px;
     /* filter: blur(1px); */
     background-size: cover;
+    justify-content: center;
 }
 .ChooseAndOrder {
   /* width: 126px;
@@ -110,6 +111,7 @@
   border-radius: 10px;
   /* filter: blur(1px); */
   background-size: cover;
+  justify-content: end;
 }
 
 .HelpConsultant {
@@ -122,6 +124,7 @@
   border-radius: 10px;
   /* filter: blur(1px); */
   background-size: cover;
+  justify-content: center;
 }
 
 hr {

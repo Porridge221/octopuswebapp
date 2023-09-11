@@ -12,7 +12,7 @@
     flex-direction: column;
     text-align: center;
     align-items: center;
-    justify-content: center;
+    /* justify-content: center; */
     z-index: 10;
 }
   
@@ -25,23 +25,24 @@
     align-self: stretch;
     color: #f5d098;
     font-family: "Inter-Bold", Helvetica;
-    font-size: 17px;
-    font-weight: 800;
+    font-size: calc(7px + 3vw);
+    font-weight: 600;
     letter-spacing: 0;
-    line-height: normal;
+    line-height: 1.6em;
     text-align: center;
+    margin: 0 5px;
 }
 
 .textBlock2 {
     /* -webkit-text-stroke: 0.6px #6d3a95; */
-    text-shadow: -0.6px 0.6px 0 #6d3a95,
-                          0.6px 0.6px 0 #6d3a95,
-                         0.6px -0.6px 0 #6d3a95,
-                        -0.6px -0.6px 0 #6d3a95;
+    text-shadow: -1.2px 1.2px 0 #6d3a95,
+                          1.2px 1.2px 0 #6d3a95,
+                         1.2px -1.2px 0 #6d3a95,
+                        -1.2px -1.2px 0 #6d3a95;
     align-self: stretch;
     color: #f5d098;
     font-family: "Inter-SemiBold", Helvetica;
-    font-size: 13px;
+    font-size: calc(3px + 3vw);
     font-weight: 600;
     letter-spacing: 0;
     line-height: normal;
@@ -49,15 +50,17 @@
 
     white-space: pre-wrap;
     line-height: 30px;
+    margin: 0 5px;
 }
 
 .CartButton {
     position: relative;
     /* position: fixed; */
-    width: 51px;
-    height: 51px;
+    width: 58px;
+    height: 58px;
     color: #000000;
-    top: 8%;
+    /* top: 8%; */
+    margin: 12px 0;
     /* float: right; */
     /* cursor: pointer; */
     /* transition: color 500ms ease; */
