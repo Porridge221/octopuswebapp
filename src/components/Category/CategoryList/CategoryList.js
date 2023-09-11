@@ -110,7 +110,7 @@ function CategoryList({handleCallback}) {
   //const {initData} = useTelegram();  
 
   const fetchData = () => {
-    fetch("http://45.153.69.113:8000/products/catalog/" + category_id, {method: 'GET', headers: {'Content-Type': 'application/json', 'Authorization': initData}})
+    fetch("https://45.153.69.113/products/catalog/" + category_id, {method: 'GET', headers: {'Content-Type': 'application/json', 'Authorization': initData}})
       .then(response => {
         return response.json()
       })

@@ -6,7 +6,7 @@ function useUser(isUpdate) {
     const [user_data, setUser] = useState()
 
     const fetchData = () => {
-        fetch("http://45.153.69.113:8000/users/1", {method: 'GET', headers: {'Content-Type': 'application/json'}})
+        fetch("https://45.153.69.113/users/1", {method: 'GET', headers: {'Content-Type': 'application/json'}})
           .then(response => {
             return response.json()
           })

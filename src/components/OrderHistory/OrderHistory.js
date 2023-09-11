@@ -23,7 +23,7 @@ function OrderHistory() {
     tg.BackButton.show();
 
     const fetchData = () => {
-        fetch("http://45.153.69.113:8000/orders/1", {method: 'GET', headers: {'Content-Type': 'application/json', 'Authorization': initData}})
+        fetch("https://45.153.69.113/orders/1", {method: 'GET', headers: {'Content-Type': 'application/json', 'Authorization': initData}})
           .then(response => {
             return response.json()
           })
