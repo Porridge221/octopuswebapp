@@ -6,7 +6,7 @@
 }
 
 .HeaderLabel {
-    color: #000000;
+    color: var(--tg-theme-text-color);
     font-family: "Inter-Bold", Helvetica;
     font-size: 16px;
     font-weight: 700;
@@ -18,12 +18,12 @@
     display: flex;
     flex-direction: column;
     /* margin: 0 40px; */
-    color: #000000;
+    color: var(--tg-theme-text-color);
     font-family: "Inter-Regular", Helvetica;
 }
 
 .VerticalBox * {
-    color: #000000;
+    color: var(--tg-theme-text-color);
     font-family: "Inter-Medium", Helvetica;
     font-size: 12px;
     font-weight: 500;
@@ -31,7 +31,6 @@
     /* white-space: nowrap; */
     margin-bottom: 8px;
     font-size: 14px;
-    color: #000000;
     font-weight: 400;
     font-family: "Inter-Regular", Helvetica;
     margin-bottom: 15px;
@@ -47,7 +46,7 @@
 }
 
 .HorizontalBox * {
-    color: #000000;
+    color: var(--tg-theme-text-color);
     font-family: "Inter-SemiBold", Helvetica;
     font-size: 16px;
     font-weight: 600;
@@ -57,15 +56,6 @@
     margin: 0 0;
 }
 
-.ShowButton {
-    color: #80bae4;
-    font-family: "Inter-Medium", Helvetica;
-    font-size: 12px;
-    font-weight: 500;
-    letter-spacing: 0;
-    line-height: normal;
-}
-
 .CloseButton {
     width: 22px;
     height: 22px;
@@ -73,64 +63,6 @@
     transition: color 500ms ease;
     margin-left: 11px;
     color: #80BAE4;
-}
-
-.ConfirmButton {
-    background-color: #80bae4;
-    border-radius: 5px;
-
-    color: #ffffff;
-    font-family: "Inter-SemiBold", Helvetica;
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0;
-    line-height: normal;
-    text-align: center;
-    padding: 10px 25px;
-    margin: 0 15%;
-}
-
-.NumberBox {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-
-    background-color: #ffffff;
-    border: 1px solid;
-    border-color: #898989;
-    border-radius: 5px;
-
-    /* width: 60%; */
-    padding: 5px 10px;
-}
-
-.NumberInput {
-    background-color: #ffffff;
-    border: transparent;
-    border-color: #898989;
-    border-radius: 5px;
-    outline: none;
-    margin: 0;
-    padding: 0;
-    padding-left: 4px;
-}
-
-.Input {
-    background-color: #ffffff;
-    border: 1px solid;
-    border-color: #898989;
-    border-radius: 5px;
-
-    /* width: 60%; */
-    padding: 5px 10px;
-}
-
-.Select {
-    background-color: #ffffff;
-    border: 1px solid;
-    border-color: #898989;
-    border-radius: 5px;
-    padding: 5px 10px;
 }
 
 .ItemList {

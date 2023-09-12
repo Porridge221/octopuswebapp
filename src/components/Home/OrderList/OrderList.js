@@ -66,7 +66,7 @@ function OrderList({user_data}) {
                 <OrderItem order={orders[1]} handleSetModal={handleSetModal}/> */}
             {/* </div> */}
             <FilterModal active={modalActive} setActive={setModalActive} >
-            <div style={{'width': '70vw', 'overflowX': 'hidden','overflowY': 'auto'}}>
+            <div style={{'width': '70vw', 'overflowX': 'hidden','overflowY': 'auto', backgroundColor: 'var(--tg-theme-bg-color)'}}>
                 <div className={modalStyles.Header}>
                     <span className={modalStyles.HeaderLabel}>Чек</span>
                     <AiOutlineClose className={modalStyles.CloseButton} onClick={() => setModalActive(false)} />
