@@ -8,7 +8,7 @@
 .HeaderLabel {
     color: #000000;
     font-family: "Inter-Bold", Helvetica;
-    font-size: 14px;
+    font-size: 18px;
     font-weight: 700;
     letter-spacing: 0;
     line-height: normal;
@@ -23,7 +23,7 @@
 .VerticalBox * {
     color: #000000;
     font-family: "Inter-Medium", Helvetica;
-    font-size: 12px;
+    font-size: 16px;
     font-weight: 500;
     line-height: normal;
     /* white-space: nowrap; */
@@ -40,7 +40,7 @@
 .HorizontalBox * {
     color: #000000;
     font-family: "Inter-Medium", Helvetica;
-    font-size: 12px;
+    font-size: 16px;
     font-weight: 500;
     line-height: normal;
     white-space: nowrap;
@@ -57,8 +57,8 @@
 }
 
 .CloseButton {
-    width: 18px;
-    height: 18px;
+    width: 22px;
+    height: 22px;
     cursor: pointer;
     transition: color 500ms ease;
     margin-left: 11px;
@@ -77,11 +77,11 @@
     line-height: normal;
     text-align: center;
     padding: 10px 25px;
-    margin: 0 15%;
+    margin: 10px 15%;
 }
 
 .NumberBox {
-    display: flex;
+    display: inline-flex;
     flex-direction: row;
     align-items: center;
 
@@ -92,6 +92,14 @@
 
     /* width: 60%; */
     padding: 5px 10px;
+    font-size: 18px;
+}
+
+.NumberBox > * {
+    font-size: 18px;
+    height: 100%;
+    white-space: nowrap;
+    align-items: center;
 }
 
 .NumberInput {
@@ -101,8 +109,11 @@
     border-radius: 5px;
     outline: none;
     margin: 0;
-    padding: 0;
-    padding-left: 4px;
+    padding: 0 4px;
+    height: 100%;
+    /* padding-left: 4px; */
+    align-self: center;
+    width: 100%;
 }
 
 .Input {
@@ -113,6 +124,8 @@
 
     /* width: 60%; */
     padding: 5px 10px;
+    height: 100%;
+    align-self: center;
 }
 
 .Select {
@@ -121,4 +134,5 @@
     border-color: #898989;
     border-radius: 5px;
     padding: 5px 10px;
+    font-size: 18px;
 }

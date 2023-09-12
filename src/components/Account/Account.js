@@ -63,9 +63,9 @@ function Account() {
                     <AiOutlineClose className={modalStyles.CloseButton} onClick={() => setModalActive(false)} />
                 </div>
                 <div className={modalStyles.VerticalBox}>
-                <span>Для подтверждения брони на за-каз необходимо указать свой номер телефона.</span>
+                <span>Для подтверждения брони на заказ необходимо указать свой номер телефона.</span>
                     <div className={modalStyles.NumberBox}>
-                        +7 | <Input className={modalStyles.NumberInput}
+                        <span style={{margin: '0 0', textAlign: 'center'}}>+7 | </span><Input className={modalStyles.NumberInput}
                             country="RU"
                             international
                             value={phoneNumber}

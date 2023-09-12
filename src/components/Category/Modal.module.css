@@ -8,7 +8,7 @@
 .HeaderLabel {
     color: #000000;
     font-family: "Inter-Bold", Helvetica;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 700;
     letter-spacing: 0;
     line-height: normal;
@@ -23,7 +23,7 @@
 .VerticalBox * {
     color: #000000;
     font-family: "Inter-Medium", Helvetica;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 500;
     line-height: normal;
     white-space: nowrap;
@@ -34,13 +34,14 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
     /* margin: 0 16px; */
 }
 
 .HorizontalBox * {
     color: #000000;
     font-family: "Inter-Medium", Helvetica;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 500;
     line-height: normal;
     white-space: nowrap;
@@ -50,15 +51,15 @@
 .ShowButton {
     color: #80bae4;
     font-family: "Inter-Medium", Helvetica;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 500;
     letter-spacing: 0;
     line-height: normal;
 }
 
 .CloseButton {
-    width: 18px;
-    height: 18px;
+    width: 22px;
+    height: 22px;
     cursor: pointer;
     transition: color 500ms ease;
     margin-left: 11px;
@@ -71,7 +72,7 @@
 
     color: #ffffff;
     font-family: "Inter-SemiBold", Helvetica;
-    font-size: 12px;
+    font-size: 15px;
     font-weight: 600;
     letter-spacing: 0;
     line-height: normal;
