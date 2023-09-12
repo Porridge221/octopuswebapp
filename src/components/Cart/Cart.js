@@ -80,12 +80,12 @@ function Cart() {
                     <div className={styles.Count}>Товары, {cartItemCount} шт.</div>
                 </div>
                 <div className={styles.SumBox}>
-                    <span>Итого</span><span>{cartPrice} Р</span>
+                    <span>Итого</span><span>{new Intl.NumberFormat('ru-RU', {style: 'currency', currency: 'RUB', minimumFractionDigits: 0}).format(cartPrice)}</span>
                 </div>
                 <div className={styles.ConfirmButton} onClick={() => setModalActive(true)}>Подтвердить</div>
             </div>
             <FilterModal active={modalActive} setActive={setModalActive} >
-            <div style={{'width': '60vw', 'overflowX': 'hidden','overflowY': 'auto'}}>
+            <div style={{'width': '70vw', 'overflowX': 'hidden','overflowY': 'auto'}}>
                 <div className={modalStyles.Header}>
                     <span className={modalStyles.HeaderLabel}>Подтвердите заказ</span>
                     <AiOutlineClose className={modalStyles.CloseButton} onClick={() => setModalActive(false)} />
@@ -108,7 +108,7 @@ function Cart() {
                             value={phoneNumber}
                             onChange={setPhoneNumber}/>
                     </div>
-                    <div>{'Информация о заказе будет доступна на главной странице, а также в истории заказов.\n Оплата происходит в офлайн-магазине'}</div>
+                    <div style={{margin: '10px 0'}}>{'Информация о заказе будет доступна на главной странице, а также в истории заказов.\n Оплата происходит в офлайн-магазине'}</div>
                 </div>
             </div>
             <div className={modalStyles.ConfirmButton} onClick={fetchData}>Подтвердить</div>

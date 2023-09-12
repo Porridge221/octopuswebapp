@@ -3,7 +3,7 @@ import Header from '../Header/Header'
 import CategoryList from './CategoryList/CategoryList';
 import { RxMixerHorizontal } from "react-icons/rx";
 import useTelegram from '../../hooks/useTelegram';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Toggle from '../Toggle/Toggle'
 import FilterModal from './FilterModal/FilterModal';
 import { useState } from 'react';
@@ -16,6 +16,8 @@ import 'react-range-slider-input/dist/style.css';
 import './slider.css';
 
 function Category() {
+  const category_id = useLocation().state;
+
   const [modalActive, setModalActive] = useState(false);
 
   const [priceRange, setPriceRange] = useState([0, 10000]);
@@ -33,11 +35,11 @@ function Category() {
   tg.BackButton.show();
 
   const path = ['Главная', 'Каталог']
-  const current = 'Жидкость'
+  const current = {1: 'Жидкость'}
 
   return (
     <div className={styles.Category}>
-      <Header path={path} current={current}/>
+      <Header path={path} current={current[category_id]}/>
       <div className={styles.filter}>
         <span className={styles.CategoriesLabel}>Все фильтры</span>
         <RxMixerHorizontal className={styles.MixerButton} onClick={() => setModalActive(true)} />      
@@ -47,7 +49,7 @@ function Category() {
         <Toggle label="ул. Русская, 46" toggled={true} /*onClick={logState}*//>
         <Toggle label="ул. Адмирала Фокина, 23в" toggled={true} /*onClick={logState}*//>
       </div>
-      <CategoryList className={styles.ItemList} handleCallback={handleCallback} />
+      <CategoryList className={styles.ItemList} handleCallback={handleCallback} category_id={category_id} />
       <FilterModal active={modalActive} setActive={setModalActive} >
         <div className={modalStyles.Header}>
           <span className={modalStyles.HeaderLabel}>Фильтры</span>

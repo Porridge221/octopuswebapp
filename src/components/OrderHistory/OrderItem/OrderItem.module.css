@@ -15,7 +15,7 @@
 .header {
     color: #000000;
     font-family: "Inter-SemiBold", Helvetica;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 600;
     margin: 10px 0%;
 }
@@ -28,7 +28,7 @@
 .price {
     color: #000000;
     font-family: "Inter-SemiBold", Helvetica;
-    font-size: 10px;
+    font-size: 14px;
     font-weight: 600;   
     white-space: nowrap;
     margin: 10px 0;

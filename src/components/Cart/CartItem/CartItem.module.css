@@ -14,9 +14,9 @@
 
 .Image {
     display: flex;
-    height: 84px;
+    height: 103px;
     object-fit: cover;
-    width: 84px;
+    width: 103px;
     border-radius: 10px;
 }
 
@@ -31,7 +31,7 @@
 .Price {
     color: #000000;
     font-family: "Inter-SemiBold", Helvetica;
-    font-size: 12px;
+    font-size: 16px;
     font-weight: 600;
     letter-spacing: 0;
     line-height: normal;
@@ -40,7 +40,7 @@
 .Name {
     color: #000000;
     font-family: "Inter-Regular", Helvetica;
-    font-size: 12px;
+    font-size: 15px;
     font-weight: 400;
     letter-spacing: 0;
     line-height: normal;
@@ -49,7 +49,7 @@
 .RemoveButton {
     color: #80bae4;
     font-family: "Inter-Medium", Helvetica;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 500;
     letter-spacing: 0;
     line-height: normal;
@@ -62,4 +62,13 @@
     height: 100%;
     justify-content: space-between;
     align-items: center;
+}
+
+.CountInput > * {
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.icon {
+    height: 22px;
 }

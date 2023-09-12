@@ -37,14 +37,14 @@ function CartItem({order, cart_id}) {
                 <img style={{'objectFit': 'contain'}} src={"https://miniature-prod.moysklad.ru/miniature/3a69a92f-3453-11ee-0a80-092500013563/documentminiature/83d9bfaa-6238-4567-8b41-e4f0b49d1e8c"} alt=''/>
             </div>
             <div className={styles.Info} >
-                <div className={styles.Price} >{order.price_vvo/100}</div>
+                <div className={styles.Price} >{new Intl.NumberFormat('ru-RU', {style: 'currency', currency: 'RUB', minimumFractionDigits: 0}).format(order.price_vvo/100)}</div>
                 <div className={styles.Name} >{order.name}</div>
                 <div className={styles.RemoveButton} onClick={fetchData} >Удалить</div>
             </div>
             <div className={styles.CountInput} >
-                <div ><img className={styles.icon} src={process.env.PUBLIC_URL + '/assets/plusButton.svg'} alt='' onClick={incrementCount}/></div>
+                <div className={styles.icon}><img className={styles.icon} src={process.env.PUBLIC_URL + '/assets/plusButton.svg'} alt='' onClick={incrementCount}/></div>
                 <div >{count}</div>
-                <div ><img className={styles.icon} src={process.env.PUBLIC_URL + '/assets/minusButton.svg'} alt='' onClick={decrementCount}/></div>
+                <div className={styles.icon}><img className={styles.icon} src={process.env.PUBLIC_URL + '/assets/minusButton.svg'} alt='' onClick={decrementCount}/></div>
             </div>
         </div>
     );

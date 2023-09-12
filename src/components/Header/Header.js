@@ -12,13 +12,13 @@ function Header({path, current}) {
     const results = [];
 
     const routs = {
-        'Главная': '/home',
-        'Каталог': '/home/categories',
-        'Жидкость': '/home/categories/1'
+        'Главная': ['/home', 0],
+        'Каталог': ['/home/categories', 0],
+        'Жидкость': ['/home/categories/1', 1]
     }
 
     path.forEach(el => {
-        results.push(<span key={el} className={styles.textPrev} onClick={() => navigate(routs[el])}>{el + ' > '}</span>);
+        results.push(<Link key={el} className={styles.textPrev} to={routs[el][0]} state={routs[el][1]}>{el + ' > '}</Link>);
     });
     
     return (

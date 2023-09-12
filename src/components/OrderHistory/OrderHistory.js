@@ -76,7 +76,7 @@ function OrderHistory() {
                 <span className={styles.EmptyLabel}>История заказов пуста {':('}</span>
             </div>)}
             <FilterModal active={modalActive} setActive={setModalActive} >
-            <div style={{'width': '60vw', 'overflow-x': 'hidden','overflow-y': 'auto'}}>
+            <div style={{'width': '70vw', 'overflowX': 'hidden','overflowY': 'auto'}}>
                 <div className={modalStyles.Header}>
                     <span className={modalStyles.HeaderLabel}>Чек</span>
                     <AiOutlineClose className={modalStyles.CloseButton} onClick={() => setModalActive(false)} />
@@ -91,12 +91,12 @@ function OrderHistory() {
                     ))}
                 </div>
                 <div className={modalStyles.VerticalBox}>
-                    <span>Пункт выдачи:</span>
-                    <span>г. Владивосток, ул. Русская, 25. Ежедневно с 10:00 до 21:00</span>
-                    <span>Товары: {modalItemsCount > 0 &&  (modalItemsCount)}</span>
+                    <span style={{fontWeight: '600'}}>Пункт выдачи:</span>
+                    <span style={{color:'#424242'}}>г. Владивосток, ул. Русская, 25. Ежедневно с 10:00 до 21:00</span>
+                    <span>Товары: {modalItemsCount > 0 &&  (modalItemsCount + ' шт.')}</span>
                     <div className={modalStyles.HorizontalBox}>
-                        <span>Итог</span>
-                        <span>{modalOrder.price}</span>
+                        <span>Итог:</span>
+                        <span>{new Intl.NumberFormat('ru-RU', {style: 'currency', currency: 'RUB', minimumFractionDigits: 0}).format(modalOrder.price/100)}</span>
                     </div>
                 </div>
             </div>

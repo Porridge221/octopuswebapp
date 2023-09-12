@@ -3,20 +3,21 @@
     flex-direction: column;
     /* align-items: center; */
     justify-self: center;
-    width: 100vw;
-    height: 100vh;
+    /* width: 100vw;
+    height: 100vh; */
+    overflow-x: hidden;
 }
 
 .Header {
     display: flex;
-    margin: 23px 32px;
+    margin: 23px 16px;
     justify-content: space-between;
     align-items: center;
 }
 .Label {
     color: #000000;
     font-family: "Inter-SemiBold", Helvetica;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 600;
     letter-spacing: 0;
     line-height: normal;
@@ -29,7 +30,7 @@
 .CatalogButton {
     color: #80bae4;
     font-family: "Inter-Medium", Helvetica;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 500;
     letter-spacing: 0;
     line-height: normal;
