@@ -5,13 +5,13 @@
 
 .toggle {
     appearance: none;
-    background-color: #fff;
+    background-color: var(--tg-theme-secondary-bg-color);
     margin: 0;
     font: inherit;
-    color: currentColor;
+    color: var(--tg-theme-text-color);
     width: 20px;
     height: 20px;
-    border: 1px solid currentColor;
+    border: 1px solid var(--tg-theme-text-color);
     border-radius: 5px;
     transform: translateY(-0.075em);
 
@@ -37,7 +37,7 @@
 }
 
 .text {
-    color: #000000;
+    color: var(--tg-theme-text-color);
     font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
         'Liberation Sans', sans-serif;
     font-size: 14px;

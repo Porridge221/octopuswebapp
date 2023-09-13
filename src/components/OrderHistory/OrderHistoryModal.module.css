@@ -6,7 +6,7 @@
 }
 
 .HeaderLabel {
-    color: #000000;
+    color: var(--tg-theme-text-color);
     font-family: "Inter-Bold", Helvetica;
     font-size: 16px;
     font-weight: 700;
@@ -21,7 +21,7 @@
 }
 
 .VerticalBox * {
-    color: #000000;
+    color: var(--tg-theme-text-color);
     font-family: "Inter-SemiBold", Helvetica;
     font-size: 15px;
     font-weight: 500;
@@ -38,7 +38,7 @@
 }
 
 .HorizontalBox * {
-    color: #000000;
+    color: var(--tg-theme-text-color);
     font-family: "Inter-SemiBold", Helvetica;
     font-size: 16px;
     font-weight: 600;

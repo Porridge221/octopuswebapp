@@ -85,7 +85,7 @@ function Cart() {
                 <div className={styles.ConfirmButton} onClick={() => setModalActive(true)}>Подтвердить</div>
             </div>
             <FilterModal active={modalActive} setActive={setModalActive} >
-            <div style={{'width': '70vw', 'overflowX': 'hidden','overflowY': 'auto'}}>
+            <div style={{'width': '70vw', 'overflowX': 'hidden','overflowY': 'auto', backgroundColor: 'var(--tg-theme-secondary-bg-color)'}}>
                 <div className={modalStyles.Header}>
                     <span className={modalStyles.HeaderLabel}>Подтвердите заказ</span>
                     <AiOutlineClose className={modalStyles.CloseButton} onClick={() => setModalActive(false)} />

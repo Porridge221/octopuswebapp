@@ -55,7 +55,7 @@ function Category() {
           <span className={modalStyles.HeaderLabel}>Фильтры</span>
           <AiOutlineClose className={modalStyles.CloseButton} onClick={() => setModalActive(false)} />
         </div>
-        <div style={{'height': '70vh', 'overflowX': 'hidden','overflowY': 'auto'}}>          
+        <div style={{'height': '70vh', 'overflowX': 'hidden','overflowY': 'auto', backgroundColor: 'var(--tg-theme-secondary-bg-color)'}}>          
           <div className={modalStyles.VerticalBox}>
             <span>Наличие в магазинах:</span>
             <Toggle label="В любом" toggled={true} /*onClick={logState}*//>

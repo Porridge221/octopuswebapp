@@ -6,7 +6,7 @@
 }
 
 .HeaderLabel {
-    color: #000000;
+    color: var(--tg-theme-text-color);
     font-family: "Inter-Bold", Helvetica;
     font-size: 16px;
     font-weight: 700;
@@ -21,7 +21,7 @@
 }
 
 .VerticalBox * {
-    color: #000000;
+    color: var(--tg-theme-text-color);
     font-family: "Inter-Medium", Helvetica;
     font-size: 14px;
     font-weight: 500;
@@ -38,7 +38,7 @@
 }
 
 .HorizontalBox * {
-    color: #000000;
+    color: var(--tg-theme-text-color);
     font-family: "Inter-Medium", Helvetica;
     font-size: 14px;
     font-weight: 500;
@@ -48,7 +48,7 @@
 }
 
 .ShowButton {
-    color: #80bae4;
+    color: var(--tg-theme-link-color);
     font-family: "Inter-Medium", Helvetica;
     font-size: 14px;
     font-weight: 500;
@@ -62,7 +62,7 @@
     cursor: pointer;
     transition: color 500ms ease;
     margin-left: 11px;
-    color: #80BAE4;
+    color: var(--tg-theme-link-color);
 }
 
 .ConfirmButton {
@@ -93,6 +93,11 @@
     /* width: 60%; */
     padding: 5px 10px;
     font-size: 16px;
+    color: var(--tg-theme-text-color);
+}
+
+.NumberBox {
+    color: var(--tg-theme-text-color);
 }
 
 .NumberInput {
@@ -115,6 +120,7 @@
     /* width: 60%; */
     padding: 5px 10px;
     font-size: 16px;
+    color: var(--tg-theme-text-color);
 }
 
 .Select {
@@ -124,4 +130,8 @@
     border-radius: 5px;
     padding: 5px 10px;
     font-size: 14px;
+}
+
+.Select {
+    color: var(--tg-theme-text-color);
 }

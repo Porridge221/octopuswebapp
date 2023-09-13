@@ -5,6 +5,7 @@
     flex-direction: column;
     overflow-y: hidden;
     overflow-x: hidden;
+    background-color: var(--tg-theme-bg-color);
 }
 
 .filter {
@@ -13,7 +14,7 @@
 }
 
 .CategoriesLabel {
-    color: #000000;
+    color: var(--tg-theme-text-color);
     font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
         'Liberation Sans', sans-serif;
     font-size: 16px;
@@ -27,6 +28,7 @@
     cursor: pointer;
     transition: color 500ms ease;
     margin-left: 11px;
+    color: var(--tg-theme-text-color);
 }
 
 .MixerButton:hover {

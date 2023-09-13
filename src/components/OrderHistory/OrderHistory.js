@@ -76,7 +76,7 @@ function OrderHistory() {
                 <span className={styles.EmptyLabel}>История заказов пуста {':('}</span>
             </div>)}
             <FilterModal active={modalActive} setActive={setModalActive} >
-            <div style={{'width': '70vw', 'overflowX': 'hidden','overflowY': 'auto'}}>
+            <div style={{'width': '70vw', 'overflowX': 'hidden','overflowY': 'auto', backgroundColor: 'var(--tg-theme-secondary-bg-color)'}}>
                 <div className={modalStyles.Header}>
                     <span className={modalStyles.HeaderLabel}>Чек</span>
                     <AiOutlineClose className={modalStyles.CloseButton} onClick={() => setModalActive(false)} />
@@ -92,7 +92,7 @@ function OrderHistory() {
                 </div>
                 <div className={modalStyles.VerticalBox}>
                     <span style={{fontWeight: '600'}}>Пункт выдачи:</span>
-                    <span style={{color:'#424242'}}>г. Владивосток, ул. Русская, 25. Ежедневно с 10:00 до 21:00</span>
+                    <span style={{color:'var(--tg-theme-hint-color)'}}>г. Владивосток, ул. Русская, 25. Ежедневно с 10:00 до 21:00</span>
                     <span>Товары: {modalItemsCount > 0 &&  (modalItemsCount + ' шт.')}</span>
                     <div className={modalStyles.HorizontalBox}>
                         <span>Итог:</span>

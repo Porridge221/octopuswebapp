@@ -9,10 +9,11 @@
     width: 25px;
     height: 25px;
     margin-left: 16px;
+    stroke: var(--tg-theme-text-color);
 }
 
 .Cart {
-    color: #000000;
+    color: var(--tg-theme-text-color);
     font-family: "Inter-SemiBold", Helvetica;
     font-size: 16px;
     font-weight: 600;
@@ -21,7 +22,7 @@
 }
 
 .ClearButton {
-    color: #80bae4;
+    color: var(--tg-theme-link-color);
     font-family: "Inter-Medium", Helvetica;
     font-size: 14px;
     font-weight: 500;

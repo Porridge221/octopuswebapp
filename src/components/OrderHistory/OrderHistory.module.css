@@ -6,6 +6,7 @@
     /* width: 100vw;
     height: 100vh; */
     overflow-x: hidden;
+    background-color: var(--tg-theme-bg-color);
 }
 
 .Header {
@@ -15,7 +16,7 @@
     align-items: center;
 }
 .Label {
-    color: #000000;
+    color: var(--tg-theme-text-color);
     font-family: "Inter-SemiBold", Helvetica;
     font-size: 16px;
     font-weight: 600;
@@ -28,7 +29,7 @@
 }
 
 .CatalogButton {
-    color: #80bae4;
+    color: var(--tg-theme-link-color);
     font-family: "Inter-Medium", Helvetica;
     font-size: 14px;
     font-weight: 500;
@@ -58,7 +59,7 @@
 }
 
 .EmptyLabel {
-    color: #000000;
+    color: var(--tg-theme-text-color);
     font-family: "Inter-Medium", Helvetica;
     font-size: 16px;
     font-weight: 500;

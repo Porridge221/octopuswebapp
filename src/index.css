@@ -19,4 +19,5 @@ code {
 
 #root {
   overflow: hidden;
+  background-color: var(--tg-theme-bg-color);
 }

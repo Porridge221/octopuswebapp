@@ -1,7 +1,7 @@
 .root {
     display: flex;
     flex-direction: row;
-    background-color: #ffffff;
+    background-color: var(--tg-theme-secondary-bg-color);
     border: 1px solid;
     border-color: #80bae4;
     border-radius: 10px;
@@ -29,7 +29,7 @@
 }
 
 .Price {
-    color: #000000;
+    color: var(--tg-theme-text-color);
     font-family: "Inter-SemiBold", Helvetica;
     font-size: 16px;
     font-weight: 600;
@@ -38,7 +38,7 @@
 }
 
 .Name {
-    color: #000000;
+    color: var(--tg-theme-text-color);
     font-family: "Inter-Regular", Helvetica;
     font-size: 15px;
     font-weight: 400;
@@ -47,7 +47,7 @@
 }
 
 .RemoveButton {
-    color: #80bae4;
+    color: var(--tg-theme-link-color);
     font-family: "Inter-Medium", Helvetica;
     font-size: 14px;
     font-weight: 500;

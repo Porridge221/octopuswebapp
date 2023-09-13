@@ -100,6 +100,7 @@
     height: 100%;
     white-space: nowrap;
     align-items: center;
+    color: var(--tg-theme-text-color);
 }
 
 .NumberInput {
@@ -135,4 +136,8 @@
     border-radius: 5px;
     padding: 5px 10px;
     font-size: 18px;
+}
+
+.Select > * {
+    color: var(--tg-theme-text-color);
 }
