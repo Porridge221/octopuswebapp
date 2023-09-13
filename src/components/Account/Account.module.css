@@ -8,6 +8,7 @@
     height: 100vh; */
     overflow-x: hidden;
     overflow-y: scroll;
+    background-color: var(--tg-theme-bg-color);
 }
 
 .Header {
@@ -35,7 +36,7 @@
 }
 
 .UserName {
-    color: #000000;
+    color: var(--tg-theme-text-color);
     font-family: "Inter-SemiBold", Helvetica;
     font-size: 18px;
     font-weight: 800;

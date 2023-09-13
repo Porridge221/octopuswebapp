@@ -78,7 +78,7 @@ function OrderList({user_data}) {
                 </div>
                 <div className={modalStyles.VerticalBox}>
                     <span style={{fontWeight: '600'}}>Пункт выдачи:</span>
-                    <span style={{color:'#424242'}}>г. Владивосток, ул. Русская, 25. Ежедневно с 10:00 до 21:00</span>
+                    <span style={{color:'var(--tg-theme-text-color)'}}>г. Владивосток, ул. Русская, 25. Ежедневно с 10:00 до 21:00</span>
                     <span>Товары: {modalItemsCount > 0 &&  (modalItemsCount + ' шт.')}</span>
                     <div className={modalStyles.HorizontalBox}>
                         <span>Итог</span>
