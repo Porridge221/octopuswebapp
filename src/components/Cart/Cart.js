@@ -12,10 +12,15 @@ import Input from 'react-phone-number-input/input'
 import useUser from '../../hooks/useUser';
 
 import { useNavigate } from "react-router-dom";
+import useTelegram from '../../hooks/useTelegram';
 
 function Cart() {
     const user_data = useUser(true);
     const navigate = useNavigate();
+
+    const {tg} = useTelegram();
+    tg.onEvent('backButtonClicked', () => navigate('/home'));
+    tg.BackButton.show();
 
     const [modalActive, setModalActive] = useState(false);
 
@@ -98,9 +103,9 @@ function Cart() {
                         <option value="ул. Русская, 46">ул. Русская, 46</option>
                         <option value="ул. Адмирала Фокина, 23в">ул. Адмирала Фокина, 23в</option>
                     </select>
-                    <span>Имя получателя</span>
+                    <span style={{marginTop: '5px'}}>Имя получателя</span>
                     <input name="myInput" className={modalStyles.Input} value={userName} onChange={e => setUserName(e.target.value)}/>
-                    <span>Телефон получателя</span>
+                    <span style={{marginTop: '5px'}}>Телефон получателя</span>
                     <div className={modalStyles.NumberBox}>
                         +7 | <Input className={modalStyles.NumberInput}
                             country="RU"

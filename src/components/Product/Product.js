@@ -30,12 +30,12 @@ import { useNavigate, useLocation } from 'react-router-dom';
 //   }
 
 function Product() {
-    const item = useLocation().state;
+    const {item, category_id} = useLocation().state;
 
     const {tg, initData} = useTelegram();
     const navigate = useNavigate();
 
-    tg.onEvent('backButtonClicked', () => navigate('/home/categories/1'));
+    tg.onEvent('backButtonClicked', () => navigate('/home/categories/' + category_id, {state: {category_id}}));
     tg.BackButton.show();
   
     const fetchData = () => {

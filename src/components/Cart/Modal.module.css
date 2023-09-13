@@ -93,11 +93,11 @@
     /* width: 60%; */
     padding: 5px 10px;
     font-size: 16px;
-    color: var(--tg-theme-text-color);
+    color: #000000;
 }
 
-.NumberBox {
-    color: var(--tg-theme-text-color);
+.NumberBox > * {
+    color: #000000;
 }
 
 .NumberInput {
@@ -120,7 +120,7 @@
     /* width: 60%; */
     padding: 5px 10px;
     font-size: 16px;
-    color: var(--tg-theme-text-color);
+    color: #000000;
 }
 
 .Select {
@@ -133,5 +133,5 @@
 }
 
 .Select {
-    color: var(--tg-theme-text-color);
+    color: #000000;
 }

@@ -18,6 +18,7 @@
     object-fit: cover;
     width: 103px;
     border-radius: 10px;
+    margin-right: 10px;
 }
 
 .Info {

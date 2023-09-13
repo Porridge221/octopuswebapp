@@ -100,7 +100,7 @@
     height: 100%;
     white-space: nowrap;
     align-items: center;
-    color: var(--tg-theme-text-color);
+    color: #000000;
 }
 
 .NumberInput {
@@ -139,5 +139,5 @@
 }
 
 .Select > * {
-    color: var(--tg-theme-text-color);
+    color: #000000;
 }
