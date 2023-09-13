@@ -9,7 +9,8 @@
     margin-bottom: 13px;
     text-decoration: none;
     width: 100%;
-    background-color: var(--tg-theme-secondary-bg-color);
+    background-color: var(--tg-theme-bg-color);
+    /* background-color: var(--tg-theme-secondary-bg-color); */
     /* height: 158px; */
 }
   

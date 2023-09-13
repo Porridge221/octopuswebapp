@@ -35,7 +35,7 @@ function Product() {
     const {tg, initData} = useTelegram();
     const navigate = useNavigate();
 
-    tg.onEvent('backButtonClicked', () => navigate('/home/categories/' + category_id, {state: {category_id}}));
+    tg.onEvent('backButtonClicked', () => navigate('/home/categories/' + category_id, {state: category_id}));
     tg.BackButton.show();
   
     const fetchData = () => {
