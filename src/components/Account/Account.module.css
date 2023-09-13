@@ -86,6 +86,14 @@
     line-height: normal;
 }
 
+.UserInfoBox > * {
+    color: var(--tg-theme-text-color);
+}
+
+p > * {
+    color: var(--tg-theme-text-color);
+}
+
 .AddInfoBox {
     display: flex;
     flex-direction: column;

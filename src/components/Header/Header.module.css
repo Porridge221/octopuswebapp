@@ -8,10 +8,11 @@
 .icon {
     width: 27px;
     height: 22px;
+    stroke: var(--tg-theme-text-color);
 }
 
 .textPrev {
-    color: #898989;
+    color: var(--tg-theme-hint-color);
     font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
         'Liberation Sans', sans-serif;
     font-size: 14px;
@@ -20,7 +21,7 @@
 }
 
 .textCurrent {
-    color: #000000;
+    color: var(--tg-theme-text-color);
     font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
         'Liberation Sans', sans-serif;
     font-size: 14px;

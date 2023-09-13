@@ -23,7 +23,7 @@
 
 .ModalContent {
     padding: 26px 16px;
-    background-color: #ffffff;
+    background-color: var(--tg-theme-bg-color);
     border-radius: 10px;
     transform: scale(0.5);
     transition: 0.4s all;
