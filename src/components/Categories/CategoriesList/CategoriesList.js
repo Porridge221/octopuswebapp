@@ -5,15 +5,15 @@ import { v4 } from 'uuid'
 
 function CategoriesList() {
     const category = [
-        {id: 1, text: 'Жидкости', img: 'Жидкость-white.png'},
-        {id: 2, text: 'JUUL Type', img: 'JOOL-Type-white.png'},
-        {id: 3, text: 'Pod Системы', img: 'Pod-W.png'},
-        {id: 4, text: 'Аккумуляторы', img: 'Аккумуляторы-white.png'},
-        {id: 5, text: 'Аксессуары', img: 'Акксесуары-white.png'},
-        {id: 6, text: 'Жевательный табак', img: 'Жевательный-табак-white.png'},
-        {id: 7, text: 'Одноразовые системы', img: 'Одноразовые-системыW.png'},
-        {id: 8, text: 'Расходники', img: 'Расходники-W.png'},
-        {id: 9, text: 'Устройства', img: 'Устройства-W.png'},
+        {id: 1, text: 'Жидкости', img: 'Жидкость'},
+        {id: 2, text: 'JUUL Type', img: 'JOOL-Type'},
+        {id: 3, text: 'Pod Системы', img: 'Pod'},
+        {id: 4, text: 'Аккумуляторы', img: 'Аккумуляторы'},
+        {id: 5, text: 'Аксессуары', img: 'Акксесуары'},
+        {id: 6, text: 'Жевательный табак', img: 'Жевательный-табак'},
+        {id: 7, text: 'Одноразовые системы', img: 'Одноразовые-системы'},
+        {id: 8, text: 'Расходники', img: 'Расходники'},
+        {id: 9, text: 'Устройства', img: 'Устройства'},
     ]
 
     return (

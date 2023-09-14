@@ -6,7 +6,7 @@ function CategoriesItem({category}) {
     return (
         <li>
             <Link className={styles.root} to={'/home/categories/' + category.id} state={category.id}>
-                <img className={styles.icon} src={process.env.PUBLIC_URL + '/assets/categories/' + category.img}/>
+                <img className={styles.icon} src={process.env.PUBLIC_URL + '/assets/categories/' + category.img + (window.Telegram.WebApp.colorScheme === 'light' ? '-white.png' : '-black.png')}/>
                 <div className={styles.textBlock}><span>{category.text}</span></div>
             </Link>
         </li>
