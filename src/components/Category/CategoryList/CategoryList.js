@@ -7,7 +7,7 @@ import React from 'react'
 import CategoryGroup from './CategoryGroup/CategoryGroup';
 import { useLocation } from 'react-router-dom';
 
-const initData = 'query_id=AAH4j_ZmAgAAAPiP9mbhemjf&user=%7B%22id%22%3A6022402040%2C%22first_name%22%3A%22Debora%22%2C%22last_name%22%3A%22Landau%22%2C%22username%22%3A%22porridge221%22%2C%22language_code%22%3A%22ru%22%2C%22allows_write_to_pm%22%3Atrue%7D&auth_date=1692771816&hash=9515f6c19bbf76fc35b29df2eb0bcd97d93ade207b37238ae145abc5d7fc28ce'
+// const initData = 'query_id=AAH4j_ZmAgAAAPiP9mbhemjf&user=%7B%22id%22%3A6022402040%2C%22first_name%22%3A%22Debora%22%2C%22last_name%22%3A%22Landau%22%2C%22username%22%3A%22porridge221%22%2C%22language_code%22%3A%22ru%22%2C%22allows_write_to_pm%22%3Atrue%7D&auth_date=1692771816&hash=9515f6c19bbf76fc35b29df2eb0bcd97d93ade207b37238ae145abc5d7fc28ce'
 
 // const result = [
 //   {
@@ -105,12 +105,14 @@ const initData = 'query_id=AAH4j_ZmAgAAAPiP9mbhemjf&user=%7B%22id%22%3A602240204
 function CategoryList({handleCallback}) {
   const category_id = useLocation().state;
 
+  const {initData} = useTelegram();
+
   const [result, setItems] = useState([])
 
   //const {initData} = useTelegram();  
 
   const fetchData = () => {
-    fetch("https://45.153.69.113/products/catalog/" + category_id, {method: 'GET', headers: {'Content-Type': 'application/json', 'Authorization': initData}})
+    fetch("https://45.153.69.113/products/catalog/" + category_id, {method: 'GET', headers: {'Content-Type': 'application/json', 'Telegrem-Data': initData}})
       .then(response => {
         return response.json()
       })

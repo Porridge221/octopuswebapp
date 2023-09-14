@@ -41,7 +41,7 @@ function Product() {
     const fetchData = () => {
         fetch("https://45.153.69.113/carts/add", { method:'POST',headers: {
         'Content-Type': 'application/json',
-        'Telegram-Data': initData
+        'Telegram-Data': initData,
         }, body: JSON.stringify( {'user_id': 1, 'variant_id': item.variant_id, 'count': 1} )
         })
         .then(response => {

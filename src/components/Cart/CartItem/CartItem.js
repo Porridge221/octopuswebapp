@@ -1,8 +1,11 @@
 import { useEffect, useState } from 'react';
 import styles from './CartItem.module.css'
+import useTelegram from '../../../hooks/useTelegram';
 
 function CartItem({order, cart_id}) {
     const [count, setCount] = useState(1);
+
+    const {initData} = useTelegram();
 
     const incrementCount = () => {
         setCount(count+1);
@@ -16,7 +19,8 @@ function CartItem({order, cart_id}) {
 
     const fetchData = () => {
         fetch("https://45.153.69.113/carts/delete_one", { method:'DELETE',headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Telegram-Data': initData,
         }, body: JSON.stringify( {'cart_id': cart_id, 'variant_id': order.variant_id} )
         })
         .then(response => {

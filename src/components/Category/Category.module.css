@@ -3,7 +3,7 @@
     height: 100vh;
     display: flex;
     flex-direction: column;
-    overflow-y: hidden;
+    overflow-y: auto;
     overflow-x: hidden;
     background-color: var(--tg-theme-bg-color);
 }
@@ -39,4 +39,53 @@
     display: flexbox;
     margin: 10px 0;
     margin-bottom: 0;
+}
+
+.MainBackground {
+    display: flex;
+    position: absolute;
+    bottom: 20px;
+    right: 0;
+    z-index: -1;
+    height: 63vh;
+    width: 50vw;
+    opacity: 0.3;
+    
+    
+    background-blend-mode: lighten;
+    background-image: radial-gradient(
+        ellipse at center top,
+        rgb(245.44, 208.21, 152.38) 0%,
+        rgb(245.44, 208.21, 152.38) 0.01%,
+        rgb(219.94, 40.32, 126.54) 62.25%,
+        rgb(109.44, 58.05, 149.81) 100%
+      ), url('../../../public/assets/main_background.png');
+    background-size: cover;
+
+    /* stroke-opacity: 0.3;
+    stroke-width: 50px;
+    stroke: white; */
+
+    border: #dc3d3d;
+    border-width: 20px;
+
+    /* position: absolute;
+    bottom: 20px;
+    right: 0;
+    z-index: -1;
+    height: 63vh;
+    width: 50vw;
+    opacity: 0.3;
+    
+    background-blend-mode: lighten;
+    background-image: url('../../../public/assets/main_background.svg');
+    background-size: cover; */
+
+    /* display: flex; */
+    /* top:200px; */
+
+    /* height: 30vh;
+    width: 100vw;
+    justify-content: space-around;
+    align-items: center; */
 }

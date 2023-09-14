@@ -18,7 +18,7 @@ function Cart() {
     const user_data = useUser(true);
     const navigate = useNavigate();
 
-    const {tg} = useTelegram();
+    const {tg, initData} = useTelegram();
     tg.onEvent('backButtonClicked', () => navigate('/home'));
     tg.BackButton.show();
 
@@ -32,7 +32,8 @@ function Cart() {
 
     const fetchData = () => {
         fetch("https://45.153.69.113/orders/", { method:'POST',headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Telegram-Data': initData,
         }, body: JSON.stringify( {'user_id': 1, 'name': userName, 'phone': '7' + phoneNumber, 'store_id': 1} )
           })
           .then(response => {

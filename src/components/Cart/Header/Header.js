@@ -1,10 +1,13 @@
+import useTelegram from '../../../hooks/useTelegram'
 import styles from './Header.module.css'
 
 function Header() {
+    const {initData} = useTelegram();
 
     const fetchData = () => {
         fetch("https://45.153.69.113/carts/delete_all?cart_id=1", { method:'DELETE',headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Telegram-Data': initData,
         }, body: JSON.stringify( {'cart_id': 1 } )
           })
           .then(response => {

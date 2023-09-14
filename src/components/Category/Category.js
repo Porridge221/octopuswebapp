@@ -39,6 +39,9 @@ function Category() {
 
   return (
     <div className={styles.Category}>
+      <div className={styles.MainBackground} >
+        {/* <img className={styles.icon} src={process.env.PUBLIC_URL + '/assets/main_background.svg'} alt=''/> */}
+      </div>
       <Header path={path} current={current[category_id]}/>
       <div className={styles.filter}>
         <span className={styles.CategoriesLabel}>Все фильтры</span>
