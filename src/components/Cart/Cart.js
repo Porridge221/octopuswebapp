@@ -31,7 +31,7 @@ function Cart() {
     const [selectedStore, setSelectedStore] = useState('ул. Адмирала Фокина, 23в');
 
     const fetchData = () => {
-        fetch("https://45.153.69.113/orders/", { method:'POST',headers: {
+        fetch("https://octopus-vape.ru/orders/", { method:'POST',headers: {
           'Content-Type': 'application/json',
           'Telegram-Data': initData,
         }, body: JSON.stringify( {'user_id': 1, 'name': userName, 'phone': '7' + phoneNumber, 'store_id': 1} )
