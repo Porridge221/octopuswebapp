@@ -14,10 +14,10 @@ function App() {
 
   tg.BackButton.hide();
 
-  useEffect(() => {
-    tg.expand();
-    // console.log(user_data);
-  })
+  // useEffect(() => {
+  //   tg.expand();
+  //   // console.log(user_data);
+  // })
 
   return (
     <div className='App'>
