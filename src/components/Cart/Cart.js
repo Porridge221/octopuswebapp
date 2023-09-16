@@ -45,6 +45,25 @@ function Cart() {
 
     const [updateScreen, setUpdateScreen] = useState(1);
 
+    const handlerUpdateScreen = () => {
+        setUpdateScreen(updateScreen+1);
+    }
+
+    const fetchDeleteOne = (order) => {
+        fetch("https://octopus-vape.ru/carts/delete_one", { method:'DELETE',headers: {
+        'Content-Type': 'application/json',
+        'Telegram-Data': initData,
+        }, body: JSON.stringify( {'cart_id': 1, 'variant_id': order.variant_id} )
+        })
+        .then(response => {
+            return JSON.stringify( {'cart_id': 1, 'variant_id': order.variant_id} )
+        })
+        .then(data => {
+            console.log(JSON.stringify( {'cart_id': 1, 'variant_id': order.variant_id} ));
+            setUpdateScreen(updateScreen+1);
+        })
+    }
+
     function fetchDeleteAllCart() {
         fetch("https://octopus-vape.ru/carts/delete_all?cart_id=1", { method:'DELETE',headers: {
           'Content-Type': 'application/json',
@@ -64,13 +83,13 @@ function Cart() {
         fetch("https://octopus-vape.ru/orders/", { method:'POST',headers: {
           'Content-Type': 'application/json',
           'Telegram-Data': initData,
-        }, body: JSON.stringify( {'user_id': 1, 'name': userName, 'phone': '7' + phoneNumber, 'store_id': 1} )
+        }, body: JSON.stringify( {'user_id': 1, 'name': userName, 'phone': phoneNumber.slice(1), 'store_id': 1} )
           })
           .then(response => {
-            return JSON.stringify( {'user_id': 1, 'name': userName, 'phone': '7' + phoneNumber, 'store_id': 1} )
+            return JSON.stringify( {'user_id': 1, 'name': userName, 'phone': phoneNumber.slice(1), 'store_id': 1} )
           })
           .then(data => {
-            console.log(JSON.stringify( {'user_id': 1, 'name': userName, 'phone': '7' + phoneNumber, 'store_id': 1} ));
+            console.log(JSON.stringify( {'user_id': 1, 'name': userName, 'phone': phoneNumber.slice(1), 'store_id': 1} ));
           })
           setModalActive(false);
           navigate("/home");
@@ -102,7 +121,7 @@ function Cart() {
             <Header fetchDeleteAllCart={fetchDeleteAllCart} />
             {user_data !== undefined && user_data.items.length > 0 && (<div className={styles.ItemList} >
                     {user_data.items.map(order => (
-                        <CartItem key={order.variant_id} order={order} cart_id={user_data.cart_id} />
+                        <CartItem key={order.variant_id} order={order} cart_id={user_data.cart_id} fetchDeleteOne={fetchDeleteOne} updateScreen={updateScreen} setUpdateScreen={setUpdateScreen} />
                     ))}
             </div>) }
             {/* <div className={styles.ItemList}>

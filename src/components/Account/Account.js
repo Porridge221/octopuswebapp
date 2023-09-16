@@ -60,6 +60,8 @@ function Account() {
     useEffect(() => {
         fetchUser();
     }, [updateScreen])
+
+    const img_style = window.Telegram.WebApp.colorScheme === 'light' ? {} : {};
     
     return (
         <div className={styles.root}>

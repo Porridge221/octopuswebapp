@@ -94,7 +94,7 @@
 }
 
 .AccountStatus {
-    color: var(--tg-theme-text-color);
+    color: #000000;
     font-size: 13px;
     font-weight: 300;
     text-align: center;

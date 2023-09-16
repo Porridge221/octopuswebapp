@@ -88,7 +88,7 @@ function OrderHistory() {
                     <CheckItem />
                     <CheckItem /> */}
                     {modalOrder.size !== 0 && modalOrder.items.map(item => (
-                        <CheckItem key={item.variant_id} item={item} />
+                        <CheckItem key={item.variant_id} item={item} showButton={true} />
                     ))}
                 </div>
                 <div className={modalStyles.VerticalBox}>

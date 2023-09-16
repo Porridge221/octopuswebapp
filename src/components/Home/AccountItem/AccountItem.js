@@ -18,7 +18,7 @@ function AccountItem({user_data}) {
                         <span className={styles.AccountStatus}>{user_data !== undefined && user_data.user.discount_group}</span>
                     </div>
                 </div>
-                <div className={styles.PointsCount}>{user_data !== undefined && user_data.user.discount_points} баллов</div>
+                <div className={styles.PointsCount}>Баллы: {user_data !== undefined && user_data.user.discount_points}</div>
             </Link>
             <Link className={styles.CartLink} to='/cart'>
                 <svg width="31" height="24" viewBox="0 0 31 24" fill="none" xmlns="http://www.w3.org/2000/svg">
