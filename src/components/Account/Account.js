@@ -2,7 +2,7 @@ import styles from './Account.module.css'
 import LoyaltyInfo from '../LoyaltyInfo/LoyaltyInfo'
 import FilterModal from '../Category/FilterModal/FilterModal';
 import useTelegram from '../../hooks/useTelegram';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {useNavigate} from 'react-router-dom'
 
 import modalStyles from './Modal.module.css';
@@ -12,7 +12,8 @@ import useUser from '../../hooks/useUser';
 
 
 function Account() {
-    const user_data = useUser(false);
+    const [user_data, setUserData] = useState();
+    const [updateScreen, setUpdateScreen] = useState(1);
 
     const [modalActive, setModalActive] = useState(false);
 
@@ -20,7 +21,7 @@ function Account() {
 
     const [selectedCity, setSelectedCity] = useState('Владивосток');
 
-    const {user, tg} = useTelegram();
+    const {user, tg, initData} = useTelegram();
     const navigate = useNavigate();
 
     tg.onEvent('backButtonClicked', () => navigate('/home'));
@@ -29,6 +30,36 @@ function Account() {
     const discountLevel = {"Новый клиент": [3, '#f5d098']}
 
     console.log(user_data);
+
+    const fetchData = () => {
+        fetch("https://octopus-vape.ru/users/add_info", { method:'PUT',headers: {
+          'Content-Type': 'application/json',
+          'Telegram-Data': initData,
+        }, body: JSON.stringify( {'phone': phoneNumber.slice(1), 'city_id': selectedCity === 'Владивосток' ? 1 : selectedCity === 'Артем' ? 2 : 3} )
+          })
+          .then(response => {
+            return JSON.stringify( {'phone': phoneNumber.slice(1), 'city_id': selectedCity === 'Владивосток' ? 1 : selectedCity === 'Артем' ? 2 : 3} )
+          })
+          .then(data => {
+            console.log(JSON.stringify( {'phone': phoneNumber.slice(1), 'city_id': selectedCity === 'Владивосток' ? 1 : selectedCity === 'Артем' ? 2 : 3} ));
+          })
+          setModalActive(false);
+          setUpdateScreen(updateScreen+1);
+    }
+
+    const fetchUser = () => {
+        fetch("https://octopus-vape.ru/users/1", {method: 'GET', headers: {'Content-Type': 'application/json', 'Telegram-Data': initData,}})
+          .then(response => {
+            return response.json()
+          })
+          .then(data => {
+            setUserData(data);
+          })
+      }
+    
+    useEffect(() => {
+        fetchUser();
+    }, [updateScreen])
     
     return (
         <div className={styles.root}>
@@ -47,7 +78,7 @@ function Account() {
                     <span style={{fontWeight: '800'}}>Телефон: </span><span>{user_data !== undefined && user_data.user.phone}</span>
                 </p>
                 <p style={{margin: '2px 0', marginBottom: '5px'}}>
-                    <span style={{fontWeight: '800'}}>Город: </span><span>{user_data !== null || undefined && (user_data.user.city_id !== undefined && user_data.user.city_id=== 1 ? "Владивосток" : user_data.user.city_id=== 2 ? "Артем" : "Южно-Сахалинск")}</span>
+                    <span style={{fontWeight: '800'}}>Город: </span><span>{user_data === undefined || null ? '' : (user_data.user.city_id !== undefined && user_data.user.city_id=== 1 ? "Владивосток" : user_data.user.city_id=== 2 ? "Артем" : "Южно-Сахалинск")}</span>
                 </p>
             </div>
             <div className={styles.AddInfoBox}>
@@ -81,7 +112,7 @@ function Account() {
                     </select>
                 </div>
             </div>
-            <div className={modalStyles.ConfirmButton} /*onClick={fetchData}*/>Подтвердить</div>
+            <div className={modalStyles.ConfirmButton} onClick={fetchData}>Подтвердить</div>
             </FilterModal>
         </div>
     );

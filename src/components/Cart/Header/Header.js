@@ -1,22 +1,8 @@
 import useTelegram from '../../../hooks/useTelegram'
 import styles from './Header.module.css'
 
-function Header() {
+function Header({fetchDeleteAllCart}) {
     const {initData} = useTelegram();
-
-    const fetchData = () => {
-        fetch("https://octopus-vape.ru/carts/delete_all?cart_id=1", { method:'DELETE',headers: {
-          'Content-Type': 'application/json',
-          'Telegram-Data': initData,
-        }, body: JSON.stringify( {'cart_id': 1 } )
-          })
-          .then(response => {
-            return JSON.stringify( {'cart_id': 1 } )
-          })
-          .then(data => {
-            console.log(JSON.stringify( {'cart_id': 1 } ));
-          })
-    }
 
     return (
         <div className={styles.root}>
@@ -28,7 +14,7 @@ function Header() {
                     </g>
                 </svg>
             </div>
-            <div className={styles.ClearButton} onClick={fetchData}>Очистить корзину</div>
+            <div className={styles.ClearButton} onClick={fetchDeleteAllCart}>Очистить корзину</div>
         </div>
     );
 }

@@ -39,6 +39,25 @@ function Cart() {
             setUserData(data);
             console.log(data);
         })
+
+        return true;
+    }
+
+    const [updateScreen, setUpdateScreen] = useState(1);
+
+    function fetchDeleteAllCart() {
+        fetch("https://octopus-vape.ru/carts/delete_all?cart_id=1", { method:'DELETE',headers: {
+          'Content-Type': 'application/json',
+          'Telegram-Data': initData,
+        }, body: JSON.stringify( {'cart_id': 1 } )
+          })
+          .then(response => {
+            return JSON.stringify( {'cart_id': 1 } )
+          })
+          .then(data => {
+            console.log(JSON.stringify( {'cart_id': 1 } ));
+          })
+          setUpdateScreen(updateScreen+1);
     }
 
     const fetchData = () => {
@@ -62,21 +81,24 @@ function Cart() {
     useEffect(() => {
         console.log("cart effect");
         console.log(user_data);
+        fetchCart();
+    }, [updateScreen])
+
+    useEffect(() => {
         var count = 0;
         var price = 0;
         user_data !== undefined && user_data.items.length > 0 &&
             // user_data.cart.items.map(order => {count += order.count; price += order.price_vvo/100 * order.count;} )
             user_data.items.forEach(order => {
                 count += order.count; price += order.price_vvo/100 * order.count;
-            });
-        
-            setCartItemCount(count);
-            setCartPrice(price);
-    }, [user_data])
+        });
+        setCartItemCount(count);
+        setCartPrice(price);
+    }, [user_data]);
 
     return (
         <div className={styles.root}>
-            <Header />
+            <Header fetchDeleteAllCart={fetchDeleteAllCart} />
             {user_data !== undefined && user_data.items.length > 0 && (<div className={styles.ItemList} >
                     {user_data.items.map(order => (
                         <CartItem key={order.variant_id} order={order} cart_id={user_data.cart_id} />
