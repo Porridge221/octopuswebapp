@@ -56,8 +56,8 @@ function Cart() {
           })
           .then(data => {
             console.log(JSON.stringify( {'cart_id': 1 } ));
+            setUpdateScreen(updateScreen+1);
           })
-          setUpdateScreen(updateScreen+1);
     }
 
     const fetchData = () => {
@@ -79,12 +79,7 @@ function Cart() {
     const [cartItemCount, setCartItemCount] = useState(0);
     const [cartPrice, setCartPrice] = useState(0);
     useEffect(() => {
-        console.log("cart effect");
-        console.log(user_data);
-        fetchCart();
-    }, [updateScreen])
-
-    useEffect(() => {
+        console.log('count update');
         var count = 0;
         var price = 0;
         user_data !== undefined && user_data.items.length > 0 &&
@@ -94,7 +89,13 @@ function Cart() {
         });
         setCartItemCount(count);
         setCartPrice(price);
-    }, [user_data]);
+    }, [user_data, fetchCart]);
+
+    useEffect(() => {
+        console.log("cart effect");
+        console.log(user_data);
+        fetchCart();
+    }, [updateScreen])
 
     return (
         <div className={styles.root}>
@@ -112,14 +113,12 @@ function Cart() {
             </div> */}
             <div className={styles.OrderBox} >
                 <div className={styles.OrderInfo}>
-                    <div className={styles.OrderLabel}>Пункт выдачи:</div>
-                    <br />
-                    <div className={styles.Store}>г. Владивосток, ул. Русская, 25 Ежедневно с 10:00 до 21:00</div>
+                    <div className={styles.OrderLabel}>Итог:</div>
                     <br />
                     <div className={styles.Count}>Товары, {cartItemCount} шт.</div>
                 </div>
                 <div className={styles.SumBox}>
-                    <span>Итого</span><span>{new Intl.NumberFormat('ru-RU', {style: 'currency', currency: 'RUB', minimumFractionDigits: 0}).format(cartPrice)}</span>
+                    <span>Общая стоимость</span><span>{new Intl.NumberFormat('ru-RU', {style: 'currency', currency: 'RUB', minimumFractionDigits: 0}).format(cartPrice)}</span>
                 </div>
                 <div className={styles.ConfirmButton} onClick={() => setModalActive(true)}>Подтвердить</div>
             </div>
