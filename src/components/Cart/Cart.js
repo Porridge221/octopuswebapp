@@ -15,7 +15,7 @@ import { useNavigate } from "react-router-dom";
 import useTelegram from '../../hooks/useTelegram';
 
 function Cart() {
-    const user_data = useUser(true);
+    const [user_data, setUserData] = useState();
     const navigate = useNavigate();
 
     const {tg, initData} = useTelegram();
@@ -29,6 +29,17 @@ function Cart() {
     const [phoneNumber, setPhoneNumber] = useState();
 
     const [selectedStore, setSelectedStore] = useState('ул. Адмирала Фокина, 23в');
+
+    const fetchCart = () => {
+        fetch("https://octopus-vape.ru/carts/1", {method: 'GET', headers: {'Content-Type': 'application/json', 'Telegram-Data': initData,}})
+          .then(response => {
+            return response.json()
+          })
+          .then(data => {
+            setUserData(data);
+            console.log(data);
+        })
+    }
 
     const fetchData = () => {
         fetch("https://octopus-vape.ru/orders/", { method:'POST',headers: {
@@ -53,9 +64,9 @@ function Cart() {
         console.log(user_data);
         var count = 0;
         var price = 0;
-        user_data !== undefined && user_data.cart.items.length > 0 &&
+        user_data !== undefined && user_data.items.length > 0 &&
             // user_data.cart.items.map(order => {count += order.count; price += order.price_vvo/100 * order.count;} )
-            user_data.cart.items.forEach(order => {
+            user_data.items.forEach(order => {
                 count += order.count; price += order.price_vvo/100 * order.count;
             });
         
@@ -66,9 +77,9 @@ function Cart() {
     return (
         <div className={styles.root}>
             <Header />
-            {user_data !== undefined && user_data.cart.items.length > 0 && (<div className={styles.ItemList} >
-                    {user_data.cart.items.map(order => (
-                        <CartItem key={order.variant_id} order={order} cart_id={user_data.cart.cart_id} />
+            {user_data !== undefined && user_data.items.length > 0 && (<div className={styles.ItemList} >
+                    {user_data.items.map(order => (
+                        <CartItem key={order.variant_id} order={order} cart_id={user_data.cart_id} />
                     ))}
             </div>) }
             {/* <div className={styles.ItemList}>

@@ -35,7 +35,19 @@ function Category() {
   tg.BackButton.show();
 
   const path = ['Главная', 'Каталог']
-  const current = {1: 'Жидкость'}
+  const current = {
+                    6: 'Жидкости',
+                    1: 'JUUL Type',
+                    2: 'Pod Системы',
+                    3: 'Аккумуляторы',
+                    4: 'Аксессуары',
+                    5: 'Жевательный табак',
+                    7: 'Одноразовые системы',
+                    8: 'Расходники',
+                    9: 'Устройства'
+                  }
+
+        
 
   return (
     <div className={styles.Category}>

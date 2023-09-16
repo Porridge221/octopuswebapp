@@ -27,6 +27,8 @@ function Account() {
     tg.BackButton.show();
 
     const discountLevel = {"Новый клиент": [3, '#f5d098']}
+
+    console.log(user_data);
     
     return (
         <div className={styles.root}>
@@ -45,7 +47,7 @@ function Account() {
                     <span style={{fontWeight: '800'}}>Телефон: </span><span>{user_data !== undefined && user_data.user.phone}</span>
                 </p>
                 <p style={{margin: '2px 0', marginBottom: '5px'}}>
-                    <span style={{fontWeight: '800'}}>Город: </span><span>{user_data !== undefined && (user_data.user.city_id=== 1 ? "Владивосток" : user_data.user.city_id=== 2 ? "Артем" : "Южно-Сахалинск")}</span>
+                    <span style={{fontWeight: '800'}}>Город: </span><span>{user_data !== null || undefined && (user_data.user.city_id !== undefined && user_data.user.city_id=== 1 ? "Владивосток" : user_data.user.city_id=== 2 ? "Артем" : "Южно-Сахалинск")}</span>
                 </p>
             </div>
             <div className={styles.AddInfoBox}>
