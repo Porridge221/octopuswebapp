@@ -73,7 +73,7 @@
     cursor: pointer;
     transition: color 500ms ease;
 
-    color: var(--tg-theme-text-color);
+    color: #000000;
     font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
         'Liberation Sans', sans-serif;
     font-size: 14px;

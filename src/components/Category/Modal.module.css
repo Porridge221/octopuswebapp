@@ -85,3 +85,8 @@
 .Slider {
     margin: 0 10px;
 }
+
+.inputPrice {
+    width: 10vw;
+    background-color: transparent;
+}

@@ -52,7 +52,19 @@ function Product() {
         })
     }
 
-    const path = ['Главная', 'Каталог', 'Жидкость']
+    const categories = {
+        6: 'Жидкости',
+        1: 'JUUL Type',
+        2: 'Pod Системы',
+        3: 'Аккумуляторы',
+        4: 'Аксессуары',
+        5: 'Жевательный табак',
+        7: 'Одноразовые системы',
+        8: 'Расходники',
+        9: 'Устройства'
+      }
+
+    const path = ['Главная', 'Каталог', categories[category_id]]
     const current = item.name;
 
     return (
@@ -60,9 +72,9 @@ function Product() {
         <Header path={path} current={current}/>
         <div className={styles.Image} ><img style={{'object-fit': 'contain'}} src={"https://miniature-prod.moysklad.ru/miniature/3a69a92f-3453-11ee-0a80-092500013563/documentminiature/83d9bfaa-6238-4567-8b41-e4f0b49d1e8c"} alt=''/></div>
         <div className={styles.Name}>{item.name}</div>
-        <div className={styles.Price}>{new Intl.NumberFormat('ru-RU', {style: 'currency', currency: 'RUB', minimumFractionDigits: 0}).format(item.price_vvo)}</div>
+        <div className={styles.Price}>{new Intl.NumberFormat('ru-RU', {style: 'currency', currency: 'RUB', minimumFractionDigits: 0}).format(item.price_vvo/100)}</div>
         <div className={styles.Characteristics}>
-            {0 > 1 && item.item_characteristics.map(characteristic => ( 
+            {item.item_characteristics.length > 0 && item.item_characteristics.map(characteristic => ( 
                 <div key={characteristic.name} className={styles.CharacteristicItem}>{characteristic.name + ': ' + characteristic.value}</div>
             ))}
         </div>

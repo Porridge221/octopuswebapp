@@ -45,9 +45,9 @@ function Category() {
                     7: 'Одноразовые системы',
                     8: 'Расходники',
                     9: 'Устройства'
-                  }
-
-        
+                  };
+  
+  console.log(priceRange);
 
   return (
     <div className={styles.Category}>
@@ -106,9 +106,10 @@ function Category() {
           <div className={modalStyles.VerticalBox}>
             <span>Цена:</span>
             <div className={modalStyles.HorizontalBox}>
-              <span>от {priceRange[0]} </span>
+              <span>от <input className={modalStyles.inputPrice} value={priceRange[0]} onChange={e => setPriceRange([parseInt(e.target.value), priceRange[1]])} type='number' /></span>
+              {/* <span>от {priceRange[0]} </span> */}
               <RangeSlider className={modalStyles.Slider} min={0} max={10000} value={priceRange} onInput={setPriceRange}/>
-              <span> до {priceRange[1]}</span>
+              <span> до <input className={modalStyles.inputPrice} value={priceRange[1]} onChange={e => setPriceRange([priceRange[0], parseInt(e.target.value)])} type='number' /></span>
             </div>
           </div>
           <div className={modalStyles.VerticalBox}>
