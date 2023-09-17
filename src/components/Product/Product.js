@@ -63,8 +63,10 @@ function Product() {
         8: 'Расходники',
         9: 'Устройства'
       }
-
-    const path = ['Главная', 'Каталог', categories[category_id]]
+    var path = ['Главная']
+    if (category_id < 500) {
+        path = ['Главная', 'Каталог', categories[category_id]]
+    }
     const current = item.name;
 
     return (

@@ -1,19 +1,22 @@
 .root {
-    display: flex;
-    align-items: center;
-    /* width: 90%; */
-    height: 28px;
-    /* outline: solid 1px #000;
-    outline-offset: -1px; */
+    /* display: flex;
+    align-items: center; */
+    /* height: 28px;
     border-radius: 8px;
-    background-color: #fff;
-    margin-left: 16px;
-    margin-right: 16px;
+    background-color: #fff; */
+    /* margin-left: 16px;
+    margin-right: 16px; */
     margin-bottom: 15px;
 
-    border: 1px solid;
+    /* border: 1px solid;
     border-color: #000000;
-    border-radius: 8px;
+    border-radius: 8px; */
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90vw;
 }
 
 .SearchIcon {
@@ -22,7 +25,7 @@
     margin-left: 8px;
 }
 
-.SearchText {
+.root > * {
     color: #898989;
     font-family: "Inter-Light", Helvetica;
     font-size: 14px;
@@ -31,3 +34,25 @@
     line-height: normal;
     padding-left: 8px;
 }
+
+
+.root {
+    color: #898989;
+    font-family: "Inter-Light", Helvetica;
+    font-size: 14px;
+    font-weight: 300;
+    letter-spacing: 0;
+    line-height: normal;
+    padding-left: 8px;
+}
+
+/* .app {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  } */
+  .dropdowncontainer {
+    width: 80%;
+  }

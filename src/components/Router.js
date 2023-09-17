@@ -7,6 +7,7 @@ import Product from './Product/Product'
 import Cart from './Cart/Cart'
 import OrderHistory from './OrderHistory/OrderHistory'
 import Account from './Account/Account'
+import ProductSearch from './ProductSearch/ProductSearch'
 const Router = () => {
     return <BrowserRouter>
         <Routes>
@@ -17,6 +18,7 @@ const Router = () => {
             <Route element={<Categories />} path='/home/categories/' />
             <Route element={<Category />} path='/home/categories/:id' />
             <Route element={<Product />} path='/home/categories/:id/product' />
+            <Route element={<ProductSearch />} path='/home/product' />
             <Route path='*' element={<div>  Not found  </div>} />
         </Routes>
     </BrowserRouter>

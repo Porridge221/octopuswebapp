@@ -1,0 +1,97 @@
+.root {
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+
+    /* width: 100vw; */
+    height: 100vh;
+    background-color: var(--tg-theme-bg-color);
+}
+
+.Image {
+    /* background-size: 100%; */
+    /* width: max-content;
+    height: max-content; */
+    width: 293px;
+    height: 187px;
+    /* background-image: url('../../../../../public/assets/Rectangle5.png'); */
+    /* background-image: url("https://miniature-prod.moysklad.ru/miniature/3a69a92f-3453-11ee-0a80-092500013563/documentminiature/83d9bfaa-6238-4567-8b41-e4f0b49d1e8c"); */
+    /* flex-grow: 2; */
+    margin: 0 32px;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    flex-grow: 1;
+}
+
+.Price {
+    color: var(--tg-theme-text-color);
+    font-family: "Inter-SemiBold", Helvetica, Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+        'Liberation Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0 32px;
+    margin-top: 16px;
+}
+
+.Name {
+    color: var(--tg-theme-text-color);
+    font-family: "Inter-SemiBold", Helvetica, Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+        'Liberation Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0 32px;
+    margin-top: 20px;
+}
+
+.Characteristics {
+    display: flex;
+    flex-direction: column;
+    margin: 0 32px;
+    margin-top: 16px;
+}
+
+.CharacteristicItem {
+    /* align-self: stretch; */
+    color: var(--tg-theme-text-color);
+  font-family: "Inter-Medium", Helvetica;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1.4rem;
+}
+
+.BuyButton {
+    background-color: #f5d098;
+    border-radius: 10px;
+    height: 42px;
+    width: 150px;
+
+    cursor: pointer;
+    transition: color 500ms ease;
+
+    margin: 0 29px;
+    margin-top: 21px;
+    margin-bottom: 41px;
+    padding: 5px 10px;
+    align-self: center;
+    text-align: center;
+    align-content: center;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    /* justify-self: end; */
+}
+
+.BuyButton:hover {
+    color: #93e411b7;
+}
+
+.ButtonLabel {
+    color: var(--tg-theme-text-color);
+    font-family: "Inter-SemiBold", Helvetica, Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+        'Liberation Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+}
