@@ -6,7 +6,7 @@ import useTelegram from '../../hooks/useTelegram';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Toggle from '../Toggle/Toggle'
 import FilterModal from './FilterModal/FilterModal';
-import { useState } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 
 import {AiOutlineClose} from "react-icons/ai";
 import modalStyles from './Modal.module.css';
@@ -28,7 +28,7 @@ function Category() {
     setData(data);
   };
 
-  const {tg} = useTelegram();
+  const {tg, initData} = useTelegram();
   const navigate = useNavigate();
 
   tg.onEvent('backButtonClicked', () => navigate('/home/categories/'));
@@ -49,6 +49,43 @@ function Category() {
   
   console.log(priceRange);
 
+
+  const fetchData = () => {
+    fetch("https://octopus-vape.ru/products/catalog/" + category_id, {method: 'GET', headers: {'Content-Type': 'application/json', 'Telegram-Data': initData,}})
+      .then(response => {
+        return response.json()
+      })
+      .then(data => {
+        setData(data);
+      })
+  }
+
+  useEffect(() => {
+
+    fetchData();
+
+    // eslint-disable-next-line
+  }, [])
+
+  const filteredItems = useMemo(()=>{
+    if (data === 0)
+      return 0;
+    var final = structuredClone(data)
+    final.forEach((p,index) => {
+      var filtered = []
+      p.items.forEach((item, _i)=>{
+          if(item.price_vvo/100 > priceRange[0] && item.price_vvo/100 < priceRange[1]){
+              filtered.push(item);
+          }
+        })
+      p.items = filtered
+      });
+      return final
+  },[priceRange, data]);
+
+  console.log(data);
+  console.log(filteredItems);
+
   return (
     <div className={styles.Category}>
       <div className={styles.MainBackground} >
@@ -64,7 +101,7 @@ function Category() {
         <Toggle label="ул. Русская, 46" toggled={true} /*onClick={logState}*//>
         <Toggle label="ул. Адмирала Фокина, 23в" toggled={true} /*onClick={logState}*//>
       </div>
-      <CategoryList className={styles.ItemList} handleCallback={handleCallback} category_id={category_id} />
+      <CategoryList className={styles.ItemList} result={filteredItems} category_id={category_id} />
       <FilterModal active={modalActive} setActive={setModalActive} >
         <div className={modalStyles.Header}>
           <span className={modalStyles.HeaderLabel}>Фильтры</span>
@@ -115,7 +152,7 @@ function Category() {
           <div className={modalStyles.VerticalBox}>
             <span>Производитель:</span>
             <Toggle label="Все" toggled={true} /*onClick={logState}*//>
-            {data!==0 && data.map(producer => ( <>
+            {data !== 0 && data.map(producer => ( <>
               <Toggle key={producer.id} label={producer.name} toggled={true} />
               </>
           ))}
