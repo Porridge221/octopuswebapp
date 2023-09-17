@@ -8,6 +8,8 @@ import {AiOutlineClose} from "react-icons/ai";
 import modalStyles from './Modal.module.css'
 import CheckItem from "../../OrderHistory/CheckItem/CheckItem";
 
+import getStore from '../../../services/getStore'
+
 function OrderList({user_data}) {
 
     const [modalActive, setModalActive] = useState(false);
@@ -79,7 +81,7 @@ function OrderList({user_data}) {
                 </div>
                 <div className={modalStyles.VerticalBox}>
                     <span style={{fontWeight: '600'}}>Пункт выдачи:</span>
-                    <span style={{color:'var(--tg-theme-hint-color)'}}>г. Владивосток, ул. Русская, 25. Ежедневно с 10:00 до 21:00</span>
+                    <span style={{color:'var(--tg-theme-hint-color)'}}>{getStore(modalOrder.store_id)}</span>
                     <span>Товары: {modalItemsCount > 0 &&  (modalItemsCount + ' шт.')}</span>
                     <div className={modalStyles.HorizontalBox}>
                         <span>Итог</span>

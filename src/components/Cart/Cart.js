@@ -16,6 +16,7 @@ import useTelegram from '../../hooks/useTelegram';
 
 function Cart() {
     const [user_data, setUserData] = useState();
+    const user_curr = useUser(false);
     const navigate = useNavigate();
 
     const {tg, initData} = useTelegram();
@@ -83,13 +84,13 @@ function Cart() {
         fetch("https://octopus-vape.ru/orders/", { method:'POST',headers: {
           'Content-Type': 'application/json',
           'Telegram-Data': initData,
-        }, body: JSON.stringify( {'user_id': 1, 'name': userName, 'phone': phoneNumber.slice(1), 'store_id': 1} )
+        }, body: JSON.stringify( {'user_id': 1, 'name': userName, 'phone': phoneNumber.slice(1), 'store_id': selectedStore} )
           })
           .then(response => {
-            return JSON.stringify( {'user_id': 1, 'name': userName, 'phone': phoneNumber.slice(1), 'store_id': 1} )
+            return JSON.stringify( {'user_id': 1, 'name': userName, 'phone': phoneNumber.slice(1), 'store_id': selectedStore} )
           })
           .then(data => {
-            console.log(JSON.stringify( {'user_id': 1, 'name': userName, 'phone': phoneNumber.slice(1), 'store_id': 1} ));
+            console.log(JSON.stringify( {'user_id': 1, 'name': userName, 'phone': phoneNumber.slice(1), 'store_id': selectedStore} ));
           })
           setModalActive(false);
           navigate("/home");
@@ -151,10 +152,27 @@ function Cart() {
                 <div className={modalStyles.VerticalBox}>
                     <span>Пункт выдачи</span>
                     <select className={modalStyles.Select} value={selectedStore} onChange={e => setSelectedStore(e.target.value)} >
-                        <option value="В любом">В любом</option>
-                        <option value="ул. Светланская, 9в">ул. Светланская, 9в</option>
-                        <option value="ул. Русская, 46">ул. Русская, 46</option>
-                        <option value="ул. Адмирала Фокина, 23в">ул. Адмирала Фокина, 23в</option>
+                        {user_curr.user.city_id === 1 ? <>
+                            <option label="ул. Русская, 46" value={16}>ул. Русская, 46</option>
+                            <option label="ул. Адмирала Фокина, 23в" value={15}>ул. Адмирала Фокина, 23в</option>
+                            <option label="ул. Набережная, 7Б" value={1}>ул. Набережная, 7Б</option>
+                            <option label="ул. Жигура, 12а" value={3}>ул. Жигура, 12а</option>
+                            </> : user_curr.user.city_id === 2 ? <>
+                                <option label="ул. Кирова, 2" value={20}>ул. Кирова, 2</option>
+                            </> : user_curr.user.city_id === 3 ? <>
+                            <option label="ул. Советская, 31, 3" value={2}>ул. Советская, 31, 3</option>
+                            <option label="ул. Сахалинская, 45А, 1" value={11}>ул. Сахалинская, 45А, 1</option>
+                            <option label="ул. Пуркаева М.А., 102В" value={24}>ул. Пуркаева М.А., 102В</option>
+                            </> : <>
+                            <option label="ул. Русская, 46" value={16}>ул. Русская, 46</option>
+                            <option label="ул. Адмирала Фокина, 23в" value={15}>ул. Адмирала Фокина, 23в</option>
+                            <option label="ул. Набережная, 7Б" value={1}>ул. Набережная, 7Б</option>
+                            <option label="ул. Жигура, 12а" value={3}>ул. Жигура, 12а</option>
+                            <option label="ул. Кирова, 2" value={20}>ул. Кирова, 2</option>
+                            <option label="ул. Советская, 31, 3" value={2}>ул. Советская, 31, 3</option>
+                            <option label="ул. Сахалинская, 45А, 1" value={11}>ул. Сахалинская, 45А, 1</option>
+                            <option label="ул. Пуркаева М.А., 102В" value={24}>ул. Пуркаева М.А., 102В</option>
+                        </> }
                     </select>
                     <span style={{marginTop: '5px'}}>Имя получателя</span>
                     <input name="myInput" className={modalStyles.Input} value={userName} onChange={e => setUserName(e.target.value)}/>

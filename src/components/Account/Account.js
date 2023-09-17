@@ -42,9 +42,9 @@ function Account() {
           })
           .then(data => {
             console.log(JSON.stringify( {'phone': phoneNumber.slice(1), 'city_id': selectedCity === 'Владивосток' ? 1 : selectedCity === 'Артем' ? 2 : 3} ));
+            setModalActive(false);
+            setUpdateScreen(updateScreen+1);
           })
-          setModalActive(false);
-          setUpdateScreen(updateScreen+1);
     }
 
     const fetchUser = () => {

@@ -14,8 +14,11 @@ import modalStyles from './Modal.module.css';
 import RangeSlider from 'react-range-slider-input';
 import 'react-range-slider-input/dist/style.css';
 import './slider.css';
+import useUser from '../../hooks/useUser';
 
 function Category() {
+  const user_data = useUser(false);
+
   const category_id = useLocation().state;
 
   const [modalActive, setModalActive] = useState(false);
@@ -49,6 +52,8 @@ function Category() {
   
   console.log(priceRange);
 
+  const [producerToggle, setProducerToggle] = useState({})
+
 
   const fetchData = () => {
     fetch("https://octopus-vape.ru/products/catalog/" + category_id, {method: 'GET', headers: {'Content-Type': 'application/json', 'Telegram-Data': initData,}})
@@ -59,6 +64,7 @@ function Category() {
         setData(data);
       })
   }
+
 
   useEffect(() => {
 
@@ -97,9 +103,32 @@ function Category() {
         <RxMixerHorizontal className={styles.MixerButton} onClick={() => setModalActive(true)} />      
       </div>
       <div className={styles.storeFilter}>
-        <Toggle label="ул. Светланская, 9в" toggled={true} /*onClick={logState}*//>
-        <Toggle label="ул. Русская, 46" toggled={true} /*onClick={logState}*//>
-        <Toggle label="ул. Адмирала Фокина, 23в" toggled={true} /*onClick={logState}*//>
+        {user_data.user.city_id === 1 ? <>
+          <Toggle label="ул. Русская, 46" toggled={true} /*onClick={logState} 16*//>
+          <Toggle label="ул. Адмирала Фокина, 23в" toggled={true} /*onClick={logState} 15*//>
+          <Toggle label="ул. Набережная, 7Б" toggled={true} /*onClick={logState}  1*//>
+          <Toggle label="ул. Жигура, 12а" toggled={true} /*onClick={logState}  3*//>
+        </> : user_data.user.city_id === 2 ? <>
+            <Toggle label="ул. Кирова, 2" toggled={true} /*onClick={logState}  20*//>
+        </> : user_data.user.city_id === 3 ? <>
+          <Toggle label="ул. Советская, 31, 3" toggled={true} /*onClick={logState}  2*//>
+          <Toggle label="ул. Сахалинская, 45А, 1" toggled={true} /*onClick={logState}  11*//>
+          <Toggle label="ул. Пуркаева М.А., 102В" toggled={true} /*onClick={logState}  24*//>
+        </> : <>
+          <Toggle label="ул. Русская, 46" toggled={true} /*onClick={logState} 16*//>
+          <Toggle label="ул. Адмирала Фокина, 23в" toggled={true} /*onClick={logState} 15*//>
+          <Toggle label="ул. Набережная, 7Б" toggled={true} /*onClick={logState}  1*//>
+          <Toggle label="ул. Жигура, 12а" toggled={true} /*onClick={logState}  3*//>
+          <Toggle label="ул. Кирова, 2" toggled={true} /*onClick={logState}  20*//>
+          <Toggle label="ул. Советская, 31, 3" toggled={true} /*onClick={logState}  2*//>
+          <Toggle label="ул. Сахалинская, 45А, 1" toggled={true} /*onClick={logState}  11*//>
+          <Toggle label="ул. Пуркаева М.А., 102В" toggled={true} /*onClick={logState}  24*//>
+        </> }
+        
+
+        
+
+        
       </div>
       <CategoryList className={styles.ItemList} result={filteredItems} category_id={category_id} />
       <FilterModal active={modalActive} setActive={setModalActive} >
@@ -111,10 +140,27 @@ function Category() {
         <div style={{'height': '70vh', 'overflowX': 'hidden','overflowY': 'auto', backgroundColor: 'var(--tg-theme-bg-color)'}}>          
           <div className={modalStyles.VerticalBox}>
             <span>Наличие в магазинах:</span>
-            <Toggle label="В любом" toggled={true} /*onClick={logState}*//>
-            <Toggle label="ул. Светланская, 9в" toggled={false} /*onClick={logState}*//>
-            <Toggle label="ул. Русская, 46" toggled={false} /*onClick={logState}*//>
-            <Toggle label="ул. Адмирала Фокина, 23в" toggled={false} /*onClick={logState}*//>
+              {user_data.user.city_id === 1 ? <>
+                <Toggle label="ул. Русская, 46" toggled={true} /*onClick={logState} 16*//>
+                <Toggle label="ул. Адмирала Фокина, 23в" toggled={true} /*onClick={logState} 15*//>
+                <Toggle label="ул. Набережная, 7Б" toggled={true} /*onClick={logState}  1*//>
+                <Toggle label="ул. Жигура, 12а" toggled={true} /*onClick={logState}  3*//>
+              </> : user_data.user.city_id === 2 ? <>
+                  <Toggle label="ул. Кирова, 2" toggled={true} /*onClick={logState}  20*//>
+              </> : user_data.user.city_id === 3 ? <>
+                <Toggle label="ул. Советская, 31, 3" toggled={true} /*onClick={logState}  2*//>
+                <Toggle label="ул. Сахалинская, 45А, 1" toggled={true} /*onClick={logState}  11*//>
+                <Toggle label="ул. Пуркаева М.А., 102В" toggled={true} /*onClick={logState}  24*//>
+              </> : <>
+                <Toggle label="ул. Русская, 46" toggled={true} /*onClick={logState} 16*//>
+                <Toggle label="ул. Адмирала Фокина, 23в" toggled={true} /*onClick={logState} 15*//>
+                <Toggle label="ул. Набережная, 7Б" toggled={true} /*onClick={logState}  1*//>
+                <Toggle label="ул. Жигура, 12а" toggled={true} /*onClick={logState}  3*//>
+                <Toggle label="ул. Кирова, 2" toggled={true} /*onClick={logState}  20*//>
+                <Toggle label="ул. Советская, 31, 3" toggled={true} /*onClick={logState}  2*//>
+                <Toggle label="ул. Сахалинская, 45А, 1" toggled={true} /*onClick={logState}  11*//>
+                <Toggle label="ул. Пуркаева М.А., 102В" toggled={true} /*onClick={logState}  24*//>
+              </> }
           </div>
           <div className={modalStyles.HorizontalBox}>
             <span>Тип никотина:</span>
@@ -152,8 +198,8 @@ function Category() {
           <div className={modalStyles.VerticalBox}>
             <span>Производитель:</span>
             <Toggle label="Все" toggled={true} /*onClick={logState}*//>
-            {data !== 0 && data.map(producer => ( <>
-              <Toggle key={producer.id} label={producer.name} toggled={true} />
+            {data !== 0 && data.map(producer => producer.items.length > 0 && ( <>
+              <Toggle key={producer.product_id} label={producer.name} toggled={true} />
               </>
           ))}
             <span className={modalStyles.ShowButton}>Показать ещё</span>
