@@ -1,12 +1,13 @@
 import styles from './Toggle.module.css'
 import { useState } from 'react';
 
-function Toggle({ label, toggled, onClick }) {
+function Toggle({ label, toggled, onClick, tog_id}) {
     const [isToggled, setToggle] = useState(toggled)
 
     const callback = () => {
         setToggle(!isToggled)
-        // onClick(!isToggled)
+        // console.log(tog_id);
+        // tog_id !== undefined && onClick(tog_id)
     }
 
     return (

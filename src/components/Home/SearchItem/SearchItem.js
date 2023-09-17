@@ -43,9 +43,11 @@ function SearchItem() {
     }
 
     function handleInput(data) {
+        
         setSelectInput(data);
         if (data.length > 2)
             return fetchData
+        
     }
 
     console.log(selectedOptions);
@@ -59,6 +61,7 @@ function SearchItem() {
               placeholder="Найти"
               value={selectedOptions}
               onChange={handleSelect}
+              inputValue={selectInput}
               onInputChange={handleInput}
               isSearchable={true}
             />
