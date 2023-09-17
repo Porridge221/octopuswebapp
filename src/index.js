@@ -4,6 +4,8 @@ import './index.css';
 import Router from './components/Router'
 import reportWebVitals from './reportWebVitals';
 
+window.Telegram.WebApp.expand();
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
