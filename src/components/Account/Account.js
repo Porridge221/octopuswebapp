@@ -27,7 +27,8 @@ function Account() {
     tg.onEvent('backButtonClicked', () => navigate('/home'));
     tg.BackButton.show();
 
-    const discountLevel = {"Новый клиент": [3, '#f5d098']}
+    const discountLevel = {"Новый клиент": [3, '#f5d098'],
+                            "No discount": [0, '#f5d098']}
 
     console.log(user_data);
 
