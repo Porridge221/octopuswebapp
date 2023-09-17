@@ -134,15 +134,9 @@ function CategoryList({handleCallback}) {
     // eslint-disable-next-line
   }, [])
 
-  const [scrollTop, setScrollTop] = useState(0);
-
-  const handleScroll = event => {
-    setScrollTop(event.currentTarget.scrollTop);
-  };
-
   return (
     result.length > 0 ? (
-      <div className={styles.root} onScroll={handleScroll}>
+      <div className={styles.root} onScroll={this.listenScrollEvent.bind(this)}>
           {result.map(producer => ( 
             <CategoryGroup key={producer.product_id} producer={producer}/>
           ))}
