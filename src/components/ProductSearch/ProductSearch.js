@@ -67,7 +67,7 @@ function ProductSearch() {
     return (
     <div className={styles.root}>
         <Header path={path} current={current}/>
-        <div className={styles.Image} ><img style={{'object-fit': 'contain'}} src={"https://miniature-prod.moysklad.ru/miniature/3a69a92f-3453-11ee-0a80-092500013563/documentminiature/83d9bfaa-6238-4567-8b41-e4f0b49d1e8c"} alt=''/></div>
+        <div className={styles.Image} ><img style={{'object-fit': 'contain'}} src={process.env.PUBLIC_URL + "/assets/AccountImage.png"} alt=''/></div>
         <div className={styles.Name}>{item !== undefined && item.name}</div>
         <div className={styles.Price}>{ item === undefined ? '####' : new Intl.NumberFormat('ru-RU', {style: 'currency', currency: 'RUB', minimumFractionDigits: 0}).format(item.price_vvo/100)}</div>
         <div className={styles.Characteristics}>
