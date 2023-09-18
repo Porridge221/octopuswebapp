@@ -19,6 +19,8 @@ function App() {
   //   // console.log(user_data);
   // })
 
+  tg.showPopup(['hello', 'its me']);
+
   return (
     <div className='App'>
       <AccountItem user_data={user_data}/>
