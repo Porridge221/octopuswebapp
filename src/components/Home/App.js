@@ -10,6 +10,9 @@ import useUser from '../../hooks/useUser';
 
 function App() {
   const {tg} = useTelegram();
+  
+  tg.showPopup({title:'hello', message:'its me'});
+
   const user_data = useUser(true);
 
   tg.BackButton.hide();
@@ -18,8 +21,6 @@ function App() {
   //   tg.expand();
   //   // console.log(user_data);
   // })
-
-  tg.showPopup({title:'hello', message:'its me'});
 
   return (
     <div className='App'>
