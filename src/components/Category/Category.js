@@ -87,8 +87,7 @@ function Category() {
   useEffect(() => {
 
     fetchData();
-
-    // eslint-disable-next-line
+    
   }, [storeRU, storeFK, storeKIR, storeNAB, storePYR, storeSH, storeSOV, storeZhig])
 
   const filteredItems = useMemo(()=>{
