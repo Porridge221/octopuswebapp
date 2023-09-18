@@ -29,7 +29,7 @@ function Cart() {
 
     const [phoneNumber, setPhoneNumber] = useState();
 
-    const [selectedStore, setSelectedStore] = useState('ул. Адмирала Фокина, 23в');
+    const [selectedStore, setSelectedStore] = useState(user_curr.user.city_id === undefined || user_curr.user.city_id === null || user_curr.user.city_id === 1 ? 16 : user_curr.user.city_id === 2 ? 20 : 2);
 
     const fetchCart = () => {
         fetch("https://octopus-vape.ru/carts/1", {method: 'GET', headers: {'Content-Type': 'application/json', 'Telegram-Data': initData,}})

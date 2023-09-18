@@ -19,6 +19,14 @@ import useUser from '../../hooks/useUser';
 function Category() {
   const user_data = useUser(false);
   const [storeZhig, setStoreZhig] = useState(true);
+  const [storeRU, setStoreRU] = useState(true);
+  const [storeFK, setStoreFK] = useState(true);
+  const [storeNAB, setStoreNAB] = useState(true);
+  const [storeKIR, setStoreKIR] = useState(true);
+  const [storeSOV, setStoreSOV] = useState(true);
+  const [storeSH, setStoreSH] = useState(true);
+  const [storePYR, setStorePYR] = useState(true);
+
   const [storesToggle, setStoreToggles] = useState({16: true, 15: true, 1: true, 3: true, 20: true, 2: true, 11: true, 24: true});
 
   const category_id = useLocation().state;
@@ -61,8 +69,12 @@ function Category() {
     // Object.keys(myObject).forEach(function(key, index) {
     //   myObject[key] *= 2;
     // });
-
-    fetch("https://octopus-vape.ru/products/catalog/" + category_id + '?' + 'stores=16&'+ 'stores=15&'+ 'stores=1&'+ 'stores=3&'+ 'stores=20&'+ 'stores=2&'+ 'stores=11&'+ 'stores=24', {method: 'GET', headers: {'Content-Type': 'application/json', 'Telegram-Data': initData,}})
+    var query = (storeRU ? 'stores=16&' : '') + (storeFK ? 'stores=15&' : '') + (storeNAB ? 'stores=1&' : '') + (storeZhig ? 'stores=3&' : '') + (storeKIR ? 'stores=20&' : '') + (storeSOV ? 'stores=2&' : '') + (storeSH ? 'stores=11&' : '') + (storePYR ? 'stores=24&' : '');
+    if (query === '') {
+      setData(0);
+      return;
+    }
+    fetch("https://octopus-vape.ru/products/catalog/" + category_id + '?' + query, {method: 'GET', headers: {'Content-Type': 'application/json', 'Telegram-Data': initData,}})
       .then(response => {
         return response.json()
       })
@@ -77,7 +89,7 @@ function Category() {
     fetchData();
 
     // eslint-disable-next-line
-  }, [])
+  }, [storeRU, storeFK, storeKIR, storeNAB, storePYR, storeSH, storeSOV, storeZhig])
 
   const filteredItems = useMemo(()=>{
     if (data === 0)
@@ -98,6 +110,8 @@ function Category() {
   console.log(data);
   console.log(filteredItems);
   console.log(storeZhig);
+  console.log(storeRU);
+  console.log(storeSH);
 
   function storesHandler(id) {
     setStoreToggles({...storesToggle, id: storesToggle[id] ? false : true})
@@ -115,25 +129,25 @@ function Category() {
       </div>
       <div className={styles.storeFilter}>
         {user_data.user.city_id === 1 ? <>
-          <Toggle label="ул. Русская, 46" toggled={storesToggle[16]}  /*onClick={logState} 16*//>
-          <Toggle label="ул. Адмирала Фокина, 23в" toggled={storesToggle[15]} /*onClick={logState} 15*//>
-          <Toggle label="ул. Набережная, 7Б" toggled={storesToggle[1]} /*onClick={logState}  1*//>
-          <Toggle label="ул. Жигура, 12а" toggled={storesToggle[3]} /*onClick={logState}  3*//>
+          <Toggle label="ул. Русская, 46" toggled={storeRU}  setStore={setStoreRU}/*onClick={logState} 16*//>
+          <Toggle label="ул. Адмирала Фокина, 23в" toggled={storeFK}  setStore={setStoreFK} /*onClick={logState} 15*//>
+          <Toggle label="ул. Набережная, 7Б" toggled={storeNAB}  setStore={setStoreNAB} /*onClick={logState}  1*//>
+          <Toggle label="ул. Жигура, 12а" toggled={storeZhig}  setStore={setStoreZhig} /*onClick={logState}  3*//>
         </> : user_data.user.city_id === 2 ? <>
-            <Toggle label="ул. Кирова, 2" toggled={storesToggle[20]} /*onClick={logState}  20*//>
+            <Toggle label="ул. Кирова, 2" toggled={storeKIR}  setStore={setStoreKIR} /*onClick={logState}  20*//>
         </> : user_data.user.city_id === 3 ? <>
-          <Toggle label="ул. Советская, 31, 3" toggled={storesToggle[2]} /*onClick={logState}  2*//>
-          <Toggle label="ул. Сахалинская, 45А, 1" toggled={storesToggle[11]} /*onClick={logState}  11*//>
-          <Toggle label="ул. Пуркаева М.А., 102В" toggled={storesToggle[24]} /*onClick={logState}  24*//>
+          <Toggle label="ул. Советская, 31, 3" toggled={storeSOV}  setStore={setStoreSOV} /*onClick={logState}  2*//>
+          <Toggle label="ул. Сахалинская, 45А, 1" toggled={storeSH}  setStore={setStoreSH} /*onClick={logState}  11*//>
+          <Toggle label="ул. Пуркаева М.А., 102В" toggled={storePYR}  setStore={setStorePYR} /*onClick={logState}  24*//>
         </> : <>
-          <Toggle label="ул. Русская, 46" toggled={storesToggle[16]}/*onClick={logState} 16*//>
-          <Toggle label="ул. Адмирала Фокина, 23в" toggled={storesToggle[15]} /*onClick={logState} 15*//>
-          <Toggle label="ул. Набережная, 7Б" toggled={storesToggle[1]} /*onClick={logState}  1*//>
-          <span onClick={() => setStoreZhig(!storeZhig)}><Toggle label="ул. Жигура, 12а" toggled={storeZhig}/*onClick={logState}  3*//></span>
-          <Toggle label="ул. Кирова, 2" toggled={storesToggle[20]} /*onClick={logState}  20*//>
-          <Toggle label="ул. Советская, 31, 3" toggled={storesToggle[2]} /*onClick={logState}  2*//>
-          <Toggle label="ул. Сахалинская, 45А, 1" toggled={storesToggle[11]} /*onClick={logState}  11*//>
-          <Toggle label="ул. Пуркаева М.А., 102В" toggled={storesToggle[24]} /*onClick={logState}  24*//>
+          <Toggle label="ул. Русская, 46" toggled={storeRU}  setStore={setStoreRU}/*onClick={logState} 16*//>
+          <Toggle label="ул. Адмирала Фокина, 23в" toggled={storeFK}  setStore={setStoreFK} /*onClick={logState} 15*//>
+          <Toggle label="ул. Набережная, 7Б" toggled={storeNAB}  setStore={setStoreNAB} /*onClick={logState}  1*//>
+          <Toggle label="ул. Жигура, 12а" toggled={storeZhig} setStore={setStoreZhig}/*onClick={logState}  3*//>
+          <Toggle label="ул. Кирова, 2" toggled={storeKIR}  setStore={setStoreKIR} /*onClick={logState}  20*//>
+          <Toggle label="ул. Советская, 31, 3" toggled={storeSOV}  setStore={setStoreSOV} /*onClick={logState}  2*//>
+          <Toggle label="ул. Сахалинская, 45А, 1" toggled={storeSH}  setStore={setStoreSH} /*onClick={logState}  11*//>
+          <Toggle label="ул. Пуркаева М.А., 102В" toggled={storePYR}  setStore={setStorePYR} /*onClick={logState}  24*//>
         </> }
         
 
@@ -152,25 +166,25 @@ function Category() {
           <div className={modalStyles.VerticalBox}>
             <span>Наличие в магазинах:</span>
               {user_data.user.city_id === 1 ? <>
-                <Toggle label="ул. Русская, 46" toggled={true} /*onClick={logState} 16*//>
-                <Toggle label="ул. Адмирала Фокина, 23в" toggled={true} /*onClick={logState} 15*//>
-                <Toggle label="ул. Набережная, 7Б" toggled={true} /*onClick={logState}  1*//>
-                <Toggle label="ул. Жигура, 12а" toggled={true} /*onClick={logState}  3*//>
+                <Toggle label="ул. Русская, 46" toggled={storeRU}  setStore={setStoreRU} /*onClick={logState} 16*//>
+                <Toggle label="ул. Адмирала Фокина, 23в" toggled={storeFK}  setStore={setStoreFK} /*onClick={logState} 15*//>
+                <Toggle label="ул. Набережная, 7Б" toggled={storeNAB}  setStore={setStoreNAB} /*onClick={logState}  1*//>
+                <Toggle label="ул. Жигура, 12а" toggled={storeZhig}  setStore={setStoreZhig} /*onClick={logState}  3*//>
               </> : user_data.user.city_id === 2 ? <>
-                  <Toggle label="ул. Кирова, 2" toggled={true} /*onClick={logState}  20*//>
+                  <Toggle label="ул. Кирова, 2" toggled={storeKIR}  setStore={setStoreKIR} /*onClick={logState}  20*//>
               </> : user_data.user.city_id === 3 ? <>
-                <Toggle label="ул. Советская, 31, 3" toggled={true} /*onClick={logState}  2*//>
-                <Toggle label="ул. Сахалинская, 45А, 1" toggled={true} /*onClick={logState}  11*//>
-                <Toggle label="ул. Пуркаева М.А., 102В" toggled={true} /*onClick={logState}  24*//>
+                <Toggle label="ул. Советская, 31, 3" toggled={storeSOV}  setStore={setStoreSOV} /*onClick={logState}  2*//>
+                <Toggle label="ул. Сахалинская, 45А, 1" toggled={storeSH}  setStore={setStoreSH} /*onClick={logState}  11*//>
+                <Toggle label="ул. Пуркаева М.А., 102В" toggled={storePYR}  setStore={setStorePYR} /*onClick={logState}  24*//>
               </> : <>
-                <Toggle label="ул. Русская, 46" toggled={true} /*onClick={logState} 16*//>
-                <Toggle label="ул. Адмирала Фокина, 23в" toggled={true} /*onClick={logState} 15*//>
-                <Toggle label="ул. Набережная, 7Б" toggled={true} /*onClick={logState}  1*//>
-                <Toggle label="ул. Жигура, 12а" toggled={storesToggle[3]} /*onClick={logState}  3*//>
-                <Toggle label="ул. Кирова, 2" toggled={true} /*onClick={logState}  20*//>
-                <Toggle label="ул. Советская, 31, 3" toggled={true} /*onClick={logState}  2*//>
-                <Toggle label="ул. Сахалинская, 45А, 1" toggled={true} /*onClick={logState}  11*//>
-                <Toggle label="ул. Пуркаева М.А., 102В" toggled={true} /*onClick={logState}  24*//>
+                <Toggle label="ул. Русская, 46" toggled={storeRU}  setStore={setStoreRU} /*onClick={logState} 16*//>
+                <Toggle label="ул. Адмирала Фокина, 23в" toggled={storeFK}  setStore={setStoreFK} /*onClick={logState} 15*//>
+                <Toggle label="ул. Набережная, 7Б" toggled={storeNAB}  setStore={setStoreNAB} /*onClick={logState}  1*//>
+                <Toggle label="ул. Жигура, 12а" toggled={storeZhig}  setStore={setStoreZhig} /*onClick={logState}  3*//>
+                <Toggle label="ул. Кирова, 2" toggled={storeKIR}  setStore={setStoreKIR} /*onClick={logState}  20*//>
+                <Toggle label="ул. Советская, 31, 3" toggled={storeSOV}  setStore={setStoreSOV} /*onClick={logState}  2*//>
+                <Toggle label="ул. Сахалинская, 45А, 1" toggled={storeSH}  setStore={setStoreSH} /*onClick={logState}  11*//>
+                <Toggle label="ул. Пуркаева М.А., 102В" toggled={storePYR}  setStore={setStorePYR} /*onClick={logState}  24*//>
               </> }
           </div>
           <div className={modalStyles.HorizontalBox}>

@@ -27,7 +27,7 @@ function App() {
   }
 
   useEffect(() => {
-    user_data !== undefined & !showed && (user_data.phone === null || user_data.phone === undefined) & (user_data.city_id === null || user_data.city_id === undefined) && handler();
+    user_data !== undefined && !showed && (user_data.phone === null || user_data.phone === undefined) && (user_data.city_id === null || user_data.city_id === undefined) && handler();
   }, [user_data])
 
   return (
