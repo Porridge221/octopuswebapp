@@ -4,5 +4,6 @@
     display: flex;
     flex-direction: column;
     overflow-x: hidden;
+    overflow-y: scroll;
     background-color: var(--tg-theme-bg-color);
 }

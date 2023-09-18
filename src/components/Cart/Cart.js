@@ -119,11 +119,14 @@ function Cart() {
 
     return (
         <div className={styles.root}>
-            <Header fetchDeleteAllCart={fetchDeleteAllCart} />
-            {user_data !== undefined && user_data.items.length > 0 && (<div className={styles.ItemList} >
+            <Header fetchDeleteAllCart={fetchDeleteAllCart} user_data={user_data} />
+            {user_data !== undefined && user_data.items.length > 0 ? (<div className={styles.ItemList} >
                     {user_data.items.map(order => (
                         <CartItem key={order.variant_id} order={order} cart_id={user_data.cart_id} fetchDeleteOne={fetchDeleteOne} updateScreen={updateScreen} setUpdateScreen={setUpdateScreen} />
                     ))}
+            </div>) : (<div className={styles.EmptyBox} >
+                <img className={styles.iconEmpty} src={process.env.PUBLIC_URL + '/assets/emptyHistory.svg'} alt=''/>
+                <span className={styles.EmptyLabel}>Корзина пуста {':('}</span>
             </div>) }
             {/* <div className={styles.ItemList}>
                 <CartItem />
@@ -131,7 +134,7 @@ function Cart() {
                 <CartItem />
                 <CartItem />
             </div> */}
-            <div className={styles.OrderBox} >
+            {user_data !== undefined && user_data.items.length > 0 && (<div className={styles.OrderBox} >
                 <div className={styles.OrderInfo}>
                     <div className={styles.OrderLabel}>Итог:</div>
                     <br />
@@ -141,7 +144,8 @@ function Cart() {
                     <span>Общая стоимость</span><span>{new Intl.NumberFormat('ru-RU', {style: 'currency', currency: 'RUB', minimumFractionDigits: 0}).format(cartPrice)}</span>
                 </div>
                 <div className={styles.ConfirmButton} onClick={() => setModalActive(true)}>Подтвердить</div>
-            </div>
+            </div>)}
+            
             <FilterModal active={modalActive} setActive={setModalActive} >
                 {/* backgroundColor: 'var(--tg-theme-secondary-bg-color) */}
             <div style={{'width': '70vw', 'overflowX': 'hidden','overflowY': 'auto', backgroundColor: 'var(--tg-theme-bg-color)'}}>

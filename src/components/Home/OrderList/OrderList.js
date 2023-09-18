@@ -59,11 +59,14 @@ function OrderList({user_data}) {
                 </Link>
             </div>
             {/* <div className={styles.orderList}> */}
-                {user_data !== undefined && user_data.orders.length > 0 && (<div className={styles.orderList} >
+                {user_data !== undefined && user_data.orders.length > 0 ? (<div className={styles.orderList} >
                     {user_data.orders.map(order => (
                         <OrderItem key={order.order_id} order={order} handleSetModal={handleSetModal}/>
                     ))}
-                </div>) }
+                </div>) : (<div className={styles.EmptyBox} >
+                <img className={styles.iconEmpty} src={process.env.PUBLIC_URL + '/assets/emptyHistory.svg'} alt=''/>
+                <span className={styles.EmptyLabel}>Текущие заказы отсутствуют {':('}</span>
+            </div>) }
                 {/* <OrderItem order={orders[0]} handleSetModal={handleSetModal}/>
                 <OrderItem order={orders[1]} handleSetModal={handleSetModal}/> */}
             {/* </div> */}
