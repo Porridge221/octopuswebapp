@@ -19,7 +19,7 @@ function App() {
   //   // console.log(user_data);
   // })
 
-  tg.showPopup(['hello', 'its me']);
+  tg.showPopup({title:'hello', message:'its me'});
 
   return (
     <div className='App'>
