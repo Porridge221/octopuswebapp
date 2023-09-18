@@ -5,7 +5,8 @@ function InfoCardList() {
     const cards = [
         {id: 1, style: 'HowToUse', text: 'Про Бота'},
         {id: 2, style: 'Loyalty', text: 'Про уровень лояльности'},
-        {id: 3, style: 'FAQ', text: 'FAQ'}
+        {id: 3, style: 'FAQ', text: 'FAQ'},
+        {id: 4, style: 'CREA', text: 'Разработчики'}
     ]
 
     return (
@@ -20,7 +21,7 @@ function InfoCardList() {
                 <InfoCard card={cards[2]}/>
             </li>
             <li key={4}>
-                <InfoCard card={cards[0]}/>
+                <InfoCard card={cards[3]}/>
             </li>
             <li key={5}>
                 <InfoCard card={cards[1]}/>

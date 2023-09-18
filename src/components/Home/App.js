@@ -10,6 +10,8 @@ import useUser from '../../hooks/useUser';
 import FilterModal from '../Category/FilterModal/FilterModal';
 import modalStyles from './Modal.module.css'
 
+var showed = false;
+
 function App() {
   const {tg} = useTelegram();
 
@@ -19,8 +21,13 @@ function App() {
 
   tg.BackButton.hide();
 
+  const handler = () => {
+    setModalActive(true);
+    showed=true;
+  }
+
   useEffect(() => {
-    user_data !== undefined && user_data.phone !== null & user_data.city_id !== null && setModalActive(true);
+    user_data !== undefined & !showed && (user_data.phone === null || user_data.phone === undefined) & (user_data.city_id === null || user_data.city_id === undefined) && handler();
   }, [user_data])
 
   return (
@@ -42,7 +49,7 @@ function App() {
             </div>
             <div className={modalStyles.VerticalBox}>
               <div>Для пользования ботом необходимо подтвердить свой возраст.</div>
-              <div>Вам уже исполнилось 18 лет?</div>
+              <div>Вам уже исполнилось <span style={{color: '#80BAE4'}}>18 лет?</span></div>
             </div>
             <div className={modalStyles.HorizontalBox}>
               <div className={modalStyles.ConfirmButton} onClick={() => tg.close()}>Нет</div>

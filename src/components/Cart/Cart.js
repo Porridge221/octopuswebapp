@@ -84,13 +84,13 @@ function Cart() {
         fetch("https://octopus-vape.ru/orders/", { method:'POST',headers: {
           'Content-Type': 'application/json',
           'Telegram-Data': initData,
-        }, body: JSON.stringify( {'user_id': 1, 'name': userName, 'phone': phoneNumber.slice(1), 'store_id': selectedStore} )
+        }, body: JSON.stringify( {'user_id': 1, 'name': userName, 'phone': phoneNumber.slice(1), 'store_id': Number(selectedStore)} )
           })
           .then(response => {
-            return JSON.stringify( {'user_id': 1, 'name': userName, 'phone': phoneNumber.slice(1), 'store_id': selectedStore} )
+            return JSON.stringify( {'user_id': 1, 'name': userName, 'phone': phoneNumber.slice(1), 'store_id': Number(selectedStore)} )
           })
           .then(data => {
-            console.log(JSON.stringify( {'user_id': 1, 'name': userName, 'phone': phoneNumber.slice(1), 'store_id': selectedStore} ));
+            console.log(JSON.stringify( {'user_id': 1, 'name': userName, 'phone': phoneNumber.slice(1), 'store_id': Number(selectedStore)} ));
           })
           setModalActive(false);
           navigate("/home");

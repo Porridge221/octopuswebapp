@@ -5,6 +5,8 @@ import { useState } from 'react';
 import useTelegram from '../../../hooks/useTelegram';
 import { useNavigate, useLocation } from 'react-router-dom';
 
+var prev = 0;
+
 function SearchItem() {
     const navigate = useNavigate();
 
@@ -43,10 +45,10 @@ function SearchItem() {
     }
 
     function handleInput(data) {
-        
-        setSelectInput(data);
-        if (data.length > 2)
-            return fetchData
+          setSelectInput(data);
+          if (data.length >= 2) {  
+            fetchData(data);
+          }
         
     }
 
@@ -59,7 +61,7 @@ function SearchItem() {
             <Select
               options={optionList}
               placeholder="Найти"
-              value={selectedOptions}
+              value={selectInput}
               onChange={handleSelect}
               inputValue={selectInput}
               onInputChange={handleInput}

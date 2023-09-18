@@ -15,32 +15,47 @@
 }
 
 .rectangleHowToUse {
-  width: 95px;
-  height: 95px;
-  background-image: radial-gradient(
+  /* width: 95px;
+  height: 95px; */
+  /* background-image: radial-gradient(
     ellipse 61.35144503349347px 314.20994204289303px at 32.99998640887112px 36.500004272146874px,
     #6d3a96ff 0%,
     #dc287fff 100%
-  );
+  ); */
+  width: 95px;
+  height: 95px;
+  background-size: cover;
+  border-radius: 10px;
+  background: url('../../../public/assets/robot_info.png'), radial-gradient(50% 50% at 50% 50%, rgb(109.44, 58.05, 149.81) 0%, rgb(219.94, 40.32, 126.54) 100%);
+
 }
 
 .rectangleLoyalty {
   width: 95px;
   height: 95px;
-  background-image: radial-gradient(
-    ellipse 61.35144503349347px 314.20994204289303px at 32.99998640887112px 36.500004272146874px,
-    #6D3A96ff 0%,
-    #80BAE4ff 100%
-  );
+  background-size: cover;
+  border-radius: 10px;
+  background: url('../../../public/assets/pig_info.png'), radial-gradient(80% 80% at 60% 60%, rgb(109.44, 58.05, 149.81) 0%, rgb(128.5, 186.46, 228.44) 80%);
 }
 
 .rectangleFAQ {
   width: 95px;
   height: 95px;
-  background-image: radial-gradient(
-    ellipse 61.35144503349347px 314.20994204289303px at 32.99998640887112px 36.500004272146874px,
-    #DC287Fff 0%,
-    #F5D098ff 100%
+  background-size: cover;
+  border-radius: 10px;
+  background: url('../../../public/assets/qbox_info.png'), radial-gradient(50% 50% at 50% 50%, rgb(183, 42, 111) 0%, rgb(206.47, 168.78, 112.25) 100%);
+}
+
+.rectangleCREA {
+  width: 95px;
+  height: 95px;
+  background-size: cover;
+  border-radius: 10px;
+  background: url('../../../public/assets/creageese_info.png'),  radial-gradient(
+    50% 50% at 50% 50%,
+    rgb(109.44, 58.05, 149.81) 49.48%,
+    rgb(245.44, 208.21, 152.38) 100%,
+    rgb(245.44, 208.21, 152.38) 100%
   );
 }
 
