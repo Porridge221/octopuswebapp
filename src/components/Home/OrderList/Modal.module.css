@@ -52,7 +52,7 @@
     line-height: normal;
     white-space: nowrap;
     /* margin-bottom: 8px; */
-    margin: 0 0;
+    margin: 10px 0;
 }
 
 .CloseButton {
@@ -70,7 +70,7 @@
     /* align-items: center; */
     /* margin: 0 32px; */
     margin-bottom: 20px;
-    height: 60vh;
+    height: 58vh;
     overflow-x: hidden;
     overflow-y: auto;
 

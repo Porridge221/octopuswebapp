@@ -50,8 +50,8 @@ function CartItem({order, cart_id, fetchDeleteOne, updateScreen, setUpdateScreen
                 <img style={{'objectFit': 'contain'}} src={process.env.PUBLIC_URL + "/assets/AccountImage.png"} alt=''/>
             </div>
             <div className={styles.Info} >
+            <div className={styles.Name} >{order.name}</div>
                 <div className={styles.Price} >{new Intl.NumberFormat('ru-RU', {style: 'currency', currency: 'RUB', minimumFractionDigits: 0}).format(order.price_vvo/100)}</div>
-                <div className={styles.Name} >{order.name}</div>
                 <div className={styles.RemoveButton} onClick={() => fetchDeleteOne(order)} >Удалить</div>
             </div>
             <div className={styles.CountInput} >

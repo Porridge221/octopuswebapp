@@ -22,7 +22,7 @@
 .AccountImage {
     /* margin: 10px; */
     /* margin-bottom: 0%; */
-    background-image:url('../../../../public/assets/AccountImage.png');
+    /* background-image:url('../../../../public/assets/AccountImage.png'); */
     height: 52px;
     width: 52px;
     background-size: cover;
@@ -142,7 +142,7 @@
 }
 
 .CartLink {
-    margin-left: 5%;
+    margin-left: 15px;
     display: flex;
     align-items: center;
     justify-content: center;

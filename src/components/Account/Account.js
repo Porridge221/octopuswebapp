@@ -55,6 +55,8 @@ function Account() {
           })
           .then(data => {
             setUserData(data);
+            //setPhoneNumber('79623389016');
+            //console.log(data?.user.phone);
           })
       }
     
@@ -71,12 +73,12 @@ function Account() {
             </div>
             <span className={styles.UserName}>{user?.username}</span>
             <div className={styles.UserDiscountBox}>
-                <span className={styles.UserDiscount}>{user_data !== undefined && discountLevel[user_data.user.discount_group][0]}% от заказа на ваш счет</span>
+                <span className={styles.UserDiscount}>{user_data !== undefined && user_data.user.discount_group}</span>
             </div>
             <div className={styles.UserInfoBox}>
-                <p style={{margin: '2px 0', marginBottom: '5px', fontWeight: '800'}}>
+                {/* <p style={{margin: '2px 0', marginBottom: '5px', fontWeight: '800'}}>
                     <span style={{fontWeight: '800'}}>Статус: </span><span style={{color: user_data !== undefined && discountLevel[user_data.user.discount_group][1]}}>{user_data !== undefined && user_data.user.discount_group}</span>
-                </p>
+                </p> */}
                 <p style={{margin: '2px 0', marginBottom: '5px'}}>
                     <span style={{fontWeight: '800'}}>Телефон: </span><span>{user_data !== undefined && user_data.user.phone}</span>
                 </p>

@@ -9,7 +9,8 @@ function AccountItem({user_data}) {
     return (
         <div className={styles.root}>
             <Link className={styles.AccountImageBox} to='/account'>
-                <div className={styles.AccountImage}/>
+                {/* <div className={styles.AccountImage}/> */}
+                <img className={styles.AccountImage} src={user?.photo_url === undefined ? (process.env.PUBLIC_URL + "/assets/AccountImage.png") : user.photo_url} alt=''/>
             </Link>
             <Link className={styles.UserBox} to='/account'>
                 <div className={styles.AccountBlock}>
