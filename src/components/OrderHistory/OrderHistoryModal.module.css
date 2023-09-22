@@ -23,7 +23,7 @@
 .VerticalBox * {
     color: var(--tg-theme-text-color);
     font-family: "Inter-SemiBold", Helvetica;
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 500;
     line-height: normal;
     /* white-space: nowrap; */

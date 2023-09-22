@@ -14,6 +14,8 @@ import useUser from '../../hooks/useUser';
 import { useNavigate } from "react-router-dom";
 import useTelegram from '../../hooks/useTelegram';
 
+import CartService from '../../services/cartService';
+
 function Cart() {
     const [user_data, setUserData] = useState();
     const user_curr = useUser(false);
@@ -31,18 +33,18 @@ function Cart() {
 
     const [selectedStore, setSelectedStore] = useState(user_curr.user.city_id === undefined || user_curr.user.city_id === null || user_curr.user.city_id === 1 ? 16 : user_curr.user.city_id === 2 ? 20 : 2);
 
-    const fetchCart = () => {
-        fetch("https://octopus-vape.ru/carts/1", {method: 'GET', headers: {'Content-Type': 'application/json', 'Telegram-Data': initData,}})
-          .then(response => {
-            return response.json()
-          })
-          .then(data => {
-            setUserData(data);
-            console.log(data);
-        })
+    // const fetchCart = () => {
+    //     fetch("https://octopus-vape.ru/carts/1", {method: 'GET', headers: {'Content-Type': 'application/json', 'Telegram-Data': initData,}})
+    //       .then(response => {
+    //         return response.json()
+    //       })
+    //       .then(data => {
+    //         setUserData(data);
+    //         console.log(data);
+    //     })
 
-        return true;
-    }
+    //     return true;
+    // }
 
     const [updateScreen, setUpdateScreen] = useState(1);
 
@@ -102,25 +104,26 @@ function Cart() {
         console.log('count update');
         var count = 0;
         var price = 0;
-        user_data !== undefined && user_data.items.length > 0 &&
+        user_data !== undefined && user_data?.items?.length > 0 &&
             // user_data.cart.items.map(order => {count += order.count; price += order.price_vvo/100 * order.count;} )
             user_data.items.forEach(order => {
                 count += order.count; price += order.price_vvo/100 * order.count;
         });
         setCartItemCount(count);
         setCartPrice(price);
-    }, [user_data, fetchCart]);
+    }, [user_data, setUserData, CartService]);
 
     useEffect(() => {
         console.log("cart effect");
         console.log(user_data);
-        fetchCart();
+        // fetchCart();
+        return CartService({isUpdate: true, isSet: true, setUserData: setUserData});
     }, [updateScreen])
 
     return (
         <div className={styles.root}>
             <Header fetchDeleteAllCart={fetchDeleteAllCart} user_data={user_data} />
-            {user_data !== undefined && user_data.items.length > 0 ? (<div className={styles.ItemList} >
+            {user_data !== undefined && user_data?.items?.length > 0 ? (<div className={styles.ItemList} >
                     {user_data.items.map(order => (
                         <CartItem key={order.variant_id} order={order} cart_id={user_data.cart_id} fetchDeleteOne={fetchDeleteOne} updateScreen={updateScreen} setUpdateScreen={setUpdateScreen} />
                     ))}
@@ -134,7 +137,7 @@ function Cart() {
                 <CartItem />
                 <CartItem />
             </div> */}
-            {user_data !== undefined && user_data.items.length > 0 && (<div className={styles.OrderBox} >
+            {user_data !== undefined && user_data?.items?.length > 0 && (<div className={styles.OrderBox} >
                 <div className={styles.OrderInfo}>
                     <div className={styles.OrderLabel}>Итог:</div>
                     <br />

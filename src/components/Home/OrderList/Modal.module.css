@@ -32,7 +32,7 @@
     font-size: 16px;
     font-weight: 400;
     font-family: "Inter-Regular", Helvetica;
-    margin-bottom: 15px;
+    /* margin-bottom: 15px; */
 }
 
 .HorizontalBox {
@@ -52,7 +52,7 @@
     line-height: normal;
     white-space: nowrap;
     /* margin-bottom: 8px; */
-    margin: 10px 0;
+    /* margin: 10px 0; */
 }
 
 .CloseButton {
@@ -70,9 +70,10 @@
     /* align-items: center; */
     /* margin: 0 32px; */
     margin-bottom: 20px;
-    height: 58vh;
+    height: 55vh;
+    /* height: 100%; */
     overflow-x: hidden;
     overflow-y: auto;
-
-    flex-grow: 1;
+    
+    /* flex-grow: 1; */
 }

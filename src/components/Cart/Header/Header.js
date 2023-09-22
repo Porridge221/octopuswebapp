@@ -14,7 +14,7 @@ function Header({fetchDeleteAllCart, user_data}) {
                     </g>
                 </svg>
             </div>
-            {user_data !== undefined && user_data.items.length > 0 && (<div className={styles.ClearButton} onClick={fetchDeleteAllCart}>Очистить корзину</div>)}
+            {user_data !== undefined && user_data?.items?.length > 0 && (<div className={styles.ClearButton} onClick={fetchDeleteAllCart}>Очистить корзину</div>)}
             
         </div>
     );

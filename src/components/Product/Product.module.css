@@ -68,7 +68,7 @@
     width: 150px;
 
     cursor: pointer;
-    transition: color 500ms ease;
+    /* transition: color 500ms ease; */
 
     margin: 0 29px;
     margin-top: 21px;
@@ -81,11 +81,51 @@
     display: flex;
     justify-content: center;
     /* justify-self: end; */
+
+    transition: 0.3s ease-in-out;
 }
 
 .BuyButton:hover {
-    color: #93e411b7;
+    /* background-color: var(--tg-theme-secondary-bg-color); */
 }
+
+.BuyButton:active {
+    transform: scale(0.9);
+}
+
+.BuyButton1::after {
+    content: '';
+    display: block;
+    position: absolute;
+    z-index: -1;  
+    border-radius: 10px;
+    height: 52px;
+    width: 180px;
+    background: #54dc48;
+    animation: pulse 1.4s infinite ease-out;
+    /* animation-iteration-count: 1; */
+}
+
+.BuyButton2::after {
+    content: '';
+    display: block;
+    position: absolute;
+    z-index: -1;  
+    border-radius: 10px;
+    height: 52px;
+    width: 180px;
+    background: #d64925;
+    animation: pulse 1.4s infinite ease-out;
+    /* animation-iteration-count: 1; */
+}
+
+@keyframes pulse {
+    to {
+        transform: scale(1.4);
+        opacity: 0;
+    }
+}
+
 
 .ButtonLabel {
     color: var(--tg-theme-text-color);

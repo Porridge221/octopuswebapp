@@ -9,11 +9,13 @@ import OrderList from './OrderList/OrderList';
 import useUser from '../../hooks/useUser';
 import FilterModal from '../Category/FilterModal/FilterModal';
 import modalStyles from './Modal.module.css'
+import CartService from '../../services/cartService';
 
 var showed = false;
 
 function App() {
   const {tg} = useTelegram();
+  const [cartData, setCartData] = useState();
 
   const user_data = useUser(true);
 
@@ -28,6 +30,7 @@ function App() {
 
   useEffect(() => {
     user_data !== undefined && !showed && (user_data.phone === null || user_data.phone === undefined) && (user_data.city_id === null || user_data.city_id === undefined) && handler();
+    return CartService({isUpdate: true, isSet: false, setUserData: setCartData})
   }, [user_data])
 
   return (

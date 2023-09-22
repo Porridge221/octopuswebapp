@@ -8,6 +8,7 @@ import {AiOutlineClose} from "react-icons/ai";
 
 import modalStyles from './OrderHistoryModal.module.css'
 import CheckItem from './CheckItem/CheckItem';
+import getStore from '../../services/getStore';
 
 function OrderHistory() {
     const {tg, initData} = useTelegram();
@@ -79,7 +80,7 @@ function OrderHistory() {
                 {/* backgroundColor: 'var(--tg-theme-secondary-bg-color)' */}
             <div style={{'width': '70vw', 'overflowX': 'hidden','overflowY': 'auto', backgroundColor: 'var(--tg-theme-bg-color)'}}>
                 <div className={modalStyles.Header}>
-                    <span className={modalStyles.HeaderLabel}>Чек</span>
+                    <span className={modalStyles.HeaderLabel}>Заказ №{modalOrder.order_id}</span>
                     <AiOutlineClose className={modalStyles.CloseButton} onClick={() => setModalActive(false)} />
                 </div>
                 <div className={modalStyles.ItemList}>
@@ -93,11 +94,11 @@ function OrderHistory() {
                 </div>
                 <div className={modalStyles.VerticalBox}>
                     <span style={{fontWeight: '600'}}>Пункт выдачи:</span>
-                    <span style={{color:'var(--tg-theme-hint-color)'}}>г. Владивосток, ул. Русская, 25. Ежедневно с 10:00 до 21:00</span>
-                    <span>Товары: {modalItemsCount > 0 &&  (modalItemsCount + ' шт.')}</span>
-                    <div className={modalStyles.HorizontalBox}>
-                        <span>Итог:</span>
-                        <span>{new Intl.NumberFormat('ru-RU', {style: 'currency', currency: 'RUB', minimumFractionDigits: 0}).format(modalOrder.price/100)}</span>
+                    <span style={{color:'var(--tg-theme-hint-color)'}}>{getStore(modalOrder.store_id)}</span>
+                    {/* <span>Товары: {modalItemsCount > 0 &&  (modalItemsCount + ' шт.')}</span> */}
+                    <div className={modalStyles.HorizontalBox} style={{marginBottom: '0'}}>
+                        <span style={{fontSize: '18px'}}>Итог:</span>
+                        <span style={{fontSize: '18px'}}>{new Intl.NumberFormat('ru-RU', {style: 'currency', currency: 'RUB', minimumFractionDigits: 0}).format(modalOrder.price/100)}</span>
                     </div>
                 </div>
             </div>

@@ -2,6 +2,8 @@ import styles from './Product.module.css'
 import Header from '../Header/Header'
 import useTelegram from '../../hooks/useTelegram';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { useState } from 'react';
+import CartService from '../../services/cartService';
 
 // const item = {
 //     'id': 8,
@@ -30,13 +32,42 @@ import { useNavigate, useLocation } from 'react-router-dom';
 //   }
 
 function Product() {
+
+    const cartData = CartService({isUpdate:false, isSet: false})
+
     const {item, category_id} = useLocation().state;
+
+    const initButtonLabel = () => {
+        var label = 'В корзину';
+        console.log(cartData.items);
+        console.log(item);
+        for (var el in cartData.items) {
+            console.log('Z nmenen');
+            console.log(el);
+            console.log(cartData.items[el].variant_id);
+            console.log(item.variant_id);
+            if (cartData.items[el].variant_id === item.variant_id) {
+                label = 'Удалить';
+                break;
+            }
+        }
+        console.log(label);
+        return label;
+    }
+
+    const [buttonLabel, setButtonLabel] = useState(initButtonLabel());
+    const [buttonStyle, setButtonStyle] = useState(styles.BuyButton);
 
     const {tg, initData} = useTelegram();
     const navigate = useNavigate();
 
     tg.onEvent('backButtonClicked', () => navigate('/home/categories/' + category_id, {state: category_id}));
     tg.BackButton.show();
+
+    
+    const updateCartService = () => {
+        return CartService({isUpdate:true, isSet: false});
+    }
   
     const fetchData = () => {
         fetch("https://octopus-vape.ru/carts/add", { method:'POST',headers: {
@@ -45,9 +76,37 @@ function Product() {
         }, body: JSON.stringify( {'user_id': 1, 'variant_id': item.variant_id, 'count': 1} )
         })
         .then(response => {
-            return JSON.stringify( {'user_id': 1, 'variant_id': item.variant_id, 'count': 1} )
+            return response
         })
         .then(data => {
+            console.log(data);
+            console.log("Fetch product Done");
+            setButtonLabel(buttonLabel === 'В корзину' ? 'Удалить' : 'В корзину');
+            // setButtonStyle(styles.BuyButton + ' ' + styles.BuyButton1);
+            // setTimeout(() => {
+            //     setButtonStyle(styles.BuyButton);
+            // }, 1400);
+            console.log(JSON.stringify( {'user_id': 1, 'variant_id': item.variant_id, 'count': 1} ));
+            return updateCartService();
+        })
+    }
+
+    const fetchDeleteItem = () => {
+        fetch("https://octopus-vape.ru/carts/delete_one", { method:'DELETE',headers: {
+        'Content-Type': 'application/json',
+        'Telegram-Data': initData,
+        }, body: JSON.stringify( {'cart_id': 1, 'variant_id': item.variant_id} )
+        })
+        .then(response => {
+            return response
+        })
+        .then(data => {
+            console.log(data);
+            setButtonLabel(buttonLabel === 'В корзину' ? 'Удалить' : 'В корзину');
+            // setButtonStyle(styles.BuyButton + ' ' + styles.BuyButton2);
+            // setTimeout(() => {
+            //     setButtonStyle(styles.BuyButton);
+            // }, 1400);
             console.log(JSON.stringify( {'user_id': 1, 'variant_id': item.variant_id, 'count': 1} ));
         })
     }
@@ -81,7 +140,7 @@ function Product() {
             ))}
         </div>
         {/* <div style={{'flex-grow': '1'}}/> */}
-        <div className={styles.BuyButton} onClick={fetchData}><span className={styles.ButtonLabel}>В корзину</span></div>
+        <div className={buttonStyle} onClick={buttonLabel === 'В корзину' ? fetchData : fetchDeleteItem}><span className={styles.ButtonLabel}>{buttonLabel}</span></div>
     </div>
     );
 }
