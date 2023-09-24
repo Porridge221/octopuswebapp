@@ -31,13 +31,14 @@
 .EmptyBox {
     display: flex;
     flex-direction: column;
-    height: 30%;
+    /* height: 30%; */
     align-items: center;
     justify-content: center;
 }
 
 .iconEmpty {
     width: 60%;
+    height: min-content;
     /* height: 30%; */
 }
 

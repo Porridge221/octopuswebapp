@@ -129,7 +129,7 @@ function Cart() {
                     ))}
             </div>) : (<div className={styles.EmptyBox} >
                 <img className={styles.iconEmpty} src={process.env.PUBLIC_URL + '/assets/emptyHistory.svg'} alt=''/>
-                <span className={styles.EmptyLabel}>Корзина пуста {':('}</span>
+                <span className={styles.EmptyLabel}>Товары в корзине отсутствуют</span>
             </div>) }
             {/* <div className={styles.ItemList}>
                 <CartItem />

@@ -19,7 +19,9 @@ function Account() {
 
     const [phoneNumber, setPhoneNumber] = useState();
 
-    const [selectedCity, setSelectedCity] = useState('Владивосток');
+    const [selectedCity, setSelectedCity] = useState(user_data?.user?.city_id ===  1 ? 'Владивосток' : user_data?.user?.city_id === 2 ? 'Артем' : user_data?.user?.city_id === 3 ? "Южно-Сахалинск" : "");
+
+    const [userName, setUserName] = useState("");
 
     const {user, tg, initData} = useTelegram();
     const navigate = useNavigate();
@@ -31,6 +33,11 @@ function Account() {
                             "No discount": [0, '#f5d098']}
 
     console.log(user_data);
+
+    useEffect(() => {
+        setSelectedCity(user_data?.user?.city_id ===  1 ? 'Владивосток' : user_data?.user?.city_id === 2 ? 'Артем' : user_data?.user?.city_id === 3 ? "Южно-Сахалинск" : "");
+        setUserName(user_data?.user?.name);
+    }, [user_data])
 
     const fetchData = () => {
         fetch("https://octopus-vape.ru/users/add_info", { method:'PUT',headers: {
@@ -69,7 +76,7 @@ function Account() {
     return (
         <div className={styles.root}>
             <div className={styles.Header} >
-                <img className={styles.icon} src={process.env.PUBLIC_URL + '/assets/AccountImage.png'} alt=''/>
+                <img className={styles.icon} src={process.env.PUBLIC_URL + '/assets/octopus_big1.jpg'} alt=''/>
             </div>
             <span className={styles.UserName}>{user?.username}</span>
             <div className={styles.UserDiscountBox}>
@@ -109,6 +116,8 @@ function Account() {
                             value={phoneNumber}
                             onChange={setPhoneNumber}/>
                     </div>
+                    <span style={{marginTop: '5px'}}>Укажите Имя</span>
+                    <input name="myInput" className={modalStyles.InputName} value={userName} onChange={e => setUserName(e.target.value)}/>
                     <span>Укажите город. Так пункты выдачи заказов будут отображаться корректно.</span>
                     <select className={modalStyles.Select} value={selectedCity} onChange={e => setSelectedCity(e.target.value)} >
                         <option value="Владивосток">Владивосток</option>

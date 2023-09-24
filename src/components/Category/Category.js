@@ -16,9 +16,10 @@ import 'react-range-slider-input/dist/style.css';
 import './slider.css';
 import useUser from '../../hooks/useUser';
 
+var newState = [];
+
 function Category() {
   const user_data = useUser(false);
-  const [storeZhig, setStoreZhig] = useState(true);
   const [storeRU, setStoreRU] = useState(true);
   const [storeFK, setStoreFK] = useState(true);
   const [storeNAB, setStoreNAB] = useState(true);
@@ -27,7 +28,36 @@ function Category() {
   const [storeSH, setStoreSH] = useState(true);
   const [storePYR, setStorePYR] = useState(true);
 
-  const [storesToggle, setStoreToggles] = useState({16: true, 15: true, 1: true, 3: true, 20: true, 2: true, 11: true, 24: true});
+  const [showAllProducer, setShowAllProducer] = useState(false);
+  const [checkAllProducer, setCheckAllProducer] = useState(true);
+
+  const [updateCatalog, setUpdateCatalog] = useState(1);
+
+  // const [storesToggle, setStoreToggles] = useState({16: true, 15: true, 1: true, 20: true, 2: true, 11: true, 24: true});
+  const [producerToggle, setProducerToggles] = useState([]);
+
+  const [NikotinTypeToggle, setNikotinTypeToggles] = useState([
+    {key: 1, value:true, name: 'Соль'},
+    {key: 2, value:true, name: 'Щелочь'}
+  ]);
+  const [NikotinValueToggle, setNikotinValueToggles] = useState([
+    {key: 1, value:true, name: '0'},
+    {key: 2, value:true, name: '3'},
+    {key: 3, value:true, name: '5'},
+    {key: 4, value:true, name: '12'},
+    {key: 5, value:true, name: '20'},
+    {key: 6, value:true, name: '40'},
+    {key: 7, value:true, name: '50'},
+  ]);
+  const [sizeToggle, setSizeToggles] = useState([
+    {key: 1, value:true, name: '10'},
+    {key: 2, value:true, name: '20'},
+    {key: 3, value:true, name: '30'},
+    {key: 4, value:true, name: '40'},
+    {key: 5, value:true, name: '60'},
+    {key: 6, value:true, name: '80'},
+    {key: 7, value:true, name: '120'},
+  ]);
 
   const category_id = useLocation().state;
 
@@ -62,14 +92,27 @@ function Category() {
   
   console.log(priceRange);
 
-  const [producerToggle, setProducerToggle] = useState()
+  // const [producerToggle, setProducerToggle] = useState()
 
-  console.log(storesToggle);
+  function addValueToList(key, value, name) {
+    //if the list is already created for the "key", then uses it
+    //else creates new list for the "key" to store multiple values in it.
+    // newState[key] = newState[key] || [];
+    newState.push({key: key, value: value, name: name});
+    // newState[key].push(value);
+    // newState[key].push(name);
+  }
+
   const fetchData = () => {
     // Object.keys(myObject).forEach(function(key, index) {
     //   myObject[key] *= 2;
     // });
-    var query = (storeRU ? 'stores=16&' : '') + (storeFK ? 'stores=15&' : '') + (storeNAB ? 'stores=1&' : '') + (storeZhig ? 'stores=3&' : '') + (storeKIR ? 'stores=20&' : '') + (storeSOV ? 'stores=2&' : '') + (storeSH ? 'stores=11&' : '') + (storePYR ? 'stores=24&' : '');
+    var query = (storeRU ? 'stores=16&' : '') + (storeFK ? 'stores=15&' : '') + (storeNAB ? 'stores=1&' : '') + (storeKIR ? 'stores=20&' : '') + (storeSOV ? 'stores=2&' : '') + (storeSH ? 'stores=11&' : '') + (storePYR ? 'stores=24&' : '');
+    user_data.user.city_id === 1 && (query = (storeRU ? 'stores=16&' : '') + (storeFK ? 'stores=15&' : '') + (storeNAB ? 'stores=1&' : ''));
+    user_data.user.city_id === 2 && (query = (storeKIR ? 'stores=20&' : ''));
+    user_data.user.city_id === 3 && (query = (storeSOV ? 'stores=2&' : '') + (storeSH ? 'stores=11&' : '') + (storePYR ? 'stores=24&' : ''));
+    // query !== '' && (query += '&');
+    !checkAllProducer && (producerToggle.forEach(producer => producer.value && (query += `products=${producer.key}&`)));
     if (query === '') {
       setData(0);
       return;
@@ -80,6 +123,20 @@ function Category() {
       })
       .then(data => {
         setData(data);
+        console.log('producerToggle');
+        console.log(producerToggle);
+        if (producerToggle.length === 0) {
+          newState = [];
+          data.forEach(producer => ( producer.items.length > 0 &&
+            addValueToList(producer.product_id, true, producer.name)
+          ));
+          setProducerToggles(newState);
+        }
+        console.log('newState out 999');
+        console.log(newState);
+        newState !== undefined && newState.size !== 0 && newState.map(producer => (console.log(producer)));
+        // console.log(newState[999]);
+        // console.log(newState[999][1]);
       })
   }
 
@@ -88,7 +145,21 @@ function Category() {
 
     fetchData();
     
-  }, [storeRU, storeFK, storeKIR, storeNAB, storePYR, storeSH, storeSOV, storeZhig])
+  }, [storeRU, storeFK, storeKIR, storeNAB, storePYR, storeSH, storeSOV, updateCatalog])
+
+
+  useEffect(() => {
+    var state = true;
+    var states = [...producerToggle];
+    states.forEach(producer =>  {
+      console.log(producer.value);
+      if (producer.value === false) {
+        state = false;
+        return;
+      }
+    });
+    setCheckAllProducer(state);
+  }, [producerToggle])
 
   const filteredItems = useMemo(()=>{
     if (data === 0)
@@ -108,13 +179,33 @@ function Category() {
 
   console.log(data);
   console.log(filteredItems);
-  console.log(storeZhig);
   console.log(storeRU);
   console.log(storeSH);
+  console.log('tttttttttttttttt');
+  console.log(producerToggle !== undefined ? producerToggle : 'hahahah');
+  console.log(producerToggle.length);
 
-  function storesHandler(id) {
-    setStoreToggles({...storesToggle, id: storesToggle[id] ? false : true})
-  } 
+  // function storesHandler(id) {
+  //   setStoreToggles({...storesToggle, id: storesToggle[id] ? false : true})
+  // }
+
+  const handleShowAllProducer = () => {
+    setShowAllProducer(!showAllProducer);
+  }
+
+  const handleSetCheckAllProducer = (state) => {
+    var states = [...producerToggle];
+    states.forEach(producer =>  (
+      producer.value = !checkAllProducer
+    ));
+    setProducerToggles(states);
+    // setCheckAllProducer(!checkAllProducer);
+  }
+
+  const handleSetUpdateCatalog = () => {
+    setUpdateCatalog(updateCatalog + 1);
+    setModalActive(false);
+  }
 
   return (
     <div className={styles.Category}>
@@ -131,7 +222,6 @@ function Category() {
           <Toggle label="ул. Русская, 46" toggled={storeRU}  setStore={setStoreRU}/*onClick={logState} 16*//>
           <Toggle label="ул. Адмирала Фокина, 23в" toggled={storeFK}  setStore={setStoreFK} /*onClick={logState} 15*//>
           <Toggle label="ул. Набережная, 7Б" toggled={storeNAB}  setStore={setStoreNAB} /*onClick={logState}  1*//>
-          <Toggle label="ул. Жигура, 12а" toggled={storeZhig}  setStore={setStoreZhig} /*onClick={logState}  3*//>
         </> : user_data.user.city_id === 2 ? <>
             <Toggle label="ул. Кирова, 2" toggled={storeKIR}  setStore={setStoreKIR} /*onClick={logState}  20*//>
         </> : user_data.user.city_id === 3 ? <>
@@ -142,7 +232,6 @@ function Category() {
           <Toggle label="ул. Русская, 46" toggled={storeRU}  setStore={setStoreRU}/*onClick={logState} 16*//>
           <Toggle label="ул. Адмирала Фокина, 23в" toggled={storeFK}  setStore={setStoreFK} /*onClick={logState} 15*//>
           <Toggle label="ул. Набережная, 7Б" toggled={storeNAB}  setStore={setStoreNAB} /*onClick={logState}  1*//>
-          <Toggle label="ул. Жигура, 12а" toggled={storeZhig} setStore={setStoreZhig}/*onClick={logState}  3*//>
           <Toggle label="ул. Кирова, 2" toggled={storeKIR}  setStore={setStoreKIR} /*onClick={logState}  20*//>
           <Toggle label="ул. Советская, 31, 3" toggled={storeSOV}  setStore={setStoreSOV} /*onClick={logState}  2*//>
           <Toggle label="ул. Сахалинская, 45А, 1" toggled={storeSH}  setStore={setStoreSH} /*onClick={logState}  11*//>
@@ -160,7 +249,7 @@ function Category() {
           <span className={modalStyles.HeaderLabel}>Фильтры</span>
           <AiOutlineClose className={modalStyles.CloseButton} onClick={() => setModalActive(false)} />
         </div>
-        {/* backgroundColor: 'var(--tg-theme-secondary-bg-color)' */}
+        {/* backgroundColor: 'var(--tg-theme-bg-color)' */}
         <div style={{'height': '70vh', 'overflowX': 'hidden','overflowY': 'auto', backgroundColor: 'var(--tg-theme-bg-color)'}}>          
           <div className={modalStyles.VerticalBox}>
             <span>Наличие в магазинах:</span>
@@ -168,7 +257,6 @@ function Category() {
                 <Toggle label="ул. Русская, 46" toggled={storeRU}  setStore={setStoreRU} /*onClick={logState} 16*//>
                 <Toggle label="ул. Адмирала Фокина, 23в" toggled={storeFK}  setStore={setStoreFK} /*onClick={logState} 15*//>
                 <Toggle label="ул. Набережная, 7Б" toggled={storeNAB}  setStore={setStoreNAB} /*onClick={logState}  1*//>
-                <Toggle label="ул. Жигура, 12а" toggled={storeZhig}  setStore={setStoreZhig} /*onClick={logState}  3*//>
               </> : user_data.user.city_id === 2 ? <>
                   <Toggle label="ул. Кирова, 2" toggled={storeKIR}  setStore={setStoreKIR} /*onClick={logState}  20*//>
               </> : user_data.user.city_id === 3 ? <>
@@ -179,7 +267,6 @@ function Category() {
                 <Toggle label="ул. Русская, 46" toggled={storeRU}  setStore={setStoreRU} /*onClick={logState} 16*//>
                 <Toggle label="ул. Адмирала Фокина, 23в" toggled={storeFK}  setStore={setStoreFK} /*onClick={logState} 15*//>
                 <Toggle label="ул. Набережная, 7Б" toggled={storeNAB}  setStore={setStoreNAB} /*onClick={logState}  1*//>
-                <Toggle label="ул. Жигура, 12а" toggled={storeZhig}  setStore={setStoreZhig} /*onClick={logState}  3*//>
                 <Toggle label="ул. Кирова, 2" toggled={storeKIR}  setStore={setStoreKIR} /*onClick={logState}  20*//>
                 <Toggle label="ул. Советская, 31, 3" toggled={storeSOV}  setStore={setStoreSOV} /*onClick={logState}  2*//>
                 <Toggle label="ул. Сахалинская, 45А, 1" toggled={storeSH}  setStore={setStoreSH} /*onClick={logState}  11*//>
@@ -221,16 +308,19 @@ function Category() {
           </div>
           <div className={modalStyles.VerticalBox}>
             <span>Производитель:</span>
-            <Toggle label="Все" toggled={true} /*onClick={logState}*//>
-            {data !== 0 && data.map(producer => producer.items.length > 0 && ( <>
-              <Toggle key={producer.product_id} label={producer.name} toggled={true} />
+            <Toggle label="Все" toggled={checkAllProducer} setStore={handleSetCheckAllProducer} /*onClick={logState}*//>
+            {producerToggle.length !== 0 && producerToggle.map((producer, index) => !showAllProducer ? ( <>
+              <Toggle key={producer.key} label={producer.name} toggled={producer.value} setStore={setProducerToggles} multiple={true} multipleState={producerToggle} producer_id={producer.key} />
               </>
-          ))}
-            <span className={modalStyles.ShowButton}>Показать ещё</span>
+          ) : index < 4 && ( <>
+            <Toggle key={producer.key} label={producer.name} toggled={producer.value} setStore={setProducerToggles} multiple={true} multipleState={producerToggle} producer_id={producer.key} />
+            </>
+        ))}
+            <span className={modalStyles.ShowButton} onClick={() => handleShowAllProducer()}>{showAllProducer ? 'Скрыть' : 'Показать ещё'}</span>
           </div>
 
         </div>
-        <div className={modalStyles.ConfirmButton} onClick={() => setModalActive(false)} >Подтвердить</div>
+        <div className={modalStyles.ConfirmButton} onClick={() => handleSetUpdateCatalog()} >Подтвердить</div>
       </FilterModal>
     </div>
   );

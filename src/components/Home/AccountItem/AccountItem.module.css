@@ -84,7 +84,7 @@
         'Liberation Sans', sans-serif;
     /* width: 35vw; */
     /* flex-grow: 1; */
-    max-width: 35vw;
+    max-width: 30vw;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: clip;

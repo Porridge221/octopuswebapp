@@ -10,9 +10,6 @@ function getStore(store_id) {
         case 1:
             store_name = 'ул. Набережная, 7Б';
             break;
-        case 3:
-            store_name = 'ул. Жигура, 12а';
-            break;
         case 20:
             store_name = 'ул. Кирова, 2';
             break;

@@ -152,3 +152,42 @@ hr {
   margin: 10px 16px;
   padding: 0;
 }
+
+.react-select__indicators, .react-select__indicator  {
+  width: 0;
+}
+
+.react-select__control {
+  background-color: #ffffff;
+  border: 1px solid;
+  border-color: #000000;
+  border-radius: 8px;
+  max-height: 28px;
+  min-height: 28px;
+  height: 28px;
+}
+
+.react-select-container * {
+  height: min-content;
+}
+
+.react-select__value-container {
+  height: min-content;
+}
+
+.react-select__placeholder {
+  height: min-content;
+  font-size: 12px;
+}
+
+.react-select__input-container {
+  height: 10px;
+}
+
+.react-select__input {
+  height: min-content;
+}
+
+.css-13cymwt-control {
+  min-height: 28px;
+}

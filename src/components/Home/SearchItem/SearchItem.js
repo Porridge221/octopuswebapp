@@ -1,7 +1,7 @@
 import styles from './SearchItem.module.css'
 import { AiOutlineSearch } from "react-icons/ai";
 import Select from "react-select";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import useTelegram from '../../../hooks/useTelegram';
 import { useNavigate, useLocation } from 'react-router-dom';
 
@@ -30,27 +30,37 @@ function SearchItem() {
         navigate('/home/product/', { state: { variant_id: data.value, variant_name: data.label } });
     }
 
-    const fetchData = () => {
+    const fetchData = (it) => {
         fetch("https://octopus-vape.ru/products/catalog/search/?query=" + selectInput, {method: 'GET', headers: {'Content-Type': 'application/json', 'Telegram-Data': initData,}})
           .then(response => {
             return response.json()
           })
           .then(data => {
-            var list = [];
-            data.forEach(function(entry) {
-                list.push({value: entry.variant_id, label: entry.name})
-            });
-            setOptionList(list);
+            if (prev <= it) {
+              var list = [];
+              data.forEach(function(entry) {
+                  list.push({value: entry.variant_id, label: entry.name})
+              });
+              setOptionList(list);
+              // console.log(data.headers.entries()); 
+            }
         })
     }
 
     function handleInput(data) {
           setSelectInput(data);
+          prev += 1;
           if (data.length >= 2) {  
-            fetchData(data);
+            fetchData(prev);
           }
         
     }
+    
+    useEffect(() => {
+      const container = document.getElementsByClassName('react-select__control')[0];
+      // then apply some styles to it
+      container.style.minHeight = '28px';
+    }, [])
 
     console.log(selectedOptions);
     console.log(optionList);
@@ -60,12 +70,19 @@ function SearchItem() {
           <div className={styles.dropdowncontainer}>
             <Select
               options={optionList}
-              placeholder="Найти"
+              placeholder={<div className={styles.placeholder}>
+                <AiOutlineSearch  className={styles.SearchIcon}/>
+                <div className={styles.SearchText}>Найти</div>
+              </div>}
               value={selectInput}
               onChange={handleSelect}
               inputValue={selectInput}
               onInputChange={handleInput}
               isSearchable={true}
+              filterOption={null}
+              blurInputOnSelect={true}
+              className="react-select-container"
+              classNamePrefix="react-select"
             />
           </div>
           </div>

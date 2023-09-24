@@ -71,11 +71,14 @@
 
     color: #ffffff;
     font-family: "Inter-SemiBold", Helvetica;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 600;
     letter-spacing: 0;
     line-height: normal;
     text-align: center;
-    padding: 10px 8vw;
-    margin: 10px 15px;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    padding: 10px 10vw;
+    /* margin: 10px 15px; */
 }

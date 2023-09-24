@@ -55,8 +55,8 @@ function CategoryItem({item, producerName}) {
 
   const initButtonLabel = () => {
     var label = 'Добавить';
-    console.log(cartData.items);
-    console.log(item);
+    // console.log(cartData.items);
+    // console.log(item);
     for (var el in cartData.items) {
         console.log('Z nmenen');
         console.log(el);
@@ -67,7 +67,7 @@ function CategoryItem({item, producerName}) {
             break;
         }
     }
-    console.log(label);
+    // console.log(label);
     return label;
   } 
 
