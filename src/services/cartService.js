@@ -14,13 +14,14 @@ function CartService({isUpdate, isSet, setUserData}) {
           })
           .then(data => {
             cartData = data;
+            console.log('In Set User');
             isSet && setUserData(data);
             return data;
         }) : cartData;
 
-        
     }
-
+    // need cartData return
+    console.log(cartData);
     return isUpdate ? fetchCart : cartData;
     
 }

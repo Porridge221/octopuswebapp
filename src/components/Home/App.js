@@ -35,7 +35,7 @@ function App() {
     if (userName === "") {
       tg.showAlert('Введите своё Имя');
       error = true;
-    } else if (phoneNumber.length !== 10) {
+    } else if (phoneNumber.length < 10) {
       tg.showAlert('Номер телефона должен состоять из 10 цифр!');
       error = true;
     } else if (selectedCity === "") {

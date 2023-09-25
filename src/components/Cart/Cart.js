@@ -114,11 +114,21 @@ function Cart() {
     }, [user_data, setUserData, CartService]);
 
     useEffect(() => {
+        console.log("Cart useEffect without deps");
+        console.log(user_data);
+        // fetchCart();
+        return CartService({isUpdate: true, isSet: true, setUserData: setUserData})
+    }, [])
+
+    useEffect(() => {
         console.log("cart effect");
         console.log(user_data);
         // fetchCart();
-        return CartService({isUpdate: true, isSet: true, setUserData: setUserData});
+        return CartService({isUpdate: true, isSet: true, setUserData: setUserData})
     }, [updateScreen])
+
+    console.log('cart body cart_data');
+    console.log(user_data);
 
     return (
         <div className={styles.root}>
