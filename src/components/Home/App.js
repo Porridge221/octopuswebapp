@@ -32,13 +32,13 @@ function App() {
 
   const fetchData = () => {
     var error = false;
-    if (userName === "") {
+    if (userName === "" || userName === undefined) {
       tg.showAlert('Введите своё Имя');
       error = true;
-    } else if (phoneNumber.length < 10) {
+    } else if (phoneNumber.length < 12) {
       tg.showAlert('Номер телефона должен состоять из 10 цифр!');
       error = true;
-    } else if (selectedCity === "") {
+    } else if (selectedCity === "" || selectedCity === undefined) {
       tg.showAlert('Введите Ваш город!');
       error = true;
     }
@@ -72,6 +72,10 @@ function App() {
     user_data !== undefined && !showed && ((user_data.user.phone === null || user_data.user.phone === undefined) || (user_data.user.city_id === null || user_data.city_id === undefined)) && setRegModalActive(true);
     return CartService({isUpdate: true, isSet: false, setUserData: setCartData})
   }, [user_data])
+
+  console.log(phoneNumber);
+  console.log(phoneNumber.length);
+  console.log(userName);
 
   return (
     <div className='App'>

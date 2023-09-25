@@ -18,11 +18,10 @@ function CartService({isUpdate, isSet, setUserData}) {
             isSet && setUserData(data);
             return data;
         }) : cartData;
-
     }
     // need cartData return
     console.log(cartData);
-    return isUpdate ? fetchCart : cartData;
+    return fetchCart;
     
 }
 
