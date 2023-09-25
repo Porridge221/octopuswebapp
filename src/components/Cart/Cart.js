@@ -40,7 +40,7 @@ function Cart() {
           })
           .then(data => {
             setUserData(data);
-            CartService(true, data);
+            CartService({isUpdate: true, data: data});
             console.log(data);
         })
     }
@@ -94,6 +94,7 @@ function Cart() {
             console.log(JSON.stringify( {'user_id': 1, 'name': userName, 'phone': phoneNumber.slice(1), 'store_id': Number(selectedStore)} ));
           })
           setModalActive(false);
+          CartService({isInit: true})
           navigate("/home");
     }
 
@@ -110,20 +111,12 @@ function Cart() {
         });
         setCartItemCount(count);
         setCartPrice(price);
-    }, [user_data, setUserData, CartService]);
-
-    // useEffect(() => {
-    //     console.log("Cart useEffect without deps");
-    //     console.log(user_data);
-    //     // fetchCart();
-    //     return () => CartService({isUpdate: true, isSet: true, setUserData: setUserData})
-    // }, [])
+    }, [user_data, setUserData]);
 
     useEffect(() => {
         console.log("cart effect");
         console.log(user_data);
         fetchCart();
-        //return CartService({isUpdate: true, isSet: true, setUserData: setUserData})
     }, [updateScreen])
 
     // console.log('cart body cart_data');

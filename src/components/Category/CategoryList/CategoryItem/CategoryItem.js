@@ -8,6 +8,8 @@ function CategoryItem({item, producerName}) {
   const category_id = useLocation().state;
 
   const {initData} = useTelegram();
+
+  const [cartData, setCartData] = useState(CartService({isUpdate: false, isInit: false}))
   
   const fetchData = () => {
     fetch("https://octopus-vape.ru/carts/add", { method:'POST',headers: {
@@ -25,7 +27,7 @@ function CategoryItem({item, producerName}) {
         //     setButtonStyle(styles.BuyButton);
         // }, 1400);
         console.log(JSON.stringify( {'user_id': 1, 'variant_id': item.variant_id, 'count': 1} ));
-        return CartService({isUpdate:true, isSet: false})
+        setCartData(CartService({isUpdate:false, isInit: true}))
       })
   }
 
@@ -51,7 +53,6 @@ function CategoryItem({item, producerName}) {
 
   // console.log(item.variant_id)
 
-  const cartData = CartService({isUpdate:false, isSet: false});
 
   const initButtonLabel = () => {
     var label = 'Добавить';

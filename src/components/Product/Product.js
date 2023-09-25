@@ -32,8 +32,7 @@ import CartService from '../../services/cartService';
 //   }
 
 function Product() {
-
-    const cartData = CartService({isUpdate:false, isSet: false})
+    const [cartData, setCartData] = useState(CartService({isUpdate: false, isInit: false}))
 
     const {item, category_id} = useLocation().state;
 
@@ -63,11 +62,6 @@ function Product() {
 
     tg.onEvent('backButtonClicked', () => navigate('/home/categories/' + category_id, {state: category_id}));
     tg.BackButton.show();
-
-    
-    const updateCartService = () => {
-        return CartService({isUpdate:true, isSet: false});
-    }
   
     const fetchData = () => {
         fetch("https://octopus-vape.ru/carts/add", { method:'POST',headers: {
@@ -87,7 +81,7 @@ function Product() {
             //     setButtonStyle(styles.BuyButton);
             // }, 1400);
             console.log(JSON.stringify( {'user_id': 1, 'variant_id': item.variant_id, 'count': 1} ));
-            return updateCartService();
+            setCartData(CartService({isUpdate:false, isInit: true}))
         })
     }
 
@@ -108,6 +102,7 @@ function Product() {
             //     setButtonStyle(styles.BuyButton);
             // }, 1400);
             console.log(JSON.stringify( {'user_id': 1, 'variant_id': item.variant_id, 'count': 1} ));
+            setCartData(CartService({isUpdate:false, isInit: true}))
         })
     }
 

@@ -1,27 +1,24 @@
-// import useTelegram from "../hooks/useTelegram";
+import useTelegram from "../hooks/useTelegram";
 
-let cartData;
+var cartData;
 
 // function CartService({isUpdate, isSet, setUserData}) {
-function CartService({isUpdate, data}) {
-    // const {initData} = useTelegram();
+function CartService({isUpdate, data, isInit}) {
+    const {initData} = useTelegram();
     
-    // const fetchCart = () => {
-    //     console.log('CartService');
-    //     console.log(isUpdate);
-    //     return isUpdate ? fetch("https://octopus-vape.ru/carts/1", {method: 'GET', headers: {'Content-Type': 'application/json', 'Telegram-Data': initData,}})
-    //       .then(response => {
-    //         return response.json()
-    //       })
-    //       .then(data => {
-    //         cartData = data;
-    //         console.log('In Set User');
-    //         isSet && setUserData(data);
-    //         return data;
-    //     }) : cartData;
-    // }
-    // // need cartData return
-    // console.log(cartData);
+    if (isInit) {
+        fetch("https://octopus-vape.ru/carts/1", {method: 'GET', headers: {'Content-Type': 'application/json', 'Telegram-Data': initData,}})
+          .then(response => {
+            return response.json()
+          })
+          .then(data => {
+            cartData = data;
+            // console.log('In Set User');
+            // isSet && setUserData(data);
+            // return data;
+        })
+    }
+    // need cartData return
 
     isUpdate && (cartData = data)
 
