@@ -53,7 +53,7 @@ function App() {
       })
       .then(data => {
         console.log(JSON.stringify( {'name': userName, 'phone': phoneNumber.slice(1), 'city_id': selectedCity === 'Владивосток' ? 1 : selectedCity === 'Артем' ? 2 : 3} ));
-        setModalActive(false);
+        setRegModalActive(false);
         // setUpdateScreen(updateScreen+1);
       })
     }
@@ -70,7 +70,7 @@ function App() {
     //user_data !== undefined && !showed && ((user_data.user.phone === null || user_data.user.phone === undefined) || (user_data.user.city_id === null || user_data.user.city_id === undefined)) && handler();
     //user_data !== undefined && !showed && ((user_data.user.phone === null || user_data.user.phone === undefined) || (user_data.user.city_id === null || user_data.user.city_id === undefined)) && setRegModalActive(true);
     user_data !== undefined && !showed && ((user_data.user.phone === null || user_data.user.phone === undefined) || (user_data.user.city_id === null || user_data.city_id === undefined)) && setRegModalActive(true);
-    return CartService({isUpdate: true, isSet: false, setUserData: setCartData})
+    // return CartService({isUpdate: true, isSet: false, setUserData: setCartData})
   }, [user_data])
 
   console.log(phoneNumber);

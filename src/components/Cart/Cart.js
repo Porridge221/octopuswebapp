@@ -33,18 +33,17 @@ function Cart() {
 
     const [selectedStore, setSelectedStore] = useState(user_curr.user.city_id === undefined || user_curr.user.city_id === null || user_curr.user.city_id === 1 ? 16 : user_curr.user.city_id === 2 ? 20 : 2);
 
-    // const fetchCart = () => {
-    //     fetch("https://octopus-vape.ru/carts/1", {method: 'GET', headers: {'Content-Type': 'application/json', 'Telegram-Data': initData,}})
-    //       .then(response => {
-    //         return response.json()
-    //       })
-    //       .then(data => {
-    //         setUserData(data);
-    //         console.log(data);
-    //     })
-
-    //     return true;
-    // }
+    const fetchCart = () => {
+        fetch("https://octopus-vape.ru/carts/1", {method: 'GET', headers: {'Content-Type': 'application/json', 'Telegram-Data': initData,}})
+          .then(response => {
+            return response.json()
+          })
+          .then(data => {
+            setUserData(data);
+            CartService(true, data);
+            console.log(data);
+        })
+    }
 
     const [updateScreen, setUpdateScreen] = useState(1);
 
@@ -123,8 +122,8 @@ function Cart() {
     useEffect(() => {
         console.log("cart effect");
         console.log(user_data);
-        // fetchCart();
-        return CartService({isUpdate: true, isSet: true, setUserData: setUserData})
+        fetchCart();
+        //return CartService({isUpdate: true, isSet: true, setUserData: setUserData})
     }, [updateScreen])
 
     // console.log('cart body cart_data');
