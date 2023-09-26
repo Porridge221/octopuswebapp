@@ -22,10 +22,10 @@ function ProductSearch() {
         console.log(cartData.items);
         console.log(item);
         for (var el in cartData.items) {
-            console.log('Z nmenen');
-            console.log(el);
-            console.log(cartData.items[el].variant_id);
-            console.log(item.variant_id);
+            // console.log('Z nmenen');
+            // console.log(el);
+            // console.log(cartData.items[el].variant_id);
+            // console.log(item.variant_id);
             if (cartData.items[el].variant_id === item?.variant_id) {
                 label = 'Удалить';
                 break;
