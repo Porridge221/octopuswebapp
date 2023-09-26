@@ -80,17 +80,17 @@ function Account() {
             </div>
             <span className={styles.UserName}>{user_data?.user?.name}</span>
             <div className={styles.UserDiscountBox}>
-                <span className={styles.UserDiscount}>{user_data === undefined && user_data.user.discount_group}</span>
+                <span className={styles.UserDiscount}>{user_data === undefined && user_data?.user?.discount_group}</span>
             </div>
             <div className={styles.UserInfoBox}>
                 {/* <p style={{margin: '2px 0', marginBottom: '5px', fontWeight: '800'}}>
                     <span style={{fontWeight: '800'}}>Статус: </span><span style={{color: user_data !== undefined && discountLevel[user_data.user.discount_group][1]}}>{user_data !== undefined && user_data.user.discount_group}</span>
                 </p> */}
                 <p style={{margin: '2px 0', marginBottom: '5px'}}>
-                    <span style={{fontWeight: '800'}}>Телефон: </span><span>{user_data !== undefined && user_data.user.phone}</span>
+                    <span style={{fontWeight: '800'}}>Телефон: </span><span>{user_data !== undefined && user_data?.user?.phone}</span>
                 </p>
                 <p style={{margin: '2px 0', marginBottom: '5px'}}>
-                    <span style={{fontWeight: '800'}}>Город: </span><span>{user_data === undefined || null ? '' : (user_data.user.city_id !== undefined && user_data.user.city_id=== 1 ? "Владивосток" : user_data.user.city_id=== 2 ? "Артем" : "Южно-Сахалинск")}</span>
+                    <span style={{fontWeight: '800'}}>Город: </span><span>{user_data === undefined || null ? '' : (user_data?.user?.city_id !== undefined && user_data?.user?.city_id=== 1 ? "Владивосток" : user_data?.user?.city_id=== 2 ? "Артем" : "Южно-Сахалинск")}</span>
                 </p>
             </div>
             <div className={styles.AddInfoBox}>

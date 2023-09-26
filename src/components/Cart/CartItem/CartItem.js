@@ -54,7 +54,7 @@ function CartItem({order, cart_id, fetchDeleteOne, updateScreen, setUpdateScreen
             </div>
             <div className={styles.Info} >
             <div className={styles.Name} >{order.name}</div>
-                <div className={styles.Price} >{new Intl.NumberFormat('ru-RU', {style: 'currency', currency: 'RUB', minimumFractionDigits: 0}).format(user_curr.user.city_id === 3 ? order.price_shk/100 : order.price_vvo/100)}</div>
+                <div className={styles.Price} >{new Intl.NumberFormat('ru-RU', {style: 'currency', currency: 'RUB', minimumFractionDigits: 0}).format(user_curr?.user?.city_id === 3 ? order.price_shk/100 : order.price_vvo/100)}</div>
                 <div className={styles.RemoveButton} onClick={() => fetchDeleteOne(order)} >Удалить</div>
             </div>
             <div className={styles.CountInput} >

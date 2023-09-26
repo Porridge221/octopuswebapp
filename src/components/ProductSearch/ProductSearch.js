@@ -72,7 +72,7 @@ function ProductSearch() {
         <Header path={path} current={current}/>
         <div className={styles.Image} ><img style={{'object-fit': 'contain'}} src={process.env.PUBLIC_URL + "/assets/AccountImage.png"} alt=''/></div>
         <div className={styles.Name}>{item !== undefined && item.name}</div>
-        <div className={styles.Price}>{ item === undefined ? '####' : new Intl.NumberFormat('ru-RU', {style: 'currency', currency: 'RUB', minimumFractionDigits: 0}).format((user_data.user.city_id === 3 ? item.price_shk/100 : item.price_vvo/100))}</div>
+        <div className={styles.Price}>{ item === undefined ? '####' : new Intl.NumberFormat('ru-RU', {style: 'currency', currency: 'RUB', minimumFractionDigits: 0}).format((user_data?.user?.city_id === 3 ? item.price_shk/100 : item.price_vvo/100))}</div>
         <div className={styles.Characteristics}>
             {item !== undefined && item.item_characteristics.length > 0 && item.item_characteristics.map(characteristic => ( 
                 <div key={characteristic.name} className={styles.CharacteristicItem}>{characteristic.name + ': ' + characteristic.value}</div>

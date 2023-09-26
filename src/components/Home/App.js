@@ -35,7 +35,7 @@ function App() {
     if (userName === "" || userName === undefined) {
       tg.showAlert('Введите своё Имя');
       error = true;
-    } else if (phoneNumber.length < 12) {
+    } else if (phoneNumber.length !== 12) {
       tg.showAlert('Номер телефона должен состоять из 10 цифр!');
       error = true;
     } else if (selectedCity === "" || selectedCity === undefined) {
@@ -69,7 +69,7 @@ function App() {
     setUserName(user_data?.user?.name);
     //user_data !== undefined && !showed && ((user_data.user.phone === null || user_data.user.phone === undefined) || (user_data.user.city_id === null || user_data.user.city_id === undefined)) && handler();
     //user_data !== undefined && !showed && ((user_data.user.phone === null || user_data.user.phone === undefined) || (user_data.user.city_id === null || user_data.user.city_id === undefined)) && setRegModalActive(true);
-    user_data !== undefined && !showed && ((user_data.user.phone === null || user_data.user.phone === undefined) || (user_data.user.city_id === null || user_data.city_id === undefined)) && setRegModalActive(true);
+    user_data !== undefined && !showed && ((user_data?.user?.phone === null || user_data?.user?.phone === undefined) || (user_data?.user?.city_id === null || user_data?.city_id === undefined)) && setRegModalActive(true);
     // return CartService({isUpdate: true, isSet: false, setUserData: setCartData})
   }, [user_data])
 

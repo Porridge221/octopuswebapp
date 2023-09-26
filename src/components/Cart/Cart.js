@@ -31,7 +31,7 @@ function Cart() {
 
     const [phoneNumber, setPhoneNumber] = useState();
 
-    const [selectedStore, setSelectedStore] = useState(user_curr.user.city_id === undefined || user_curr.user.city_id === null || user_curr.user.city_id === 1 ? 16 : user_curr.user.city_id === 2 ? 20 : 2);
+    const [selectedStore, setSelectedStore] = useState(user_curr?.user?.city_id === undefined || user_curr?.user?.city_id === null || user_curr?.user?.city_id === 1 ? 16 : user_curr?.user?.city_id === 2 ? 20 : 2);
 
     const fetchCart = () => {
         fetch("https://octopus-vape.ru/carts/1", {method: 'GET', headers: {'Content-Type': 'application/json', 'Telegram-Data': initData,}})
@@ -107,7 +107,7 @@ function Cart() {
         user_data !== undefined && user_data?.items?.length > 0 &&
             // user_data.cart.items.map(order => {count += order.count; price += order.price_vvo/100 * order.count;} )
             user_data.items.forEach(order => {
-                count += order.count; price += (user_curr.user.city_id === 3 ? order.price_shk/100 : order.price_vvo/100) * order.count;
+                count += order.count; price += (user_curr?.user?.city_id === 3 ? order.price_shk/100 : order.price_vvo/100) * order.count;
         });
         setCartItemCount(count);
         setCartPrice(price);
@@ -161,14 +161,14 @@ function Cart() {
                 <div className={modalStyles.VerticalBox}>
                     <span>Пункт выдачи</span>
                     <select className={modalStyles.Select} value={selectedStore} onChange={e => setSelectedStore(e.target.value)} >
-                        {user_curr.user.city_id === 1 ? <>
+                        {user_curr?.user?.city_id === 1 ? <>
                             <option label="ул. Русская, 46" value={16}>ул. Русская, 46</option>
                             <option label="ул. Адмирала Фокина, 23в" value={15}>ул. Адмирала Фокина, 23в</option>
                             <option label="ул. Набережная, 7Б" value={1}>ул. Набережная, 7Б</option>
                             <option label="ул. Жигура, 12а" value={3}>ул. Жигура, 12а</option>
-                            </> : user_curr.user.city_id === 2 ? <>
+                            </> : user_curr?.user?.city_id === 2 ? <>
                                 <option label="ул. Кирова, 2" value={20}>ул. Кирова, 2</option>
-                            </> : user_curr.user.city_id === 3 ? <>
+                            </> : user_curr?.user?.city_id === 3 ? <>
                             <option label="ул. Советская, 31, 3" value={2}>ул. Советская, 31, 3</option>
                             <option label="ул. Сахалинская, 45А, 1" value={11}>ул. Сахалинская, 45А, 1</option>
                             <option label="ул. Пуркаева М.А., 102В" value={24}>ул. Пуркаева М.А., 102В</option>
