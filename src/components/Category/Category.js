@@ -165,17 +165,38 @@ function Category() {
     if (data === 0)
       return 0;
     var final = structuredClone(data)
+    var indexes = []
     final.forEach((p,index) => {
       var filtered = []
-      p.items.forEach((item, _i)=>{
-          if(item.price_vvo/100 > priceRange[0] && item.price_vvo/100 < priceRange[1]){
-              filtered.push(item);
-          }
-        })
-      p.items = filtered
+      var isContain = false;
+      producerToggle.forEach((obj) => {
+        if (p.product_id === obj['key'] && obj.value) {
+          isContain = true;
+        }
+      })
+      // for (var pp in producerToggle) {
+      //   console.log(p.product_id + '  ' + pp.key + '  ' + pp.value);
+      //   if (p.product_id === pp.key && pp.value) {
+      //     isContain = true;
+      //     break;
+      //   }
+      // }
+      if (isContain) {
+        p.items.forEach((item, _i)=>{
+            if(item.price_vvo/100 > priceRange[0] && item.price_vvo/100 < priceRange[1]){
+                filtered.push(item);
+            }
+          })
+        p.items = filtered
+      } else p.items = [];
       });
+      // indexes.forEach((index) => {
+      //   final.splice(index, 1)
+      // })
+      console.log('FILTERED');
+      console.log(final);
       return final
-  },[priceRange, data]);
+  },[priceRange, data, producerToggle]);
 
   console.log(data);
   console.log(filteredItems);
@@ -250,7 +271,7 @@ function Category() {
           <AiOutlineClose className={modalStyles.CloseButton} onClick={() => setModalActive(false)} />
         </div>
         {/* backgroundColor: 'var(--tg-theme-bg-color)' */}
-        <div style={{'height': '70vh', 'overflowX': 'hidden','overflowY': 'auto', backgroundColor: 'var(--tg-theme-bg-color)'}}>          
+        <div style={{maxHeight: '70vh', maxWidth: '80vw', 'overflowX': 'hidden','overflowY': 'auto', backgroundColor: '#ffffff'}}>          
           <div className={modalStyles.VerticalBox}>
             <span>Наличие в магазинах:</span>
               {user_data.user.city_id === 1 ? <>
@@ -273,46 +294,70 @@ function Category() {
                 <Toggle label="ул. Пуркаева М.А., 102В" toggled={storePYR}  setStore={setStorePYR} /*onClick={logState}  24*//>
               </> }
           </div>
-          <div className={modalStyles.HorizontalBox}>
-            <span>Тип никотина:</span>
-            <Toggle label="Соль" toggled={true} /*onClick={logState}*//>
-            <Toggle label="Щелочь" toggled={true} /*onClick={logState}*//>
-          </div>
-          <div className={modalStyles.VerticalBox}>
-            <span>Крепость</span>
-            <div className={modalStyles.HorizontalBox}>
-              <Toggle label="10" toggled={true} /*onClick={logState}*//>
-              <Toggle label="20" toggled={false} /*onClick={logState}*//>
-              <Toggle label="30" toggled={false} /*onClick={logState}*//>
-              <Toggle label="40" toggled={false} /*onClick={logState}*//>
+          {category_id === 6 &&
+          (<>
+            <div className={modalStyles.VerticalBox}>
+              <span>Тип никотина:</span>
+              <div className={modalStyles.HorizontalBox} >
+                <Toggle label="Соль" toggled={true} /*onClick={logState}*//>
+                <Toggle label="Щелочь" toggled={true} /*onClick={logState}*//>
+              </div>
             </div>
-            <span className={modalStyles.ShowButton}>Показать ещё</span>
-          </div>
-          <div className={modalStyles.VerticalBox}>
-            <span>Объем (мл):</span>
-            <div className={modalStyles.HorizontalBox}>
-              <Toggle label="10" toggled={true} /*onClick={logState}*//>
-              <Toggle label="20" toggled={false} /*onClick={logState}*//>
-              <Toggle label="30" toggled={false} /*onClick={logState}*//>
-              <Toggle label="40" toggled={false} /*onClick={logState}*//>
+            <div className={modalStyles.VerticalBox}>
+              <span>Крепость</span>
+              <div style={{display: 'flex'}}>
+                <Toggle label="0" toggled={true} />
+                <Toggle label="1.5" toggled={true} />
+                <Toggle label="3" toggled={true} />
+                <Toggle label="6" toggled={true} />
+                {/* <Toggle label="12" toggled={true} />
+                <Toggle label="18" toggled={true} />
+                <Toggle label="20" toggled={false} />
+                <Toggle label="25" toggled={false} />
+                <Toggle label="20 Medium" toggled={false} />
+                <Toggle label="35" toggled={false} />
+                <Toggle label="20 Strong" toggled={false} />
+                <Toggle label="20 Hard" toggled={false} />
+                <Toggle label="40" toggled={false} />
+                <Toggle label="45" toggled={false} />
+                <Toggle label="20mg Ultra" toggled={false} />
+                <Toggle label="20mg Extra" toggled={false} /> 
+                <Toggle label="50" toggled={false} />
+                <Toggle label="60" toggled={false} /> */}
+              </div>
+              <span className={modalStyles.ShowButton}>Показать ещё</span>
             </div>
-          </div>
+            <div className={modalStyles.VerticalBox}>
+              <span>Объем (мл):</span>
+              <div className={modalStyles.HorizontalBox}>
+                <Toggle label="10" toggled={true} />
+                <Toggle label="30" toggled={true} />
+                <Toggle label="60" toggled={true} />
+                <Toggle label="80" toggled={true} />
+                {/* <Toggle label="95" toggled={false} />
+                <Toggle label="100" toggled={false} />
+                <Toggle label="120" toggled={false} /> */}
+              </div>
+            </div>
+          </>)
+          }
           <div className={modalStyles.VerticalBox}>
             <span>Цена:</span>
-            <div className={modalStyles.HorizontalBox}>
-              <span>от <input className={modalStyles.inputPrice} value={priceRange[0]} onChange={e => setPriceRange([parseInt(e.target.value), priceRange[1]])} type='number' /></span>
+            <div className={modalStyles.HorizontalBox} style={{margin: '0 15px', textAlign: 'center', justifyContent: 'center'}}>
+              <span><input className={modalStyles.inputPrice} value={priceRange[0]} onChange={e => setPriceRange([parseInt(e.target.value), priceRange[1]])} type='number' /></span>
               {/* <span>от {priceRange[0]} </span> */}
-              <RangeSlider className={modalStyles.Slider} min={0} max={10000} value={priceRange} onInput={setPriceRange}/>
-              <span> до <input className={modalStyles.inputPrice} value={priceRange[1]} onChange={e => setPriceRange([priceRange[0], parseInt(e.target.value)])} type='number' /></span>
+              <div style={{margin: '0 10px', fontSize: '17px', fontWeight: '400', marginBottom: '16px'}} >до</div>
+              {/* <RangeSlider className={modalStyles.Slider} min={0} max={10000} value={priceRange} onInput={setPriceRange}/> */}
+              <span><input className={modalStyles.inputPrice} value={priceRange[1]} onChange={e => setPriceRange([priceRange[0], parseInt(e.target.value)])} type='number' /></span>
             </div>
           </div>
           <div className={modalStyles.VerticalBox}>
             <span>Производитель:</span>
             <Toggle label="Все" toggled={checkAllProducer} setStore={handleSetCheckAllProducer} /*onClick={logState}*//>
-            {producerToggle.length !== 0 && producerToggle.map((producer, index) => !showAllProducer ? ( <>
+            {producerToggle.length !== 0 && producerToggle.map((producer, index) => showAllProducer ? ( <>
               <Toggle key={producer.key} label={producer.name} toggled={producer.value} setStore={setProducerToggles} multiple={true} multipleState={producerToggle} producer_id={producer.key} />
               </>
-          ) : index < 4 && ( <>
+          ) : index < 3 && ( <>
             <Toggle key={producer.key} label={producer.name} toggled={producer.value} setStore={setProducerToggles} multiple={true} multipleState={producerToggle} producer_id={producer.key} />
             </>
         ))}

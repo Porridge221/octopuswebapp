@@ -10,6 +10,7 @@ function InfoCardList() {
     ]
 
     return (
+        <div style={{overflowX  : 'hidden', minHeight: '95px'}}>
         <ul className={styles.infocardlist}>
             <li key={1}>
                 <InfoCard card={cards[0]} />
@@ -27,6 +28,7 @@ function InfoCardList() {
                 <InfoCard card={cards[1]}/>
             </li>
         </ul>
+        </div>
     )
 
 
