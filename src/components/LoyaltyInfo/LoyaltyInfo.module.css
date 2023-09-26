@@ -86,7 +86,7 @@
 
 .rowBorder{
     border-top: 1px solid var(--tg-theme-hint-color);
-    margin-right: 10px;
+    /* margin-right: 10px; */
     /* width: 100%; */
     grid-column: 1 / 4; /* this code makes the row stretch to entire width of the container  var(--tg-theme-hint-color); */
 }

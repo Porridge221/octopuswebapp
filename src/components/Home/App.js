@@ -84,7 +84,7 @@ function App() {
       <InfoCardList />
       <hr/>
       <SearchItem />
-      <CategoryList />
+      <CategoryList user_data={user_data}/>
       <hr/>
       <OrderList user_data={user_data}/>
       <FilterModal active={modalActive} setActive={setModalActive} isDeactivated={false} >

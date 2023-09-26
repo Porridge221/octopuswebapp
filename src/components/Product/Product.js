@@ -126,7 +126,7 @@ function Product() {
     return (
     <div className={styles.root}>
         <Header path={path} current={current}/>
-        <div className={styles.Image} ><img style={{'object-fit': 'contain'}} src={process.env.PUBLIC_URL + "/assets/AccountImage.png"} alt=''/></div>
+        <div className={styles.ImageBox} ><img className={styles.Image} style={{'object-fit': 'contain'}} src={process.env.PUBLIC_URL + "/assets/AccountImage.png"} alt=''/></div>
         <div className={styles.Name}>{item.name}</div>
         <div className={styles.Price}>{new Intl.NumberFormat('ru-RU', {style: 'currency', currency: 'RUB', minimumFractionDigits: 0}).format(item.price_vvo/100)}</div>
         <div className={styles.Characteristics}>
@@ -135,7 +135,7 @@ function Product() {
             ))}
         </div>
         {/* <div style={{'flex-grow': '1'}}/> */}
-        <div className={buttonStyle} onClick={buttonLabel === 'В корзину' ? fetchData : fetchDeleteItem}><span className={styles.ButtonLabel}>{buttonLabel}</span></div>
+        <div className={styles.buttonBox}><div className={buttonStyle} onClick={buttonLabel === 'В корзину' ? fetchData : fetchDeleteItem}><span className={styles.ButtonLabel}>{buttonLabel}</span></div></div>
     </div>
     );
 }

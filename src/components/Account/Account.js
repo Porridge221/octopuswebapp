@@ -100,7 +100,9 @@ function Account() {
                 </div>
                 <div style={{'display':'flex', 'justifyContent': 'center'}}><div className={styles.AddInfoButton} onClick={() => setModalActive(true)}>Добавить инфо</div></div>
             </div>
+            <div style={{marginRight: '16px'}}>
             <LoyaltyInfo />
+            </div>
             <FilterModal active={modalActive} setActive={setModalActive}>
             <div style={{'width': '70vw', 'overflowX': 'hidden','overflowY': 'auto', backgroundColor: 'var(--tg-theme-bg-color)'}}>
                 <div className={modalStyles.Header}>

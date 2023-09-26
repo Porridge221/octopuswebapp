@@ -294,6 +294,18 @@ function Category() {
                 <Toggle label="ул. Пуркаева М.А., 102В" toggled={storePYR}  setStore={setStorePYR} /*onClick={logState}  24*//>
               </> }
           </div>
+          <div className={modalStyles.VerticalBox}>
+              <span>Производитель:</span>
+              <Toggle label="Все" toggled={checkAllProducer} setStore={handleSetCheckAllProducer} /*onClick={logState}*//>
+              {producerToggle.length !== 0 && producerToggle.map((producer, index) => showAllProducer ? ( <>
+                <Toggle key={producer.key} label={producer.name} toggled={producer.value} setStore={setProducerToggles} multiple={true} multipleState={producerToggle} producer_id={producer.key} />
+                </>
+              ) : index < 3 && ( <>
+              <Toggle key={producer.key} label={producer.name} toggled={producer.value} setStore={setProducerToggles} multiple={true} multipleState={producerToggle} producer_id={producer.key} />
+              </>
+              ))}
+              <span className={modalStyles.ShowButton} onClick={() => handleShowAllProducer()}>{showAllProducer ? 'Скрыть' : 'Показать ещё'}</span>
+          </div>
           {category_id === 6 &&
           (<>
             <div className={modalStyles.VerticalBox}>
@@ -350,18 +362,6 @@ function Category() {
               {/* <RangeSlider className={modalStyles.Slider} min={0} max={10000} value={priceRange} onInput={setPriceRange}/> */}
               <span><input className={modalStyles.inputPrice} value={priceRange[1]} onChange={e => setPriceRange([priceRange[0], parseInt(e.target.value)])} type='number' /></span>
             </div>
-          </div>
-          <div className={modalStyles.VerticalBox}>
-            <span>Производитель:</span>
-            <Toggle label="Все" toggled={checkAllProducer} setStore={handleSetCheckAllProducer} /*onClick={logState}*//>
-            {producerToggle.length !== 0 && producerToggle.map((producer, index) => showAllProducer ? ( <>
-              <Toggle key={producer.key} label={producer.name} toggled={producer.value} setStore={setProducerToggles} multiple={true} multipleState={producerToggle} producer_id={producer.key} />
-              </>
-          ) : index < 3 && ( <>
-            <Toggle key={producer.key} label={producer.name} toggled={producer.value} setStore={setProducerToggles} multiple={true} multipleState={producerToggle} producer_id={producer.key} />
-            </>
-        ))}
-            <span className={modalStyles.ShowButton} onClick={() => handleShowAllProducer()}>{showAllProducer ? 'Скрыть' : 'Показать ещё'}</span>
           </div>
 
         </div>
