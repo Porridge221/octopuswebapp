@@ -10,7 +10,7 @@ function AccountItem({user_data}) {
         <div className={styles.root}>
             <Link className={styles.AccountImageBox} to='/account'>
                 {/* <div className={styles.AccountImage}/> */}
-                <img className={styles.AccountImage} src={user?.photo_url === undefined ? (process.env.PUBLIC_URL + "/assets/AccountImage.png") : user.photo_url} alt=''/>
+                <img className={styles.AccountImage} src={user?.photo_url === undefined ? (process.env.PUBLIC_URL + "/assets/octopus_big1.jpg") : user.photo_url} alt=''/>
             </Link>
             <Link className={styles.UserBox} to='/account'>
                 <div className={styles.AccountBlock}>
@@ -19,7 +19,7 @@ function AccountItem({user_data}) {
                         <span className={styles.AccountStatus}>{user_data !== undefined && user_data.user.discount_group === 'No discount' ? 'Bronze Card' : user_data.user.discount_group}</span>
                     </div>
                 </div>
-                <div className={styles.PointsCount}>Баллы: {user_data !== undefined && user_data.user.discount_points}</div>
+                <div className={styles.PointsCount}>Ваши баллы: {user_data !== undefined && user_data.user.discount_group === 'No discount' ? 'Новый клиет' : user_data.user.discount_points}</div>
             </Link>
             <Link className={styles.CartLink} to='/cart'>
                 <svg width="31" height="24" viewBox="0 0 31 24" fill="none" xmlns="http://www.w3.org/2000/svg">

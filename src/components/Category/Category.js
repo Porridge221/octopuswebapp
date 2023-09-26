@@ -183,7 +183,7 @@ function Category() {
       // }
       if (isContain) {
         p.items.forEach((item, _i)=>{
-            if(item.price_vvo/100 > priceRange[0] && item.price_vvo/100 < priceRange[1]){
+            if((user_data.user.city_id === 3 ? item.price_shk/100 : item.price_vvo/100) > priceRange[0] && (user_data.user.city_id === 3 ? item.price_shk/100 : item.price_vvo/100) < priceRange[1]){
                 filtered.push(item);
             }
           })

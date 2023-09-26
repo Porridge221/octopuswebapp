@@ -76,7 +76,7 @@ function Account() {
     return (
         <div className={styles.root}>
             <div className={styles.Header} >
-                <img className={styles.icon} src={process.env.PUBLIC_URL + '/assets/octopus_big1.jpg'} alt=''/>
+                <img className={styles.icon} src={user?.photo_url === undefined ? (process.env.PUBLIC_URL + "/assets/octopus_big1.jpg") : user.photo_url} alt=''/>
             </div>
             <span className={styles.UserName}>{user_data?.user?.name}</span>
             <div className={styles.UserDiscountBox}>

@@ -4,12 +4,15 @@ import useTelegram from '../../hooks/useTelegram';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useState } from 'react';
+import useUser from '../../hooks/useUser';
 
 
 function ProductSearch() {
     const {variant_id, variant_name} = useLocation().state;
 
     const [item, setItem] = useState();
+
+    const user_data = useUser(false)
 
     const {tg, initData} = useTelegram();
     const navigate = useNavigate();
@@ -69,7 +72,7 @@ function ProductSearch() {
         <Header path={path} current={current}/>
         <div className={styles.Image} ><img style={{'object-fit': 'contain'}} src={process.env.PUBLIC_URL + "/assets/AccountImage.png"} alt=''/></div>
         <div className={styles.Name}>{item !== undefined && item.name}</div>
-        <div className={styles.Price}>{ item === undefined ? '####' : new Intl.NumberFormat('ru-RU', {style: 'currency', currency: 'RUB', minimumFractionDigits: 0}).format(item.price_vvo/100)}</div>
+        <div className={styles.Price}>{ item === undefined ? '####' : new Intl.NumberFormat('ru-RU', {style: 'currency', currency: 'RUB', minimumFractionDigits: 0}).format((user_data.user.city_id === 3 ? item.price_shk/100 : item.price_vvo/100))}</div>
         <div className={styles.Characteristics}>
             {item !== undefined && item.item_characteristics.length > 0 && item.item_characteristics.map(characteristic => ( 
                 <div key={characteristic.name} className={styles.CharacteristicItem}>{characteristic.name + ': ' + characteristic.value}</div>

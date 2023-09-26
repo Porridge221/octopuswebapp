@@ -4,6 +4,7 @@ import useTelegram from '../../hooks/useTelegram';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useState } from 'react';
 import CartService from '../../services/cartService';
+import useUser from '../../hooks/useUser';
 
 // const item = {
 //     'id': 8,
@@ -33,6 +34,8 @@ import CartService from '../../services/cartService';
 
 function Product() {
     const [cartData, setCartData] = useState(CartService({isUpdate: false, isInit: false}))
+
+    const user_data = useUser(false)
 
     const {item, category_id} = useLocation().state;
 
@@ -128,7 +131,7 @@ function Product() {
         <Header path={path} current={current}/>
         <div className={styles.ImageBox} ><img className={styles.Image} style={{'object-fit': 'contain'}} src={item.image !== "" ? item.image : process.env.PUBLIC_URL + "/assets/octopus_big1.jpg"} alt=''/></div>
         <div className={styles.Name}>{item.name}</div>
-        <div className={styles.Price}>{new Intl.NumberFormat('ru-RU', {style: 'currency', currency: 'RUB', minimumFractionDigits: 0}).format(item.price_vvo/100)}</div>
+        <div className={styles.Price}>{new Intl.NumberFormat('ru-RU', {style: 'currency', currency: 'RUB', minimumFractionDigits: 0}).format((user_data.user.city_id === 3 ? item.price_shk/100 : item.price_vvo/100))}</div>
         <div className={styles.Characteristics}>
             {item.item_characteristics.length > 0 && item.item_characteristics.map(characteristic => ( 
                 <div key={characteristic.name} className={styles.CharacteristicItem}>{characteristic.name + ': ' + characteristic.value}</div>

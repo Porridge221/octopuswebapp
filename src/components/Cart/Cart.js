@@ -107,7 +107,7 @@ function Cart() {
         user_data !== undefined && user_data?.items?.length > 0 &&
             // user_data.cart.items.map(order => {count += order.count; price += order.price_vvo/100 * order.count;} )
             user_data.items.forEach(order => {
-                count += order.count; price += order.price_vvo/100 * order.count;
+                count += order.count; price += (user_curr.user.city_id === 3 ? order.price_shk/100 : order.price_vvo/100) * order.count;
         });
         setCartItemCount(count);
         setCartPrice(price);
