@@ -8,12 +8,34 @@
     background-color: var(--tg-theme-bg-color);
 }
 
+.ImageBox {
+    /* background-size: 100%; */
+    /* width: max-content;
+    height: max-content; */
+
+    /* width: 293px; */
+    width: 100%;
+    height: 40vh;
+    background-color: #ffffff;
+    
+    /* background-image: url('../../../../../public/assets/Rectangle5.png'); */
+    /* background-image: url("https://miniature-prod.moysklad.ru/miniature/3a69a92f-3453-11ee-0a80-092500013563/documentminiature/83d9bfaa-6238-4567-8b41-e4f0b49d1e8c"); */
+    /* flex-grow: 2; */
+    /* margin: 0 32px; */
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    /* flex-grow: 1; */
+}
+
 .Image {
     /* background-size: 100%; */
     /* width: max-content;
     height: max-content; */
-    width: 293px;
-    height: 187px;
+
+    width: 100%;
+    height: 100%;
+    
     /* background-image: url('../../../../../public/assets/Rectangle5.png'); */
     /* background-image: url("https://miniature-prod.moysklad.ru/miniature/3a69a92f-3453-11ee-0a80-092500013563/documentminiature/83d9bfaa-6238-4567-8b41-e4f0b49d1e8c"); */
     /* flex-grow: 2; */
@@ -21,24 +43,32 @@
     display: flex;
     justify-content: center;
     align-self: center;
-    flex-grow: 1;
+    /* flex-grow: 1; */
 }
 
 .Price {
     color: var(--tg-theme-text-color);
     font-family: "Inter-SemiBold", Helvetica, Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
         'Liberation Sans', sans-serif;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 600;
     margin: 0 32px;
     margin-top: 16px;
+}
+
+.buttonBox {
+    width: 100%;
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    flex: 1;
 }
 
 .Name {
     color: var(--tg-theme-text-color);
     font-family: "Inter-SemiBold", Helvetica, Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
         'Liberation Sans', sans-serif;
-    font-size: 16px;
+    font-size: 20px;
     font-weight: 600;
     margin: 0 32px;
     margin-top: 20px;
@@ -68,27 +98,67 @@
     width: 150px;
 
     cursor: pointer;
-    transition: color 500ms ease;
+    /* transition: color 500ms ease; */
 
     margin: 0 29px;
     margin-top: 21px;
     margin-bottom: 41px;
     padding: 5px 10px;
-    align-self: center;
+    /* align-self: center; */
     text-align: center;
-    align-content: center;
+    /* align-content: center; */
     align-items: center;
     display: flex;
     justify-content: center;
     /* justify-self: end; */
+
+    transition: 0.3s ease-in-out;
 }
 
 .BuyButton:hover {
-    color: #93e411b7;
+    /* background-color: var(--tg-theme-secondary-bg-color); */
 }
 
+.BuyButton:active {
+    transform: scale(0.9);
+}
+
+.BuyButton1::after {
+    content: '';
+    display: block;
+    position: absolute;
+    z-index: -1;  
+    border-radius: 10px;
+    height: 52px;
+    width: 180px;
+    background: #54dc48;
+    animation: pulse 1.4s infinite ease-out;
+    /* animation-iteration-count: 1; */
+}
+
+.BuyButton2::after {
+    content: '';
+    display: block;
+    position: absolute;
+    z-index: -1;  
+    border-radius: 10px;
+    height: 52px;
+    width: 180px;
+    background: #d64925;
+    animation: pulse 1.4s infinite ease-out;
+    /* animation-iteration-count: 1; */
+}
+
+@keyframes pulse {
+    to {
+        transform: scale(1.4);
+        opacity: 0;
+    }
+}
+
+
 .ButtonLabel {
-    color: var(--tg-theme-text-color);
+    color: #000000;
     font-family: "Inter-SemiBold", Helvetica, Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
         'Liberation Sans', sans-serif;
     font-size: 16px;

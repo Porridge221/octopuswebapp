@@ -27,7 +27,7 @@ function SearchItem() {
     
     function handleSelect(data) {
         setSelectedOptions(data);
-        navigate('/home/product/', { state: { variant_id: data.value, variant_name: data.label } });
+        navigate('/home/product/', { state: { variant_id: data.value, variant_name: data.label, category_id: -1 } });
     }
 
     const fetchData = (it) => {

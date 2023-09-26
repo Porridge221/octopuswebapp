@@ -1,10 +1,17 @@
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import styles from './InfoPage.module.css'
 import LoyaltyInfo from '../LoyaltyInfo/LoyaltyInfo';
+import useTelegram from '../../hooks/useTelegram';
 
 function InfoPage() {
 
     const {card_id} = useLocation().state;
+
+    const {tg} = useTelegram();
+    const navigate = useNavigate();
+
+    tg.onEvent('backButtonClicked', () => navigate('/home/'));
+    tg.BackButton.show();
     
     return (
         <div className={styles.root}>
