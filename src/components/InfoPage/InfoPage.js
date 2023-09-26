@@ -85,7 +85,9 @@ function InfoPage() {
                 <div className={styles.Tips} style={{marginTop: '25px'}}>Участвуй в программе лояльности!{'\n\n'}
                                                                         Копи баллы и меняй их на скидку в наших магазинах!</div>
                 <img className={styles.loyaltyIcon} src={process.env.PUBLIC_URL + '/assets/infopage/loyal.PNG'} alt=''/>
-                <LoyaltyInfo />
+                <div style={{margin: '0 0', marginLeft: '-16px'}}>
+                    <LoyaltyInfo />
+                </div>
             </>)}
         </div>
     );

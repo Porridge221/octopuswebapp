@@ -26,7 +26,7 @@ function ProductSearch() {
             console.log(el);
             console.log(cartData.items[el].variant_id);
             console.log(item.variant_id);
-            if (cartData.items[el].variant_id === item.variant_id) {
+            if (cartData.items[el].variant_id === item?.variant_id) {
                 label = 'Удалить';
                 break;
             }
@@ -94,6 +94,7 @@ function ProductSearch() {
           })
           .then(data => {
             setItem(data);
+            setCurrent(data?.name)
         })
     }
 
@@ -127,18 +128,19 @@ function ProductSearch() {
     if (category_id !== -1) {
         path = ['Главная', 'Каталог', categories[category_id]]
     }
-    const current = item.name;
+    // const current = item.name;
+    const [current, setCurrent] = useState(item?.name)
 
     console.log(variant_id);
     console.log(item);
     return (
     <div className={styles.root}>
         <Header path={path} current={current}/>
-        <div className={styles.ImageBox} ><img className={styles.Image} style={{'object-fit': 'contain'}} src={item.image !== "" ? item.image : process.env.PUBLIC_URL + "/assets/octopus_big1.jpg"} alt=''/></div>
-        <div className={styles.Name}>{item !== undefined && item.name}</div>
-        <div className={styles.Price}>{ item === undefined ? '####' : new Intl.NumberFormat('ru-RU', {style: 'currency', currency: 'RUB', minimumFractionDigits: 0}).format((user_data?.user?.city_id === 3 ? item.price_shk/100 : item.price_vvo/100))}</div>
+        <div className={styles.ImageBox} ><img className={styles.Image} style={{'object-fit': 'contain'}} src={item?.image !== "" ? item?.image : process.env.PUBLIC_URL + "/assets/octopus_big1.jpg"} alt=''/></div>
+        <div className={styles.Name}>{item !== undefined && item?.name}</div>
+        <div className={styles.Price}>{ item === undefined ? '####' : new Intl.NumberFormat('ru-RU', {style: 'currency', currency: 'RUB', minimumFractionDigits: 0}).format((user_data?.user?.city_id === 3 ? item?.price_shk/100 : item?.price_vvo/100))}</div>
         <div className={styles.Characteristics}>
-            {item !== undefined && item.item_characteristics.length > 0 && item.item_characteristics.map(characteristic => ( 
+            {item !== undefined && item?.item_characteristics?.length > 0 && item.item_characteristics.map(characteristic => ( 
                 <div key={characteristic.name} className={styles.CharacteristicItem}>{characteristic.name + ': ' + characteristic.value}</div>
             ))}
         </div>
