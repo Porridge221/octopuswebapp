@@ -65,7 +65,7 @@ function App() {
   }
 
   useEffect(() => {
-    setSelectedCity( user_data?.user?.city_id ===  1 ? 'Владивосток' : user_data?.user?.city_id === 2 ? 'Артем' : user_data?.user?.city_id === 3 ? "Южно-Сахалинск" : "");
+    setSelectedCity( user_data?.user?.city_id ===  1 ? 'Владивосток' : user_data?.user?.city_id === 2 ? 'Артем' : user_data?.user?.city_id === 3 ? "Южно-Сахалинск" : "Владивосток");
     setUserName(user_data?.user?.name);
     //user_data !== undefined && !showed && ((user_data.user.phone === null || user_data.user.phone === undefined) || (user_data.user.city_id === null || user_data.user.city_id === undefined)) && handler();
     user_data !== undefined && !showed && ((user_data?.user?.phone === null || user_data?.user?.phone === undefined) || (user_data?.user?.city_id === null || user_data?.user?.city_id === undefined)) && setRegModalActive(true);
