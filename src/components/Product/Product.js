@@ -126,7 +126,7 @@ function Product() {
     return (
     <div className={styles.root}>
         <Header path={path} current={current}/>
-        <div className={styles.ImageBox} ><img className={styles.Image} style={{'object-fit': 'contain'}} src={process.env.PUBLIC_URL + "/assets/AccountImage.png"} alt=''/></div>
+        <div className={styles.ImageBox} ><img className={styles.Image} style={{'object-fit': 'contain'}} src={item.image !== "" ? item.image : process.env.PUBLIC_URL + "/assets/octopus_big1.jpg"} alt=''/></div>
         <div className={styles.Name}>{item.name}</div>
         <div className={styles.Price}>{new Intl.NumberFormat('ru-RU', {style: 'currency', currency: 'RUB', minimumFractionDigits: 0}).format(item.price_vvo/100)}</div>
         <div className={styles.Characteristics}>

@@ -9,6 +9,7 @@ import {AiOutlineClose} from "react-icons/ai";
 import modalStyles from './OrderHistoryModal.module.css'
 import CheckItem from './CheckItem/CheckItem';
 import getStore from '../../services/getStore';
+import CartService from '../../services/cartService';
 
 function OrderHistory() {
     const {tg, initData} = useTelegram();
@@ -22,6 +23,21 @@ function OrderHistory() {
 
     tg.onEvent('backButtonClicked', () => navigate('/home'));
     tg.BackButton.show();
+
+    const fetchRepeatOrder = () => {
+        fetch("https://octopus-vape.ru/orders/repeat", { method:'POST',headers: {
+        'Content-Type': 'application/json',
+        'Telegram-Data': initData,
+        }, body: JSON.stringify( {'order_id': modalOrder.order_id} )
+        })
+        .then(response => {
+            return response
+        })
+        .then(data => {
+            //CartService({isUpdate:false, isInit: true})
+            navigate('/cart')
+        })
+    }
 
     const fetchData = () => {
         fetch("https://octopus-vape.ru/orders/1", {method: 'GET', headers: {'Content-Type': 'application/json', 'Telegram-Data': initData,}})
@@ -102,7 +118,7 @@ function OrderHistory() {
                     </div>
                 </div>
             </div>
-            <div className={modalStyles.ConfirmButton}>Повторить заказ</div>
+            <div className={modalStyles.ConfirmButton} onClick={() => fetchRepeatOrder()}>Повторить заказ</div>
             </FilterModal>
         </div>
     );

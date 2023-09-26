@@ -78,9 +78,9 @@ function Account() {
             <div className={styles.Header} >
                 <img className={styles.icon} src={process.env.PUBLIC_URL + '/assets/octopus_big1.jpg'} alt=''/>
             </div>
-            <span className={styles.UserName}>{user?.username}</span>
+            <span className={styles.UserName}>{user_data?.user?.name}</span>
             <div className={styles.UserDiscountBox}>
-                <span className={styles.UserDiscount}>{user_data !== undefined && user_data.user.discount_group}</span>
+                <span className={styles.UserDiscount}>{user_data === undefined && user_data.user.discount_group}</span>
             </div>
             <div className={styles.UserInfoBox}>
                 {/* <p style={{margin: '2px 0', marginBottom: '5px', fontWeight: '800'}}>

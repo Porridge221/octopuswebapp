@@ -24,9 +24,6 @@ function InfoCardList() {
             <li key={4}>
                 <InfoCard card={cards[3]}/>
             </li>
-            <li key={5}>
-                <InfoCard card={cards[1]}/>
-            </li>
         </ul>
         </div>
     )

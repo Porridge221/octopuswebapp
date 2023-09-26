@@ -24,7 +24,7 @@ function App() {
   const [modalActive, setModalActive] = useState(false);
 
   const [phoneNumber, setPhoneNumber] = useState("");
-  const [selectedCity, setSelectedCity] = useState(user_data?.user?.city_id ===  1 ? 'Владивосток' : user_data?.user?.city_id === 2 ? 'Артем' : user_data?.user?.city_id === 3 ? "Южно-Сахалинск" : "");
+  const [selectedCity, setSelectedCity] = useState(user_data?.user?.city_id ===  1 ? 'Владивосток' : user_data?.user?.city_id === 2 ? 'Артем' : user_data?.user?.city_id === 3 ? "Южно-Сахалинск" : "Владивосток");
   const [userName, setUserName] = useState("");
   const [regModalActive, setRegModalActive] = useState(false);
 

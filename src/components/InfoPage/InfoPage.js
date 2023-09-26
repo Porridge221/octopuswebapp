@@ -17,7 +17,7 @@ function InfoPage() {
                 <ol style={{paddingLeft: '25px'}}>
                 <li className={styles.Text}>
                 {/* <div className={styles.Text}> */}
-                <img className={styles.iconEmpty} src={process.env.PUBLIC_URL + '/assets/infopage/about1.svg'} alt='' align='right'/>
+                <img className={styles.iconEmpty} src={process.env.PUBLIC_URL + '/assets/infopage/1.png'} alt='' align='right'/>
                     Бот поможет вам оформлять заказы Вашей любимой продукции и получать
                     их в наиболее удобных для Вас точках продаж. Для этого достаточно перейти
                     в функциональное окно <b>«Выбрать и заказать»</b> и отправиться на поиски
@@ -27,6 +27,7 @@ function InfoPage() {
                     </li>
                 {/* </div> */}
                 <li className={styles.Text}>
+                <img className={styles.iconEmpty} src={process.env.PUBLIC_URL + '/assets/infopage/2.png'} alt='' align='left'/>
                     После добавления продукции в корзину Вы сможете оформить Ваш заказ в
                     нужный магазин после ввода дополнительной информации о получателе.
                     Администраторы <b>OCTOPUS</b> подготовят ваш заказ к выдаче в течение
@@ -38,11 +39,13 @@ function InfoPage() {
                     забирать свои покупки у нас.
                 </li>
                 <li className={styles.Text}>
+                <img className={styles.iconEmpty} src={process.env.PUBLIC_URL + '/assets/infopage/4.png'} alt='' align='right'/>
                     Для того, чтобы следить за начислением баллов в профиле достаточно
                     пройти простую <i>регистрацию</i>, после чего Вам станет доступна возможность
                     отслеживать успешное участие в <b>НАШЕЙ ПРОГРАММЕ ЛОЯЛЬНОСТИ</b>.
                 </li>
                 <li className={styles.Text}>
+                <img className={styles.iconEmpty} src={process.env.PUBLIC_URL + '/assets/infopage/5.png'} alt='' align='left'/>
                     Если Вы теряетесь в огромном выборе продукции функциональная
                     особенность <b>«Помощь консультанта»</b> поможет определиться с нужным
                     для Вас выбором! Для этого достаточно провести приятный диалог с
@@ -74,6 +77,7 @@ function InfoPage() {
                 <div className={styles.Header}>Программа лояльности</div>
                 <div className={styles.Tips} style={{marginTop: '25px'}}>Участвуй в программе лояльности!{'\n\n'}
                                                                         Копи баллы и меняй их на скидку в наших магазинах!</div>
+                <img className={styles.loyaltyIcon} src={process.env.PUBLIC_URL + '/assets/infopage/loyal.PNG'} alt=''/>
                 <LoyaltyInfo />
             </>)}
         </div>

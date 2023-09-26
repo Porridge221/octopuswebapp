@@ -317,7 +317,7 @@ function Category() {
             </div>
             <div className={modalStyles.VerticalBox}>
               <span>Крепость</span>
-              <div style={{display: 'flex'}}>
+              <div style={{display: 'flex', width: '100%'}}>
                 <Toggle label="0" toggled={true} />
                 <Toggle label="1.5" toggled={true} />
                 <Toggle label="3" toggled={true} />
