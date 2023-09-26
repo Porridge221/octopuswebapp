@@ -16,10 +16,10 @@ function AccountItem({user_data}) {
                 <div className={styles.AccountBlock}>
                     <div style={{width: '100%', display: 'flex', flexDirection: 'row'}}>
                         <div className={styles.AccountName}>{user_data?.user?.name}</div>
-                        <span className={styles.AccountStatus}>{user_data !== undefined && user_data.user.discount_group === 'No discount' ? 'Bronze Card' : user_data.user.discount_group}</span>
+                        <span className={styles.AccountStatus}>{user_data !== undefined && user_data?.user?.discount_group === 'No discount' ? 'Bronze Card' : user_data?.user?.discount_group}</span>
                     </div>
                 </div>
-                <div className={styles.PointsCount}>Ваши баллы: {user_data !== undefined && user_data.user.discount_group === 'No discount' ? 'Новый клиет' : user_data.user.discount_points}</div>
+                <div className={styles.PointsCount}>Ваши баллы: {user_data !== undefined && user_data?.user?.discount_group === 'No discount' ? 'Новый клиет' : user_data?.user?.discount_points}</div>
             </Link>
             <Link className={styles.CartLink} to='/cart'>
                 <svg width="31" height="24" viewBox="0 0 31 24" fill="none" xmlns="http://www.w3.org/2000/svg">
