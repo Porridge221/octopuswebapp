@@ -356,11 +356,11 @@ function Category() {
           <div className={modalStyles.VerticalBox}>
             <span>Цена:</span>
             <div className={modalStyles.HorizontalBox} style={{margin: '0 15px', textAlign: 'center', justifyContent: 'center'}}>
-              <span><input className={modalStyles.inputPrice} value={priceRange[0]} onChange={e => setPriceRange([parseInt(e.target.value), priceRange[1]])} type='number' /></span>
+              <span><input className={modalStyles.inputPrice} value={priceRange[0]} onChange={e => setPriceRange([e.target.value === '' ? 0 : parseInt(e.target.value), priceRange[1]])} type='number' /></span>
               {/* <span>от {priceRange[0]} </span> */}
               <div style={{margin: '0 10px', fontSize: '17px', fontWeight: '400', marginBottom: '16px'}} >до</div>
               {/* <RangeSlider className={modalStyles.Slider} min={0} max={10000} value={priceRange} onInput={setPriceRange}/> */}
-              <span><input className={modalStyles.inputPrice} value={priceRange[1]} onChange={e => setPriceRange([priceRange[0], parseInt(e.target.value)])} type='number' /></span>
+              <span><input className={modalStyles.inputPrice} value={priceRange[1]} onChange={e => setPriceRange([priceRange[0], e.target.value === '' ? 0 : parseInt(e.target.value)])} type='number' /></span>
             </div>
           </div>
 

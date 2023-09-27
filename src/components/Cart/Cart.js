@@ -100,13 +100,17 @@ function Cart() {
         }, body: JSON.stringify( {'user_id': 1, 'name': userName, 'phone': phoneNumber.slice(1), 'store_id': Number(selectedStore)} )
           })
           .then(response => {
-            return JSON.stringify( {'user_id': 1, 'name': userName, 'phone': phoneNumber.slice(1), 'store_id': Number(selectedStore)} )
+            return response
           })
           .then(data => {
+            if (data?.status === 204) {
+                tg.showAlert('Товара нет в наличии!');
+            } else {
+                setModalActive(false);
+                CartService({isInit: true})
+                navigate("/home");
+            }
             console.log(JSON.stringify( {'user_id': 1, 'name': userName, 'phone': phoneNumber.slice(1), 'store_id': Number(selectedStore)} ));
-            setModalActive(false);
-            CartService({isInit: true})
-            navigate("/home");
           })
         }
     }
