@@ -82,7 +82,19 @@ function Cart() {
     }
 
     const fetchData = () => {
-        fetch("https://octopus-vape.ru/orders/", { method:'POST',headers: {
+        var error = false;
+        if (userName === "" || userName === undefined) {
+            tg.showAlert('Введите своё Имя');
+            error = true;
+        } else if (phoneNumber.length !== 12) {
+            tg.showAlert('Номер телефона должен состоять из 10 цифр!');
+            error = true;
+        } else if (selectedStore === "" || selectedStore === undefined) {
+            tg.showAlert('Введите Ваш город!');
+            error = true;
+        }
+        if (!error) {
+            fetch("https://octopus-vape.ru/orders/", { method:'POST',headers: {
           'Content-Type': 'application/json',
           'Telegram-Data': initData,
         }, body: JSON.stringify( {'user_id': 1, 'name': userName, 'phone': phoneNumber.slice(1), 'store_id': Number(selectedStore)} )
@@ -92,10 +104,11 @@ function Cart() {
           })
           .then(data => {
             console.log(JSON.stringify( {'user_id': 1, 'name': userName, 'phone': phoneNumber.slice(1), 'store_id': Number(selectedStore)} ));
+            setModalActive(false);
+            CartService({isInit: true})
+            navigate("/home");
           })
-          setModalActive(false);
-          CartService({isInit: true})
-          navigate("/home");
+        }
     }
 
     const [cartItemCount, setCartItemCount] = useState(0);

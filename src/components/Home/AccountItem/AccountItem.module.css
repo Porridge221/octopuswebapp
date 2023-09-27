@@ -84,13 +84,13 @@
         'Liberation Sans', sans-serif;
     /* width: 35vw; */
     /* flex-grow: 1; */
-    max-width: 30vw;
+    max-width: 90px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: clip;
     /* width: auto; */
     /* height: 14px; */
-    margin-right: 5%;
+    margin-right: 10px;
 }
 
 .AccountStatus {
@@ -127,7 +127,7 @@
 .CartButton {
     width: 27px;
     height: 22px;
-    stroke: var(--tg-theme-text-color);
+    stroke: #000000;
     /* float: right; */
     cursor: pointer;
     transition: color 500ms ease;

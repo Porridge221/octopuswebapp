@@ -40,19 +40,33 @@ function Account() {
     }, [user_data])
 
     const fetchData = () => {
-        fetch("https://octopus-vape.ru/users/add_info", { method:'PUT',headers: {
-          'Content-Type': 'application/json',
-          'Telegram-Data': initData,
-        }, body: JSON.stringify( {'phone': phoneNumber.slice(1), 'city_id': selectedCity === 'Владивосток' ? 1 : selectedCity === 'Артем' ? 2 : 3} )
+        var error = false;
+        if (userName === "" || userName === undefined) {
+            tg.showAlert('Введите своё Имя');
+            error = true;
+        } else if (phoneNumber.length !== 12) {
+            tg.showAlert('Номер телефона должен состоять из 10 цифр!');
+            error = true;
+        } else if (selectedCity === "" || selectedCity === undefined) {
+            tg.showAlert('Введите Ваш город!');
+            error = true;
+        }
+        if (!error) {
+            fetch("https://octopus-vape.ru/users/add_info", { method:'PUT',headers: {
+                'Content-Type': 'application/json',
+                'Telegram-Data': initData,
+            }, body: JSON.stringify( {'name': userName, 'phone': phoneNumber.slice(1), 'city_id': selectedCity === 'Владивосток' ? 1 : selectedCity === 'Артем' ? 2 : 3} )
           })
           .then(response => {
-            return JSON.stringify( {'phone': phoneNumber.slice(1), 'city_id': selectedCity === 'Владивосток' ? 1 : selectedCity === 'Артем' ? 2 : 3} )
+            return JSON.stringify( {'name': userName, 'phone': phoneNumber.slice(1), 'city_id': selectedCity === 'Владивосток' ? 1 : selectedCity === 'Артем' ? 2 : 3} )
           })
           .then(data => {
-            console.log(JSON.stringify( {'phone': phoneNumber.slice(1), 'city_id': selectedCity === 'Владивосток' ? 1 : selectedCity === 'Артем' ? 2 : 3} ));
+            console.log(JSON.stringify( {'name': userName, 'phone': phoneNumber.slice(1), 'city_id': selectedCity === 'Владивосток' ? 1 : selectedCity === 'Артем' ? 2 : 3} ));
             setModalActive(false);
             setUpdateScreen(updateScreen+1);
           })
+        }
+        
     }
 
     const fetchUser = () => {
@@ -80,7 +94,7 @@ function Account() {
             </div>
             <span className={styles.UserName}>{user_data?.user?.name}</span>
             <div className={styles.UserDiscountBox}>
-                <span className={styles.UserDiscount}>{user_data === undefined && user_data?.user?.discount_group}</span>
+                <span className={styles.UserDiscount}>{user_data !== undefined && user_data?.user?.discount_group === 'No discount' ? 'Bronze Card' : user_data?.user?.discount_group}</span>
             </div>
             <div className={styles.UserInfoBox}>
                 {/* <p style={{margin: '2px 0', marginBottom: '5px', fontWeight: '800'}}>
@@ -98,7 +112,7 @@ function Account() {
                     <div className={styles.InfoIconBox} ><div className={styles.InfoIcon} >i</div></div>
                     <span className={styles.AddInfoText}>Для подтверждения заказов необходимо указать свой номер телефона и город.</span>
                 </div>
-                <div style={{'display':'flex', 'justifyContent': 'center'}}><div className={styles.AddInfoButton} onClick={() => setModalActive(true)}>Добавить инфо</div></div>
+                <div style={{'display':'flex', 'justifyContent': 'center'}}><div className={styles.AddInfoButton} onClick={() => setModalActive(true)}>Редактировать</div></div>
             </div>
             <div style={{marginRight: '16px'}}>
             <LoyaltyInfo />

@@ -163,15 +163,15 @@ hr {
 }
 
 .react-select-container * {
-  height: min-content;
+  height: fit-content;
 }
 
 .react-select__value-container {
-  height: min-content;
+  height: fit-content;
 }
 
 .react-select__placeholder {
-  height: min-content;
+  height: fit-content;
   font-size: 12px;
 }
 
@@ -180,7 +180,7 @@ hr {
 }
 
 .react-select__input {
-  height: min-content;
+  height: fit-content;
 }
 
 .css-13cymwt-control {

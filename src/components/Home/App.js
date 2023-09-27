@@ -15,7 +15,8 @@ import RegModal from './RegModal.module.css';
 import {AiOutlineClose} from "react-icons/ai";
 import Input from 'react-phone-number-input/input'
 
-var showed = false;
+var showedAgeConfirm = false;
+var showedRegConfirm = false;
 
 function App() {
   const {tg, initData} = useTelegram();
@@ -54,6 +55,7 @@ function App() {
       .then(data => {
         console.log(JSON.stringify( {'name': userName, 'phone': phoneNumber.slice(1), 'city_id': selectedCity === 'Владивосток' ? 1 : selectedCity === 'Артем' ? 2 : 3} ));
         setRegModalActive(false);
+        showedRegConfirm = true;
         // setUpdateScreen(updateScreen+1);
       })
     }
@@ -61,14 +63,21 @@ function App() {
 
   const handler = () => {
     setModalActive(true);
-    showed=true;
+    showedAgeConfirm=true;
   }
+
+  const handlerAgeConfirm = () => {
+    setModalActive(false);
+    localStorage.setItem('AgeConfirm', 'true')
+  }
+
+  const [registerShow, setRegisterShow] = useState(false)
 
   useEffect(() => {
     setSelectedCity( user_data?.user?.city_id ===  1 ? 'Владивосток' : user_data?.user?.city_id === 2 ? 'Артем' : user_data?.user?.city_id === 3 ? "Южно-Сахалинск" : "Владивосток");
     setUserName(user_data?.user?.name);
-    //user_data !== undefined && !showed && ((user_data.user.phone === null || user_data.user.phone === undefined) || (user_data.user.city_id === null || user_data.user.city_id === undefined)) && handler();
-    user_data !== undefined && !showed && ((user_data?.user?.phone === null || user_data?.user?.phone === undefined) || (user_data?.user?.city_id === null || user_data?.user?.city_id === undefined)) && setRegModalActive(true);
+    user_data !== undefined && !showedAgeConfirm && localStorage.getItem('AgeConfirm') !== 'true' && handler();
+    user_data !== undefined && !showedRegConfirm && ((user_data?.user?.phone === null || user_data?.user?.phone === undefined) || (user_data?.user?.city_id === null || user_data?.user?.city_id === undefined)) && setRegModalActive(true);
     // user_data !== undefined && !showed && ((user_data?.user?.phone === null || user_data?.user?.phone === undefined) || (user_data?.user?.city_id === null || user_data?.city_id === undefined)) && setRegModalActive(true);
     // return CartService({isUpdate: true, isSet: false, setUserData: setCartData})
   }, [user_data])
@@ -83,7 +92,9 @@ function App() {
       <hr/>
       <InfoCardList />
       <hr/>
-      <SearchItem />
+      <div>
+        <SearchItem />
+      </div>
       <CategoryList user_data={user_data}/>
       <hr/>
       <OrderList user_data={user_data}/>
@@ -100,7 +111,7 @@ function App() {
             </div>
             <div className={modalStyles.HorizontalBox}>
               <div className={modalStyles.ConfirmButton} onClick={() => tg.close()}>Нет</div>
-              <div className={modalStyles.ConfirmButton} onClick={() => setModalActive(false)}>Да</div>
+              <div className={modalStyles.ConfirmButton} onClick={() => handlerAgeConfirm()}>Да</div>
             </div>
         </div>
         </FilterModal>
@@ -108,7 +119,7 @@ function App() {
             <div style={{'width': '70vw', 'overflowX': 'hidden','overflowY': 'auto', backgroundColor: 'var(--tg-theme-bg-color)'}}>
                 <div className={RegModal.Header}>
                     <span className={RegModal.HeaderLabel}>Регистрация</span>
-                    <AiOutlineClose className={RegModal.CloseButton} onClick={() => setRegModalActive(false)} />
+                    {/* <AiOutlineClose className={RegModal.CloseButton} onClick={() => setRegModalActive(false)} /> */}
                 </div>
                 <div className={RegModal.VerticalBox}>
                 <span>Для использования бота необходимо указать свой номер телефона.</span>

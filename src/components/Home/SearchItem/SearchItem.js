@@ -60,6 +60,9 @@ function SearchItem() {
       const container = document.getElementsByClassName('react-select__control')[0];
       // then apply some styles to it
       container.style.minHeight = '28px';
+      const searchText = document.getElementsByClassName('react-select__placeholder')[0];
+      // then apply some styles to it
+      searchText.style.Height = '14px';
     }, [])
 
     console.log(selectedOptions);
@@ -72,7 +75,7 @@ function SearchItem() {
               options={optionList}
               placeholder={<div className={styles.placeholder}>
                 <AiOutlineSearch  className={styles.SearchIcon}/>
-                <div className={styles.SearchText}>Найти</div>
+                <span className={styles.SearchText}>Найти</span>
               </div>}
               value={selectInput}
               onChange={handleSelect}

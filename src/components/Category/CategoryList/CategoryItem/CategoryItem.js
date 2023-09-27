@@ -78,12 +78,14 @@ function CategoryItem({item, producerName}) {
   const [buttonLabel, setButtonLabel] = useState(initButtonLabel());
   const [buttonStyle, setButtonStyle] = useState(styles.BuyButton);
 
+  const [imageVar, setImageVar] = useState(item?.image)
+
   return (
 
 
       <div className={styles.root}>
         <Link className={styles.Link} to={`/home/product`} state={{variant_id: item.variant_id, variant_name: item.name, category_id: category_id}}>
-          <div className={styles.ImageBox} ><img className={styles.Image} src={item.image !== "" ? item.image : process.env.PUBLIC_URL + "/assets/octopus_big1.jpg"} alt='' /></div>
+          <div className={styles.ImageBox} ><img className={styles.Image} src={imageVar} alt='' onError={(ev) => setImageVar(process.env.PUBLIC_URL + "/assets/octopus_big1.jpg")} /></div>
           <div className={styles.Name}>{item.name}</div>
           <div className={styles.Price}>{new Intl.NumberFormat('ru-RU', {style: 'currency', currency: 'RUB', minimumFractionDigits: 0}).format((user_data?.user?.city_id === 3 ? item.price_shk/100 : item.price_vvo/100))}</div>
         </Link>
