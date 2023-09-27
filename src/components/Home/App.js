@@ -61,6 +61,8 @@ function App() {
     }
   }
 
+  const [modalAfter, setModalAfter] = useState(false)
+
   const handler = () => {
     setModalActive(true);
     showedAgeConfirm=true;
@@ -69,6 +71,12 @@ function App() {
   const handlerAgeConfirm = () => {
     setModalActive(false);
     localStorage.setItem('AgeConfirm', 'true')
+    setRegisterShow(true)
+  }
+
+  const handlerAgeNotConfirm = () => {
+    setModalActive(false);
+    setModalAfter(true)
   }
 
   const [registerShow, setRegisterShow] = useState(false)
@@ -76,11 +84,11 @@ function App() {
   useEffect(() => {
     setSelectedCity( user_data?.user?.city_id ===  1 ? 'Владивосток' : user_data?.user?.city_id === 2 ? 'Артем' : user_data?.user?.city_id === 3 ? "Южно-Сахалинск" : "Владивосток");
     setUserName(user_data?.user?.name);
-    user_data !== undefined && !showedAgeConfirm && localStorage.getItem('AgeConfirm') !== 'true' && handler();
-    user_data !== undefined && !showedRegConfirm && ((user_data?.user?.phone === null || user_data?.user?.phone === undefined) || (user_data?.user?.city_id === null || user_data?.user?.city_id === undefined)) && setRegModalActive(true);
+    user_data !== undefined && !showedAgeConfirm && localStorage.getItem('AgeConfirm') !== 'true' ? handler() : setRegisterShow(true);
+    user_data !== undefined && registerShow && !showedRegConfirm && ((user_data?.user?.phone === null || user_data?.user?.phone === undefined) || (user_data?.user?.city_id === null || user_data?.user?.city_id === undefined)) && setRegModalActive(true);
     // user_data !== undefined && !showed && ((user_data?.user?.phone === null || user_data?.user?.phone === undefined) || (user_data?.user?.city_id === null || user_data?.city_id === undefined)) && setRegModalActive(true);
     // return CartService({isUpdate: true, isSet: false, setUserData: setCartData})
-  }, [user_data])
+  }, [user_data, setRegisterShow])
 
   console.log(phoneNumber);
   console.log(phoneNumber.length);
@@ -110,9 +118,19 @@ function App() {
               <div>Вам уже исполнилось <span style={{color: '#80BAE4'}}>18 лет?</span></div>
             </div>
             <div className={modalStyles.HorizontalBox}>
-              <div className={modalStyles.ConfirmButton} onClick={() => tg.close()}>Нет</div>
+              <div className={modalStyles.ConfirmButton} onClick={() => handlerAgeNotConfirm()}>Нет</div>
               <div className={modalStyles.ConfirmButton} onClick={() => handlerAgeConfirm()}>Да</div>
             </div>
+        </div>
+        </FilterModal>
+        <FilterModal active={modalAfter} setActive={setModalAfter} isDeactivated={false} >
+            {/* backgroundColor: 'var(--tg-theme-secondary-bg-color)' */}
+            {/* 'var(--tg-theme-bg-color)' */}
+        <div style={{'width': '80vw', 'height': '50vh', 'overflowX': 'hidden','overflowY': 'hidden', backgroundColor: 'var(--tg-theme-bg-color)'}}>
+          <div className={modalStyles.ByeBox}>
+            <img className={modalStyles.iconOcto} src={process.env.PUBLIC_URL + '/assets/ageconfirm.PNG'} alt='' />
+            <div className={modalStyles.ConfirmButton} onClick={() => tg.close()}>Bye</div>
+          </div>
         </div>
         </FilterModal>
         <FilterModal active={regModalActive} setActive={setRegModalActive} isDeactivated={false}>
