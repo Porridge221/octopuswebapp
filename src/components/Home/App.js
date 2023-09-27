@@ -29,6 +29,8 @@ function App() {
   const [userName, setUserName] = useState("");
   const [regModalActive, setRegModalActive] = useState(false);
 
+  const [registerShow, setRegisterShow] = useState(false)
+
   tg.BackButton.hide();
 
   const fetchData = () => {
@@ -79,8 +81,6 @@ function App() {
     setModalAfter(true)
   }
 
-  const [registerShow, setRegisterShow] = useState(false)
-
   useEffect(() => {
     setSelectedCity( user_data?.user?.city_id ===  1 ? 'Владивосток' : user_data?.user?.city_id === 2 ? 'Артем' : user_data?.user?.city_id === 3 ? "Южно-Сахалинск" : "Владивосток");
     setUserName(user_data?.user?.name);
@@ -126,7 +126,7 @@ function App() {
         <FilterModal active={modalAfter} setActive={setModalAfter} isDeactivated={false} >
             {/* backgroundColor: 'var(--tg-theme-secondary-bg-color)' */}
             {/* 'var(--tg-theme-bg-color)' */}
-        <div style={{'width': '80vw', 'height': '50vh', 'overflowX': 'hidden','overflowY': 'hidden', backgroundColor: 'var(--tg-theme-bg-color)'}}>
+        <div style={{'width': '80vw', 'overflowX': 'hidden','overflowY': 'hidden', padding: '15px 15px', backgroundColor: 'var(--tg-theme-bg-color)'}}>
           <div className={modalStyles.ByeBox}>
             <img className={modalStyles.iconOcto} src={process.env.PUBLIC_URL + '/assets/ageconfirm.PNG'} alt='' />
             <div className={modalStyles.ConfirmButton} onClick={() => tg.close()}>Bye</div>

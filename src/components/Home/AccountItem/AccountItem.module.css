@@ -127,7 +127,7 @@
 .CartButton {
     width: 27px;
     height: 22px;
-    stroke: #000000;
+    stroke: var(--tg-theme-text-color);
     /* float: right; */
     cursor: pointer;
     transition: color 500ms ease;
