@@ -19,7 +19,7 @@ function Account() {
 
     const [phoneNumber, setPhoneNumber] = useState();
 
-    const [selectedCity, setSelectedCity] = useState(user_data?.user?.city_id ===  1 ? 'Владивосток' : user_data?.user?.city_id === 2 ? 'Артем' : user_data?.user?.city_id === 3 ? "Южно-Сахалинск" : "");
+    const [selectedCity, setSelectedCity] = useState(user_data?.user?.city_id ===  1 ? 'Владивосток' : user_data?.user?.city_id === 2 ? 'Артем' : user_data?.user?.city_id === 3 ? "Южно-Сахалинск" : user_data?.user?.city_id === 4 ? "Корсаков" : "");
 
     const [userName, setUserName] = useState("");
 
@@ -35,7 +35,7 @@ function Account() {
     console.log(user_data);
 
     useEffect(() => {
-        setSelectedCity(user_data?.user?.city_id ===  1 ? 'Владивосток' : user_data?.user?.city_id === 2 ? 'Артем' : user_data?.user?.city_id === 3 ? "Южно-Сахалинск" : "");
+        setSelectedCity(user_data?.user?.city_id ===  1 ? 'Владивосток' : user_data?.user?.city_id === 2 ? 'Артем' : user_data?.user?.city_id === 3 ? "Южно-Сахалинск" : user_data?.user?.city_id === 4 ? "Корсаков" : "");
         setUserName(user_data?.user?.name);
     }, [user_data])
 
@@ -55,13 +55,13 @@ function Account() {
             fetch("https://octopus-vape.ru/users/add_info", { method:'PUT',headers: {
                 'Content-Type': 'application/json',
                 'Telegram-Data': initData,
-            }, body: JSON.stringify( {'name': userName, 'phone': phoneNumber.slice(1), 'city_id': selectedCity === 'Владивосток' ? 1 : selectedCity === 'Артем' ? 2 : 3} )
+            }, body: JSON.stringify( {'name': userName, 'phone': phoneNumber.slice(1), 'city_id': selectedCity === 'Владивосток' ? 1 : selectedCity === 'Артем' ? 2 : selectedCity === 'Южно-Сахалинск' ? 3 : 4} )
           })
           .then(response => {
-            return JSON.stringify( {'name': userName, 'phone': phoneNumber.slice(1), 'city_id': selectedCity === 'Владивосток' ? 1 : selectedCity === 'Артем' ? 2 : 3} )
+            return JSON.stringify( {'name': userName, 'phone': phoneNumber.slice(1), 'city_id': selectedCity === 'Владивосток' ? 1 : selectedCity === 'Артем' ? 2 : selectedCity === 'Южно-Сахалинск' ? 3 : 4} )
           })
           .then(data => {
-            console.log(JSON.stringify( {'name': userName, 'phone': phoneNumber.slice(1), 'city_id': selectedCity === 'Владивосток' ? 1 : selectedCity === 'Артем' ? 2 : 3} ));
+            console.log(JSON.stringify( {'name': userName, 'phone': phoneNumber.slice(1), 'city_id': selectedCity === 'Владивосток' ? 1 : selectedCity === 'Артем' ? 2 : selectedCity === 'Южно-Сахалинск' ? 3 : 4} ));
             setModalActive(false);
             setUpdateScreen(updateScreen+1);
           })
@@ -104,7 +104,7 @@ function Account() {
                     <span style={{fontWeight: '800'}}>Телефон: </span><span>{user_data !== undefined && user_data?.user?.phone}</span>
                 </p>
                 <p style={{margin: '2px 0', marginBottom: '5px'}}>
-                    <span style={{fontWeight: '800'}}>Город: </span><span>{user_data === undefined || null ? '' : (user_data?.user?.city_id !== undefined && user_data?.user?.city_id=== 1 ? "Владивосток" : user_data?.user?.city_id=== 2 ? "Артем" : "Южно-Сахалинск")}</span>
+                    <span style={{fontWeight: '800'}}>Город: </span><span>{user_data === undefined || null ? '' : (user_data?.user?.city_id !== undefined && user_data?.user?.city_id=== 1 ? "Владивосток" : user_data?.user?.city_id=== 2 ? "Артем" : user_data?.user?.city_id=== 3 ? "Южно-Сахалинск" : "Корсаков")}</span>
                 </p>
             </div>
             <div className={styles.AddInfoBox}>
@@ -139,6 +139,7 @@ function Account() {
                         <option value="Владивосток">Владивосток</option>
                         <option value="Артем">Артем</option>
                         <option value="Южно-Сахалинск">Южно-Сахалинск</option>
+                        <option value="Корсаков">Корсаков</option>
                     </select>
                 </div>
             </div>

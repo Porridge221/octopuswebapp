@@ -1,11 +1,16 @@
 import styles from './CheckItem.module.css'
+import { useState } from 'react';
+
 
 function CheckItem({item, showButton}) {
+
+    const [imageVar, setImageVar] = useState(item?.image)
 
     return (
         <div className={styles.root}>
             <div className={styles.Image}>
-                <img style={{'objectFit': 'contain'}} src={process.env.PUBLIC_URL + "/assets/AccountImage.png"} alt=''/>
+                {/* <img style={{'objectFit': 'contain'}} src={process.env.PUBLIC_URL + "/assets/AccountImage.png"} alt=''/> */}
+                <img style={{'objectFit': 'contain'}} src={imageVar} alt='' onError={(ev) => setImageVar(process.env.PUBLIC_URL + "/assets/octopus_big1.jpg")} />
             </div>
             <div className={styles.Info} >
                 <div className={styles.Name} >{item.name + ', '+ item.count + 'шт.'}</div>

@@ -25,7 +25,7 @@ function App() {
   const [modalActive, setModalActive] = useState(false);
 
   const [phoneNumber, setPhoneNumber] = useState("");
-  const [selectedCity, setSelectedCity] = useState(user_data?.user?.city_id ===  1 ? 'Владивосток' : user_data?.user?.city_id === 2 ? 'Артем' : user_data?.user?.city_id === 3 ? "Южно-Сахалинск" : "Владивосток");
+  const [selectedCity, setSelectedCity] = useState(user_data?.user?.city_id ===  1 ? 'Владивосток' : user_data?.user?.city_id === 2 ? 'Артем' : user_data?.user?.city_id === 3 ? "Южно-Сахалинск" : user_data?.user?.city_id === 4 ? "Корсаков" : "Владивосток");
   const [userName, setUserName] = useState("");
   const [regModalActive, setRegModalActive] = useState(false);
 
@@ -49,13 +49,13 @@ function App() {
       fetch("https://octopus-vape.ru/users/add_info", { method:'PUT',headers: {
       'Content-Type': 'application/json',
       'Telegram-Data': initData,
-      }, body: JSON.stringify( {'name': userName, 'phone': phoneNumber.slice(1), 'city_id': selectedCity === 'Владивосток' ? 1 : selectedCity === 'Артем' ? 2 : 3} )
+      }, body: JSON.stringify( {'name': userName, 'phone': phoneNumber.slice(1), 'city_id': selectedCity === 'Владивосток' ? 1 : selectedCity === 'Артем' ? 2 : selectedCity === 'Южно-Сахалинск' ? 3 : 4} )
       })
       .then(response => {
-        return JSON.stringify( {'name': userName, 'phone': phoneNumber.slice(1), 'city_id': selectedCity === 'Владивосток' ? 1 : selectedCity === 'Артем' ? 2 : 3} )
+        return JSON.stringify( {'name': userName, 'phone': phoneNumber.slice(1), 'city_id': selectedCity === 'Владивосток' ? 1 : selectedCity === 'Артем' ? 2 : selectedCity === 'Южно-Сахалинск' ? 3 : 4} )
       })
       .then(data => {
-        console.log(JSON.stringify( {'name': userName, 'phone': phoneNumber.slice(1), 'city_id': selectedCity === 'Владивосток' ? 1 : selectedCity === 'Артем' ? 2 : 3} ));
+        console.log(JSON.stringify( {'name': userName, 'phone': phoneNumber.slice(1), 'city_id': selectedCity === 'Владивосток' ? 1 : selectedCity === 'Артем' ? 2 : selectedCity === 'Южно-Сахалинск' ? 3 : 4} ));
         setRegModalActive(false);
         showedRegConfirm = true;
         // setUpdateScreen(updateScreen+1);
@@ -82,10 +82,11 @@ function App() {
   }
 
   useEffect(() => {
-    setSelectedCity( user_data?.user?.city_id ===  1 ? 'Владивосток' : user_data?.user?.city_id === 2 ? 'Артем' : user_data?.user?.city_id === 3 ? "Южно-Сахалинск" : "Владивосток");
+    setSelectedCity( user_data?.user?.city_id ===  1 ? 'Владивосток' : user_data?.user?.city_id === 2 ? 'Артем' : user_data?.user?.city_id === 3 ? "Южно-Сахалинск" : user_data?.user?.city_id === 4 ? "Корсаков" : "Владивосток");
     setUserName(user_data?.user?.name);
     user_data !== undefined && !showedAgeConfirm && localStorage.getItem('AgeConfirm') !== 'true' ? handler() : setRegisterShow(true);
     user_data !== undefined && registerShow && !showedRegConfirm && ((user_data?.user?.phone === null || user_data?.user?.phone === undefined) || (user_data?.user?.city_id === null || user_data?.user?.city_id === undefined)) && setRegModalActive(true);
+    // user_data !== undefined && registerShow && !showedRegConfirm && ((user_data?.user?.phone === null || user_data?.user?.phone === undefined) || (user_data?.user?.city_id === null || user_data?.city_id === undefined)) && setRegModalActive(true);
     // user_data !== undefined && !showed && ((user_data?.user?.phone === null || user_data?.user?.phone === undefined) || (user_data?.user?.city_id === null || user_data?.city_id === undefined)) && setRegModalActive(true);
     // return CartService({isUpdate: true, isSet: false, setUserData: setCartData})
   }, [user_data, setRegisterShow])
@@ -155,6 +156,7 @@ function App() {
                         <option value="Владивосток">Владивосток</option>
                         <option value="Артем">Артем</option>
                         <option value="Южно-Сахалинск">Южно-Сахалинск</option>
+                        <option value="Корсаков">Корсаков</option>
                     </select>
                 </div>
             </div>

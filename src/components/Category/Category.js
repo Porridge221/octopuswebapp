@@ -110,7 +110,8 @@ function Category() {
     var query = (storeRU ? 'stores=16&' : '') + (storeFK ? 'stores=15&' : '') + (storeNAB ? 'stores=1&' : '') + (storeKIR ? 'stores=20&' : '') + (storeSOV ? 'stores=2&' : '') + (storeSH ? 'stores=11&' : '') + (storePYR ? 'stores=24&' : '');
     user_data.user.city_id === 1 && (query = (storeRU ? 'stores=16&' : '') + (storeFK ? 'stores=15&' : '') + (storeNAB ? 'stores=1&' : ''));
     user_data.user.city_id === 2 && (query = (storeKIR ? 'stores=20&' : ''));
-    user_data.user.city_id === 3 && (query = (storeSOV ? 'stores=2&' : '') + (storeSH ? 'stores=11&' : '') + (storePYR ? 'stores=24&' : ''));
+    user_data.user.city_id === 3 && (query = (storeSH ? 'stores=11&' : '') + (storePYR ? 'stores=24&' : ''));
+    user_data.user.city_id === 4 && (query = (storeSOV ? 'stores=2&' : ''));
     // query !== '' && (query += '&');
     !checkAllProducer && (producerToggle.forEach(producer => producer.value && (query += `products=${producer.key}&`)));
     if (query === '') {
@@ -183,7 +184,7 @@ function Category() {
       // }
       if (isContain) {
         p.items.forEach((item, _i)=>{
-            if((user_data?.user?.city_id === 3 ? item.price_shk/100 : item.price_vvo/100) > priceRange[0] && (user_data?.user?.city_id === 3 ? item.price_shk/100 : item.price_vvo/100) < priceRange[1]){
+            if(( [3, 4].indexOf(user_data?.user?.city_id) !== -1 ? item.price_shk/100 : item.price_vvo/100) > priceRange[0] && ([3, 4].indexOf(user_data?.user?.city_id) !== -1 ? item.price_shk/100 : item.price_vvo/100) < priceRange[1]){
                 filtered.push(item);
             }
           })
@@ -246,9 +247,10 @@ function Category() {
         </> : user_data?.user?.city_id === 2 ? <>
             <Toggle label="ул. Кирова, 2" toggled={storeKIR}  setStore={setStoreKIR} /*onClick={logState}  20*//>
         </> : user_data?.user?.city_id === 3 ? <>
-          <Toggle label="ул. Советская, 31, 3" toggled={storeSOV}  setStore={setStoreSOV} /*onClick={logState}  2*//>
           <Toggle label="ул. Сахалинская, 45А, 1" toggled={storeSH}  setStore={setStoreSH} /*onClick={logState}  11*//>
           <Toggle label="ул. Пуркаева М.А., 102В" toggled={storePYR}  setStore={setStorePYR} /*onClick={logState}  24*//>
+        </> : user_data?.user?.city_id === 4 ? <>
+          <Toggle label="ул. Советская, 31, 3" toggled={storeSOV}  setStore={setStoreSOV} /*onClick={logState}  2*//>
         </> : <>
           <Toggle label="ул. Русская, 46" toggled={storeRU}  setStore={setStoreRU}/*onClick={logState} 16*//>
           <Toggle label="ул. Адмирала Фокина, 23в" toggled={storeFK}  setStore={setStoreFK} /*onClick={logState} 15*//>
@@ -281,9 +283,10 @@ function Category() {
               </> : user_data?.user?.city_id === 2 ? <>
                   <Toggle label="ул. Кирова, 2" toggled={storeKIR}  setStore={setStoreKIR} /*onClick={logState}  20*//>
               </> : user_data?.user?.city_id === 3 ? <>
-                <Toggle label="ул. Советская, 31, 3" toggled={storeSOV}  setStore={setStoreSOV} /*onClick={logState}  2*//>
                 <Toggle label="ул. Сахалинская, 45А, 1" toggled={storeSH}  setStore={setStoreSH} /*onClick={logState}  11*//>
                 <Toggle label="ул. Пуркаева М.А., 102В" toggled={storePYR}  setStore={setStorePYR} /*onClick={logState}  24*//>
+              </> : user_data?.user?.city_id === 4 ? <>
+                <Toggle label="ул. Советская, 31, 3" toggled={storeSOV}  setStore={setStoreSOV} /*onClick={logState}  2*//>
               </> : <>
                 <Toggle label="ул. Русская, 46" toggled={storeRU}  setStore={setStoreRU} /*onClick={logState} 16*//>
                 <Toggle label="ул. Адмирала Фокина, 23в" toggled={storeFK}  setStore={setStoreFK} /*onClick={logState} 15*//>

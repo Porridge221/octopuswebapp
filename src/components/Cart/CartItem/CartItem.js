@@ -10,6 +10,8 @@ function CartItem({order, cart_id, fetchDeleteOne, updateScreen, setUpdateScreen
 
     const {initData} = useTelegram();
 
+    const [imageVar, setImageVar] = useState(order?.image)
+
     function fetchData(condition) {
         fetch("https://octopus-vape.ru/carts/add", { method:'POST',headers: {
         'Content-Type': 'application/json',
@@ -50,11 +52,12 @@ function CartItem({order, cart_id, fetchDeleteOne, updateScreen, setUpdateScreen
     return (
         <div className={styles.root}>
             <div className={styles.Image}>
-                <img style={{'objectFit': 'contain'}} src={process.env.PUBLIC_URL + "/assets/AccountImage.png"} alt=''/>
+                {/* <img style={{'objectFit': 'contain'}} src={process.env.PUBLIC_URL + "/assets/AccountImage.png"} alt=''/> */}
+                <img style={{'objectFit': 'contain'}} src={imageVar} alt='' onError={(ev) => setImageVar(process.env.PUBLIC_URL + "/assets/octopus_big1.jpg")} />
             </div>
             <div className={styles.Info} >
             <div className={styles.Name} >{order.name}</div>
-                <div className={styles.Price} >{new Intl.NumberFormat('ru-RU', {style: 'currency', currency: 'RUB', minimumFractionDigits: 0}).format(user_curr?.user?.city_id === 3 ? order.price_shk/100 : order.price_vvo/100)}</div>
+                <div className={styles.Price} >{new Intl.NumberFormat('ru-RU', {style: 'currency', currency: 'RUB', minimumFractionDigits: 0}).format([3, 4].indexOf(user_curr?.user?.city_id) !== -1 ? order.price_shk/100 : order.price_vvo/100)}</div>
                 <div className={styles.RemoveButton} onClick={() => fetchDeleteOne(order)} >Удалить</div>
             </div>
             <div className={styles.CountInput} >
