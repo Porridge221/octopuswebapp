@@ -1,16 +1,23 @@
 import useTelegram from '../../../hooks/useTelegram';
 import styles from './AccountItem.module.css'
 import {Link} from 'react-router-dom'
+import { useEffect, useState } from 'react';
 
 function AccountItem({user_data}) {
     const {user} = useTelegram();
     // const user_data = useUser();
+
+    const [imageVar, setImageVar] = useState(process.env.PUBLIC_URL + "/assets/octopus_big1.jpg")
     
+    useEffect(() => {
+        user?.photo_url !== undefined && user?.photo_url !== "" && setImageVar(user.photo_url)
+    }, [user])
+        
     return (
         <div className={styles.root}>
             <Link className={styles.AccountImageBox} to='/account'>
                 {/* <div className={styles.AccountImage}/> */}
-                <img className={styles.AccountImage} src={user?.photo_url === undefined ? (process.env.PUBLIC_URL + "/assets/octopus_big1.jpg") : user.photo_url} alt=''/>
+                <img className={styles.AccountImage} src={imageVar} alt='' onError={(ev) => setImageVar(process.env.PUBLIC_URL + "/assets/octopus_big1.jpg")}/>
             </Link>
             <Link className={styles.UserBox} to='/account'>
                 <div className={styles.AccountBlock}>
