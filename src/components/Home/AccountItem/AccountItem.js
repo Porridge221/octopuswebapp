@@ -14,7 +14,7 @@ function AccountItem({user_data}) {
             </Link>
             <Link className={styles.UserBox} to='/account'>
                 <div className={styles.AccountBlock}>
-                    <div style={{width: '100%', display: 'flex', flexDirection: 'row'}}>
+                    <div style={{width: '100%', display: 'flex', flexDirection: 'row', overflow: 'hidden'}}>
                         <div className={styles.AccountName}>{user_data?.user?.name}</div>
                         <span className={styles.AccountStatus}>{user_data !== undefined && user_data?.user?.discount_group === 'No discount' ? 'Bronze Card' : user_data?.user?.discount_group}</span>
                     </div>

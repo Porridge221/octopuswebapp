@@ -6,6 +6,8 @@
     /* width: 100vw; */
     height: 100vh;
     background-color: var(--tg-theme-bg-color);
+    overflow: hidden;
+    overflow-y: auto;
 }
 
 .ImageBox {
@@ -15,7 +17,8 @@
 
     /* width: 293px; */
     width: 100%;
-    height: 40vh;
+    /* height: 40vh; */
+    /* max-height: 40vh; */
     background-color: #ffffff;
     
     /* background-image: url('../../../../../public/assets/Rectangle5.png'); */
@@ -25,7 +28,8 @@
     display: flex;
     justify-content: center;
     align-self: center;
-    /* flex-grow: 1; */
+    flex-grow: 1;
+    /* flex-shrink: 2; */
 }
 
 .Image {
@@ -33,16 +37,17 @@
     /* width: max-content;
     height: max-content; */
 
-    width: 100%;
-    height: 100%;
+    /* width: 100%;
+    height: 100%; */
     
     /* background-image: url('../../../../../public/assets/Rectangle5.png'); */
     /* background-image: url("https://miniature-prod.moysklad.ru/miniature/3a69a92f-3453-11ee-0a80-092500013563/documentminiature/83d9bfaa-6238-4567-8b41-e4f0b49d1e8c"); */
     /* flex-grow: 2; */
     margin: 0 32px;
-    display: flex;
+    /* display: flex;
     justify-content: center;
-    align-self: center;
+    align-self: center; */
+    object-fit: contain;
     /* flex-grow: 1; */
 }
 
@@ -53,7 +58,7 @@
     font-size: 18px;
     font-weight: 600;
     margin: 0 32px;
-    margin-top: 16px;
+    margin-top: 10px;
 }
 
 .buttonBox {
@@ -71,14 +76,14 @@
     font-size: 20px;
     font-weight: 600;
     margin: 0 32px;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 .Characteristics {
     display: flex;
     flex-direction: column;
     margin: 0 32px;
-    margin-top: 16px;
+    margin-top: 10px;
 }
 
 .CharacteristicItem {
@@ -101,8 +106,8 @@
     /* transition: color 500ms ease; */
 
     margin: 0 29px;
-    margin-top: 21px;
-    margin-bottom: 41px;
+    margin-top: 16px;
+    margin-bottom: 16px;
     padding: 5px 10px;
     /* align-self: center; */
     text-align: center;

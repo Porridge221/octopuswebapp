@@ -99,7 +99,7 @@ function App() {
     <div className='App'>
       <AccountItem user_data={user_data}/>
       <hr/>
-      <InfoCardList />
+      <InfoCardList user_data={user_data}/>
       <hr/>
       <div>
         <SearchItem />

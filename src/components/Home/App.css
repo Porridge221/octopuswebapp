@@ -26,15 +26,23 @@
   height: 95px;
   background-size: cover;
   border-radius: 10px;
-  background: url('../../../public/assets/infocards/Group\ 1.svg');
+  background: url('../../../public/assets/infocards/aboutBot.svg');
 
+}
+
+.rectanglechatTG {
+  width: 95px;
+  height: 95px;
+  border-radius: 10px;
+  background: url('../../../public/assets/infocards/tgChat.svg');
+  background-size: cover;
 }
 
 .rectangleLoyalty {
   width: 95px;
   height: 95px;
   border-radius: 10px;
-  background: url('../../../public/assets/infocards/Group\ 2.svg');
+  background: url('../../../public/assets/infocards/loyalty.svg');
   background-size: cover;
 }
 
@@ -43,7 +51,7 @@
   height: 95px;
   background-size: cover;
   border-radius: 10px;
-  background: url('../../../public/assets/infocards/Group\ 3.svg');
+  background: url('../../../public/assets/infocards/faq.svg');
 }
 
 .rectangleCREA {
@@ -51,7 +59,7 @@
   height: 95px;
   background-size: cover;
   border-radius: 10px;
-  background: url('../../../public/assets/infocards/Group\ 40.svg');
+  background: url('../../../public/assets/infocards/creageese.svg');
 }
 
 .textHowToUse {
@@ -174,8 +182,9 @@ hr {
 
 .react-select__placeholder {
   /* height: fit-content; */
-  width: 100%;
-  height: 100%;
+  /* width: 100%;
+  height: 100%; */
+  height: 1.6rem;
   font-size: 12px;
 }
 
@@ -191,6 +200,7 @@ hr {
   height: fit-content;
   width: 100%;
   height: 100%;
+  text-align: center;
 }
 
 .css-13cymwt-control {
