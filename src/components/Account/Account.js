@@ -76,7 +76,7 @@ function Account() {
           })
           .then(data => {
             setUserData(data);
-            //setPhoneNumber('79623389016');
+            setPhoneNumber('+' + data?.user?.phone);
             //console.log(data?.user.phone);
           })
       }
@@ -85,12 +85,15 @@ function Account() {
         fetchUser();
     }, [updateScreen])
 
-    const img_style = window.Telegram.WebApp.colorScheme === 'light' ? {} : {};
+    const colorScheme = window.Telegram.WebApp.colorScheme === 'light' ? true : false;
+
+    const userImage = window.Telegram.WebApp.initDataUnsafe?.user?.photo_url
+    console.log(phoneNumber);
     
     return (
         <div className={styles.root}>
-            <div className={styles.Header} >
-                <img className={styles.icon} src={user?.photo_url === undefined ? (process.env.PUBLIC_URL + "/assets/octopus_big1.jpg") : user.photo_url} alt=''/>
+            <div className={colorScheme ? styles.Header : styles.HeaderBlack} >
+                <img className={styles.icon} src={userImage === undefined ? (process.env.PUBLIC_URL + "/assets/octopus_big1.jpg") : userImage} alt=''/>
             </div>
             <span className={styles.UserName}>{user_data?.user?.name}</span>
             <div className={styles.UserDiscountBox}>

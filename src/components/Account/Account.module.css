@@ -29,11 +29,26 @@
     align-items: center;
 }
 
+.HeaderBlack {
+    display: flex;
+    background-blend-mode: lighten;
+    mix-blend-mode: color-burn;
+    background-image: url('../../../public/assets/account_background_black.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    /* background-color: rgba(0, 0, 0, 0.37); */
+    height: 30vh;
+    width: 100vw;
+    justify-content: space-around;
+    align-items: center;
+}
+
 .icon {
     border-radius: 150px;
     /* width: 88px; */
     /* height: 88px; */
-    height: 80%;
+    height: 60%;
+    z-index: 1;
 }
 
 .UserName {

@@ -27,9 +27,9 @@ function Cart() {
 
     const [modalActive, setModalActive] = useState(false);
 
-    const [userName, setUserName] = useState();
+    const [userName, setUserName] = useState(user_curr?.user?.name);
 
-    const [phoneNumber, setPhoneNumber] = useState();
+    const [phoneNumber, setPhoneNumber] = useState('+' + user_curr?.user?.phone);
 
     const [selectedStore, setSelectedStore] = useState(user_curr?.user?.city_id === undefined || user_curr?.user?.city_id === null || user_curr?.user?.city_id === 1 ? 16 : user_curr?.user?.city_id === 2 ? 20 : user_curr?.user?.city_id === 3 ? 11 : 2);
 
@@ -182,7 +182,6 @@ function Cart() {
                             <option label="ул. Русская, 46" value={16}>ул. Русская, 46</option>
                             <option label="ул. Адмирала Фокина, 23в" value={15}>ул. Адмирала Фокина, 23в</option>
                             <option label="ул. Набережная, 7Б" value={1}>ул. Набережная, 7Б</option>
-                            <option label="ул. Жигура, 12а" value={3}>ул. Жигура, 12а</option>
                             </> : user_curr?.user?.city_id === 2 ? <>
                                 <option label="ул. Кирова, 2" value={20}>ул. Кирова, 2</option>
                             </> : user_curr?.user?.city_id === 3 ? <>
@@ -194,7 +193,6 @@ function Cart() {
                             <option label="ул. Русская, 46" value={16}>ул. Русская, 46</option>
                             <option label="ул. Адмирала Фокина, 23в" value={15}>ул. Адмирала Фокина, 23в</option>
                             <option label="ул. Набережная, 7Б" value={1}>ул. Набережная, 7Б</option>
-                            <option label="ул. Жигура, 12а" value={3}>ул. Жигура, 12а</option>
                             <option label="ул. Кирова, 2" value={20}>ул. Кирова, 2</option>
                             <option label="ул. Советская, 31, 3" value={2}>ул. Советская, 31, 3</option>
                             <option label="ул. Сахалинская, 45А, 1" value={11}>ул. Сахалинская, 45А, 1</option>

@@ -1,10 +1,28 @@
 import styles from './CheckItem.module.css'
 import { useState } from 'react';
+import useTelegram from '../../../hooks/useTelegram';
 
 
 function CheckItem({item, showButton}) {
+    const {initData} = useTelegram();
 
     const [imageVar, setImageVar] = useState(item?.image)
+
+    const fetchData = () => {
+        fetch("https://octopus-vape.ru/carts/add", { method:'POST',headers: {
+        'Content-Type': 'application/json',
+        'Telegram-Data': initData,
+        }, body: JSON.stringify( {'user_id': 1, 'variant_id': item.variant_id, 'count': 1} )
+        })
+        .then(response => {
+            return response
+        })
+        .then(data => {
+            console.log("Fetch product Done");
+            console.log(JSON.stringify( {'user_id': 1, 'variant_id': item.variant_id, 'count': 1} ));
+            // setCartData(CartService({isUpdate:false, isInit: true}))
+        })
+    }
 
     return (
         <div className={styles.root}>
@@ -15,7 +33,7 @@ function CheckItem({item, showButton}) {
             <div className={styles.Info} >
                 <div className={styles.Name} >{item.name + ', '+ item.count + 'шт.'}</div>
                 <div className={styles.Price} >{new Intl.NumberFormat('ru-RU', {style: 'currency', currency: 'RUB', minimumFractionDigits: 0}).format(item.price/100)}</div>
-                {showButton && (<div className={styles.AddButton} >Добавить в корзину</div>)}
+                {showButton && (<div className={styles.AddButton} onClick={fetchData} >Добавить в корзину</div>)}
             </div>
         </div>
     );

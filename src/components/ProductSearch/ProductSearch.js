@@ -17,7 +17,7 @@ function ProductSearch() {
 
     const user_data = useUser(false)
 
-    const initButtonLabel = () => {
+    const initButtonLabel = (item) => {
         var label = 'В корзину';
         console.log(cartData.items);
         console.log(item);
@@ -35,7 +35,7 @@ function ProductSearch() {
         return label;
     }
 
-    const [buttonLabel, setButtonLabel] = useState(initButtonLabel());
+    const [buttonLabel, setButtonLabel] = useState();
     const [buttonStyle, setButtonStyle] = useState(styles.BuyButton);
 
     const {tg, initData} = useTelegram();
@@ -95,6 +95,7 @@ function ProductSearch() {
           .then(data => {
             setItem(data);
             setCurrent(data?.name)
+            setButtonLabel(initButtonLabel(data));
         })
     }
 

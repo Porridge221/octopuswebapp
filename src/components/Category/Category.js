@@ -41,22 +41,44 @@ function Category() {
     {key: 2, value:true, name: 'Щелочь'}
   ]);
   const [NikotinValueToggle, setNikotinValueToggles] = useState([
-    {key: 1, value:true, name: '0'},
-    {key: 2, value:true, name: '3'},
-    {key: 3, value:true, name: '5'},
-    {key: 4, value:true, name: '12'},
-    {key: 5, value:true, name: '20'},
-    {key: 6, value:true, name: '40'},
-    {key: 7, value:true, name: '50'},
+    {key: 5, value:true, name: '20mg Strong'},
+    {key: 5, value:true, name: 'ПТ'},
+    {key: 5, value:true, name: '20mg Hard'},
+    {key: 5, value:true, name: '20mg'},
+    {key: 5, value:true, name: '12mg'},
+    {key: 5, value:true, name: '3mg'},
+    {key: 5, value:true, name: 'ДП'},
+    {key: 5, value:true, name: '30mg'}, // один товар
+    {key: 5, value:true, name: '0mg'},
+    {key: 5, value:true, name: 'СТ'},
+    {key: 5, value:true, name: '20mg Double TX'},
+    {key: 5, value:true, name: '20mg Extra'},
+    {key: 5, value:true, name: '6mg'},
+    {key: 5, value:true, name: 'ТП'}, // один товар
+    {key: 5, value:true, name: 'СК'},
+    {key: 5, value:true, name: '20mg Medium'},
+    {key: 5, value:true, name: '20mg Ultra'},
+    {key: 5, value:true, name: '18mg'},
+    {key: 5, value:true, name: 'ТР'}, // два товара
+    {key: 5, value:true, name: 'СВ'}, // один товар
+    {key: 5, value:true, name: 'Medium'},
+    {key: 5, value:true, name: 'ПП'}, // один товар
+
+
+
+
+
   ]);
   const [sizeToggle, setSizeToggles] = useState([
-    {key: 1, value:true, name: '10'},
-    {key: 2, value:true, name: '20'},
-    {key: 3, value:true, name: '30'},
-    {key: 4, value:true, name: '40'},
-    {key: 5, value:true, name: '60'},
-    {key: 6, value:true, name: '80'},
-    {key: 7, value:true, name: '120'},
+    {key: 1, value:true, name: '10ml'},
+    {key: 2, value:true, name: '30ml'},
+    {key: 3, value:true, name: '50ml'},
+    {key: 4, value:true, name: '57ml'},
+    {key: 5, value:true, name: '58ml'},
+    {key: 6, value:true, name: '60ml'},
+    {key: 7, value:true, name: '80ml'},
+    {key: 8, value:true, name: '100ml'},
+    {key: 9, value:true, name: '120ml'},
   ]);
 
   const category_id = useLocation().state;
@@ -359,11 +381,11 @@ function Category() {
           <div className={modalStyles.VerticalBox}>
             <span>Цена:</span>
             <div className={modalStyles.HorizontalBox} style={{margin: '0 15px', textAlign: 'center', justifyContent: 'center'}}>
-              <span><input className={modalStyles.inputPrice} value={priceRange[0]} onChange={e => setPriceRange([e.target.value === '' ? 0 : parseInt(e.target.value), priceRange[1]])} type='number' /></span>
+              <span><input className={modalStyles.inputPrice} value={priceRange[0]} onChange={e => setPriceRange([e.target.value === '' ? '' : parseInt(e.target.value), priceRange[1]])} type='number' /></span>
               {/* <span>от {priceRange[0]} </span> */}
               <div style={{margin: '0 10px', fontSize: '17px', fontWeight: '400', marginBottom: '16px'}} >до</div>
               {/* <RangeSlider className={modalStyles.Slider} min={0} max={10000} value={priceRange} onInput={setPriceRange}/> */}
-              <span><input className={modalStyles.inputPrice} value={priceRange[1]} onChange={e => setPriceRange([priceRange[0], e.target.value === '' ? 0 : parseInt(e.target.value)])} type='number' /></span>
+              <span><input className={modalStyles.inputPrice} value={priceRange[1]} onChange={e => setPriceRange([priceRange[0], e.target.value === '' ? '' : parseInt(e.target.value)])} type='number' /></span>
             </div>
           </div>
 
