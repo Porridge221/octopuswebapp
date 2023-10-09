@@ -31,6 +31,9 @@ function Category() {
   const [showAllProducer, setShowAllProducer] = useState(false);
   const [checkAllProducer, setCheckAllProducer] = useState(true);
 
+  const [showAllNikotinValue, setShowAllNikotinValue] = useState(false);
+  const [showAllSize, setShowAllSize] = useState(false);
+
   const [updateCatalog, setUpdateCatalog] = useState(1);
 
   // const [storesToggle, setStoreToggles] = useState({16: true, 15: true, 1: true, 20: true, 2: true, 11: true, 24: true});
@@ -41,34 +44,33 @@ function Category() {
     {key: 2, value:true, name: 'Щелочь'}
   ]);
   const [NikotinValueToggle, setNikotinValueToggles] = useState([
-    {key: 5, value:true, name: '20mg Strong'},
-    {key: 5, value:true, name: 'ПТ'},
-    {key: 5, value:true, name: '20mg Hard'},
-    {key: 5, value:true, name: '20mg'},
-    {key: 5, value:true, name: '12mg'},
-    {key: 5, value:true, name: '3mg'},
-    {key: 5, value:true, name: 'ДП'},
-    {key: 5, value:true, name: '30mg'}, // один товар
-    {key: 5, value:true, name: '0mg'},
-    {key: 5, value:true, name: 'СТ'},
-    {key: 5, value:true, name: '20mg Double TX'},
-    {key: 5, value:true, name: '20mg Extra'},
-    {key: 5, value:true, name: '6mg'},
-    {key: 5, value:true, name: 'ТП'}, // один товар
-    {key: 5, value:true, name: 'СК'},
-    {key: 5, value:true, name: '20mg Medium'},
-    {key: 5, value:true, name: '20mg Ultra'},
+    {key: 1, value:true, name: '0mg'},
+    {key: 2, value:true, name: '3mg'},
+    {key: 3, value:true, name: '6mg'},
+    {key: 4, value:true, name: '12mg'},
     {key: 5, value:true, name: '18mg'},
-    {key: 5, value:true, name: 'ТР'}, // два товара
-    {key: 5, value:true, name: 'СВ'}, // один товар
-    {key: 5, value:true, name: 'Medium'},
-    {key: 5, value:true, name: 'ПП'}, // один товар
+    {key: 6, value:true, name: '20mg'},
+    {key: 7, value:true, name: '20+'},
 
+    // {key: 5, value:true, name: '20mg Medium'},
+    // {key: 5, value:true, name: 'Medium'},
 
-
-
-
+    // {key: 8, value:true, name: '20mg Strong'},
+    // {key: 9, value:true, name: 'ПТ'},
+    // {key: 10, value:true, name: '20mg Hard'},  
+    // {key: 5, value:true, name: 'ДП'},
+    // {key: 5, value:true, name: '30mg'}, // один товар
+    // {key: 5, value:true, name: 'СТ'},
+    // {key: 5, value:true, name: '20mg Double TX'},
+    // {key: 5, value:true, name: '20mg Extra'},
+    // {key: 5, value:true, name: 'ТП'}, // один товар
+    // {key: 5, value:true, name: 'СК'},
+    // {key: 5, value:true, name: '20mg Ultra'},
+    // {key: 5, value:true, name: 'ТР'}, // два товара
+    // {key: 5, value:true, name: 'СВ'}, // один товар
+    // {key: 5, value:true, name: 'ПП'}, // один товар
   ]);
+
   const [sizeToggle, setSizeToggles] = useState([
     {key: 1, value:true, name: '10ml'},
     {key: 2, value:true, name: '30ml'},
@@ -135,11 +137,26 @@ function Category() {
     user_data.user.city_id === 3 && (query = (storeSH ? 'stores=11&' : '') + (storePYR ? 'stores=24&' : ''));
     user_data.user.city_id === 4 && (query = (storeSOV ? 'stores=2&' : ''));
     // query !== '' && (query += '&');
-    !checkAllProducer && (producerToggle.forEach(producer => producer.value && (query += `products=${producer.key}&`)));
+    // !checkAllProducer && (producerToggle.forEach(producer => producer.value && (query += `products=${producer.key}&`)));
+
+    if (category_id === 6) {
+      sizeToggle.forEach((sizeItem) => {
+        query += sizeItem.value ? `volume=${sizeItem.name}&` : ''
+      })
+      NikotinValueToggle.forEach((nikotinItem) => {
+        query += nikotinItem.value ? `nikotin=${nikotinItem.name}&` : ''
+      })
+      if (!NikotinTypeToggle[0].value || !NikotinTypeToggle[1].value) {
+        NikotinTypeToggle[0].value && (query += 'nikotype=Salt&')
+        NikotinTypeToggle[1].value && (query += 'nikotype=NotSalt&')
+      }
+    }
+
     if (query === '') {
       setData(0);
       return;
     }
+
     fetch("https://octopus-vape.ru/products/catalog/" + category_id + '?' + query, {method: 'GET', headers: {'Content-Type': 'application/json', 'Telegram-Data': initData,}})
       .then(response => {
         return response.json()
@@ -295,7 +312,7 @@ function Category() {
           <AiOutlineClose className={modalStyles.CloseButton} onClick={() => setModalActive(false)} />
         </div>
         {/* backgroundColor: 'var(--tg-theme-bg-color)' */}
-        <div style={{maxHeight: '70vh', maxWidth: '80vw', 'overflowX': 'hidden','overflowY': 'auto', backgroundColor: 'var(--tg-theme-bg-color)'}}>          
+        <div style={{maxHeight: '70vh', maxWidth: '80vw', 'overflowX': 'hidden','overflowY': 'auto', backgroundColor: '#ffffff'}}>          
           <div className={modalStyles.VerticalBox}>
             <span>Наличие в магазинах:</span>
               {user_data?.user?.city_id === 1 ? <>
@@ -335,46 +352,40 @@ function Category() {
           (<>
             <div className={modalStyles.VerticalBox}>
               <span>Тип никотина:</span>
-              <div className={modalStyles.HorizontalBox} >
-                <Toggle label="Соль" toggled={true} /*onClick={logState}*//>
-                <Toggle label="Щелочь" toggled={true} /*onClick={logState}*//>
+              <div className={modalStyles.NikotinValueBox}>
+                {NikotinTypeToggle.length !== 0 && NikotinTypeToggle.map((NikotinTypeItem, index) => ( <>
+                <Toggle key={NikotinTypeItem.key} label={NikotinTypeItem.name} toggled={NikotinTypeItem.value} setStore={setNikotinTypeToggles} multiple={true} multipleState={NikotinTypeToggle} producer_id={NikotinTypeItem.key} />
+                </>
+                ))}
               </div>
             </div>
             <div className={modalStyles.VerticalBox}>
-              <span>Крепость</span>
-              <div style={{display: 'flex', width: '100%'}}>
-                <Toggle label="0" toggled={true} />
-                <Toggle label="1.5" toggled={true} />
-                <Toggle label="3" toggled={true} />
-                <Toggle label="6" toggled={true} />
-                {/* <Toggle label="12" toggled={true} />
-                <Toggle label="18" toggled={true} />
-                <Toggle label="20" toggled={false} />
-                <Toggle label="25" toggled={false} />
-                <Toggle label="20 Medium" toggled={false} />
-                <Toggle label="35" toggled={false} />
-                <Toggle label="20 Strong" toggled={false} />
-                <Toggle label="20 Hard" toggled={false} />
-                <Toggle label="40" toggled={false} />
-                <Toggle label="45" toggled={false} />
-                <Toggle label="20mg Ultra" toggled={false} />
-                <Toggle label="20mg Extra" toggled={false} /> 
-                <Toggle label="50" toggled={false} />
-                <Toggle label="60" toggled={false} /> */}
+              <span>Крепость (мг):</span>
+              <div className={modalStyles.NikotinValueBox}>
+                {NikotinValueToggle.length !== 0 && NikotinValueToggle.map((NikotinValueItem, index) => showAllNikotinValue ? ( <>
+                <Toggle key={NikotinValueItem.key} label={NikotinValueItem.name} toggled={NikotinValueItem.value} setStore={setNikotinValueToggles} multiple={true} multipleState={NikotinValueToggle} producer_id={NikotinValueItem.key} />
+                </>
+              ) : index < 3 && ( <>
+                <Toggle key={NikotinValueItem.key} label={NikotinValueItem.name} toggled={NikotinValueItem.value} setStore={setNikotinValueToggles} multiple={true} multipleState={NikotinValueToggle} producer_id={NikotinValueItem.key} />
+                </>
+              ))}
               </div>
-              <span className={modalStyles.ShowButton}>Показать ещё</span>
+              <span className={modalStyles.ShowButton} onClick={() => setShowAllNikotinValue(!showAllNikotinValue)}>{showAllNikotinValue ? 'Скрыть' : 'Показать ещё'}</span>
             </div>
             <div className={modalStyles.VerticalBox}>
               <span>Объем (мл):</span>
-              <div className={modalStyles.HorizontalBox}>
-                <Toggle label="10" toggled={true} />
-                <Toggle label="30" toggled={true} />
-                <Toggle label="60" toggled={true} />
-                <Toggle label="80" toggled={true} />
-                {/* <Toggle label="95" toggled={false} />
-                <Toggle label="100" toggled={false} />
-                <Toggle label="120" toggled={false} /> */}
+              
+              <div className={modalStyles.NikotinValueBox}>
+                {sizeToggle.length !== 0 && sizeToggle.map((sizeItem, index) => showAllSize ? ( <>
+                <Toggle key={sizeItem.key} label={sizeItem.name} toggled={sizeItem.value} setStore={setSizeToggles} multiple={true} multipleState={sizeToggle} producer_id={sizeItem.key} />
+                </>
+              ) : index < 3 && ( <>
+                <Toggle key={sizeItem.key} label={sizeItem.name} toggled={sizeItem.value} setStore={setSizeToggles} multiple={true} multipleState={sizeToggle} producer_id={sizeItem.key} />
+                </>
+              ))}
               </div>
+              <span className={modalStyles.ShowButton} onClick={() => setShowAllSize(!showAllSize)}>{showAllSize ? 'Скрыть' : 'Показать ещё'}</span>
+
             </div>
           </>)
           }

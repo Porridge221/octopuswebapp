@@ -29,7 +29,6 @@ function CategoryItem({item, producerName}) {
         // setTimeout(() => {
         //     setButtonStyle(styles.BuyButton);
         // }, 1400);
-        console.log(JSON.stringify( {'user_id': 1, 'variant_id': item.variant_id, 'count': 1} ));
         setCartData(CartService({isUpdate:false, isInit: true}))
       })
   }
@@ -44,35 +43,24 @@ function CategoryItem({item, producerName}) {
         return response
     })
     .then(data => {
-        console.log(data);
         setButtonLabel(buttonLabel === 'Добавить' ? 'Удалить' : 'Добавить');
         // setButtonStyle(styles.BuyButton + ' ' + styles.BuyButton2);
         // setTimeout(() => {
         //     setButtonStyle(styles.BuyButton);
         // }, 1400);
-        console.log(JSON.stringify( {'user_id': 1, 'variant_id': item.variant_id, 'count': 1} ));
         setCartData(CartService({isUpdate:false, isInit: true}))
     })
   }
 
-  // console.log(item.variant_id)
-
 
   const initButtonLabel = () => {
     var label = 'Добавить';
-    // console.log(cartData.items);
-    // console.log(item);
     for (var el in cartData.items) {
-        console.log('Z nmenen');
-        console.log(el);
-        console.log(cartData.items[el].variant_id);
-        console.log(item.variant_id);
         if (cartData.items[el].variant_id === item.variant_id) {
             label = 'Удалить';
             break;
         }
     }
-    // console.log(label);
     return label;
   } 
 

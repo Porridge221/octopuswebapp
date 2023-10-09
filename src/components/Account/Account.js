@@ -92,7 +92,7 @@ function Account() {
     
     return (
         <div className={styles.root}>
-            <div className={colorScheme ? styles.Header : styles.HeaderBlack} >
+            <div className={styles.Header} >
                 <img className={styles.icon} src={userImage === undefined ? (process.env.PUBLIC_URL + "/assets/octopus_big1.jpg") : userImage} alt=''/>
             </div>
             <span className={styles.UserName}>{user_data?.user?.name}</span>

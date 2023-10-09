@@ -57,6 +57,7 @@
     letter-spacing: 0;
     line-height: normal;
     width: min-content;
+    margin-bottom: 10px;
 
     cursor: pointer;
     transition-duration: 0.4s;
@@ -137,4 +138,17 @@
     background-color: var(--tg-theme-bg-color);
     border-color: var(--tg-theme-text-color);
     border-radius: 10px;
+}
+
+
+.NikotinValueBox {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 0px;
+    width: 70vw;
+}
+
+.NikotinValueBox > * {
+    flex: 1 1 70px;
+    height: 25px;
 }
