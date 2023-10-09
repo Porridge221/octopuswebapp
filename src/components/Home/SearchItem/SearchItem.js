@@ -5,35 +5,44 @@ import { useEffect, useState } from 'react';
 import useTelegram from '../../../hooks/useTelegram';
 import { useNavigate, useLocation } from 'react-router-dom';
 
+// import {Dropdown} from 'react-searchable-dropdown-component';
+import SelectableSearch from "@fliptask/react-search-dropdown";
+
 var prev = 0;
 
 function SearchItem() {
     const navigate = useNavigate();
 
     const [selectedOptions, setSelectedOptions] = useState("");
-    const [selectInput, setSelectInput] = useState("");
+    const [selectInput, setSelectInput] = useState({search: '', list: []});
 
     const {initData} = useTelegram();
 
     const [optionList, setOptionList] = useState([]);
 
-    // const optionList = [
-    //     { value: "red", label: "Red" },
-    //     { value: "green", label: "Green" },
-    //     { value: "yellow", label: "Yellow" },
-    //     { value: "blue", label: "Blue" },
-    //     { value: "white", label: "White" }
-    //   ];
+    const optionList1 = [
+        { value: "red", label: "Red" },
+        { value: "green", label: "Green" },
+        { value: "yellow", label: "Yellow" },
+        { value: "blue", label: "Blue" },
+        { value: "white", label: "White" }
+      ];
     
-    function handleSelect(data) {
-        setSelectedOptions(data);
-        navigate('/home/product/', { state: { variant_id: data.value, variant_name: data.label, category_id: -1 } });
+    function handleSelect(event, selectedOption) {
+        setSelectedOptions(selectedOption);
+        navigate('/home/product/', { state: { variant_id: selectedOption.value, variant_name: selectedOption.label, category_id: -1 } });
     }
 
+  //   function handleSelect(event, selectedOption) {
+  //     console.log(event);
+  //     console.log(selectedOption);
+  // }
+
     const fetchData = (it) => {
-        fetch("https://octopus-vape.ru/products/catalog/search/?query=" + selectInput, {method: 'GET', headers: {'Content-Type': 'application/json', 'Telegram-Data': initData,}})
+        fetch("https://octopus-vape.ru/products/catalog/search/?query=" + selectInput['search'], {method: 'GET', headers: {'Content-Type': 'application/json', 'Telegram-Data': initData,}})
           .then(response => {
-            return response.json()
+            console.log(response.status);
+            return response.status === 200 ? response.json() : []
           })
           .then(data => {
             if (prev <= it) {
@@ -48,30 +57,31 @@ function SearchItem() {
     }
 
     function handleInput(data) {
+      console.log(selectInput);
           setSelectInput(data);
           prev += 1;
-          if (data.length >= 2) {  
+          if (data?.search && data['search'].length >= 2) {  
             fetchData(prev);
           }
         
     }
     
     useEffect(() => {
-      const container = document.getElementsByClassName('react-select__control')[0];
-      // then apply some styles to it
-      container.style.minHeight = '28px';
-      const searchText = document.getElementsByClassName('react-select__placeholder')[0];
-      // then apply some styles to it
-      searchText.style.Height = '14px';
+      // const container = document.getElementsByClassName('react-select__control')[0];
+      // // then apply some styles to it
+      // container.style.minHeight = '28px';
+      // const searchText = document.getElementsByClassName('react-select__placeholder')[0];
+      // // then apply some styles to it
+      // searchText.style.Height = '14px';
     }, [])
 
     console.log(selectedOptions);
     console.log(optionList);
-      console.log(selectInput);
+    console.log(selectInput);
       return (
         <div className={styles.root} >
           <div className={styles.dropdowncontainer}>
-            <Select
+            {/* <Select
               options={optionList}
               placeholder={<div className={styles.placeholder}>
                 <AiOutlineSearch  className={styles.SearchIcon}/>
@@ -86,7 +96,18 @@ function SearchItem() {
               blurInputOnSelect={true}
               className="react-select-container"
               classNamePrefix="react-select"
-            />
+            /> */}
+            <SelectableSearch
+                    value={selectInput['search']}
+                    placeholder={'Найти'}
+                    options={optionList}
+                    onChange={handleInput}
+                    onSelected={handleSelect}
+                    searchKeys={["label"]}
+                    className={'dropdown'}
+
+                />
+
           </div>
           </div>
       );
