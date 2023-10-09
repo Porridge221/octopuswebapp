@@ -312,7 +312,7 @@ function Category() {
           <AiOutlineClose className={modalStyles.CloseButton} onClick={() => setModalActive(false)} />
         </div>
         {/* backgroundColor: 'var(--tg-theme-bg-color)' */}
-        <div style={{maxHeight: '70vh', maxWidth: '80vw', 'overflowX': 'hidden','overflowY': 'auto', backgroundColor: '#ffffff'}}>          
+        <div style={{maxHeight: '70vh', maxWidth: '80vw', 'overflowX': 'hidden','overflowY': 'auto', backgroundColor: 'var(--tg-theme-bg-color)'}}>          
           <div className={modalStyles.VerticalBox}>
             <span>Наличие в магазинах:</span>
               {user_data?.user?.city_id === 1 ? <>
