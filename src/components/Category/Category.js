@@ -30,6 +30,8 @@ function Category() {
 
   const [showAllProducer, setShowAllProducer] = useState(false);
   const [checkAllProducer, setCheckAllProducer] = useState(true);
+  const [checkAllNikotin, setCheckAllNikotin] = useState(true);
+  const [checkAllVolume, setCheckAllVolume] = useState(true);
 
   const [showAllNikotinValue, setShowAllNikotinValue] = useState(false);
   const [showAllSize, setShowAllSize] = useState(false);
@@ -263,6 +265,50 @@ function Category() {
     // setCheckAllProducer(!checkAllProducer);
   }
 
+  const handleSetCheckAllVolume = (state) => {
+    var states = [...sizeToggle];
+    states.forEach(producer =>  (
+      producer.value = !checkAllVolume
+    ));
+    setSizeToggles(states);
+    // setCheckAllProducer(!checkAllProducer);
+  }
+
+  useEffect(() => {
+    var state = true;
+    var states = [...NikotinValueToggle];
+    states.forEach(producer =>  {
+      console.log(producer.value);
+      if (producer.value === false) {
+        state = false;
+        return;
+      }
+    });
+    setCheckAllNikotin(state);
+  }, [NikotinValueToggle])
+
+  useEffect(() => {
+    var state = true;
+    var states = [...sizeToggle];
+    states.forEach(producer =>  {
+      console.log(producer.value);
+      if (producer.value === false) {
+        state = false;
+        return;
+      }
+    });
+    setCheckAllVolume(state);
+  }, [sizeToggle])
+
+  const handleSetCheckAllNikotin = (state) => {
+    var states = [...NikotinValueToggle];
+    states.forEach(producer =>  (
+      producer.value = !checkAllNikotin
+    ));
+    setNikotinValueToggles(states);
+    setCheckAllNikotin(!checkAllNikotin);
+  }
+
   const handleSetUpdateCatalog = () => {
     setUpdateCatalog(updateCatalog + 1);
     setModalActive(false);
@@ -361,6 +407,7 @@ function Category() {
             </div>
             <div className={modalStyles.VerticalBox}>
               <span>Крепость (мг):</span>
+              <Toggle label="Все" toggled={checkAllNikotin} setStore={handleSetCheckAllNikotin} /*onClick={logState}*//>
               <div className={modalStyles.NikotinValueBox}>
                 {NikotinValueToggle.length !== 0 && NikotinValueToggle.map((NikotinValueItem, index) => showAllNikotinValue ? ( <>
                 <Toggle key={NikotinValueItem.key} label={NikotinValueItem.name} toggled={NikotinValueItem.value} setStore={setNikotinValueToggles} multiple={true} multipleState={NikotinValueToggle} producer_id={NikotinValueItem.key} />
@@ -374,7 +421,7 @@ function Category() {
             </div>
             <div className={modalStyles.VerticalBox}>
               <span>Объем (мл):</span>
-              
+              <Toggle label="Все" toggled={checkAllVolume} setStore={handleSetCheckAllVolume} /*onClick={logState}*//>
               <div className={modalStyles.NikotinValueBox}>
                 {sizeToggle.length !== 0 && sizeToggle.map((sizeItem, index) => showAllSize ? ( <>
                 <Toggle key={sizeItem.key} label={sizeItem.name} toggled={sizeItem.value} setStore={setSizeToggles} multiple={true} multipleState={sizeToggle} producer_id={sizeItem.key} />
