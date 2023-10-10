@@ -52,13 +52,16 @@ function App() {
       }, body: JSON.stringify( {'name': userName, 'phone': phoneNumber.slice(1), 'city_id': selectedCity === 'Владивосток' ? 1 : selectedCity === 'Артем' ? 2 : selectedCity === 'Южно-Сахалинск' ? 3 : 4} )
       })
       .then(response => {
-        return JSON.stringify( {'name': userName, 'phone': phoneNumber.slice(1), 'city_id': selectedCity === 'Владивосток' ? 1 : selectedCity === 'Артем' ? 2 : selectedCity === 'Южно-Сахалинск' ? 3 : 4} )
+        return response
       })
       .then(data => {
-        console.log(JSON.stringify( {'name': userName, 'phone': phoneNumber.slice(1), 'city_id': selectedCity === 'Владивосток' ? 1 : selectedCity === 'Артем' ? 2 : selectedCity === 'Южно-Сахалинск' ? 3 : 4} ));
-        setRegModalActive(false);
-        showedRegConfirm = true;
-        // setUpdateScreen(updateScreen+1);
+        if (data.status === 200) {
+          setRegModalActive(false);
+          showedRegConfirm = true;
+          // setUpdateScreen(updateScreen+1);
+        } else if (data.status === 500) {
+          tg.showAlert('Данный номер уже зарегистрирован на другого пользователя. Либо возможны неполадки на сервере');
+        }
       })
     }
   }
@@ -67,10 +70,10 @@ function App() {
 
   const handler = () => {
     setModalActive(true);
-    showedAgeConfirm=true;
   }
 
   const handlerAgeConfirm = () => {
+    showedAgeConfirm=true;
     setModalActive(false);
     localStorage.setItem('AgeConfirm', 'true')
     setRegisterShow(true)
@@ -89,7 +92,7 @@ function App() {
     // user_data !== undefined && registerShow && !showedRegConfirm && ((user_data?.user?.phone === null || user_data?.user?.phone === undefined) || (user_data?.user?.city_id === null || user_data?.city_id === undefined)) && setRegModalActive(true);
     // user_data !== undefined && !showed && ((user_data?.user?.phone === null || user_data?.user?.phone === undefined) || (user_data?.user?.city_id === null || user_data?.city_id === undefined)) && setRegModalActive(true);
     // return CartService({isUpdate: true, isSet: false, setUserData: setCartData})
-  }, [user_data, setRegisterShow])
+  }, [user_data, registerShow])
 
   console.log(phoneNumber);
   console.log(phoneNumber.length);
