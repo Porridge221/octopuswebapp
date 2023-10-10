@@ -87,8 +87,8 @@ function App() {
   useEffect(() => {
     setSelectedCity( user_data?.user?.city_id ===  1 ? 'Владивосток' : user_data?.user?.city_id === 2 ? 'Артем' : user_data?.user?.city_id === 3 ? "Южно-Сахалинск" : user_data?.user?.city_id === 4 ? "Корсаков" : "Владивосток");
     setUserName(user_data?.user?.name);
-    user_data !== undefined && !showedAgeConfirm && localStorage.getItem('AgeConfirm') !== 'true' ? handler() : setRegisterShow(true);
-    user_data !== undefined && registerShow && !showedRegConfirm && ((user_data?.user?.phone === null || user_data?.user?.phone === undefined) || (user_data?.user?.city_id === null || user_data?.user?.city_id === undefined)) && setRegModalActive(true);
+    !showedAgeConfirm && localStorage.getItem('AgeConfirm') !== 'true' ? handler() : setRegisterShow(true);
+    user_data !== undefined && user_data !== null && registerShow && !showedRegConfirm && ((user_data?.user?.phone === null || user_data?.user?.phone === undefined) || (user_data?.user?.city_id === null || user_data?.user?.city_id === undefined)) && setRegModalActive(true);
     // user_data !== undefined && registerShow && !showedRegConfirm && ((user_data?.user?.phone === null || user_data?.user?.phone === undefined) || (user_data?.user?.city_id === null || user_data?.city_id === undefined)) && setRegModalActive(true);
     // user_data !== undefined && !showed && ((user_data?.user?.phone === null || user_data?.user?.phone === undefined) || (user_data?.user?.city_id === null || user_data?.city_id === undefined)) && setRegModalActive(true);
     // return CartService({isUpdate: true, isSet: false, setUserData: setCartData})
