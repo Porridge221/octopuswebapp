@@ -18,7 +18,7 @@ import CartService from '../../services/cartService';
 
 function Cart() {
     const [user_data, setUserData] = useState();
-    const user_curr = useUser(false);
+    const user_curr = useUser(true);
     const navigate = useNavigate();
 
     const {tg, initData} = useTelegram();
