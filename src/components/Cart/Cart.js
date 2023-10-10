@@ -11,15 +11,42 @@ import modalStyles from './Modal.module.css'
 import Input from 'react-phone-number-input/input'
 import useUser from '../../hooks/useUser';
 
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import useTelegram from '../../hooks/useTelegram';
 
 import CartService from '../../services/cartService';
+
+let isAdded = false;
 
 function Cart() {
     const [user_data, setUserData] = useState();
     const user_curr = useUser(true);
     const navigate = useNavigate();
+
+
+    const fetchAddToCart = (variant_id_to_add) => {
+        fetch("https://octopus-vape.ru/carts/add", { method:'POST',headers: {
+        'Content-Type': 'application/json',
+        'Telegram-Data': initData,
+        }, body: JSON.stringify( {'user_id': 1, 'variant_id': variant_id_to_add, 'count': 1} )
+        })
+        .then(response => {
+            return JSON.stringify( {'user_id': 1, 'variant_id': variant_id_to_add, 'count': 1} )
+        })
+        .then(data => {
+            console.log(JSON.stringify( {'user_id': 1, 'variant_id': variant_id_to_add, 'count': 1} ));
+            setUpdateScreen(updateScreen+1);
+        })
+    }
+
+    useEffect(() => {
+        const queryParameters = new URLSearchParams(window.location.search)
+        const type = queryParameters.get("variant_id")
+        if (!isAdded && type) {
+            fetchAddToCart(type);
+            isAdded = true;
+        }
+    }, [])
 
     const {tg, initData} = useTelegram();
     tg.onEvent('backButtonClicked', () => navigate('/home'));

@@ -22,6 +22,7 @@ const Router = () => {
             <Route element={<ProductSearch />} path='/home/product' />
             <Route element={<InfoPage />} path='/home/infopage' />
             <Route path='*' element={<div>  Not found  </div>} />
+            {/* <Route element={<Cart />} path='/cart/:variant_id' /> */}
         </Routes>
     </BrowserRouter>
 }
