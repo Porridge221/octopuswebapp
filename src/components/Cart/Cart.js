@@ -20,7 +20,7 @@ let isAdded = false;
 
 function Cart() {
     const [user_data, setUserData] = useState();
-    const user_curr = useUser(true);
+    const user_curr = useUser(false);
     const navigate = useNavigate();
 
 

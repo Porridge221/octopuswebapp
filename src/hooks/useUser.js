@@ -1,7 +1,7 @@
 import { useEffect, useState} from "react"
 import useTelegram from "./useTelegram";
 
-let userData;
+let userData = null;
 
 function useUser(isUpdate) {
     const {initData} = useTelegram();
@@ -20,7 +20,7 @@ function useUser(isUpdate) {
       }
     
     useEffect(() => {
-        isUpdate &&  fetchData();
+        (isUpdate || !userData) &&  fetchData();
     // eslint-disable-next-line
     }, [])
 
