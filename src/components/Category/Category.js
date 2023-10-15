@@ -15,10 +15,13 @@ import RangeSlider from 'react-range-slider-input';
 import 'react-range-slider-input/dist/style.css';
 import './slider.css';
 import useUser from '../../hooks/useUser';
+import CartService from '../../services/cartService';
 
 var newState = [];
 
 function Category() {
+  const [cartData, setCartData] = useState(CartService({isUpdate: false, isInit: false}))
+
   const user_data = useUser(false);
   const [storeRU, setStoreRU] = useState(true);
   const [storeFK, setStoreFK] = useState(true);
@@ -319,7 +322,7 @@ function Category() {
       <div className={styles.MainBackground} >
         {/* <img className={styles.icon} src={process.env.PUBLIC_URL + '/assets/main_background.svg'} alt=''/> */}
       </div>
-      <Header path={path} current={current[category_id]}/>
+      <Header path={path} current={current[category_id]} cartData={cartData}/>
       <div className={styles.filter}>
         <span className={styles.CategoriesLabel}>Все фильтры</span>
         <RxMixerHorizontal className={styles.MixerButton} onClick={() => setModalActive(true)} />      
@@ -351,7 +354,7 @@ function Category() {
 
         
       </div>
-      <CategoryList className={styles.ItemList} result={filteredItems} category_id={category_id} />
+      <CategoryList className={styles.ItemList} result={filteredItems} category_id={category_id} cartData={cartData} setCartData={setCartData} />
       <FilterModal active={modalActive} setActive={setModalActive} >
         <div className={modalStyles.Header}>
           <span className={modalStyles.HeaderLabel}>Фильтры</span>

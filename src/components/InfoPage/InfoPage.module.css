@@ -41,7 +41,7 @@ ol > * {
     line-height: 18px;
     white-space: pre-wrap;
     height: min-content;
-    text-align: justify;
+    /* text-align: justify; */
     margin: 10px 0;
 }
 

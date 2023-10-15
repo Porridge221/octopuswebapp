@@ -62,7 +62,9 @@ function ProductSearch() {
             //     setButtonStyle(styles.BuyButton);
             // }, 1400);
             console.log(JSON.stringify( {'user_id': 1, 'variant_id': item.variant_id, 'count': 1} ));
-            setCartData(CartService({isUpdate:false, isInit: true}))
+            CartService({isUpdate:false, isInit: true}).then((val) => {
+                setCartData(val)
+            })
         })
     }
 
@@ -83,7 +85,9 @@ function ProductSearch() {
             //     setButtonStyle(styles.BuyButton);
             // }, 1400);
             console.log(JSON.stringify( {'user_id': 1, 'variant_id': item.variant_id, 'count': 1} ));
-            setCartData(CartService({isUpdate:false, isInit: true}))
+            CartService({isUpdate:false, isInit: true}).then((val) => {
+                setCartData(val)
+            })
         })
     }
 
@@ -136,7 +140,7 @@ function ProductSearch() {
     console.log(item);
     return (
     <div className={styles.root}>
-        <Header path={path} current={current}/>
+        <Header path={path} current={current} cartData={cartData}/>
         <div className={styles.ImageBox} ><img className={styles.Image} src={item?.image !== "" ? item?.image : process.env.PUBLIC_URL + "/assets/octopus_big1.jpg"} alt=''/></div>
     <div style={{flexGrow: '1'}}>
         <div className={styles.Name}>{item !== undefined && item?.name}</div>

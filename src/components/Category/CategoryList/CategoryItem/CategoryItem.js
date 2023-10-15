@@ -5,14 +5,14 @@ import CartService from '../../../../services/cartService';
 import { useState } from 'react';
 import useUser from '../../../../hooks/useUser';
 
-function CategoryItem({item, producerName}) {
+function CategoryItem({item, producerName, cartData, setCartData}) {
   const category_id = useLocation().state;
 
   const user_data = useUser(false)
 
   const {initData} = useTelegram();
 
-  const [cartData, setCartData] = useState(CartService({isUpdate: false, isInit: false}))
+  // const [cartData, setCartData] = useState(CartService({isUpdate: false, isInit: false}))
   
   const fetchData = () => {
     fetch("https://octopus-vape.ru/carts/add", { method:'POST',headers: {
@@ -29,7 +29,9 @@ function CategoryItem({item, producerName}) {
         // setTimeout(() => {
         //     setButtonStyle(styles.BuyButton);
         // }, 1400);
-        setCartData(CartService({isUpdate:false, isInit: true}))
+        CartService({isUpdate:false, isInit: true}).then((val) => {
+          setCartData(val)
+        })
       })
   }
 
@@ -48,7 +50,9 @@ function CategoryItem({item, producerName}) {
         // setTimeout(() => {
         //     setButtonStyle(styles.BuyButton);
         // }, 1400);
-        setCartData(CartService({isUpdate:false, isInit: true}))
+        CartService({isUpdate:false, isInit: true}).then((val) => {
+          setCartData(val)
+        })
     })
   }
 
