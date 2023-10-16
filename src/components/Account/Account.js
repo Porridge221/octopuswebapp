@@ -3,13 +3,13 @@ import LoyaltyInfo from '../LoyaltyInfo/LoyaltyInfo'
 import FilterModal from '../Category/FilterModal/FilterModal';
 import useTelegram from '../../hooks/useTelegram';
 import { useState, useEffect } from 'react';
-import {useNavigate} from 'react-router-dom'
+import {useNavigate, Link} from 'react-router-dom'
 
 import modalStyles from './Modal.module.css';
 import {AiOutlineClose} from "react-icons/ai";
 import Input from 'react-phone-number-input/input'
 import useUser from '../../hooks/useUser';
-
+import {QRCodeSVG} from 'qrcode.react';
 
 function Account() {
     const [user_data, setUserData] = useState();
@@ -117,9 +117,33 @@ function Account() {
                 </div>
                 <div style={{'display':'flex', 'justifyContent': 'center'}}><div className={styles.AddInfoButton} onClick={() => setModalActive(true)}>Редактировать</div></div>
             </div>
-            <div style={{marginRight: '16px'}}>
-            <LoyaltyInfo />
-            </div>
+            {user_data !== undefined && user_data?.user?.card_num ? (
+                <div className={styles.qrBox}>
+                    <div className={styles.qrTextBox} >
+                        <div className={styles.qrTextHeader} >Бонусная карта</div>
+                        <div className={styles.qrText} >Твой QR-код</div>
+                    </div>
+                    <div className={styles.qrImage} >
+                        <QRCodeSVG value={user_data?.user?.card_num} size={145} bgColor='#ffffff' fgColor='#000000'/>
+                    </div>
+                </div>
+            ) : (
+                <Link className={styles.qrBox} style={{position: 'relative', background: '#424242'}} to={'https://octopus.getmeback.ru/wallet'}>
+                    <div className={styles.qrBlurBox} style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', filter: 'blur(2px)'}} >
+                        <div className={styles.qrTextBox} >
+                            <div className={styles.qrTextHeader} >Бонусная карта</div>
+                        </div>
+                        <div className={styles.qrImage} style={{backgroundColor: '#2E2E2E'}} >
+                        </div>
+                    </div>
+                    <div style={{display: 'flex', width: '100%', height: '100%', top: 0, left: 0, position: 'absolute', justifyContent: 'center', alignItems: 'center'}} >
+                    <span style={{color: '#ffffff', width: '70%', whiteSpace: 'pre-wrap', fontSize: '18px', fontWeight: '700', textAlign: 'center'}}>
+                        Зарегистрируйтесь,{'\n'} чтобы пользоваться программой лояльности
+                    </span>
+                    </div>
+                </Link>
+            )}
+                
             <FilterModal active={modalActive} setActive={setModalActive}>
             <div style={{'width': '70vw', 'overflowX': 'hidden','overflowY': 'auto', backgroundColor: 'var(--tg-theme-bg-color)'}}>
                 <div className={modalStyles.Header}>
