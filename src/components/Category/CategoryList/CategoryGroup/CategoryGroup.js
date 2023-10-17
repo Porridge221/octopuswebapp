@@ -4,7 +4,7 @@ import { useState } from "react";
 import { FaAngleDown, FaAngleRight } from "react-icons/fa6";
 
 function CategoryGroup({producer, cartData, setCartData}) {
-    const [hidden, setHidden] = useState(true);
+    const [hidden, setHidden] = useState(false);
 
     return (
     <div className={styles.ProducerGroup}>
