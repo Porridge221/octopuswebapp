@@ -24,12 +24,14 @@ function Category() {
 
   const user_data = useUser(false);
   const [storeRU, setStoreRU] = useState(true);
-  const [storeFK, setStoreFK] = useState(true);
-  const [storeNAB, setStoreNAB] = useState(true);
-  const [storeKIR, setStoreKIR] = useState(true);
-  const [storeSOV, setStoreSOV] = useState(true);
-  const [storeSH, setStoreSH] = useState(true);
-  const [storePYR, setStorePYR] = useState(true);
+  const [storeFK, setStoreFK] = useState(false);
+  const [storeNAB, setStoreNAB] = useState(false);
+  const [storeKIR, setStoreKIR] = useState(false);
+  const [storeSOV, setStoreSOV] = useState(false);
+  const [storeSH, setStoreSH] = useState(false);
+  const [storePYR, setStorePYR] = useState(false);
+
+  const [tmpStore, setTmpStore] = useState(false);
 
   const [showAllProducer, setShowAllProducer] = useState(false);
   const [checkAllProducer, setCheckAllProducer] = useState(true);
@@ -330,7 +332,7 @@ function Category() {
       </div>
       <div className={styles.storeFilter}>
         {user_data?.user?.city_id === 1 ? <>
-          <Toggle label="ул. Русская, 46" toggled={storeRU}  setStore={setStoreRU}/*onClick={logState} 16*//>
+          <Toggle label="ул. Русская, 46" toggled={storeRU}  setStore={setTmpStore}/*onClick={logState} 16*//>
         </> : user_data?.user?.city_id === 2 ? <>
            
         </> : user_data?.user?.city_id === 3 ? <>
@@ -338,7 +340,7 @@ function Category() {
         </> : user_data?.user?.city_id === 4 ? <>
           
         </> : <>
-          <Toggle label="ул. Русская, 46" toggled={storeRU}  setStore={setStoreRU}/*onClick={logState} 16*//>
+          <Toggle label="ул. Русская, 46" toggled={storeRU}  setStore={setTmpStore}/*onClick={logState} 16*//>
         </> }
         
 
@@ -357,7 +359,7 @@ function Category() {
           <div className={modalStyles.VerticalBox}>
             <span>Наличие в магазинах:</span>
               {user_data?.user?.city_id === 1 ? <>
-                <Toggle label="ул. Русская, 46" toggled={storeRU}  setStore={setStoreRU} /*onClick={logState} 16*//>
+                <Toggle label="ул. Русская, 46" toggled={storeRU}  setStore={setTmpStore} /*onClick={logState} 16*//>
                 
               </> : user_data?.user?.city_id === 2 ? <>
                  
@@ -366,7 +368,7 @@ function Category() {
               </> : user_data?.user?.city_id === 4 ? <>
                 
               </> : <>
-                <Toggle label="ул. Русская, 46" toggled={storeRU}  setStore={setStoreRU} /*onClick={logState} 16*//>
+                <Toggle label="ул. Русская, 46" toggled={storeRU}  setStore={setTmpStore} /*onClick={logState} 16*//>
                 
               </> }
           </div>

@@ -2,13 +2,14 @@ import { useEffect, useState } from 'react';
 import styles from './CartItem.module.css'
 import useTelegram from '../../../hooks/useTelegram';
 import useUser from '../../../hooks/useUser';
+import CartService from '../../../services/cartService';
 
 function CartItem({order, cart_id, fetchDeleteOne, updateScreen, setUpdateScreen}) {
     const [count, setCount] = useState(1);
 
     const user_curr = useUser(false)
 
-    const {initData} = useTelegram();
+    const {tg, initData} = useTelegram();
 
     const [imageVar, setImageVar] = useState(order?.image)
 
@@ -28,6 +29,18 @@ function CartItem({order, cart_id, fetchDeleteOne, updateScreen, setUpdateScreen
     }
 
     const incrementCount = () => {
+        var countItems = 0;
+        var user_data = CartService({isUpdate: false, isInit: false});
+        user_data !== undefined && user_data?.items?.length > 0 &&
+            // user_data.cart.items.map(order => {count += order.count; price += order.price_vvo/100 * order.count;} )
+            user_data.items.forEach(order => {
+                countItems += order.count;
+        });
+        if (countItems >= 10) {
+            tg.showAlert('Заказ не может содержать более 10 товаров.');
+            return
+        }
+        
         setCount(count+1);
         fetchData(true);
         // handlerUpdateScreen = 1;

@@ -10,11 +10,22 @@ function CategoryItem({item, producerName, cartData, setCartData}) {
 
   const user_data = useUser(false)
 
-  const {initData} = useTelegram();
+  const {tg, initData} = useTelegram();
 
   // const [cartData, setCartData] = useState(CartService({isUpdate: false, isInit: false}))
   
   const fetchData = () => {
+      var countItems = 0;
+      cartData !== undefined && cartData?.items?.length > 0 &&
+          // user_data.cart.items.map(order => {count += order.count; price += order.price_vvo/100 * order.count;} )
+          cartData.items.forEach(order => {
+              countItems += order.count;
+      });
+      if (countItems >= 10) {
+          tg.showAlert('Заказ не может содержать более 10 товаров.');
+          return
+      }
+
     fetch("https://octopus-vape.ru/carts/add", { method:'POST',headers: {
       'Content-Type': 'application/json',
       'Telegram-Data': initData,
