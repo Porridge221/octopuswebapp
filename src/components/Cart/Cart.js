@@ -17,8 +17,10 @@ import useTelegram from '../../hooks/useTelegram';
 import CartService from '../../services/cartService';
 
 let isAdded = false;
+let isFetching = false;
 
 function Cart() {
+
     const [user_data, setUserData] = useState();
     const user_curr = useUser(false);
     const navigate = useNavigate();
@@ -109,6 +111,9 @@ function Cart() {
     }
 
     const fetchData = () => {
+        if (isFetching)
+            return
+        isFetching = true;
         var error = false;
         if (userName === "" || userName === undefined) {
             tg.showAlert('Введите своё Имя');
@@ -130,6 +135,7 @@ function Cart() {
             return response
           })
           .then(data => {
+            isFetching = false;
             if (data?.status === 204) {
                 tg.showAlert('Товара нет в наличии!');
             } else {

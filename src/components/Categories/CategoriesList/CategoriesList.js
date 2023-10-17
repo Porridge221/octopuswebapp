@@ -14,6 +14,7 @@ function CategoriesList() {
         {id: 7, text: 'Одноразовые системы', img: 'Одноразовые-системы'},
         {id: 8, text: 'Расходники', img: 'Расходники'},
         {id: 9, text: 'Устройства', img: 'Устройства'},
+        {id: 10, text: 'Атомайзеры', img: 'Атомайзеры'},
     ]
 
     return (
@@ -27,6 +28,7 @@ function CategoriesList() {
             <CategoriesItem category={category[6]}/>
             <CategoriesItem category={category[7]}/>
             <CategoriesItem category={category[8]}/>
+            <CategoriesItem category={category[9]}/>
         </ul>
     )
 

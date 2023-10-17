@@ -54,6 +54,14 @@
   background: url('../../../public/assets/infocards/faq.svg');
 }
 
+.rectangleCallback {
+  width: 95px;
+  height: 95px;
+  background-size: cover;
+  border-radius: 10px;
+  background: url('../../../public/assets/infocards/callback.svg');
+}
+
 .rectangleCREA {
   width: 95px;
   height: 95px;

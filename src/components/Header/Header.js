@@ -25,6 +25,7 @@ function Header({path, current, cartData}) {
         'Одноразовые системы': ['/home/categories/7', 7],
         'Расходники': ['/home/categories/8', 8],
         'Устройства': ['/home/categories/9', 9],
+        'Атомайзеры': ['/home/categories/10', 10],
     }
 
     path.forEach(el => {
