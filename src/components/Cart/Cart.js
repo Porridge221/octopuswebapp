@@ -122,7 +122,7 @@ function Cart() {
             tg.showAlert('Номер телефона должен состоять из 10 цифр!');
             error = true;
         } else if (selectedStore === "" || selectedStore === undefined) {
-            tg.showAlert('Введите Ваш город!');
+            tg.showAlert('Выберите город!');
             error = true;
         }
         if (!error) {
@@ -213,23 +213,23 @@ function Cart() {
                     <select className={modalStyles.Select} value={selectedStore} onChange={e => setSelectedStore(e.target.value)} >
                         {user_curr?.user?.city_id === 1 ? <>
                             <option label="ул. Русская, 46" value={16}>ул. Русская, 46</option>
-                            <option label="ул. Адмирала Фокина, 23в" value={15}>ул. Адмирала Фокина, 23в</option>
-                            <option label="ул. Набережная, 7Б" value={1}>ул. Набережная, 7Б</option>
+                            {/* <option label="ул. Адмирала Фокина, 23в" value={15}>ул. Адмирала Фокина, 23в</option>
+                            <option label="ул. Набережная, 7Б" value={1}>ул. Набережная, 7Б</option> */}
                             </> : user_curr?.user?.city_id === 2 ? <>
-                                <option label="ул. Кирова, 2" value={20}>ул. Кирова, 2</option>
+                                {/* <option label="ул. Кирова, 2" value={20}>ул. Кирова, 2</option> */}
                             </> : user_curr?.user?.city_id === 3 ? <>
-                            <option label="ул. Сахалинская, 45А, 1" value={11}>ул. Сахалинская, 45А, 1</option>
-                            <option label="ул. Пуркаева М.А., 102В" value={24}>ул. Пуркаева М.А., 102В</option>
+                            {/* <option label="ул. Сахалинская, 45А, 1" value={11}>ул. Сахалинская, 45А, 1</option>
+                            <option label="ул. Пуркаева М.А., 102В" value={24}>ул. Пуркаева М.А., 102В</option> */}
                             </> : user_curr?.user?.city_id === 4 ? <>
-                            <option label="ул. Советская, 31, 3" value={2}>ул. Советская, 31, 3</option>
+                            {/* <option label="ул. Советская, 31, 3" value={2}>ул. Советская, 31, 3</option> */}
                             </> : <>
                             <option label="ул. Русская, 46" value={16}>ул. Русская, 46</option>
-                            <option label="ул. Адмирала Фокина, 23в" value={15}>ул. Адмирала Фокина, 23в</option>
+                            {/* <option label="ул. Адмирала Фокина, 23в" value={15}>ул. Адмирала Фокина, 23в</option>
                             <option label="ул. Набережная, 7Б" value={1}>ул. Набережная, 7Б</option>
                             <option label="ул. Кирова, 2" value={20}>ул. Кирова, 2</option>
                             <option label="ул. Советская, 31, 3" value={2}>ул. Советская, 31, 3</option>
                             <option label="ул. Сахалинская, 45А, 1" value={11}>ул. Сахалинская, 45А, 1</option>
-                            <option label="ул. Пуркаева М.А., 102В" value={24}>ул. Пуркаева М.А., 102В</option>
+                            <option label="ул. Пуркаева М.А., 102В" value={24}>ул. Пуркаева М.А., 102В</option> */}
                         </> }
                     </select>
                     <span style={{marginTop: '5px'}}>Имя получателя</span>
