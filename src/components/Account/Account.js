@@ -16,6 +16,7 @@ function Account() {
     const [updateScreen, setUpdateScreen] = useState(1);
 
     const [modalActive, setModalActive] = useState(false);
+    const [qrModalActive, setQrModalActive] = useState(false);
 
     const [phoneNumber, setPhoneNumber] = useState();
 
@@ -123,7 +124,7 @@ function Account() {
                         <div className={styles.qrTextHeader} >Бонусная карта</div>
                         <div className={styles.qrText} >Твой QR-код</div>
                     </div>
-                    <div className={styles.qrImage} >
+                    <div className={styles.qrImage} onClick={() => setQrModalActive(true)}>
                         <QRCodeSVG value={user_data?.user?.card_num} size={145} bgColor='#ffffff' fgColor='#000000'/>
                     </div>
                 </div>
@@ -171,6 +172,15 @@ function Account() {
                 </div>
             </div>
             <div className={modalStyles.ConfirmButton} onClick={fetchData}>Подтвердить</div>
+            </FilterModal>
+            
+            <FilterModal active={qrModalActive} setActive={setQrModalActive} isDeactivated={false}>
+            <div style={{'width': '80vw', 'overflowX': 'hidden','overflowY': 'auto', backgroundColor: 'var(--tg-theme-bg-color)'}}>
+                <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center', paddingBottom: '20px'}} >
+                    <QRCodeSVG value={user_data?.user?.card_num} size={'100%'} bgColor='#ffffff' fgColor='#000000'/>
+                </div>
+            </div>
+            <div className={modalStyles.ConfirmButton} onClick={() => setQrModalActive(false)}>Закрыть</div>
             </FilterModal>
         </div>
     );

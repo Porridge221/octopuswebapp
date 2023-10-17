@@ -53,7 +53,7 @@ function CartItem({order, cart_id, fetchDeleteOne, updateScreen, setUpdateScreen
         <div className={styles.root}>
             <div className={styles.Image}>
                 {/* <img style={{'objectFit': 'contain'}} src={process.env.PUBLIC_URL + "/assets/AccountImage.png"} alt=''/> */}
-                <img style={{'objectFit': 'contain'}} src={imageVar} alt='' onError={(ev) => setImageVar(process.env.PUBLIC_URL + "/assets/octopus_big1.jpg")} />
+                <img style={{'objectFit': 'contain', maxWidth: '103px', maxHeight: '103px'}} src={imageVar} alt='' onError={(ev) => setImageVar(process.env.PUBLIC_URL + "/assets/octopus_big1.jpg")} />
             </div>
             <div className={styles.Info} >
             <div className={styles.Name} >{order.name}</div>

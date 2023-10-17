@@ -8,6 +8,8 @@ import { useNavigate, useLocation } from 'react-router-dom';
 // import {Dropdown} from 'react-searchable-dropdown-component';
 import SelectableSearch from "@fliptask/react-search-dropdown";
 
+import {AiOutlineClose} from "react-icons/ai";
+
 var prev = 0;
 
 function SearchItem() {
@@ -15,6 +17,7 @@ function SearchItem() {
 
     const [selectedOptions, setSelectedOptions] = useState("");
     const [selectInput, setSelectInput] = useState({search: '', list: []});
+    const [isOpen, setIsOpen] = useState(false);
 
     const {initData} = useTelegram();
 
@@ -65,6 +68,11 @@ function SearchItem() {
           }
         
     }
+
+    function handleFocus() {
+      console.log(optionList);
+          optionList && optionList?.length > 0 && setIsOpen(true)
+    }
     
     useEffect(() => {
       // const container = document.getElementsByClassName('react-select__control')[0];
@@ -75,9 +83,6 @@ function SearchItem() {
       // searchText.style.Height = '14px';
     }, [])
 
-    console.log(selectedOptions);
-    console.log(optionList);
-    console.log(selectInput);
       return (
         <div className={styles.root} >
           <div className={styles.dropdowncontainer}>
@@ -101,13 +106,16 @@ function SearchItem() {
                     value={selectInput['search']}
                     placeholder={'Найти'}
                     options={optionList}
+                    open={isOpen}
                     onChange={handleInput}
                     onSelected={handleSelect}
                     searchKeys={["label"]}
+                    onFocus={handleFocus}
                     className={'dropdown'}
-
                 />
-
+            <div style={{position: 'absolute', height: '100%', right: 0, display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '0 10px'}} onClick={() => setIsOpen(!isOpen)} >
+              <AiOutlineClose style={{width: '20px', height: '20px'}} />
+            </div>
           </div>
           </div>
       );

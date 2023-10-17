@@ -225,12 +225,14 @@ hr {
   max-height: 28px;
   min-height: 28px;
   height: 28px;
+  width: 100%;
 }
 
 .dropdown * {
   max-height: 28px;
   height: 28px;
   top: 0;
+  width: 100%;
 }
 
 .input-box {

@@ -45,6 +45,8 @@
   } */
   .dropdowncontainer {
     width: 80%;
+    display: flex;
+    position: relative;
   }
 
 
