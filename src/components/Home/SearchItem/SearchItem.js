@@ -69,9 +69,11 @@ function SearchItem() {
         
     }
 
-    function handleFocus() {
+    function handleClose() {
       console.log(optionList);
-          optionList && optionList?.length > 0 && setIsOpen(true)
+      optionList && optionList?.length > 0 && setIsOpen(false)
+      setSelectInput({search: '', list: []})
+      setOptionList([])
     }
     
     useEffect(() => {
@@ -110,10 +112,9 @@ function SearchItem() {
                     onChange={handleInput}
                     onSelected={handleSelect}
                     searchKeys={["label"]}
-                    onFocus={handleFocus}
                     className={'dropdown'}
                 />
-            <div style={{position: 'absolute', height: '100%', right: 0, display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '0 10px'}} onClick={() => setIsOpen(!isOpen)} >
+            <div style={{position: 'absolute', height: '100%', right: 0, display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '0 10px'}} onClick={handleClose} >
               <AiOutlineClose style={{width: '20px', height: '20px'}} />
             </div>
           </div>
