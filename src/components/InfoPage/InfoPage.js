@@ -53,7 +53,7 @@ function InfoPage() {
                 <div className={styles.Header}>FAQ</div>
                 <div className={styles.Tips} style={{marginTop: '25px'}}>Могу ли я оформить доставку?</div>
                 <div className={styles.Text}>Согласно ст. 19 Федерального закона от 23.02.2013 N 15-ФЗ доставка никотиновой продукции запрещена.</div>
-                <div className={styles.Tips} style={{marginTop: '35px'}}>Могу ли я оплатить заказ онлайн?ы</div>
+                <div className={styles.Tips} style={{marginTop: '35px'}}>Могу ли я оплатить заказ онлайн?</div>
                 <div className={styles.Text}>Заказ оплачивается при получении в выбранном филиале.</div>
                 <div className={styles.Tips} style={{marginTop: '35px'}}>Когда я могу забрать заказ?</div>
                 <div className={styles.Text}>Заказ будет готов в течение часа. Вы сможете забрать его с с 11:00 до 21:00 в выбранном филиале. Через 24 часа заказ будет удален.
