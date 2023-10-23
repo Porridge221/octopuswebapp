@@ -51,18 +51,14 @@ function InfoPage() {
              : card_id === 4 ?
              (<>
                 <div className={styles.Header}>FAQ</div>
-                <div className={styles.Tips} style={{marginTop: '25px'}}>Как оплатить заказ?</div>
-                <div className={styles.Text}>Для оплаты заказа Вам достаточно прибыть в выбранный
-                                            VapeShop. Наши администраторы выдадут Ваш заказ , и Вы
-                                            сможете его оплатить. Оплата в приложении не предусмотрена{')'}</div>
-                <div className={styles.Tips} style={{marginTop: '35px'}}>Часы работы</div>
-                <div className={styles.Text}>Наш VapeSHOP открыт для Вас ежедневно с 11:00 до 21:00</div>
-                <div className={styles.Tips} style={{marginTop: '35px'}}>Как списать накопленные баллы</div>
-                <div className={styles.Text}>Для того, чтобы списать накопленные баллы обратитесь к нашему
-                                            администратору, предъявив Вашу дисконтную карту, либо назовите
-                                            свой номер телефона. После чего – насладитесь вашими покупками
-                                            с уверенной скидкой!
-                </div>
+                <div className={styles.Tips} style={{marginTop: '25px'}}>Могу ли я оформить доставку?</div>
+                <div className={styles.Text}>Согласно ст. 19 Федерального закона от 23.02.2013 N 15-ФЗ доставка никотиновой продукции запрещена.</div>
+                <div className={styles.Tips} style={{marginTop: '35px'}}>Могу ли я оплатить заказ онлайн?</div>
+                <div className={styles.Text}>Заказ оплачивается при получении в выбранном филиале.</div>
+                <div className={styles.Tips} style={{marginTop: '35px'}}>Когда я могу забрать заказ?</div>
+                <div className={styles.Text}>Заказ будет готов в течение часа. Вы сможете забрать его с с 11:00 до 21:00 в выбранном филиале. Через 24 часа заказ будет удален.</div>
+                <div className={styles.Tips} style={{marginTop: '35px'}}>Можно ли изменить филиал после создания заказа?</div>
+                <div className={styles.Text}>Такой возможности не предусмотрено.</div>
             </>) : card_id === 3 &&
             (<>
                 <div className={styles.Header}>Программа лояльности</div>
