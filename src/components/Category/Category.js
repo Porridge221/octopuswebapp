@@ -150,7 +150,7 @@ function Category() {
         query += sizeItem.value ? `volume=${sizeItem.name}&` : ''
       })
       NikotinValueToggle.forEach((nikotinItem) => {
-        query += nikotinItem.value ? `nikotin=${nikotinItem.name}&` : ''
+        query += nikotinItem.value ? (nikotinItem.key === 7 ? `nikotin=20%2B&` :  `nikotin=${nikotinItem.name}&`) : ''
       })
       if (!NikotinTypeToggle[0].value || !NikotinTypeToggle[1].value) {
         NikotinTypeToggle[0].value && (query += 'nikotype=Salt&')
