@@ -176,7 +176,7 @@ function Account() {
             
             <FilterModal active={qrModalActive} setActive={setQrModalActive} isDeactivated={false}>
             <div style={{'width': '80vw', 'overflowX': 'hidden','overflowY': 'auto', backgroundColor: 'var(--tg-theme-bg-color)'}}>
-                <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center', paddingBottom: '20px'}} >
+                <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '20px', backgroundColor: '#ffffff', borderRadius: '10px'}} >
                     <QRCodeSVG value={user_data?.user?.card_num} size={'100%'} bgColor='#ffffff' fgColor='#000000'/>
                 </div>
             </div>

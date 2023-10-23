@@ -27,6 +27,17 @@ function Cart() {
 
 
     const fetchAddToCart = (variant_id_to_add) => {
+        var countItems = 0;
+        user_data !== undefined && user_data?.items?.length > 0 &&
+            // user_data.cart.items.map(order => {count += order.count; price += order.price_vvo/100 * order.count;} )
+            user_data.items.forEach(order => {
+                countItems += order.count;
+        });
+        if (countItems >= 10) {
+            tg.showAlert('Заказ не может содержать более 10 товаров.');
+            return
+        }
+
         fetch("https://octopus-vape.ru/carts/add", { method:'POST',headers: {
         'Content-Type': 'application/json',
         'Telegram-Data': initData,
@@ -37,6 +48,7 @@ function Cart() {
         })
         .then(data => {
             console.log(JSON.stringify( {'user_id': 1, 'variant_id': variant_id_to_add, 'count': 1} ));
+            CartService({isUpdate: true, data: data, isInit: false})
             setUpdateScreen(updateScreen+1);
         })
     }
@@ -113,6 +125,16 @@ function Cart() {
     const fetchData = () => {
         if (isFetching)
             return
+        var countItems = 0;
+        user_data !== undefined && user_data?.items?.length > 0 &&
+            // user_data.cart.items.map(order => {count += order.count; price += order.price_vvo/100 * order.count;} )
+            user_data.items.forEach(order => {
+                countItems += order.count;
+        });
+        if (countItems >= 10) {
+            tg.showAlert('Заказ не может содержать более 10 товаров.');
+            return
+        }
         isFetching = true;
         var error = false;
         if (userName === "" || userName === undefined) {
