@@ -61,7 +61,7 @@ function OrderList({user_data}) {
             {/* <div className={styles.orderList}> */}
                 {user_data !== undefined && user_data?.orders?.length > 0 ? (<div className={styles.orderList} >
                     {user_data?.orders.map(order => (
-                        <OrderItem key={order.order_id} order={order} handleSetModal={handleSetModal}/>
+                        <OrderItem key={order.name} order={order} handleSetModal={handleSetModal}/>
                     ))}
                 </div>) : (<div className={styles.EmptyBox} >
                 <img className={styles.iconEmpty} src={process.env.PUBLIC_URL + '/assets/emptyHistory.svg'} alt=''/>
@@ -74,7 +74,7 @@ function OrderList({user_data}) {
                 {/* backgroundColor: 'var(--tg-theme-secondary-bg-color)' */}
             <div style={{'width': '80vw', 'height': '100%', 'overflowX': 'hidden','overflowY': 'auto', backgroundColor: 'var(--tg-theme-bg-color)'}}>
                 <div className={modalStyles.Header}>
-                    <span className={modalStyles.HeaderLabel}>Заказ №{modalOrder.order_id}</span>
+                    <span className={modalStyles.HeaderLabel}>Заказ №{modalOrder.name}</span>
                     <AiOutlineClose className={modalStyles.CloseButton} onClick={() => setModalActive(false)} />
                 </div>
                 <div className={modalStyles.ItemList}>
