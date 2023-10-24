@@ -48,7 +48,7 @@ function ProductSearch() {
             tg.showAlert('Заказ не может содержать более 10 товаров.');
             return
         }
-        
+
         fetch("https://octopus-vape.ru/carts/add", { method:'POST',headers: {
         'Content-Type': 'application/json',
         'Telegram-Data': initData,

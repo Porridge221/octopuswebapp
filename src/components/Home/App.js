@@ -25,7 +25,7 @@ function App() {
   const [modalActive, setModalActive] = useState(false);
 
   const [phoneNumber, setPhoneNumber] = useState("");
-  const [selectedCity, setSelectedCity] = useState(user_data?.user?.city_id ===  1 ? 'Владивосток' : user_data?.user?.city_id === 2 ? 'Артем' : user_data?.user?.city_id === 3 ? "Южно-Сахалинск" : user_data?.user?.city_id === 4 ? "Корсаков" : "Владивосток");
+  const [selectedCity, setSelectedCity] = useState('Владивосток');
   const [userName, setUserName] = useState("");
   const [regModalActive, setRegModalActive] = useState(false);
 
@@ -49,7 +49,7 @@ function App() {
       fetch("https://octopus-vape.ru/users/add_info", { method:'PUT',headers: {
       'Content-Type': 'application/json',
       'Telegram-Data': initData,
-      }, body: JSON.stringify( {'name': userName, 'phone': phoneNumber.slice(1), 'city_id': selectedCity === 'Владивосток' ? 1 : selectedCity === 'Артем' ? 2 : selectedCity === 'Южно-Сахалинск' ? 3 : 4} )
+      }, body: JSON.stringify( {'name': userName, 'phone': phoneNumber.slice(1), 'city_id': 1} )
       })
       .then(response => {
         return response
@@ -85,7 +85,7 @@ function App() {
   }
 
   useEffect(() => {
-    setSelectedCity( user_data?.user?.city_id ===  1 ? 'Владивосток' : user_data?.user?.city_id === 2 ? 'Артем' : user_data?.user?.city_id === 3 ? "Южно-Сахалинск" : user_data?.user?.city_id === 4 ? "Корсаков" : "Владивосток");
+    setSelectedCity('Владивосток');
     setUserName(user_data?.user?.name);
     !showedAgeConfirm && localStorage.getItem('AgeConfirm') !== 'true' ? handler() : setRegisterShow(true);
     user_data !== undefined && user_data !== null && registerShow && !showedRegConfirm && ((user_data?.user?.phone === null || user_data?.user?.phone === undefined) || (user_data?.user?.city_id === null || user_data?.user?.city_id === undefined)) && setRegModalActive(true);
@@ -153,9 +153,9 @@ function App() {
                     <span>Укажите город. Так пункты выдачи заказов будут отображаться корректно.</span>
                     <select className={RegModal.Select} value={selectedCity} onChange={e => setSelectedCity(e.target.value)} >
                         <option value="Владивосток">Владивосток</option>
-                        <option value="Артем">Артем</option>
+                        {/* <option value="Артем">Артем</option>
                         <option value="Южно-Сахалинск">Южно-Сахалинск</option>
-                        <option value="Корсаков">Корсаков</option>
+                        <option value="Корсаков">Корсаков</option> */}
                     </select>
                 </div>
             </div>
