@@ -142,13 +142,13 @@ function Category() {
           ));
           setProducerToggles(newState);
         }
+        setIsLoading(false);
         // newState !== undefined && newState.size !== 0 && newState.map(producer => (console.log(producer)));
       })
   }
 
 
   useEffect(() => {
-
     fetchData();
     
   }, [storeRU, storeFK, storeKIR, storeNAB, storePYR, storeSH, storeSOV, updateCatalog])
@@ -249,12 +249,20 @@ function Category() {
   }
 
   const handleSetUpdateCatalog = () => {
+    setIsLoading(true);
     setUpdateCatalog(updateCatalog + 1);
     setModalActive(false);
   }
 
+  const [isLoading, setIsLoading] = useState(false);
+
   return (
     <div className={styles.Category}>
+      {isLoading && (
+        <div className={styles.loaderContainer}>
+          <div className={styles.spinner}></div>
+        </div>
+      ) }
       <div className={styles.MainBackground} >
         {/* <img className={styles.icon} src={process.env.PUBLIC_URL + '/assets/main_background.svg'} alt=''/> */}
       </div>
@@ -285,7 +293,13 @@ function Category() {
           <Toggle label="ул. Пуркаева М.А., 102В" toggled={storePYR}  setStore={setStorePYR} /*onClick={logState}  24*//>
         </> }       
       </div>
-      <CategoryList className={styles.ItemList} result={filteredItems} category_id={category_id} cartData={cartData} setCartData={setCartData} />
+      {data === 0 ? (
+        <div className={styles.loaderStartContainer}>
+          <div className={styles.spinner}></div>
+        </div>
+        ) : 
+        <CategoryList className={styles.ItemList} result={filteredItems} category_id={category_id} cartData={cartData} setCartData={setCartData} />
+      }
       <FilterModal active={modalActive} setActive={setModalActive} >
         <div className={modalStyles.Header}>
           <span className={modalStyles.HeaderLabel}>Фильтры</span>
