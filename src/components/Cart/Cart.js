@@ -44,10 +44,9 @@ function Cart() {
         }, body: JSON.stringify( {'user_id': 1, 'variant_id': variant_id_to_add, 'count': 1} )
         })
         .then(response => {
-            return JSON.stringify( {'user_id': 1, 'variant_id': variant_id_to_add, 'count': 1} )
+            return response.json()
         })
         .then(data => {
-            console.log(JSON.stringify( {'user_id': 1, 'variant_id': variant_id_to_add, 'count': 1} ));
             CartService({isUpdate: true, data: data, isInit: false})
             setUpdateScreen(updateScreen+1);
         })
@@ -82,7 +81,6 @@ function Cart() {
           .then(data => {
             setUserData(data);
             CartService({isUpdate: true, data: data});
-            console.log(data);
         })
     }
 
@@ -99,10 +97,9 @@ function Cart() {
         }, body: JSON.stringify( {'cart_id': 1, 'variant_id': order.variant_id} )
         })
         .then(response => {
-            return JSON.stringify( {'cart_id': 1, 'variant_id': order.variant_id} )
+            return response.json()
         })
         .then(data => {
-            console.log(JSON.stringify( {'cart_id': 1, 'variant_id': order.variant_id} ));
             setUpdateScreen(updateScreen+1);
         })
     }
@@ -114,10 +111,9 @@ function Cart() {
         }, body: JSON.stringify( {'cart_id': 1 } )
           })
           .then(response => {
-            return JSON.stringify( {'cart_id': 1 } )
+            return response.json()
           })
           .then(data => {
-            console.log(JSON.stringify( {'cart_id': 1 } ));
             setUpdateScreen(updateScreen+1);
           })
     }
@@ -165,7 +161,6 @@ function Cart() {
                 CartService({isInit: true})
                 navigate("/home");
             }
-            console.log(JSON.stringify( {'user_id': 1, 'name': userName, 'phone': phoneNumber.slice(1), 'store_id': Number(selectedStore)} ));
           })
         }
     }
@@ -191,9 +186,6 @@ function Cart() {
         fetchCart();
     }, [updateScreen])
 
-    // console.log('cart body cart_data');
-    // console.log(user_data);
-
     return (
         <div className={styles.root}>
             <Header fetchDeleteAllCart={fetchDeleteAllCart} user_data={user_data} />
@@ -205,12 +197,6 @@ function Cart() {
                 <img className={styles.iconEmpty} src={process.env.PUBLIC_URL + '/assets/emptyHistory.svg'} alt=''/>
                 <span className={styles.EmptyLabel}>Товары в корзине отсутствуют</span>
             </div>) }
-            {/* <div className={styles.ItemList}>
-                <CartItem />
-                <CartItem />
-                <CartItem />
-                <CartItem />
-            </div> */}
             {user_data !== undefined && user_data?.items?.length > 0 && (<div className={styles.OrderBox} >
                 <div className={styles.OrderInfo}>
                     <div className={styles.OrderLabel}>Итог:</div>

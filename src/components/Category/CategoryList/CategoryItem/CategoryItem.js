@@ -15,17 +15,17 @@ function CategoryItem({item, producerName, cartData, setCartData}) {
   // const [cartData, setCartData] = useState(CartService({isUpdate: false, isInit: false}))
   
   const fetchData = () => {
-      var countItems = 0;
-      cartData !== undefined && cartData?.items?.length > 0 &&
-          // user_data.cart.items.map(order => {count += order.count; price += order.price_vvo/100 * order.count;} )
-          cartData.items.forEach(order => {
-              countItems += order.count;
-      });
-      if (countItems >= 10) {
-          tg.showAlert('Заказ не может содержать более 10 товаров.');
-          return
-      }
-
+    var countItems = 0;
+    cartData !== undefined && cartData?.items?.length > 0 &&
+        // user_data.cart.items.map(order => {count += order.count; price += order.price_vvo/100 * order.count;} )
+        cartData.items.forEach(order => {
+            countItems += order.count;
+    });
+    if (countItems >= 10) {
+        tg.showAlert('Заказ не может содержать более 10 товаров.');
+        return
+    }
+    
     fetch("https://octopus-vape.ru/carts/add", { method:'POST',headers: {
       'Content-Type': 'application/json',
       'Telegram-Data': initData,
@@ -36,10 +36,6 @@ function CategoryItem({item, producerName, cartData, setCartData}) {
       })
       .then(data => {
         setButtonLabel(buttonLabel === 'Добавить' ? 'Удалить' : 'Добавить');
-        // setButtonStyle(styles.BuyButton + ' ' + styles.BuyButton1);
-        // setTimeout(() => {
-        //     setButtonStyle(styles.BuyButton);
-        // }, 1400);
         CartService({isUpdate:false, isInit: true}).then((val) => {
           setCartData(val)
         })
@@ -57,10 +53,6 @@ function CategoryItem({item, producerName, cartData, setCartData}) {
     })
     .then(data => {
         setButtonLabel(buttonLabel === 'Добавить' ? 'Удалить' : 'Добавить');
-        // setButtonStyle(styles.BuyButton + ' ' + styles.BuyButton2);
-        // setTimeout(() => {
-        //     setButtonStyle(styles.BuyButton);
-        // }, 1400);
         CartService({isUpdate:false, isInit: true}).then((val) => {
           setCartData(val)
         })

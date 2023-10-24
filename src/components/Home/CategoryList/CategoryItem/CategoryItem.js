@@ -11,7 +11,6 @@ function CategoryItem({category}) {
             return response.json()
           })
           .then(data => {
-            console.log(data);
             tg.close()
           })
       }

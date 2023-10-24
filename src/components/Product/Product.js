@@ -6,32 +6,6 @@ import { useState } from 'react';
 import CartService from '../../services/cartService';
 import useUser from '../../hooks/useUser';
 
-// const item = {
-//     'id': 8,
-//     'name': 'Berry Mint Lemonade Extra Quality',
-//     'image': 'https://miniature-prod.moysklad.ru/miniature/3a69a92f-3453-11ee-0a80-092500013563/documentminiature/83d9bfaa-6238-4567-8b41-e4f0b49d1e8c',
-//     'price_vvo': 500,
-//     'price_shk': 500,
-//     'item_characteristics': [
-//         {
-//             'name': 'Объем (ml)',
-//             'value': '30'
-//         },
-//         {
-//             'name': 'Тип никотина',
-//             'value': 'щёлочь'
-//         },
-//         {
-//             'name': 'Крепость',
-//             'value': '20'
-//         },
-//         {
-//             'name': 'Производитель',
-//             'value': 'Китай'
-//         }
-//     ]
-//   }
-
 function Product() {
     const [cartData, setCartData] = useState(CartService({isUpdate: false, isInit: false}))
 
@@ -41,19 +15,12 @@ function Product() {
 
     const initButtonLabel = () => {
         var label = 'В корзину';
-        console.log(cartData.items);
-        console.log(item);
         for (var el in cartData.items) {
-            console.log('Z nmenen');
-            console.log(el);
-            console.log(cartData.items[el].variant_id);
-            console.log(item.variant_id);
             if (cartData.items[el].variant_id === item.variant_id) {
                 label = 'Удалить';
                 break;
             }
         }
-        console.log(label);
         return label;
     }
 
@@ -76,14 +43,11 @@ function Product() {
             return response
         })
         .then(data => {
-            console.log(data);
-            console.log("Fetch product Done");
             setButtonLabel(buttonLabel === 'В корзину' ? 'Удалить' : 'В корзину');
             // setButtonStyle(styles.BuyButton + ' ' + styles.BuyButton1);
             // setTimeout(() => {
             //     setButtonStyle(styles.BuyButton);
             // }, 1400);
-            console.log(JSON.stringify( {'user_id': 1, 'variant_id': item.variant_id, 'count': 1} ));
             CartService({isUpdate:false, isInit: true}).then((val) => {
                 setCartData(val)
             })
@@ -100,13 +64,11 @@ function Product() {
             return response
         })
         .then(data => {
-            console.log(data);
             setButtonLabel(buttonLabel === 'В корзину' ? 'Удалить' : 'В корзину');
             // setButtonStyle(styles.BuyButton + ' ' + styles.BuyButton2);
             // setTimeout(() => {
             //     setButtonStyle(styles.BuyButton);
             // }, 1400);
-            console.log(JSON.stringify( {'user_id': 1, 'variant_id': item.variant_id, 'count': 1} ));
             CartService({isUpdate:false, isInit: true}).then((val) => {
                 setCartData(val)
             })

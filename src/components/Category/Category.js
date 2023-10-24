@@ -43,13 +43,8 @@ function Category() {
 
   const [updateCatalog, setUpdateCatalog] = useState(1);
 
-  // const [storesToggle, setStoreToggles] = useState({16: true, 15: true, 1: true, 20: true, 2: true, 11: true, 24: true});
   const [producerToggle, setProducerToggles] = useState([]);
 
-  const [NikotinTypeToggle, setNikotinTypeToggles] = useState([
-    {key: 1, value:true, name: 'Соль'},
-    {key: 2, value:true, name: 'Щелочь'}
-  ]);
   const [NikotinValueToggle, setNikotinValueToggles] = useState([
     {key: 1, value:true, name: '0mg'},
     {key: 2, value:true, name: '3mg'},
@@ -58,24 +53,6 @@ function Category() {
     {key: 5, value:true, name: '18mg'},
     {key: 6, value:true, name: '20mg'},
     {key: 7, value:true, name: '20+'},
-
-    // {key: 5, value:true, name: '20mg Medium'},
-    // {key: 5, value:true, name: 'Medium'},
-
-    // {key: 8, value:true, name: '20mg Strong'},
-    // {key: 9, value:true, name: 'ПТ'},
-    // {key: 10, value:true, name: '20mg Hard'},  
-    // {key: 5, value:true, name: 'ДП'},
-    // {key: 5, value:true, name: '30mg'}, // один товар
-    // {key: 5, value:true, name: 'СТ'},
-    // {key: 5, value:true, name: '20mg Double TX'},
-    // {key: 5, value:true, name: '20mg Extra'},
-    // {key: 5, value:true, name: 'ТП'}, // один товар
-    // {key: 5, value:true, name: 'СК'},
-    // {key: 5, value:true, name: '20mg Ultra'},
-    // {key: 5, value:true, name: 'ТР'}, // два товара
-    // {key: 5, value:true, name: 'СВ'}, // один товар
-    // {key: 5, value:true, name: 'ПП'}, // один товар
   ]);
 
   const [sizeToggle, setSizeToggles] = useState([
@@ -121,10 +98,6 @@ function Category() {
                     9: 'Устройства',
                     10: 'Атомайзеры'
                   };
-  
-  console.log(priceRange);
-
-  // const [producerToggle, setProducerToggle] = useState()
 
   function addValueToList(key, value, name) {
     //if the list is already created for the "key", then uses it
@@ -136,9 +109,6 @@ function Category() {
   }
 
   const fetchData = () => {
-    // Object.keys(myObject).forEach(function(key, index) {
-    //   myObject[key] *= 2;
-    // });
     var query = (storeRU ? 'stores=16&' : '') + (storeFK ? 'stores=15&' : '') + (storeNAB ? 'stores=1&' : '') + (storeKIR ? 'stores=20&' : '') + (storeSOV ? 'stores=2&' : '') + (storeSH ? 'stores=11&' : '') + (storePYR ? 'stores=24&' : '');
     user_data.user.city_id === 1 && (query = (storeRU ? 'stores=16&' : '') + (storeFK ? 'stores=15&' : '') + (storeNAB ? 'stores=1&' : ''));
     user_data.user.city_id === 2 && (query = (storeKIR ? 'stores=20&' : ''));
@@ -154,10 +124,6 @@ function Category() {
       NikotinValueToggle.forEach((nikotinItem) => {
         query += nikotinItem.value ? (nikotinItem.key === 7 ? `nikotin=20%2B&` :  `nikotin=${nikotinItem.name}&`) : ''
       })
-      if (!NikotinTypeToggle[0].value || !NikotinTypeToggle[1].value) {
-        NikotinTypeToggle[0].value && (query += 'nikotype=Salt&')
-        NikotinTypeToggle[1].value && (query += 'nikotype=NotSalt&')
-      }
     }
 
     if (query === '') {
@@ -171,8 +137,6 @@ function Category() {
       })
       .then(data => {
         setData(data);
-        console.log('producerToggle');
-        console.log(producerToggle);
         if (producerToggle.length === 0) {
           newState = [];
           data.forEach(producer => ( producer.items.length > 0 &&
@@ -180,17 +144,13 @@ function Category() {
           ));
           setProducerToggles(newState);
         }
-        console.log('newState out 999');
-        console.log(newState);
-        newState !== undefined && newState.size !== 0 && newState.map(producer => (console.log(producer)));
-        // console.log(newState[999]);
-        // console.log(newState[999][1]);
+        setIsLoading(false);
+        // newState !== undefined && newState.size !== 0 && newState.map(producer => (console.log(producer)));
       })
   }
 
 
   useEffect(() => {
-
     fetchData();
     
   }, [storeRU, storeFK, storeKIR, storeNAB, storePYR, storeSH, storeSOV, updateCatalog])
@@ -200,7 +160,6 @@ function Category() {
     var state = true;
     var states = [...producerToggle];
     states.forEach(producer =>  {
-      console.log(producer.value);
       if (producer.value === false) {
         state = false;
         return;
@@ -222,13 +181,7 @@ function Category() {
           isContain = true;
         }
       })
-      // for (var pp in producerToggle) {
-      //   console.log(p.product_id + '  ' + pp.key + '  ' + pp.value);
-      //   if (p.product_id === pp.key && pp.value) {
-      //     isContain = true;
-      //     break;
-      //   }
-      // }
+
       if (isContain) {
         p.items.forEach((item, _i)=>{
             if(( [3, 4].indexOf(user_data?.user?.city_id) !== -1 ? item.price_shk/100 : item.price_vvo/100) > priceRange[0] && ([3, 4].indexOf(user_data?.user?.city_id) !== -1 ? item.price_shk/100 : item.price_vvo/100) < priceRange[1]){
@@ -238,25 +191,9 @@ function Category() {
         p.items = filtered
       } else p.items = [];
       });
-      // indexes.forEach((index) => {
-      //   final.splice(index, 1)
-      // })
-      console.log('FILTERED');
-      console.log(final);
+
       return final
   },[priceRange, data, producerToggle]);
-
-  console.log(data);
-  console.log(filteredItems);
-  console.log(storeRU);
-  console.log(storeSH);
-  console.log('tttttttttttttttt');
-  console.log(producerToggle !== undefined ? producerToggle : 'hahahah');
-  console.log(producerToggle.length);
-
-  // function storesHandler(id) {
-  //   setStoreToggles({...storesToggle, id: storesToggle[id] ? false : true})
-  // }
 
   const handleShowAllProducer = () => {
     setShowAllProducer(!showAllProducer);
@@ -284,7 +221,6 @@ function Category() {
     var state = true;
     var states = [...NikotinValueToggle];
     states.forEach(producer =>  {
-      console.log(producer.value);
       if (producer.value === false) {
         state = false;
         return;
@@ -297,7 +233,6 @@ function Category() {
     var state = true;
     var states = [...sizeToggle];
     states.forEach(producer =>  {
-      console.log(producer.value);
       if (producer.value === false) {
         state = false;
         return;
@@ -316,12 +251,20 @@ function Category() {
   }
 
   const handleSetUpdateCatalog = () => {
+    setIsLoading(true);
     setUpdateCatalog(updateCatalog + 1);
     setModalActive(false);
   }
 
+  const [isLoading, setIsLoading] = useState(false);
+
   return (
     <div className={styles.Category}>
+      {isLoading && (
+        <div className={styles.loaderContainer}>
+          <div className={styles.spinner}></div>
+        </div>
+      ) }
       <div className={styles.MainBackground} >
         {/* <img className={styles.icon} src={process.env.PUBLIC_URL + '/assets/main_background.svg'} alt=''/> */}
       </div>
@@ -340,15 +283,22 @@ function Category() {
         </> : user_data?.user?.city_id === 4 ? <>
           
         </> : <>
-          <Toggle label="ул. Русская, 46" toggled={storeRU}  setStore={setTmpStore}/*onClick={logState} 16*//>
+          <Toggle label="ул. Русская, 46" toggled={storeRU}  setStore={setStoreRU}/*onClick={logState} 16*//>
+          <Toggle label="ул. Адмирала Фокина, 23в" toggled={storeFK}  setStore={setStoreFK} /*onClick={logState} 15*//>
+          <Toggle label="ул. Набережная, 7Б" toggled={storeNAB}  setStore={setStoreNAB} /*onClick={logState}  1*//>
+          <Toggle label="ул. Кирова, 2" toggled={storeKIR}  setStore={setStoreKIR} /*onClick={logState}  20*//>
+          <Toggle label="ул. Советская, 31, 3" toggled={storeSOV}  setStore={setStoreSOV} /*onClick={logState}  2*//>
+          <Toggle label="ул. Сахалинская, 45А, 1" toggled={storeSH}  setStore={setStoreSH} /*onClick={logState}  11*//>
+          <Toggle label="ул. Пуркаева М.А., 102В" toggled={storePYR}  setStore={setStorePYR} /*onClick={logState}  24*//>
         </> }
-        
-
-        
-
-        
       </div>
-      <CategoryList className={styles.ItemList} result={filteredItems} category_id={category_id} cartData={cartData} setCartData={setCartData} />
+      {data === 0 ? (
+        <div className={styles.loaderStartContainer}>
+          <div className={styles.spinner}></div>
+        </div>
+        ) : 
+        <CategoryList className={styles.ItemList} result={filteredItems} category_id={category_id} cartData={cartData} setCartData={setCartData} />
+      }
       <FilterModal active={modalActive} setActive={setModalActive} >
         <div className={modalStyles.Header}>
           <span className={modalStyles.HeaderLabel}>Фильтры</span>
@@ -386,15 +336,6 @@ function Category() {
           </div>
           {category_id === 6 &&
           (<>
-            <div className={modalStyles.VerticalBox}>
-              <span>Тип никотина:</span>
-              <div className={modalStyles.NikotinValueBox}>
-                {NikotinTypeToggle.length !== 0 && NikotinTypeToggle.map((NikotinTypeItem, index) => ( <>
-                <Toggle key={NikotinTypeItem.key} label={NikotinTypeItem.name} toggled={NikotinTypeItem.value} setStore={setNikotinTypeToggles} multiple={true} multipleState={NikotinTypeToggle} producer_id={NikotinTypeItem.key} />
-                </>
-                ))}
-              </div>
-            </div>
             <div className={modalStyles.VerticalBox}>
               <span>Крепость (мг):</span>
               <Toggle label="Все" toggled={checkAllNikotin} setStore={handleSetCheckAllNikotin} /*onClick={logState}*//>

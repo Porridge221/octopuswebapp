@@ -94,10 +94,6 @@ function App() {
     // return CartService({isUpdate: true, isSet: false, setUserData: setCartData})
   }, [user_data, registerShow])
 
-  console.log(phoneNumber);
-  console.log(phoneNumber.length);
-  console.log(userName);
-
   return (
     <div className='App'>
       <AccountItem user_data={user_data}/>

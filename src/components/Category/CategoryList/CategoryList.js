@@ -13,28 +13,6 @@ function CategoryList({result, cartData, setCartData}) {
 
   const {initData} = useTelegram();
 
-  // const [result, setItems] = useState([])
-
-  //const {initData} = useTelegram();  
-
-  // const fetchData = () => {
-  //   fetch("https://octopus-vape.ru/products/catalog/" + category_id, {method: 'GET', headers: {'Content-Type': 'application/json', 'Telegram-Data': initData,}})
-  //     .then(response => {
-  //       return response.json()
-  //     })
-  //     .then(data => {
-  //       setItems(data);
-  //       handleCallback(data)
-  //     })
-  // }
-
-  // useEffect(() => {
-
-  //   fetchData();
-
-  //   // eslint-disable-next-line
-  // }, [])
-
   return (
     result.length > 0 ? (
       <div className={styles.root}>
@@ -43,13 +21,6 @@ function CategoryList({result, cartData, setCartData}) {
           ))}
       </div>
     ) : (<div>Нет данных</div>)
-    // items.length > 0 ? (
-    //   <ul className={styles.root}>
-    //       {items.map(item => (
-    //         <CategoryItem key={item.id} item={item} />
-    //       ))}
-    //   </ul>
-    // ) : (<div>Нет данных</div>)
   );
 }
 

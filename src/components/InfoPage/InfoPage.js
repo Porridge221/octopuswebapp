@@ -56,11 +56,9 @@ function InfoPage() {
                 <div className={styles.Tips} style={{marginTop: '35px'}}>Могу ли я оплатить заказ онлайн?</div>
                 <div className={styles.Text}>Заказ оплачивается при получении в выбранном филиале.</div>
                 <div className={styles.Tips} style={{marginTop: '35px'}}>Когда я могу забрать заказ?</div>
-                <div className={styles.Text}>Заказ будет готов в течение часа. Вы сможете забрать его с с 11:00 до 21:00 в выбранном филиале. Через 24 часа заказ будет удален.
-                </div>
+                <div className={styles.Text}>Заказ будет готов в течение часа. Вы сможете забрать его с с 11:00 до 21:00 в выбранном филиале. Через 24 часа заказ будет удален.</div>
                 <div className={styles.Tips} style={{marginTop: '35px'}}>Можно ли изменить филиал после создания заказа?</div>
-                <div className={styles.Text}>Такой возможности не предусмотрено.
-                </div>
+                <div className={styles.Text}>Такой возможности не предусмотрено.</div>
             </>) : card_id === 3 &&
             (<>
                 <div className={styles.Header}>Программа лояльности</div>

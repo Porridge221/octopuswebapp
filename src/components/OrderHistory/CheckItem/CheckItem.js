@@ -18,8 +18,6 @@ function CheckItem({item, showButton}) {
             return response
         })
         .then(data => {
-            console.log("Fetch product Done");
-            console.log(JSON.stringify( {'user_id': 1, 'variant_id': item.variant_id, 'count': 1} ));
             // setCartData(CartService({isUpdate:false, isInit: true}))
         })
     }
