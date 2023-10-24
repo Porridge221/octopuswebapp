@@ -16,13 +16,6 @@ function OrderList({user_data}) {
     const [modalOrder, setModalOrder] = useState(new Map());
     const [modalItemsCount, setModalItemsCount] = useState(-1);
 
-    // const [orders, setItems] = useState([]);  // TODO: Bad solution
-
-    // const orders = [
-    //     {id: 1, price: '655'},
-    //     {id: 2, price: '10850'},
-    // ]
-
     const handleSetModal = (active, data) => {
         setModalActive(active);
         setModalOrder(data);
@@ -31,7 +24,6 @@ function OrderList({user_data}) {
             count += el.count;
         });
         setModalItemsCount(count);
-        console.log(data);
     };
 
     // const fetchData = () => {
@@ -67,9 +59,6 @@ function OrderList({user_data}) {
                 <img className={styles.iconEmpty} src={process.env.PUBLIC_URL + '/assets/emptyHistory.svg'} alt=''/>
                 <span className={styles.EmptyLabel}>Текущие заказы отсутствуют {':('}</span>
             </div>) }
-                {/* <OrderItem order={orders[0]} handleSetModal={handleSetModal}/>
-                <OrderItem order={orders[1]} handleSetModal={handleSetModal}/> */}
-            {/* </div> */}
             <FilterModal active={modalActive} setActive={setModalActive} >
                 {/* backgroundColor: 'var(--tg-theme-secondary-bg-color)' */}
             <div style={{'width': '80vw', 'height': '100%', 'overflowX': 'hidden','overflowY': 'auto', backgroundColor: 'var(--tg-theme-bg-color)'}}>

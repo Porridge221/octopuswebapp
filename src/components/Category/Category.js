@@ -41,7 +41,6 @@ function Category() {
 
   const [updateCatalog, setUpdateCatalog] = useState(1);
 
-  // const [storesToggle, setStoreToggles] = useState({16: true, 15: true, 1: true, 20: true, 2: true, 11: true, 24: true});
   const [producerToggle, setProducerToggles] = useState([]);
 
   const [NikotinValueToggle, setNikotinValueToggles] = useState([
@@ -52,24 +51,6 @@ function Category() {
     {key: 5, value:true, name: '18mg'},
     {key: 6, value:true, name: '20mg'},
     {key: 7, value:true, name: '20+'},
-
-    // {key: 5, value:true, name: '20mg Medium'},
-    // {key: 5, value:true, name: 'Medium'},
-
-    // {key: 8, value:true, name: '20mg Strong'},
-    // {key: 9, value:true, name: 'ПТ'},
-    // {key: 10, value:true, name: '20mg Hard'},  
-    // {key: 5, value:true, name: 'ДП'},
-    // {key: 5, value:true, name: '30mg'}, // один товар
-    // {key: 5, value:true, name: 'СТ'},
-    // {key: 5, value:true, name: '20mg Double TX'},
-    // {key: 5, value:true, name: '20mg Extra'},
-    // {key: 5, value:true, name: 'ТП'}, // один товар
-    // {key: 5, value:true, name: 'СК'},
-    // {key: 5, value:true, name: '20mg Ultra'},
-    // {key: 5, value:true, name: 'ТР'}, // два товара
-    // {key: 5, value:true, name: 'СВ'}, // один товар
-    // {key: 5, value:true, name: 'ПП'}, // один товар
   ]);
 
   const [sizeToggle, setSizeToggles] = useState([
@@ -115,10 +96,6 @@ function Category() {
                     9: 'Устройства',
                     10: 'Атомайзеры'
                   };
-  
-  console.log(priceRange);
-
-  // const [producerToggle, setProducerToggle] = useState()
 
   function addValueToList(key, value, name) {
     //if the list is already created for the "key", then uses it
@@ -130,9 +107,6 @@ function Category() {
   }
 
   const fetchData = () => {
-    // Object.keys(myObject).forEach(function(key, index) {
-    //   myObject[key] *= 2;
-    // });
     var query = (storeRU ? 'stores=16&' : '') + (storeFK ? 'stores=15&' : '') + (storeNAB ? 'stores=1&' : '') + (storeKIR ? 'stores=20&' : '') + (storeSOV ? 'stores=2&' : '') + (storeSH ? 'stores=11&' : '') + (storePYR ? 'stores=24&' : '');
     user_data.user.city_id === 1 && (query = (storeRU ? 'stores=16&' : '') + (storeFK ? 'stores=15&' : '') + (storeNAB ? 'stores=1&' : ''));
     user_data.user.city_id === 2 && (query = (storeKIR ? 'stores=20&' : ''));
@@ -161,8 +135,6 @@ function Category() {
       })
       .then(data => {
         setData(data);
-        console.log('producerToggle');
-        console.log(producerToggle);
         if (producerToggle.length === 0) {
           newState = [];
           data.forEach(producer => ( producer.items.length > 0 &&
@@ -170,11 +142,7 @@ function Category() {
           ));
           setProducerToggles(newState);
         }
-        console.log('newState out 999');
-        console.log(newState);
-        newState !== undefined && newState.size !== 0 && newState.map(producer => (console.log(producer)));
-        // console.log(newState[999]);
-        // console.log(newState[999][1]);
+        // newState !== undefined && newState.size !== 0 && newState.map(producer => (console.log(producer)));
       })
   }
 
@@ -190,7 +158,6 @@ function Category() {
     var state = true;
     var states = [...producerToggle];
     states.forEach(producer =>  {
-      console.log(producer.value);
       if (producer.value === false) {
         state = false;
         return;
@@ -212,13 +179,7 @@ function Category() {
           isContain = true;
         }
       })
-      // for (var pp in producerToggle) {
-      //   console.log(p.product_id + '  ' + pp.key + '  ' + pp.value);
-      //   if (p.product_id === pp.key && pp.value) {
-      //     isContain = true;
-      //     break;
-      //   }
-      // }
+
       if (isContain) {
         p.items.forEach((item, _i)=>{
             if(( [3, 4].indexOf(user_data?.user?.city_id) !== -1 ? item.price_shk/100 : item.price_vvo/100) > priceRange[0] && ([3, 4].indexOf(user_data?.user?.city_id) !== -1 ? item.price_shk/100 : item.price_vvo/100) < priceRange[1]){
@@ -228,25 +189,9 @@ function Category() {
         p.items = filtered
       } else p.items = [];
       });
-      // indexes.forEach((index) => {
-      //   final.splice(index, 1)
-      // })
-      console.log('FILTERED');
-      console.log(final);
+
       return final
   },[priceRange, data, producerToggle]);
-
-  console.log(data);
-  console.log(filteredItems);
-  console.log(storeRU);
-  console.log(storeSH);
-  console.log('tttttttttttttttt');
-  console.log(producerToggle !== undefined ? producerToggle : 'hahahah');
-  console.log(producerToggle.length);
-
-  // function storesHandler(id) {
-  //   setStoreToggles({...storesToggle, id: storesToggle[id] ? false : true})
-  // }
 
   const handleShowAllProducer = () => {
     setShowAllProducer(!showAllProducer);
@@ -274,7 +219,6 @@ function Category() {
     var state = true;
     var states = [...NikotinValueToggle];
     states.forEach(producer =>  {
-      console.log(producer.value);
       if (producer.value === false) {
         state = false;
         return;
@@ -287,7 +231,6 @@ function Category() {
     var state = true;
     var states = [...sizeToggle];
     states.forEach(producer =>  {
-      console.log(producer.value);
       if (producer.value === false) {
         state = false;
         return;
@@ -340,12 +283,7 @@ function Category() {
           <Toggle label="ул. Советская, 31, 3" toggled={storeSOV}  setStore={setStoreSOV} /*onClick={logState}  2*//>
           <Toggle label="ул. Сахалинская, 45А, 1" toggled={storeSH}  setStore={setStoreSH} /*onClick={logState}  11*//>
           <Toggle label="ул. Пуркаева М.А., 102В" toggled={storePYR}  setStore={setStorePYR} /*onClick={logState}  24*//>
-        </> }
-        
-
-        
-
-        
+        </> }       
       </div>
       <CategoryList className={styles.ItemList} result={filteredItems} category_id={category_id} cartData={cartData} setCartData={setCartData} />
       <FilterModal active={modalActive} setActive={setModalActive} >

@@ -20,10 +20,9 @@ function CartItem({order, cart_id, fetchDeleteOne, updateScreen, setUpdateScreen
         }, body: JSON.stringify( {'user_id': 1, 'variant_id': order.variant_id, 'count': condition ? count+1 : count-1} )
         })
         .then(response => {
-            return JSON.stringify( {'user_id': 1, 'variant_id': order.variant_id, 'count': condition ? count+1 : count-1} )
+            return response.json()
         })
         .then(data => {
-            console.log(JSON.stringify( {'user_id': 1, 'variant_id': order.variant_id, 'count': condition ? count+1 : count-1} ));
             setUpdateScreen(updateScreen+1);
         })
     }
@@ -44,7 +43,6 @@ function CartItem({order, cart_id, fetchDeleteOne, updateScreen, setUpdateScreen
         setCount(count+1);
         fetchData(true);
         // handlerUpdateScreen = 1;
-        // console.log(count);
     };
 
     const decrementCount = () => {
@@ -55,7 +53,6 @@ function CartItem({order, cart_id, fetchDeleteOne, updateScreen, setUpdateScreen
             fetchData(false);
         }
         // handlerUpdateScreen();
-        // console.log(count);
     };
 
     useEffect(() => {

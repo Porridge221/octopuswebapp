@@ -19,19 +19,12 @@ function ProductSearch() {
 
     const initButtonLabel = (item) => {
         var label = 'В корзину';
-        console.log(cartData.items);
-        console.log(item);
         for (var el in cartData.items) {
-            // console.log('Z nmenen');
-            // console.log(el);
-            // console.log(cartData.items[el].variant_id);
-            // console.log(item.variant_id);
             if (cartData.items[el].variant_id === item?.variant_id) {
                 label = 'Удалить';
                 break;
             }
         }
-        console.log(label);
         return label;
     }
 
@@ -65,14 +58,11 @@ function ProductSearch() {
             return response
         })
         .then(data => {
-            console.log(data);
-            console.log("Fetch product Done");
             setButtonLabel(buttonLabel === 'В корзину' ? 'Удалить' : 'В корзину');
             // setButtonStyle(styles.BuyButton + ' ' + styles.BuyButton1);
             // setTimeout(() => {
             //     setButtonStyle(styles.BuyButton);
             // }, 1400);
-            console.log(JSON.stringify( {'user_id': 1, 'variant_id': item.variant_id, 'count': 1} ));
             CartService({isUpdate:false, isInit: true}).then((val) => {
                 setCartData(val)
             })
@@ -89,13 +79,11 @@ function ProductSearch() {
             return response
         })
         .then(data => {
-            console.log(data);
             setButtonLabel(buttonLabel === 'В корзину' ? 'Удалить' : 'В корзину');
             // setButtonStyle(styles.BuyButton + ' ' + styles.BuyButton2);
             // setTimeout(() => {
             //     setButtonStyle(styles.BuyButton);
             // }, 1400);
-            console.log(JSON.stringify( {'user_id': 1, 'variant_id': item.variant_id, 'count': 1} ));
             CartService({isUpdate:false, isInit: true}).then((val) => {
                 setCartData(val)
             })
@@ -118,17 +106,6 @@ function ProductSearch() {
         fetchVariant();
     }, [])
 
-    // const categories = {
-    //     6: 'Жидкости',
-    //     1: 'JUUL Type',
-    //     2: 'Pod Системы',
-    //     3: 'Аккумуляторы',
-    //     4: 'Аксессуары',
-    //     5: 'Жевательный табак',
-    //     7: 'Одноразовые системы',
-    //     8: 'Расходники',
-    //     9: 'Устройства'
-    //   }
     const categories = {
         6: 'Жидкости',
         1: 'JUUL Type',
@@ -140,7 +117,8 @@ function ProductSearch() {
         8: 'Расходники',
         9: 'Устройства',
         10: 'Атомайзеры'
-      }
+    }
+    
     var path = ['Главная']
     if (category_id !== -1) {
         path = ['Главная', 'Каталог', categories[category_id]]
@@ -148,8 +126,6 @@ function ProductSearch() {
     // const current = item.name;
     const [current, setCurrent] = useState(item?.name)
 
-    console.log(variant_id);
-    console.log(item);
     return (
     <div className={styles.root}>
         <Header path={path} current={current} cartData={cartData}/>

@@ -36,10 +36,6 @@ function CategoryItem({item, producerName, cartData, setCartData}) {
       })
       .then(data => {
         setButtonLabel(buttonLabel === 'Добавить' ? 'Удалить' : 'Добавить');
-        // setButtonStyle(styles.BuyButton + ' ' + styles.BuyButton1);
-        // setTimeout(() => {
-        //     setButtonStyle(styles.BuyButton);
-        // }, 1400);
         CartService({isUpdate:false, isInit: true}).then((val) => {
           setCartData(val)
         })
@@ -57,10 +53,6 @@ function CategoryItem({item, producerName, cartData, setCartData}) {
     })
     .then(data => {
         setButtonLabel(buttonLabel === 'Добавить' ? 'Удалить' : 'Добавить');
-        // setButtonStyle(styles.BuyButton + ' ' + styles.BuyButton2);
-        // setTimeout(() => {
-        //     setButtonStyle(styles.BuyButton);
-        // }, 1400);
         CartService({isUpdate:false, isInit: true}).then((val) => {
           setCartData(val)
         })

@@ -69,7 +69,6 @@ function OrderHistory() {
             count += el.count;
         });
         setModalItemsCount(count);
-        console.log(data);
     };
 
     return (

@@ -33,7 +33,6 @@ function Account() {
     const discountLevel = {"Новый клиент": [3, '#f5d098'],
                             "No discount": [0, '#f5d098']}
 
-    console.log(user_data);
 
     useEffect(() => {
         setSelectedCity(user_data?.user?.city_id ===  1 ? 'Владивосток' : user_data?.user?.city_id === 2 ? 'Артем' : user_data?.user?.city_id === 3 ? "Южно-Сахалинск" : user_data?.user?.city_id === 4 ? "Корсаков" : "");
@@ -59,10 +58,9 @@ function Account() {
             }, body: JSON.stringify( {'name': userName, 'phone': phoneNumber.slice(1), 'city_id': selectedCity === 'Владивосток' ? 1 : selectedCity === 'Артем' ? 2 : selectedCity === 'Южно-Сахалинск' ? 3 : 4} )
           })
           .then(response => {
-            return JSON.stringify( {'name': userName, 'phone': phoneNumber.slice(1), 'city_id': selectedCity === 'Владивосток' ? 1 : selectedCity === 'Артем' ? 2 : selectedCity === 'Южно-Сахалинск' ? 3 : 4} )
+            return response.json()
           })
           .then(data => {
-            console.log(JSON.stringify( {'name': userName, 'phone': phoneNumber.slice(1), 'city_id': selectedCity === 'Владивосток' ? 1 : selectedCity === 'Артем' ? 2 : selectedCity === 'Южно-Сахалинск' ? 3 : 4} ));
             setModalActive(false);
             setUpdateScreen(updateScreen+1);
           })
@@ -78,7 +76,6 @@ function Account() {
           .then(data => {
             setUserData(data);
             setPhoneNumber('+' + data?.user?.phone);
-            //console.log(data?.user.phone);
           })
       }
     
@@ -89,7 +86,6 @@ function Account() {
     const colorScheme = window.Telegram.WebApp.colorScheme === 'light' ? true : false;
 
     const userImage = window.Telegram.WebApp.initDataUnsafe?.user?.photo_url
-    console.log(phoneNumber);
     
     return (
         <div className={styles.root}>
