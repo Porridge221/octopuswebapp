@@ -44,10 +44,6 @@ function Category() {
   // const [storesToggle, setStoreToggles] = useState({16: true, 15: true, 1: true, 20: true, 2: true, 11: true, 24: true});
   const [producerToggle, setProducerToggles] = useState([]);
 
-  const [NikotinTypeToggle, setNikotinTypeToggles] = useState([
-    {key: 1, value:true, name: 'Соль'},
-    {key: 2, value:true, name: 'Щелочь'}
-  ]);
   const [NikotinValueToggle, setNikotinValueToggles] = useState([
     {key: 1, value:true, name: '0mg'},
     {key: 2, value:true, name: '3mg'},
@@ -152,10 +148,6 @@ function Category() {
       NikotinValueToggle.forEach((nikotinItem) => {
         query += nikotinItem.value ? (nikotinItem.key === 7 ? `nikotin=20%2B&` :  `nikotin=${nikotinItem.name}&`) : ''
       })
-      if (!NikotinTypeToggle[0].value || !NikotinTypeToggle[1].value) {
-        NikotinTypeToggle[0].value && (query += 'nikotype=Salt&')
-        NikotinTypeToggle[1].value && (query += 'nikotype=NotSalt&')
-      }
     }
 
     if (query === '') {
@@ -400,15 +392,6 @@ function Category() {
           </div>
           {category_id === 6 &&
           (<>
-            <div className={modalStyles.VerticalBox}>
-              <span>Тип никотина:</span>
-              <div className={modalStyles.NikotinValueBox}>
-                {NikotinTypeToggle.length !== 0 && NikotinTypeToggle.map((NikotinTypeItem, index) => ( <>
-                <Toggle key={NikotinTypeItem.key} label={NikotinTypeItem.name} toggled={NikotinTypeItem.value} setStore={setNikotinTypeToggles} multiple={true} multipleState={NikotinTypeToggle} producer_id={NikotinTypeItem.key} />
-                </>
-                ))}
-              </div>
-            </div>
             <div className={modalStyles.VerticalBox}>
               <span>Крепость (мг):</span>
               <Toggle label="Все" toggled={checkAllNikotin} setStore={handleSetCheckAllNikotin} /*onClick={logState}*//>
