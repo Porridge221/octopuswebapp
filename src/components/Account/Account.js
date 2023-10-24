@@ -20,7 +20,7 @@ function Account() {
 
     const [phoneNumber, setPhoneNumber] = useState();
 
-    const [selectedCity, setSelectedCity] = useState('Владивосток');
+    const [selectedCity, setSelectedCity] = useState(user_data?.user?.city_id ===  1 ? 'Владивосток' : user_data?.user?.city_id === 2 ? 'Артем' : user_data?.user?.city_id === 3 ? "Южно-Сахалинск" : user_data?.user?.city_id === 4 ? "Корсаков" : "");
 
     const [userName, setUserName] = useState("");
 
@@ -35,7 +35,7 @@ function Account() {
 
 
     useEffect(() => {
-        setSelectedCity('Владивосток');
+        setSelectedCity(user_data?.user?.city_id ===  1 ? 'Владивосток' : user_data?.user?.city_id === 2 ? 'Артем' : user_data?.user?.city_id === 3 ? "Южно-Сахалинск" : user_data?.user?.city_id === 4 ? "Корсаков" : "");
         setUserName(user_data?.user?.name);
     }, [user_data])
 
@@ -55,7 +55,7 @@ function Account() {
             fetch("https://octopus-vape.ru/users/add_info", { method:'PUT',headers: {
                 'Content-Type': 'application/json',
                 'Telegram-Data': initData,
-            }, body: JSON.stringify( {'name': userName, 'phone': phoneNumber.slice(1), 'city_id': 1} )
+            }, body: JSON.stringify( {'name': userName, 'phone': phoneNumber.slice(1), 'city_id': selectedCity === 'Владивосток' ? 1 : selectedCity === 'Артем' ? 2 : selectedCity === 'Южно-Сахалинск' ? 3 : 4} )
           })
           .then(response => {
             return response.json()
@@ -104,7 +104,8 @@ function Account() {
                     <span style={{fontWeight: '800'}}>Телефон: </span><span>{user_data !== undefined && user_data?.user?.phone}</span>
                 </p>
                 <p style={{margin: '2px 0', marginBottom: '5px'}}>
-                    <span style={{fontWeight: '800'}}>Город: </span><span>{user_data === undefined || null ? '' : ("Владивосток")}</span>
+                <span style={{fontWeight: '800'}}>Город: </span>
+                <span>{user_data === undefined || null ? '' : (user_data?.user?.city_id !== undefined && user_data?.user?.city_id=== 1 ? "Владивосток" : user_data?.user?.city_id=== 2 ? "Артем" : user_data?.user?.city_id=== 3 ? "Южно-Сахалинск" : "Корсаков")}</span>
                 </p>
             </div>
             <div className={styles.AddInfoBox}>
@@ -161,9 +162,9 @@ function Account() {
                     <span>Укажите город. Так пункты выдачи заказов будут отображаться корректно.</span>
                     <select className={modalStyles.Select} value={selectedCity} onChange={e => setSelectedCity(e.target.value)} >
                         <option value="Владивосток">Владивосток</option>
-                        {/* <option value="Артем">Артем</option>
+                        <option value="Артем">Артем</option>
                         <option value="Южно-Сахалинск">Южно-Сахалинск</option>
-                        <option value="Корсаков">Корсаков</option> */}
+                        <option value="Корсаков">Корсаков</option>
                     </select>
                 </div>
             </div>
