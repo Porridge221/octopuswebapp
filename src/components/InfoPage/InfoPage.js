@@ -21,7 +21,7 @@ function InfoPage() {
             {card_id === 1 ? 
                 (<><div className={styles.Tips}>Здесь описаны основные возможности бота, с помощью которого можно оформить заказ в Octopus Vape Shop
                 </div>
-                <div className={styles.Tips} style={{color: colorScheme ? '#FF0C00' : '#F7930C'}}><b>Доставку не осуществляем. Бот предназначен для заказов на самовывоз</b></div>
+                <div className={styles.Tips} style={{color: colorScheme ? '#FF0C00' : '#F7930C', fontSize: '20px'}}><b>Доставку не осуществляем. Бот предназначен для заказов на самовывоз!</b></div>
                 <ol style={{paddingLeft: '25px'}}>
                 <li className={styles.Text}>
                 {/* <div className={styles.Text}> */}
@@ -52,7 +52,7 @@ function InfoPage() {
                 </li>
                 <li className={styles.Text}>
                     <div style={{display: 'flex', flexDirection: 'column'}}>
-                    <span>При себе <b>обязательно</b> иметь документ, подтверждающий совершеннолетие.</span>
+                    <span>При себе <b style={{fontSize: '22px'}}>обязательно</b> иметь документ, подтверждающий совершеннолетие.</span>
                     </div>
                 </li>
                 </ol></>)
