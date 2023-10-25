@@ -9,7 +9,8 @@ import modalStyles from './Modal.module.css';
 import {AiOutlineClose} from "react-icons/ai";
 import Input from 'react-phone-number-input/input'
 import useUser from '../../hooks/useUser';
-import {QRCodeSVG} from 'qrcode.react';
+//import {QRCodeSVG} from 'qrcode.react';
+import QRCode from "react-qr-code";
 
 function Account() {
     const [user_data, setUserData] = useState();
@@ -122,7 +123,7 @@ function Account() {
                         <div className={styles.qrText} >Твой QR-код</div>
                     </div>
                     <div className={styles.qrImage} onClick={() => setQrModalActive(true)}>
-                        <QRCodeSVG value={user_data?.user?.card_num} size={145} bgColor='#ffffff' fgColor='#000000'/>
+                        <QRCode value={`${user_data?.user?.card_num}`} size={145} bgColor='#ffffff' fgColor='#000000'/>
                     </div>
                 </div>
             ) : (
@@ -174,7 +175,7 @@ function Account() {
             <FilterModal active={qrModalActive} setActive={setQrModalActive} isDeactivated={false}>
             <div style={{'width': '80vw', 'overflowX': 'hidden','overflowY': 'auto', backgroundColor: 'var(--tg-theme-bg-color)'}}>
                 <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '20px', backgroundColor: '#ffffff', borderRadius: '10px'}} >
-                    <QRCodeSVG value={user_data?.user?.card_num} size={'100%'} bgColor='#ffffff' fgColor='#000000'/>
+                    <QRCode value={`${user_data?.user?.card_num}`} size={'100%'} bgColor='#ffffff' fgColor='#000000'/>
                 </div>
             </div>
             <div className={modalStyles.ConfirmButton} onClick={() => setQrModalActive(false)}>Закрыть</div>
