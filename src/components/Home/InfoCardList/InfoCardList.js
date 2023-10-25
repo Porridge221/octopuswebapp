@@ -7,8 +7,7 @@ function InfoCardList({user_data}) {
         {id: 2, style: 'chatTG', text: 'TG-чат'},
         {id: 3, style: 'Loyalty', text: 'Про уровень лояльности'},
         {id: 4, style: 'FAQ', text: 'FAQ'},
-        {id: 5, style: 'Callback', text: 'Обратная связь'},
-        {id: 6, style: 'CREA', text: 'Разработчики'}
+        {id: 5, style: 'Callback', text: 'Обратная связь'}
     ]
 
     return (
@@ -28,9 +27,6 @@ function InfoCardList({user_data}) {
             </li>
             <li key={5}>
                 <InfoCard card={cards[4]} user_data={user_data}/>
-            </li>
-            <li key={6}>
-                <InfoCard card={cards[5]} user_data={user_data}/>
             </li>
         </ul>
         </div>
