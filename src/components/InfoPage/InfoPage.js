@@ -12,39 +12,47 @@ function InfoPage() {
 
     tg.onEvent('backButtonClicked', () => navigate('/home/'));
     tg.BackButton.show();
+
+    const colorScheme = window.Telegram.WebApp.colorScheme === 'light' ? true : false;
     
     return (
         <div className={styles.root}>
              <div className={styles.MainBackground} ></div>
             {card_id === 1 ? 
-                (<><div className={styles.Tips}>Здесь описаны основные возможности бота, с помощью которого, можно комфортно сделать заказ в Octopus Vape Shop
+                (<><div className={styles.Tips}>Здесь описаны основные возможности бота, с помощью которого можно оформить заказ в Octopus Vape Shop
                 </div>
+                <div className={styles.Tips} style={{color: colorScheme ? '#FF0C00' : '#F7930C'}}><b>Доставку не осуществляем. Бот предназначен для заказов на самовывоз</b></div>
                 <ol style={{paddingLeft: '25px'}}>
                 <li className={styles.Text}>
                 {/* <div className={styles.Text}> */}
                     <div style={{display: 'flex', flexDirection: 'column'}}>
-                    <span>Через бота, вы можете ознакомиться с нашим ассортиментом и оформить заказ в удобном для вас филиале.</span>
+                    <span>С помощью бота вы можете ознакомиться с нашим ассортиментом и оформить заказ в удобном для вас филиале.</span>
                     <img className={styles.iconEmpty} src={process.env.PUBLIC_URL + '/assets/infopage/1.png'} alt='' align='center' hspace='7px'/>
-                    <span>Для более удобного поиска можно воспользоваться фильтрами или поисковой строкой на главном экране.</span>
+                    <span>Фильтры и поисковая строка на главном экране значительно упростят поиск.</span>
                     </div>
                     </li>
                 {/* </div> */}
                 <li className={styles.Text}>
                 <div style={{display: 'flex', flexDirection: 'column'}}>
-                    <p>После оформления заказа, ему будет присвоен уникальный номер, который, необходимо озвучить консультанту.</p> 
+                    <p>После оформления заказу будет присвоен уникальный номер, который необходимо назвать консультанту при оплате заказа.</p> 
                     <img className={styles.iconEmpty} src={process.env.PUBLIC_URL + '/assets/infopage/2.png'} alt='' align='center' hspace='7px'/>
                     </div>
                 </li>
                 <li className={styles.Text}>
                     <div style={{display: 'flex', flexDirection: 'column'}}>
-                    <span>В профиле, вы можете ознакомиться с актуальным количеством баллов и статусом, в системе лояльности.</span>
+                    <span>В профиле отображается количество бонусных баллов, QR код и статус в программе лояльности.</span>
                     <img className={styles.iconEmpty} src={process.env.PUBLIC_URL + '/assets/infopage/4.png'} alt='' align='right' hspace='7px'/>
                     </div>
                 </li>
                 <li className={styles.Text}>
                     <div style={{display: 'flex', flexDirection: 'column'}}>
-                    <span>По возникшим вопросам, вы можете обратиться в раздел «FAQ» или задать вопрос в чат.</span>
+                    <span>По возникшим вопросам вы можете обратиться в раздел «FAQ» или задать вопрос в чат.</span>
                     <img className={styles.iconEmpty} src={process.env.PUBLIC_URL + '/assets/infopage/5.png'} alt='' align='left' hspace='7px'/>
+                    </div>
+                </li>
+                <li className={styles.Text}>
+                    <div style={{display: 'flex', flexDirection: 'column'}}>
+                    <span>При себе <b>обязательно</b> иметь документ, подтверждающий совершеннолетие.</span>
                     </div>
                 </li>
                 </ol></>)
