@@ -187,7 +187,7 @@ p > * {
     margin: 15px 32px;
     padding: 15px 15px;
     border-radius: 10px;
-    background: radial-gradient(70% 70% at 50% 50%, rgb(245.44, 208.21, 152.38) 0%, rgb(219.94, 40.32, 126.54) 100%);
+    background: #223850;
 }
 
 .qrTextBox {
