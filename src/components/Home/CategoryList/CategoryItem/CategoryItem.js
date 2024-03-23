@@ -16,10 +16,11 @@ function CategoryItem({category}) {
       }
     
     return (
-        <Link className={styles.root} onClick={() => category.id === 2 && fetchData()} to={category.link}>
-            <div className={category.style + ' ' + styles.unnamed6}>
-                <div className={category.style !== 'TelegramRef' ? styles.textBlock : styles.textBlock2}>{category.text}</div>
-                {category.style === 'ChooseAndOrder' && <img className={styles.CartButton} src={process.env.PUBLIC_URL + '/assets/home_order_icon.svg'} alt=''/>}
+        <Link className={styles.root + (category.style === 'ChooseAndOrder' ? ' ChooseAndOrderAR' : ' TelegramConsultantAR')} onClick={() => category.id === 2 && fetchData()} to={category.link}>
+            {/* <img className={category.style + ' ' + styles.unnamed6} /> */}
+            <div className={category.style + ' ' + category.style + (window.Telegram.WebApp.colorScheme === 'light' ? 'White' : 'Black') + ' ' + styles.unnamed6} >
+                {/* <div className={category.style !== 'TelegramRef' ? styles.textBlock : styles.textBlock2}>{category.text}</div> */}
+                {/* {category.style === 'ChooseAndOrder' && <img className={styles.CartButton} src={process.env.PUBLIC_URL + '/assets/home_order_icon.svg'} alt=''/>} */}
             </div> 
         </Link>
     );

@@ -97,9 +97,9 @@ function App() {
   return (
     <div className='App'>
       <AccountItem user_data={user_data}/>
-      <hr/>
+      <hr style={{'marginBottom': 0}}/>
       <InfoCardList user_data={user_data}/>
-      <hr/>
+      <hr style={{'marginTop': 0}}/>
       <div>
         <SearchItem />
       </div>

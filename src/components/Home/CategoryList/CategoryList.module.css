@@ -4,9 +4,14 @@
     top: 200px; */
     display: grid;
     margin: 0 16px;
-    /* width: 94%; */
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 103px 103px;
+  grid-template-rows: auto auto;
+  /* Автоматическое размещение в колонку */
+  grid-auto-flow: column;
+  grid-auto-flow: column dense;
+    /* width: 94%; */
+    /* grid-template-columns: 1fr 1fr;
+    grid-template-rows: minmax(50px, 203px) 50%; */
     gap: 10px;
     /* justify-content: right;
     align-items: flex-end; */

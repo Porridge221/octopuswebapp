@@ -5,16 +5,16 @@ import { v4 } from 'uuid'
 
 function CategoriesList() {
     const category = [
-        {id: 6, text: 'Жидкости', img: 'Жидкость'},
-        {id: 1, text: 'JUUL Type', img: 'JOOL-Type'},
-        {id: 2, text: 'Pod Системы', img: 'Pod'},
-        {id: 3, text: 'Аккумуляторы', img: 'Аккумуляторы'},
-        {id: 4, text: 'Аксессуары', img: 'Акксесуары'},
-        {id: 5, text: 'Жевательный табак', img: 'Жевательный-табак'},
-        {id: 7, text: 'Одноразовые системы', img: 'Одноразовые-системы'},
-        {id: 8, text: 'Расходники', img: 'Расходники'},
-        {id: 9, text: 'Устройства', img: 'Устройства'},
-        {id: 10, text: 'Атомайзеры', img: 'Атомайзеры'},
+        {id: 6, text: 'Жидкости', img: 'Жидкость-new'},
+        {id: 1, text: 'JUUL Type', img: 'JOOL-Type-new'},
+        {id: 2, text: 'Pod Системы', img: 'Pod-new'},
+        {id: 3, text: 'Аккумуляторы', img: 'Аккумуляторы-new'},
+        {id: 4, text: 'Аксессуары', img: 'Акксесуары-new'},
+        {id: 5, text: 'Жевательный табак', img: 'Жевательный-табак-new'},
+        {id: 7, text: 'Одноразовые системы', img: 'Одноразовые-системы-new'},
+        {id: 8, text: 'Расходники', img: 'Расходники-new'},
+        {id: 9, text: 'Устройства', img: 'Устройства-new'},
+        {id: 10, text: 'Атомайзеры', img: 'Атомайзеры-new'},
     ]
 
     return (

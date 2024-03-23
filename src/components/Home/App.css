@@ -15,57 +15,89 @@
 }
 
 .rectangleHowToUse {
-  /* width: 95px;
-  height: 95px; */
-  /* background-image: radial-gradient(
-    ellipse 61.35144503349347px 314.20994204289303px at 32.99998640887112px 36.500004272146874px,
-    #6d3a96ff 0%,
-    #dc287fff 100%
-  ); */
   width: 95px;
   height: 95px;
-  background-size: cover;
   border-radius: 10px;
-  background: url('../../../public/assets/infocards/aboutBot.svg');
-
+  background: url('../../../public/assets/infocards/new/Про робота_white.jpg');
+  background-size: contain;
+}
+.rectangleHowToUseWhite {
+  background: url('../../../public/assets/infocards/new/Про робота_white.jpg');
+  background-size: contain;
+}
+.rectangleHowToUseBlack {
+  background: url('../../../public/assets/infocards/new/Про робота_black.jpg');
+  background-size: contain;
 }
 
 .rectanglechatTG {
   width: 95px;
   height: 95px;
   border-radius: 10px;
-  background: url('../../../public/assets/infocards/tgChat.svg');
-  background-size: cover;
+  background: url('../../../public/assets/infocards/new/Наш чат_white.jpg');
+  background-size: contain;
+}
+.rectanglechatTGWhite {
+  background: url('../../../public/assets/infocards/new/Наш чат_white.jpg');
+  background-size: contain;
+}
+.rectanglechatTGBlack {
+  background: url('../../../public/assets/infocards/new/Наш чат_black.jpg');
+  background-size: contain;
 }
 
 .rectangleLoyalty {
   width: 95px;
   height: 95px;
   border-radius: 10px;
-  background: url('../../../public/assets/infocards/loyalty.svg');
-  background-size: cover;
+  background: url('../../../public/assets/infocards/new/Лояльность_white.jpg');
+  background-size: contain;
+}
+.rectangleLoyaltyWhite {
+  background: url('../../../public/assets/infocards/new/Лояльность_white.jpg');
+  background-size: contain;
+}
+.rectangleLoyaltyBlack {
+  background: url('../../../public/assets/infocards/new/Лояльность_black.jpg');
+  background-size: contain;
 }
 
 .rectangleFAQ {
   width: 95px;
   height: 95px;
-  background-size: cover;
   border-radius: 10px;
-  background: url('../../../public/assets/infocards/faq.svg');
+  background: url('../../../public/assets/infocards/new/Вопросы_white.jpg');
+  background-size: contain;
+}
+.rectangleFAQWhite {
+  background: url('../../../public/assets/infocards/new/Вопросы_white.jpg');
+  background-size: contain;
+}
+.rectangleFAQBlack {
+  background: url('../../../public/assets/infocards/new/Вопросы_black.jpg');
+  background-size: contain;
 }
 
 .rectangleCallback {
   width: 95px;
   height: 95px;
-  background-size: cover;
   border-radius: 10px;
-  background: url('../../../public/assets/infocards/callback.svg');
+  background: url('../../../public/assets/infocards/new/Обратная связь_white.jpg');
+  background-size: contain;
+}
+.rectangleCallbackWhite {
+  background: url('../../../public/assets/infocards/new/Обратная связь_white.jpg');
+  background-size: contain;
+}
+.rectangleCallbackBlack {
+  background: url('../../../public/assets/infocards/new/Обратная связь_black.jpg');
+  background-size: contain;
 }
 
 .rectangleCREA {
   width: 95px;
   height: 95px;
-  background-size: cover;
+  background-size: contain;
   border-radius: 10px;
   background: url('../../../public/assets/infocards/creageese.svg');
 }
@@ -121,25 +153,52 @@
     /* width: var(50vw-16px); */
     height: 100%;
     background-color: #ffffff;
-    background: url('../../../public/assets/home_tg.png');
+    background: url('../../../public/assets/home_tg_white.jpg');
     background-size: 100% 100%;
     border-radius: 10px;
     /* filter: blur(1px); */
     background-size: cover;
     justify-content: center;
 }
+.TelegramRefWhite {
+  background: url('../../../public/assets/home_tg_white.jpg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.TelegramRefBlack {
+  background: url('../../../public/assets/home_tg_black.jpg');
+  background-size: cover;
+}
+
+.ChooseAndOrderAR {
+  aspect-ratio: 180/216;
+  grid-row: span 2;
+}
+.TelegramConsultantAR {
+  aspect-ratio: 180/103;
+}
+
 .ChooseAndOrder {
   /* width: 126px;
   height: 185px; */
   /* width: var(50vw-16px); */
-  height: 216px;
+  height: 100%;
   background-color: #ffffff;
-  background: url('../../../public/assets/home_order.png');
+  background: url('../../../public/assets/home_order_white.jpg');
   background-size: 100% 100%;
   border-radius: 10px;
   /* filter: blur(1px); */
   background-size: cover;
   justify-content: end;
+}
+.ChooseAndOrderWhite {
+  background: url('../../../public/assets/home_order_white.jpg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.ChooseAndOrderBlack {
+  background: url('../../../public/assets/home_order_black.jpg');
+  background-size: cover;
 }
 
 .HelpConsultant {
@@ -147,12 +206,21 @@
   /* width: 46vw; */
   height: 100%;
   background-color: #ffffff;
-  background: url('../../../public/assets/home_consultant.png');
+  background: url('../../../public/assets/home_consultant_white.jpg');
   background-size: 100% 100%;
   border-radius: 10px;
   /* filter: blur(1px); */
   background-size: cover;
   justify-content: center;
+}
+.HelpConsultantWhite {
+  background: url('../../../public/assets/home_consultant_white.jpg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.HelpConsultantBlack {
+  background: url('../../../public/assets/home_consultant_black.jpg');
+  background-size: cover;
 }
 
 hr {
