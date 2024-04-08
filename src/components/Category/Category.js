@@ -321,6 +321,7 @@ function Category() {
               </> : user_data?.user?.city_id === 3 ? <>
                 <Toggle label="ул. Сахалинская, 45А, 1" toggled={storeSH}  setStore={setStoreSH} /*onClick={logState}  11*//>
                 <Toggle label="ул. Пуркаева М.А., 102В" toggled={storePYR}  setStore={setStorePYR} /*onClick={logState}  24*//>
+                <Toggle label="ул. Ленина, 219" toggled={storeLN}  setStore={setStoreLN} /*onClick={logState}  24*//>
               </> : user_data?.user?.city_id === 4 ? <>
                 <Toggle label="ул. Советская, 31, 3" toggled={storeSOV}  setStore={setStoreSOV} /*onClick={logState}  2*//>
               </> : <>
@@ -331,6 +332,7 @@ function Category() {
                 <Toggle label="ул. Советская, 31, 3" toggled={storeSOV}  setStore={setStoreSOV} /*onClick={logState}  2*//>
                 <Toggle label="ул. Сахалинская, 45А, 1" toggled={storeSH}  setStore={setStoreSH} /*onClick={logState}  11*//>
                 <Toggle label="ул. Пуркаева М.А., 102В" toggled={storePYR}  setStore={setStorePYR} /*onClick={logState}  24*//>
+                <Toggle label="ул. Ленина, 219" toggled={storeLN}  setStore={setStoreLN} /*onClick={logState}  24*//>
               </> }
           </div>
           <div className={modalStyles.VerticalBox}>
