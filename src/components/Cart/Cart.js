@@ -228,6 +228,7 @@ function Cart() {
                             </> : user_curr?.user?.city_id === 3 ? <>
                             <option label="ул. Сахалинская, 45А, 1" value={11}>ул. Сахалинская, 45А, 1</option>
                             <option label="ул. Пуркаева М.А., 102В" value={24}>ул. Пуркаева М.А., 102В</option>
+                            <option label="ул. Ленина, 219" value={24}>ул. Ленина, 219</option>
                             </> : user_curr?.user?.city_id === 4 ? <>
                             <option label="ул. Советская, 31, 3" value={2}>ул. Советская, 31, 3</option>
                             </> : <>
@@ -238,6 +239,7 @@ function Cart() {
                             <option label="ул. Советская, 31, 3" value={2}>ул. Советская, 31, 3</option>
                             <option label="ул. Сахалинская, 45А, 1" value={11}>ул. Сахалинская, 45А, 1</option>
                             <option label="ул. Пуркаева М.А., 102В" value={24}>ул. Пуркаева М.А., 102В</option>
+                            <option label="ул. Ленина, 219" value={24}>ул. Ленина, 219</option>
                         </> }
                     </select>
                     <span style={{marginTop: '5px'}}>Имя получателя</span>

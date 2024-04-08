@@ -30,6 +30,7 @@ function Category() {
   const [storeSOV, setStoreSOV] = useState(true);
   const [storeSH, setStoreSH] = useState(true);
   const [storePYR, setStorePYR] = useState(true);
+  const [storeLN, setStoreLN] = useState(true);
 
   const [showAllProducer, setShowAllProducer] = useState(false);
   const [checkAllProducer, setCheckAllProducer] = useState(true);
@@ -107,10 +108,10 @@ function Category() {
   }
 
   const fetchData = () => {
-    var query = (storeRU ? 'stores=16&' : '') + (storeFK ? 'stores=15&' : '') + (storeNAB ? 'stores=1&' : '') + (storeKIR ? 'stores=20&' : '') + (storeSOV ? 'stores=2&' : '') + (storeSH ? 'stores=11&' : '') + (storePYR ? 'stores=24&' : '');
+    var query = (storeRU ? 'stores=16&' : '') + (storeFK ? 'stores=15&' : '') + (storeNAB ? 'stores=1&' : '') + (storeKIR ? 'stores=20&' : '') + (storeSOV ? 'stores=2&' : '') + (storeSH ? 'stores=11&' : '') + (storePYR ? 'stores=24&' : '') + (storeLN ? 'stores=28&' : '');
     user_data.user.city_id === 1 && (query = (storeRU ? 'stores=16&' : '') + (storeFK ? 'stores=15&' : '') + (storeNAB ? 'stores=1&' : ''));
     user_data.user.city_id === 2 && (query = (storeKIR ? 'stores=20&' : ''));
-    user_data.user.city_id === 3 && (query = (storeSH ? 'stores=11&' : '') + (storePYR ? 'stores=24&' : ''));
+    user_data.user.city_id === 3 && (query = (storeSH ? 'stores=11&' : '') + (storePYR ? 'stores=24&' : '') + (storeLN ? 'stores=28&' : ''));
     user_data.user.city_id === 4 && (query = (storeSOV ? 'stores=2&' : ''));
     // query !== '' && (query += '&');
     // !checkAllProducer && (producerToggle.forEach(producer => producer.value && (query += `products=${producer.key}&`)));
@@ -281,6 +282,7 @@ function Category() {
         </> : user_data?.user?.city_id === 3 ? <>
           <Toggle label="ул. Сахалинская, 45А, 1" toggled={storeSH}  setStore={setStoreSH} /*onClick={logState}  11*//>
           <Toggle label="ул. Пуркаева М.А., 102В" toggled={storePYR}  setStore={setStorePYR} /*onClick={logState}  24*//>
+          <Toggle label="ул. Ленина, 219" toggled={storeLN}  setStore={setStoreLN} /*onClick={logState}  24*//>
         </> : user_data?.user?.city_id === 4 ? <>
           <Toggle label="ул. Советская, 31, 3" toggled={storeSOV}  setStore={setStoreSOV} /*onClick={logState}  2*//>
         </> : <>
@@ -291,6 +293,7 @@ function Category() {
           <Toggle label="ул. Советская, 31, 3" toggled={storeSOV}  setStore={setStoreSOV} /*onClick={logState}  2*//>
           <Toggle label="ул. Сахалинская, 45А, 1" toggled={storeSH}  setStore={setStoreSH} /*onClick={logState}  11*//>
           <Toggle label="ул. Пуркаева М.А., 102В" toggled={storePYR}  setStore={setStorePYR} /*onClick={logState}  24*//>
+          <Toggle label="ул. Ленина, 219" toggled={storeLN}  setStore={setStoreLN} /*onClick={logState}  24*//>
         </> }
       </div>
       {data === 0 ? (

@@ -22,6 +22,9 @@ function getStore(store_id) {
         case 24:
             store_name = 'ул. Пуркаева М.А., 102В';
             break;
+        case 28:
+            store_name = 'ул. Ленина, 219';
+            break;
         default:
             break;
     }
