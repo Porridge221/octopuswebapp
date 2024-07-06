@@ -25,11 +25,14 @@ function getStore(store_id) {
         case 28:
             store_name = 'ул. Ленина, 219';
             break;
+        case 29:
+            store_name = 'ул. Советская, 112А';
+            break;
         default:
             break;
     }
     return store_name;
-    
+
 }
 
 export default getStore;

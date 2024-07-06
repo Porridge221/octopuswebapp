@@ -83,7 +83,7 @@ function CategoryItem({item, producerName, cartData, setCartData}) {
         <Link className={styles.Link} to={`/home/product`} state={{variant_id: item.variant_id, variant_name: item.name, category_id: category_id}}>
           <div className={styles.ImageBox} ><img className={styles.Image} src={imageVar} alt='' onError={(ev) => setImageVar(process.env.PUBLIC_URL + "/assets/octopus_big1.jpg")} /></div>
           <div className={styles.Name}>{item.name}</div>
-          <div className={styles.Price}>{new Intl.NumberFormat('ru-RU', {style: 'currency', currency: 'RUB', minimumFractionDigits: 0}).format(([3, 4].indexOf(user_data?.user?.city_id) !== -1 ? item.price_shk/100 : item.price_vvo/100))}</div>
+          <div className={styles.Price}>{new Intl.NumberFormat('ru-RU', {style: 'currency', currency: 'RUB', minimumFractionDigits: 0}).format(([3, 4, 5].indexOf(user_data?.user?.city_id) !== -1 ? item.price_shk/100 : item.price_vvo/100))}</div>
         </Link>
           <div className={buttonStyle} onClick={buttonLabel === 'Добавить' ? fetchData : fetchDeleteItem}>{buttonLabel}</div>
       </div>

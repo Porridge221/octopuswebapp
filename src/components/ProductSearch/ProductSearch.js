@@ -132,7 +132,7 @@ function ProductSearch() {
         <div className={styles.ImageBox} ><img className={styles.Image} src={item?.image !== "" ? item?.image : process.env.PUBLIC_URL + "/assets/octopus_big1.jpg"} alt=''/></div>
     <div style={{flexGrow: '1'}}>
         <div className={styles.Name}>{item !== undefined && item?.name}</div>
-        <div className={styles.Price}>{ item === undefined ? '####' : new Intl.NumberFormat('ru-RU', {style: 'currency', currency: 'RUB', minimumFractionDigits: 0}).format(([3, 4].indexOf(user_data?.user?.city_id) !== -1 ? item?.price_shk/100 : item?.price_vvo/100))}</div>
+        <div className={styles.Price}>{ item === undefined ? '####' : new Intl.NumberFormat('ru-RU', {style: 'currency', currency: 'RUB', minimumFractionDigits: 0}).format(([3, 4, 5].indexOf(user_data?.user?.city_id) !== -1 ? item?.price_shk/100 : item?.price_vvo/100))}</div>
         <div className={styles.Characteristics}>
             {item !== undefined && item?.item_characteristics?.length > 0 && item.item_characteristics.map(characteristic => ( 
                 <div key={characteristic.name} className={styles.CharacteristicItem}>{characteristic.name + ': ' + characteristic.value}</div>
