@@ -2,7 +2,7 @@ import './App.css';
 import AccountItem from './AccountItem/AccountItem';
 import CategoryList from './CategoryList/CategoryList';
 import InfoCardList from './InfoCardList/InfoCardList';
-import SearchItem from './SearchItem/SearchItem';
+// import SearchItem from './SearchItem/SearchItem';
 import useTelegram from '../../hooks/useTelegram';
 import { useEffect, useState } from 'react';
 import OrderList from './OrderList/OrderList';
@@ -100,9 +100,9 @@ function App() {
       <hr style={{'marginBottom': 0}}/>
       <InfoCardList user_data={user_data}/>
       <hr style={{'marginTop': 0}}/>
-      <div>
+      {/* <div>
         <SearchItem />
-      </div>
+      </div> */}
       <CategoryList user_data={user_data}/>
       <hr/>
       <OrderList user_data={user_data}/>
