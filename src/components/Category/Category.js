@@ -53,6 +53,11 @@ function Category() {
     {key: 5, value:true, name: '18mg'},
     {key: 6, value:true, name: '20mg'},
     {key: 7, value:true, name: '20+'},
+    {key: 8, value:true, name: '0,075 ST'},
+    {key: 9, value:true, name: '0.10 EX'},
+    {key: 10, value:true, name: '0,15 UL'},
+    {key: 11, value:true, name: '0,13 EX3M'},
+    {key: 12, value:true, name: '0,11 EX'},
   ]);
 
   const [sizeToggle, setSizeToggles] = useState([
