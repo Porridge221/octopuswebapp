@@ -16,7 +16,7 @@ function Header({path, current, cartData}) {
     const routs = {
         'Главная': ['/home', 0],
         'Каталог': ['/home/categories', 0],
-        'Жидкости': ['/home/categories/6', 6],
+        'Ароматизаторы': ['/home/categories/6', 6],
         'JUUL Type': ['/home/categories/1', 1],
         'Pod Системы': ['/home/categories/2', 2],
         'Аккумуляторы': ['/home/categories/3', 3],

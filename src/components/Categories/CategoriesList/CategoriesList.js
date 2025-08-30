@@ -5,7 +5,7 @@ import { v4 } from 'uuid'
 
 function CategoriesList() {
     const category = [
-        {id: 6, text: 'Жидкости', img: 'Жидкость-new'},
+        {id: 6, text: 'Ароматизаторы', img: 'Жидкость-new'},
         {id: 1, text: 'JUUL Type', img: 'JOOL-Type-new'},
         {id: 2, text: 'Pod Системы', img: 'Pod-new'},
         {id: 3, text: 'Аккумуляторы', img: 'Аккумуляторы-new'},

@@ -92,7 +92,7 @@ function Category() {
 
   const path = ['Главная', 'Каталог']
   const current = {
-                    6: 'Жидкости',
+                    6: 'Ароматизаторы',
                     1: 'JUUL Type',
                     2: 'Pod Системы',
                     3: 'Аккумуляторы',
