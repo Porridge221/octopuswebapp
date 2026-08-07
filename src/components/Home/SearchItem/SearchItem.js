@@ -9,6 +9,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import SelectableSearch from "@fliptask/react-search-dropdown";
 
 import {AiOutlineClose} from "react-icons/ai";
+import { apiUrl } from '../../../api';
 
 var prev = 0;
 
@@ -42,7 +43,7 @@ function SearchItem() {
   // }
 
     const fetchData = (it) => {
-        fetch("https://octopus-vape.ru/products/catalog/search/?query=" + selectInput['search'], {method: 'GET', headers: {'Content-Type': 'application/json', 'Telegram-Data': initData,}})
+        fetch(apiUrl("/products/catalog/search/?query=" + selectInput['search']), {method: 'GET', headers: {'Content-Type': 'application/json', 'Telegram-Data': initData,}})
           .then(response => {
             console.log(response.status);
             return response.status === 200 ? response.json() : []

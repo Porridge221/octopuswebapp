@@ -1,5 +1,6 @@
 import { useEffect, useState} from "react"
 import useTelegram from "./useTelegram";
+import { apiUrl } from "../api";
 
 let userData = null;
 
@@ -8,7 +9,7 @@ function useUser(isUpdate) {
     const [user_data, setUser] = useState();
 
     const fetchData = () => {
-        fetch("https://octopus-vape.ru/users/1", {method: 'GET', headers: {'Content-Type': 'application/json', 'Telegram-Data': initData,}})
+        fetch(apiUrl("/users/1"), {method: 'GET', headers: {'Content-Type': 'application/json', 'Telegram-Data': initData,}})
           .then(response => {
             return response.json()
           })

@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import useUser from '../../hooks/useUser';
 import CartService from '../../services/cartService';
+import { apiUrl } from '../../api';
 
 
 function ProductSearch() {
@@ -49,7 +50,7 @@ function ProductSearch() {
             return
         }
 
-        fetch("https://octopus-vape.ru/carts/add", { method:'POST',headers: {
+        fetch(apiUrl("/carts/add"), { method:'POST',headers: {
         'Content-Type': 'application/json',
         'Telegram-Data': initData,
         }, body: JSON.stringify( {'user_id': 1, 'variant_id': item.variant_id, 'count': 1} )
@@ -70,7 +71,7 @@ function ProductSearch() {
     }
 
     const fetchDeleteItem = () => {
-        fetch("https://octopus-vape.ru/carts/delete_one", { method:'DELETE',headers: {
+        fetch(apiUrl("/carts/delete_one"), { method:'DELETE',headers: {
         'Content-Type': 'application/json',
         'Telegram-Data': initData,
         }, body: JSON.stringify( {'cart_id': 1, 'variant_id': item.variant_id} )
@@ -91,7 +92,7 @@ function ProductSearch() {
     }
 
     const fetchVariant = () => {
-        fetch("https://octopus-vape.ru/products/variant/" + variant_id, {method: 'GET', headers: {'Content-Type': 'application/json', 'Telegram-Data': initData,}})
+        fetch(apiUrl("/products/variant/" + variant_id), {method: 'GET', headers: {'Content-Type': 'application/json', 'Telegram-Data': initData,}})
           .then(response => {
             return response.json()
           })

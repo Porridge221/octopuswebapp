@@ -3,6 +3,7 @@ import styles from './CartItem.module.css'
 import useTelegram from '../../../hooks/useTelegram';
 import useUser from '../../../hooks/useUser';
 import CartService from '../../../services/cartService';
+import { apiUrl } from '../../../api';
 
 function CartItem({order, cart_id, fetchDeleteOne, updateScreen, setUpdateScreen}) {
     const [count, setCount] = useState(1);
@@ -14,7 +15,7 @@ function CartItem({order, cart_id, fetchDeleteOne, updateScreen, setUpdateScreen
     const [imageVar, setImageVar] = useState(order?.image)
 
     function fetchData(condition) {
-        fetch("https://octopus-vape.ru/carts/add", { method:'POST',headers: {
+        fetch(apiUrl("/carts/add"), { method:'POST',headers: {
         'Content-Type': 'application/json',
         'Telegram-Data': initData,
         }, body: JSON.stringify( {'user_id': 1, 'variant_id': order.variant_id, 'count': condition ? count+1 : count-1} )

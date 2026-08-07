@@ -1,4 +1,5 @@
 import useTelegram from "../hooks/useTelegram";
+import { apiUrl } from "../api";
 
 let cartData;
 
@@ -9,7 +10,7 @@ function CartService({isUpdate, data, isInit}) {
     console.log('CARTSERVICEUPDATE ' + isUpdate + '  ' + isInit);
     
     if (isInit) {
-        return fetch("https://octopus-vape.ru/carts/1", {method: 'GET', headers: {'Content-Type': 'application/json', 'Telegram-Data': initData,}})
+        return fetch(apiUrl("/carts/1"), {method: 'GET', headers: {'Content-Type': 'application/json', 'Telegram-Data': initData,}})
           .then(response => {
             return response.json()
           })

@@ -14,6 +14,7 @@ import CartService from '../../services/cartService';
 import RegModal from './RegModal.module.css';
 import {AiOutlineClose} from "react-icons/ai";
 import Input from 'react-phone-number-input/input'
+import { apiUrl } from '../../api';
 
 var showedAgeConfirm = false;
 var showedRegConfirm = false;
@@ -46,7 +47,7 @@ function App() {
       error = true;
     }
     if (!error) {
-      fetch("https://octopus-vape.ru/users/add_info", { method:'PUT',headers: {
+      fetch(apiUrl("/users/add_info"), { method:'PUT',headers: {
       'Content-Type': 'application/json',
       'Telegram-Data': initData,
     }, body: JSON.stringify( {'name': userName, 'phone': phoneNumber.slice(1), 'city_id': selectedCity === 'Владивосток' ? 1 : selectedCity === 'Артем' ? 2 : selectedCity === 'Южно-Сахалинск' ? 3 : selectedCity === 'Корсаков' ? 4 : 5} )

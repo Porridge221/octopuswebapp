@@ -10,6 +10,7 @@ import modalStyles from './OrderHistoryModal.module.css'
 import CheckItem from './CheckItem/CheckItem';
 import getStore from '../../services/getStore';
 import CartService from '../../services/cartService';
+import { apiUrl } from '../../api';
 
 function OrderHistory() {
     const {tg, initData} = useTelegram();
@@ -25,7 +26,7 @@ function OrderHistory() {
     tg.BackButton.show();
 
     const fetchRepeatOrder = () => {
-        fetch("https://octopus-vape.ru/orders/repeat", { method:'POST',headers: {
+        fetch(apiUrl("/orders/repeat"), { method:'POST',headers: {
         'Content-Type': 'application/json',
         'Telegram-Data': initData,
         }, body: JSON.stringify( {'order_id': modalOrder.order_id} )
@@ -40,7 +41,7 @@ function OrderHistory() {
     }
 
     const fetchData = () => {
-        fetch("https://octopus-vape.ru/orders/1", {method: 'GET', headers: {'Content-Type': 'application/json', 'Telegram-Data': initData,}})
+        fetch(apiUrl("/orders/1"), {method: 'GET', headers: {'Content-Type': 'application/json', 'Telegram-Data': initData,}})
           .then(response => {
             return response.json()
           })

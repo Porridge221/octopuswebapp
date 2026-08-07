@@ -11,6 +11,7 @@ import Input from 'react-phone-number-input/input'
 import useUser from '../../hooks/useUser';
 //import {QRCodeSVG} from 'qrcode.react';
 import QRCode from "react-qr-code";
+import { apiUrl } from '../../api';
 
 function Account() {
     const [user_data, setUserData] = useState();
@@ -53,7 +54,7 @@ function Account() {
             error = true;
         }
         if (!error) {
-            fetch("https://octopus-vape.ru/users/add_info", { method:'PUT',headers: {
+            fetch(apiUrl("/users/add_info"), { method:'PUT',headers: {
                 'Content-Type': 'application/json',
                 'Telegram-Data': initData,
             }, body: JSON.stringify( {'name': userName, 'phone': phoneNumber.slice(1), 'city_id': selectedCity === 'Владивосток' ? 1 : selectedCity === 'Артем' ? 2 : selectedCity === 'Южно-Сахалинск' ? 3 : selectedCity === 'Корсаков' ? 4 : 5} )
@@ -70,7 +71,7 @@ function Account() {
     }
 
     const fetchUser = () => {
-        fetch("https://octopus-vape.ru/users/1", {method: 'GET', headers: {'Content-Type': 'application/json', 'Telegram-Data': initData,}})
+        fetch(apiUrl("/users/1"), {method: 'GET', headers: {'Content-Type': 'application/json', 'Telegram-Data': initData,}})
           .then(response => {
             return response.json()
           })

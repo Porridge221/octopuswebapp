@@ -4,6 +4,7 @@ import {Link, useLocation} from 'react-router-dom'
 import CartService from '../../../../services/cartService';
 import { useState } from 'react';
 import useUser from '../../../../hooks/useUser';
+import { apiUrl } from '../../../../api';
 
 function CategoryItem({item, producerName, cartData, setCartData}) {
   const category_id = useLocation().state;
@@ -26,7 +27,7 @@ function CategoryItem({item, producerName, cartData, setCartData}) {
         return
     }
     
-    fetch("https://octopus-vape.ru/carts/add", { method:'POST',headers: {
+    fetch(apiUrl("/carts/add"), { method:'POST',headers: {
       'Content-Type': 'application/json',
       'Telegram-Data': initData,
     }, body: JSON.stringify( {'user_id': 1, 'variant_id': item.variant_id, 'count': 1} )
@@ -43,7 +44,7 @@ function CategoryItem({item, producerName, cartData, setCartData}) {
   }
 
   const fetchDeleteItem = () => {
-    fetch("https://octopus-vape.ru/carts/delete_one", { method:'DELETE',headers: {
+    fetch(apiUrl("/carts/delete_one"), { method:'DELETE',headers: {
     'Content-Type': 'application/json',
     'Telegram-Data': initData,
     }, body: JSON.stringify( {'cart_id': 1, 'variant_id': item.variant_id} )

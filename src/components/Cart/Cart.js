@@ -15,6 +15,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import useTelegram from '../../hooks/useTelegram';
 
 import CartService from '../../services/cartService';
+import { apiUrl } from '../../api';
 
 let isAdded = false;
 let isFetching = false;
@@ -38,7 +39,7 @@ function Cart() {
             return
         }
 
-        fetch("https://octopus-vape.ru/carts/add", { method:'POST',headers: {
+        fetch(apiUrl("/carts/add"), { method:'POST',headers: {
         'Content-Type': 'application/json',
         'Telegram-Data': initData,
         }, body: JSON.stringify( {'user_id': 1, 'variant_id': variant_id_to_add, 'count': 1} )
@@ -74,7 +75,7 @@ function Cart() {
     const [selectedStore, setSelectedStore] = useState(user_curr?.user?.city_id === undefined || user_curr?.user?.city_id === null || user_curr?.user?.city_id === 1 ? 16 : user_curr?.user?.city_id === 2 ? 20 : user_curr?.user?.city_id === 3 ? 11 : user_curr?.user?.city_id === 4 ? 2 : 29);
 
     const fetchCart = () => {
-        fetch("https://octopus-vape.ru/carts/1", {method: 'GET', headers: {'Content-Type': 'application/json', 'Telegram-Data': initData,}})
+        fetch(apiUrl("/carts/1"), {method: 'GET', headers: {'Content-Type': 'application/json', 'Telegram-Data': initData,}})
           .then(response => {
             return response.json()
           })
@@ -91,7 +92,7 @@ function Cart() {
     }
 
     const fetchDeleteOne = (order) => {
-        fetch("https://octopus-vape.ru/carts/delete_one", { method:'DELETE',headers: {
+        fetch(apiUrl("/carts/delete_one"), { method:'DELETE',headers: {
         'Content-Type': 'application/json',
         'Telegram-Data': initData,
         }, body: JSON.stringify( {'cart_id': 1, 'variant_id': order.variant_id} )
@@ -105,7 +106,7 @@ function Cart() {
     }
 
     function fetchDeleteAllCart() {
-        fetch("https://octopus-vape.ru/carts/delete_all?cart_id=1", { method:'DELETE',headers: {
+        fetch(apiUrl("/carts/delete_all?cart_id=1"), { method:'DELETE',headers: {
           'Content-Type': 'application/json',
           'Telegram-Data': initData,
         }, body: JSON.stringify( {'cart_id': 1 } )
@@ -144,7 +145,7 @@ function Cart() {
             error = true;
         }
         if (!error) {
-            fetch("https://octopus-vape.ru/orders/", { method:'POST',headers: {
+            fetch(apiUrl("/orders/"), { method:'POST',headers: {
           'Content-Type': 'application/json',
           'Telegram-Data': initData,
         }, body: JSON.stringify( {'user_id': 1, 'name': userName, 'phone': phoneNumber.slice(1), 'store_id': Number(selectedStore)} )

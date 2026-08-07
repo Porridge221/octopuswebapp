@@ -1,6 +1,7 @@
 import styles from './CheckItem.module.css'
 import { useState } from 'react';
 import useTelegram from '../../../hooks/useTelegram';
+import { apiUrl } from '../../../api';
 
 
 function CheckItem({item, showButton}) {
@@ -9,7 +10,7 @@ function CheckItem({item, showButton}) {
     const [imageVar, setImageVar] = useState(item?.image)
 
     const fetchData = () => {
-        fetch("https://octopus-vape.ru/carts/add", { method:'POST',headers: {
+        fetch(apiUrl("/carts/add"), { method:'POST',headers: {
         'Content-Type': 'application/json',
         'Telegram-Data': initData,
         }, body: JSON.stringify( {'user_id': 1, 'variant_id': item.variant_id, 'count': 1} )

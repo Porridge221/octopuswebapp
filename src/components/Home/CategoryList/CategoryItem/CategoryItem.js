@@ -1,12 +1,13 @@
 import useTelegram from '../../../../hooks/useTelegram'
 import styles from './CategoryItem.module.css'
 import {Link} from 'react-router-dom'
+import { apiUrl } from '../../../../api';
 
 function CategoryItem({category}) {
     const {tg, initData} = useTelegram()
 
     const fetchData = () => {
-        fetch("https://octopus-vape.ru/consultant", {method: 'GET', headers: {'Content-Type': 'application/json', 'Telegram-Data': initData,}})
+        fetch(apiUrl("/consultant"), {method: 'GET', headers: {'Content-Type': 'application/json', 'Telegram-Data': initData,}})
           .then(response => {
             return response.json()
           })

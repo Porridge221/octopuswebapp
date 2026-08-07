@@ -16,6 +16,7 @@ import 'react-range-slider-input/dist/style.css';
 import './slider.css';
 import useUser from '../../hooks/useUser';
 import CartService from '../../services/cartService';
+import { apiUrl } from '../../api';
 
 var newState = [];
 
@@ -137,7 +138,7 @@ function Category() {
       return;
     }
 
-    fetch("https://octopus-vape.ru/products/catalog/" + category_id + '?' + query, {method: 'GET', headers: {'Content-Type': 'application/json', 'Telegram-Data': initData,}})
+    fetch(apiUrl("/products/catalog/" + category_id + '?' + query), {method: 'GET', headers: {'Content-Type': 'application/json', 'Telegram-Data': initData,}})
       .then(response => {
         return response.json()
       })

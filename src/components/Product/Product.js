@@ -5,6 +5,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { useState } from 'react';
 import CartService from '../../services/cartService';
 import useUser from '../../hooks/useUser';
+import { apiUrl } from '../../api';
 
 function Product() {
     const [cartData, setCartData] = useState(CartService({isUpdate: false, isInit: false}))
@@ -34,7 +35,7 @@ function Product() {
     tg.BackButton.show();
   
     const fetchData = () => {
-        fetch("https://octopus-vape.ru/carts/add", { method:'POST',headers: {
+        fetch(apiUrl("/carts/add"), { method:'POST',headers: {
         'Content-Type': 'application/json',
         'Telegram-Data': initData,
         }, body: JSON.stringify( {'user_id': 1, 'variant_id': item.variant_id, 'count': 1} )
@@ -55,7 +56,7 @@ function Product() {
     }
 
     const fetchDeleteItem = () => {
-        fetch("https://octopus-vape.ru/carts/delete_one", { method:'DELETE',headers: {
+        fetch(apiUrl("/carts/delete_one"), { method:'DELETE',headers: {
         'Content-Type': 'application/json',
         'Telegram-Data': initData,
         }, body: JSON.stringify( {'cart_id': 1, 'variant_id': item.variant_id} )
