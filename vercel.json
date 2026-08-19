@@ -2,6 +2,10 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "rewrites": [
     {
+      "source": "/api/orders",
+      "destination": "https://octopus-vape.ru/orders/"
+    },
+    {
       "source": "/api/:path*",
       "destination": "https://octopus-vape.ru/:path*"
     }

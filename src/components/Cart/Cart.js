@@ -145,7 +145,7 @@ function Cart() {
             error = true;
         }
         if (!error) {
-            fetch(apiUrl("/orders/"), { method:'POST',headers: {
+            fetch(apiUrl("/orders"), { method:'POST',headers: {
           'Content-Type': 'application/json',
           'Telegram-Data': initData,
         }, body: JSON.stringify( {'user_id': 1, 'name': userName, 'phone': phoneNumber.slice(1), 'store_id': Number(selectedStore)} )
